@@ -1,0 +1,2 @@
+armips CN.asm
+pause

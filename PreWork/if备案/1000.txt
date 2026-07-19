@@ -1,0 +1,2083 @@
+F0013.BIN 1000 1DF000
+    8002ACC8 8E110010 mov     r17,[r16+FileDelete(filename)]                       [801076F0=801DF000]
+    8002ACCC 00000000 nop
+    8002ACD0 82220000 movbs   r2,[r17]                                             [801DF000=01/02]
+    8002ACD4 00000000 nop
+    8002ACD8 14400006 jnz     r2,8002ACF4h                   ;不为0则跳转
+    
+    8002ACF4 96020008 movh    r2,[r16+8h]                                          [r16+8=00]
+    8002ACF8 00000000 nop
+    8002ACFC 24420001 add     r2,1h                                                
+    8002AD00 A6020008 movh    [r16+8h],r2                                          [r16+8=01]
+    8002AD04 92220000 movb    r2,[r17]                                             [801DF000=01/02]                           
+    8002AD08 00000000 nop
+    8002AD0C A3A20010 movb    [sp+FileDelete(filename)],r2                         [sp+10=01/02]
+    8002AD10 96220002 movh    r2,[r17+2h]                                          [801DF002=0000/0000]
+    8002AD14 A3A00011 movb    [sp+11h],0                                           [sp+11=0]
+    8002AD18 AFA00014 mov     [sp+RemoveDevice(device_name_lowercase)],0           [sp+14=0]
+    8002AD1C A7A20012 movh    [sp+12h],r2                                          [sp+12=0000]
+    8002AD20 8E020004 mov     r2,[r16+FileRename(old_filename,new_filename)]       [r16+4=8004ABE8/800BADB0]
+    8002AD24 00000000 nop
+    8002AD28 1040000A jz      r2,8002AD54h
+    8002AD2C 02002021 + mov   r4,r16                                               
+    8002AD30 0040F809 call    r2
+    8002AD38 10400006 jz      r2,8002AD54h
+    
+    8002AD54 3C02800F mov     r2,800F0000h
+    8002AD58 82230000 movbs   r3,[r17]                                            [801DF000=01/02]
+    8002AD5C 2442B780 sub     r2,4880h                                            [800EB780]
+    8002AD60 2463FFFF sub     r3,1h                                               [0/1]                 
+    8002AD64 00031880 shl     r3,2h                                               
+    8002AD68 00621821 add     r3,r2                                               [800EB780+4(X-1)]
+    8002AD6C 8C620000 mov     r2,[r3]                                             [800EB780=8002B0A0][800EB784=8002B500]
+    8002AD70 00000000 nop
+    8002AD74 0040F809 call    r2                                                  【第一字节所引发的分支
+    8002AD78 27A50010 + add   r5,sp,10h
+            第一字节为01：
+            8002B0A0 27BDFFE0 sub     sp,20h                                                             [807FFE98]
+            8002B0A4 AFBF001C mov     [sp+1Ch],ra                                                        [807FFEB4=8002AD7C]
+            8002B0A8 AFB00018 mov     [sp+18h],r16                                                       [807FFEB0=801076E0]
+            8002B0AC 8CA20004 mov     r2,[r5+FileRename(old_filename,new_filename)]                      [807FFECC=801C4400]
+            8002B0B0 00000000 nop
+            8002B0B4 10400002 jz      r2,8002B0C0h
+            8002B0B8 00808021 + mov   r16,r4
+            8002B0BC AE020018 mov     [r16+18h],r2                                                       [801076F8=801C4400]
+            8002B0C0 8E040010 mov     r4,[r16+FileDelete(filename)]                                      
+            8002B0C4 8E020014 mov     r2,[r16+RemoveDevice(device_name_lowercase)]                       
+            8002B0C8 24830008 add     r3,r4,8h                                                           
+            8002B0CC 2442FFF8 sub     r2,8h                                                              
+            8002B0D0 AE030010 mov     [r16+FileDelete(filename)],r3                                      [801076F0=1DF0008=801DF000+8]
+            8002B0D4 AE020014 mov     [r16+RemoveDevice(device_name_lowercase)],r2                       [801076F4=7F8=800-8]
+            8002B0D8 8C820004 mov     r2,[r4+FileRename(old_filename,new_filename)][801DF004=EA98]
+            8002B0DC 00000000 nop
+            8002B0E0 2442FFF8 sub     r2,8h
+            8002B0E4 14400005 jnz     r2,8002B0FCh
+    
+            8002B0FC 80820001 movbs   r2,[r4+get_card_status(slot)]                [801DF001=02]
+            8002B100 00000000 nop
+            8002B104 14400004 jnz     r2,8002B118h
+
+            【0100】
+            8002B10C 3C028003 mov     r2,80030000h
+            8002B110 0800AC65 jmp     8002B194h
+            8002B114 2442AEE8 + sub   r2,5118h          ;r2=80030000
+            8002B194 AE020000 mov     [r16],r2          ;[801076E0], r2=8002AEE8
+            8002B198 8FBF001C mov     ra,[sp+1Ch]       ;[807FFEB4]
+            8002B19C 8FB00018 mov     r16,[sp+18h]      ;[807FFEB0]
+            8002B1A0 03E00008 ret                       ;ra=8002AD7C
+            8002B1A4 27BD0020 + add   sp,20h            ;sp=807FFE98
+
+            第二字节非0
+            8002B118 0440001F js      r2,8002B198h
+            8002B11C 28420003 + setlt r2,r2,3h
+            8002B120 1040001D jz      r2,8002B198h
+            8002B128 8E020010 mov     r2,[r16+FileDelete(filename)]                                           
+            8002B12C 8E03000C mov     r3,[r16+0Ch]                                                        
+            8002B130 8C450000 mov     r5,[r2]                                       [801DF008=00010350]
+            8002B134 24420004 add     r2,4h                                         
+            8002B138 AE020010 mov     [r16+FileDelete(filename)],r2                                       [801076F0=801DF00C=801DF008+4]   
+            8002B13C 8E020014 mov     r2,[r16+RemoveDevice(device_name_lowercase)]                        [801076F4=7F8]
+            8002B140 2463FFFC sub     r3,4h 
+            8002B144 AE03000C mov     [r16+0Ch],r3                                                        [801076EC=EA8C=EA90-4]
+            8002B148 2442FFFC sub     r2,4h
+            8002B14C AE020014 mov     [r16+RemoveDevice(device_name_lowercase)],r2
+            8002B150 80830001 movbs   r3,[r4+get_card_status(slot)]
+            8002B154 24020001 mov     r2,1h
+            8002B158 14620008 jne     r3,r2,8002B17Ch
+
+            第二字节为01,
+            标志符小于0x80,直读X+1字节
+            标志符0x80-0x84,读取下一字节，复制X-7D次
+            
+
+            第一字节为02:
+            8002B500 27BDFFE0 sub     sp,20h
+            8002B504 AFB00018 mov     [sp+18h],r16                  [sp-8=r16]
+            8002B508 00808021 mov     r16,r4
+            8002B50C AFBF001C mov     [sp+1Ch],ra                   [sp-4=r31]
+            8002B510 8E060010 mov     r6,[r16+10h]                  [r16+10=801DF000]
+            8002B514 8E020014 mov     r2,[r16+14h]                  [R16+14=800]
+            8002B518 24C30010 add     r3,r6,10h                     
+            8002B51C 2442FFF0 sub     r2,10h                        
+            8002B520 AE030010 mov     [r16+10h],r3                  [r16+10=801DF010]
+            8002B524 AE020014 mov     [r16+14h],r2                  [r16+14=7F0]
+            8002B528 8CC20004 mov     r2,[r6+4h]                    [801DF004=000023FD]
+            8002B530 2442FFF0 sub     r2,10h                        [23ED=23FD-10]
+            8002B534 14400005 jnz     r2,8002B54Ch
+            8002B538 AE02000C + mov   [r16+0Ch],r2
+            8002B53C 0C00AB83 call    8002AE0Ch
+            8002B544 0800AD94 jmp     8002B650h
+
+            8002B534:
+            8002B54C 26040020 add     r4,r16,20h
+            8002B550 A4800024 movh    [r4+24h],0                    [r16+44=0]
+            8002B554 88C8000B movl    r8,[r6+0Bh]                   [801DF00B=F000A000]
+            8002B558 98C80008 movr    r8,[r6+8h]                    [801DF008=00000000]
+            8002B55C 88C9000F movl    r9,[r6+0Fh]                   [801DF00F=FF1FFF00]
+            8002B560 98C9000C movr    r9,[r6+0Ch]                   [801DF00C=00F000A0]
+            8002B564 AA08003F movl    [r16+3Fh],r8
+            8002B568 BA08003C movr    [r16+3Ch],r8
+            8002B56C AA090043 movl    [r16+43h],r9
+            8002B570 BA090040 movr    [r16+40h],r9                  
+            8002B574 94820022 movh    r2,[r4+22h]                   [r16+42=00F0]
+            8002B578 00000000 nop
+            8002B57C A4820026 movh    [r4+26h],r2
+            8002B580 94A30004 movh    r3,[r5+4h]                    [140]
+            8002B584 9482001C movh    r2,[r4+1Ch]
+            8002B588 00000000 nop
+            8002B58C 00431021 add     r2,r3
+            8002B590 A482001C movh    [r4+1Ch],r2
+            8002B594 84A30006 movhs   r3,[r5+6h]                    [100]
+            8002B598 9482001E movh    r2,[r4+1Eh]
+            8002B59C 00000000 nop
+            8002B5A0 00431021 add     r2,r3
+            8002B5A4 A482001E movh    [r4+1Eh],r2
+            8002B5A8 80C30001 movbs   r3,[r6+1h]                    [801DF001=01]
+            8002B5AC 00000000 nop
+            8002B5B0 10600006 jz      r3,8002B5CCh
+            8002B5B4 3C028003 + mov   r2,80030000h
+            8002B5B8 24020001 mov     r2,1h
+            8002B5BC 10620005 je      r3,r2,8002B5D4h               【第二字节为分支】
+            8002B5C0 24020400 + mov   r2,400h
+            8002B5C4 0800AD94 jmp     8002B650h
+
+            8002B5BC：
+            8002B5D4 84830020 movhs   r3,[r4+20h]                    [00A0]
+            8002B5DC 0043001A sdiv    r2,r3                          
+            8002B5E0 00001012 mov     r2,lo                          [400/A0=6]
+            8002B5E4 84830026 movhs   r3,[r4+26h]                    [00F0]
+            8002B5EC 0062182A setlt   r3,r3,r2
+            8002B5F0 A4820022 movh    [r4+22h],r2                    [r6+42=400/A0=6]
+            8002B5F4 94820026 movh    r2,[r4+26h]                    [00F0]
+            8002B5F8 10600002 jz      r3,8002B604h
+
+            8002B604 84830020 movhs   r3,[r4+20h]                    [00A0]
+            8002B608 84820026 movhs   r2,[r4+26h]                    [00F0]
+            8002B610 00620018 smul    r3,r2                          
+            8002B614 00006012 mov     r12,lo                         [9600=A0*F0]
+            8002B618 84820022 movhs   r2,[r4+22h]                    [400/A0=6]
+            8002B620 00620018 smul    r3,r2
+            8002B624 3C028003 movp    r2,8002B480h
+            8002B62C 000C2840 shl     r5,r12,1h
+            8002B630 AFA20010 mov     [sp+10h],r2                    [sp-10=8002B480]
+            8002B634 8E06001C mov     r6,[r16+1Ch]                   [r16+1C=801E2800]
+            8002B638 00001812 mov     r3,lo                          [3C0=A0*(400/A0)]
+            8002B63C 0C00AA16 call    8002A858h
+            8002B640 00033840 + shl   r7,r3,1h                       [780=3C0*2]
+                8002A858 8FA20010 mov     r2,[sp+10h]
+                8002A85C A0800000 movb    [r4],0                     [r16+20=0]
+                8002A860 AC850004 mov     [r4+4h],r5                 [r16+24=00012C00=A0*F0*2]
+                8002A864 AC86000C mov     [r4+0Ch],r6                [r16+2C=801E2800]
+                8002A868 AC860014 mov     [r4+14h],r6                [r16+34=801E2800]
+                8002A86C AC870010 mov     [r4+10h],r7                [r16+30=A0*(400/A0)*2]
+                8002A870 AC870018 mov     [r4+18h],r7                [r16+38=A0*(400/A0)*2]
+                8002A874 03E00008 ret
+                8002A878 AC820008 + mov   [r4+8h],r2                 [r16+28=8002B480]
+            8002B644 3C028003 movp    r2,8002B400h
+            8002B64C AE020000 mov     [r16],r2                       [r16=8002B400]
+            8002B650 8FBF001C mov     ra,[sp+1Ch]                    [8002AD7C]
+            8002B654 8FB00018 mov     r16,[sp+18h]                   [801076E0]
+            8002B658 03E00008 ret
+            8002B65C 27BD0020 + add   sp,20h
+    8002AD7C 8FBF0020 mov     ra,[sp+20h]                            [8002AC88]
+    8002AD80 8FB1001C mov     r17,[sp+1Ch]                           [00000003]
+    8002AD84 8FB00018 mov     r16,[sp+18h]                           [801076E0]
+    8002AD88 03E00008 ret
+    8002AD8C 27BD0028 + add   sp,28h
+
+8002AC88 8E020014 mov     r2,[r16+14h]                               [7F0]
+8002AC8C 00000000 nop
+8002AC90 1C40FFF9 jgtz    r2,8002AC78h
+8002AC98 8E020000 mov     r2,[r16]
+8002AC9C 00000000 nop
+8002ACA0 2C420001 setz    r2,r2
+8002ACA4 8FBF0014 mov     ra,[sp+14h]
+8002ACA8 8FB00010 mov     r16,[sp+10h]
+8002ACAC 03E00008 ret
+
+8002AC90:
+8002AC78 8E020000 mov     r2,[r16]                                   [8002B400]
+8002AC7C 00000000 nop
+8002AC80 0040F809 call    r2             
+8002AC84 02002021 + mov   r4,r16            ;r16=801076E0                            
+    8002B400 27BDFFE0 sub     sp,20h
+    8002B404 AFB00010 mov     [sp+10h],r16                           [sp-10=r16]
+    8002B408 00808021 mov     r16,r4
+    8002B40C AFBF0018 mov     [sp+18h],ra                            [sp-8=r31]
+    8002B410 AFB10014 mov     [sp+14h],r17                           [sp-C=r17=3]
+    8002B414 8E110014 mov     r17,[r16+14h]                          [r16+14=7F0]
+    8002B418 8E03000C mov     r3,[r16+0Ch]                           [r16+C=23ED]
+    8002B420 0071102A setlt   r2,r3,r17
+    8002B424 10400002 jz      r2,8002B430h                           [r3<r17不跳转]
+
+    8002B430 8E050010 mov     r5,[r16+10h]                           [r16+10=801DF010]
+    8002B434 0C00AA1F call    8002A87Ch
+    8002B438 02203021 + mov   r6,r17
+        8002A87C 27BDFFD8 sub     sp,28h
+        8002A880 AFB10014 mov     [sp+14h],r17                       [sp-34=7F0]
+        8002A884 00808821 mov     r17,r4
+        8002A888 AFB20018 mov     [sp+18h],r18                       [sp-30=80100000]
+        8002A88C 00C09021 mov     r18,r6
+        8002A890 AFB3001C mov     [sp+1Ch],r19
+        8002A894 00A09821 mov     r19,r5
+        8002A898 AFB40020 mov     [sp+20h],r20
+        8002A89C 24140002 mov     r20,2h
+        8002A8A0 AFBF0024 mov     [sp+24h],ra
+        8002A8A4 AFB00010 mov     [sp+10h],r16
+
+        8002A8A8 82220000 movbs   r2,[r17]                           [r16+20=0]
+        8002A8B0 14400010 jnz     r2,8002A8F4h
+        8002A8B8 92630000 movb    r3,[r19]                           [801DF010=FF]   [801DF1BA=00]
+        8002A8C0 30620080 and     r2,r3,80h                          [X and 0x80]
+        8002A8C4 10400005 jz      r2,8002A8DCh                       【X小于0x80跳转】
+        8002A8C8 26730001 + add   r19,1h                             【更新读取地址】
+
+        【标志符>=80】        
+        8002A8CC 2462FF83 sub     r2,r3,7Dh                          [X-7D]
+        8002A8D0 A2220001 movb    [r17+1h],r2                        [r16+21=X-7D]
+        8002A8D4 0800AA3A jmp     8002A8E8h
+        8002A8D8 24020001 + mov   r2,1h
+
+        【标志符<80】
+        8002A8DC 24620001 add     r2,r3,1h
+        8002A8E0 A2220001 movb    [r17+1h],r2                        [r16+21=X+1]
+        8002A8E4 24020003 mov     r2,3h
+
+        8002A8E8 2652FFFF sub     r18,1h                             [计数7F0-1]
+        8002A8EC 1240004C jz      r18,8002AA20h                      【800是否达到】
+        8002A8F0 A2220000 + movb  [r17],r2                           [r16+20=1/3]
+        8002A8F4 92300001 movb    r16,[r17+1h]                       [r16+21=X-7D/X+1]
+        8002A8F8 8E230018 mov     r3,[r17+18h]                       [r16+38=780=A0*(400/A0)*2/4A1]
+        8002A900 0070102A setlt   r2,r3,r16                          [r3<r16不跳转]
+        8002A904 10400002 jz      r2,8002A910h
+
+        8002A910 82230000 movbs   r3,[r17]                           [r16+20=1]
+        8002A914 00000000 nop
+        8002A918 10740011 je      r3,r20,8002A960h
+        8002A91C 28620003 + setlt r2,r3,3h                           [r3<3不跳转]
+        8002A920 10400005 jz      r2,8002A938h
+        8002A924 24020001 + mov   r2,1h
+        8002A928 10620008 je      r3,r2,8002A94Ch                    [r3为1跳转]
+        8002A930 0800AA67 jmp     8002A99Ch
+
+        8002A94C A2340000 movb    [r17],r20                          [r16+20=2]
+        8002A950 92620000 movb    r2,[r19]                           [801DF011=1F]
+        8002A954 26730001 add     r19,1h
+        8002A958 2652FFFF sub     r18,1h
+        8002A95C A2220002 movb    [r17+2h],r2                        [r16+22=1F]
+        8002A960 8E240014 mov     r4,[r17+14h]                       [801E2800]
+        8002A964 92250002 movb    r5,[r17+2h]                        [1F]
+        8002A968 0C009A5F call    8002697Ch
+        8002A96C 02003021 + mov   r6,r16                             [82]
+
+            8002697C 18C00007 jlez    r6,8002699Ch 
+            80026980 28C20008 + setlt r2,r6,8h                       [r6小于8不跳转]
+            80026984 10400007 jz      r2,800269A4h
+            80026988 00051200 + shl   r2,r5,8h                       [1F00]
+            8002698C A0850000 movb    [r4],r5
+            80026990 24C6FFFF sub     r6,1h
+            80026994 14C0FFFD jnz     r6,8002698Ch
+            80026998 24840001 + add   r4,1h
+            8002699C 03E00008 ret
+
+            800269A4 00A22825 or      r5,r2
+            800269A8 00051400 shl     r2,r5,10h                      [1F1F0000]
+            800269AC 30830003 and     r3,r4,3h
+            800269B0 18600008 jlez    r3,800269D4h                   [801E2800,四字节对齐？]
+            800269B4 00A22825 + or    r5,r2                          [1F1F1F1F]
+
+            800269D4 30C30003 and     r3,r6,3h                       [2=82/4…2]
+            800269D8 08009A7A jmp     800269E8h
+            800269DC 00063083 + sar   r6,2h                          [20=82/4]
+
+
+            800269E0 AC850000 mov     [r4],r5                        [储存地址=1F1F1F1F]
+            800269E4 24840004 add     r4,4h                          [储存地址更新]
+            商起始：
+            800269E8 00C01021 mov     r2,r6
+            800269EC 1C40FFFC jgtz    r2,800269E0h
+            800269F0 24C6FFFF + sub   r6,1h                          [1F=20-1]
+            800269F4 08009A82 jmp     80026A08h
+            800269F8 00601021 + mov   r2,r3                          [余数2]
+
+
+            800269FC A0850000 movb    [r4],r5                        [储存地址=1F]
+            80026A00 24840001 add     r4,1h                          [储存地址更新]
+            80026A04 00601021 mov     r2,r3
+            余数起始：
+            80026A08 1C40FFFC jgtz    r2,800269FCh
+            80026A0C 2463FFFF + sub   r3,1h
+            80026A10 03E00008 ret
+
+        8002A970 0800AA67 jmp     8002A99Ch
+
+        8002A99C 8E220004 mov     r2,[r17+4h]                        [r16+24=00012C00=A0*F0*2]
+        8002A9A0 92230001 movb    r3,[r17+1h]                        
+        8002A9A4 00501023 sub     r2,r16
+        8002A9A8 AE220004 mov     [r17+4h],r2                        [r16+24=12B7E=00012C00-82][12480]
+        8002A9AC 8E220014 mov     r2,[r17+14h]                       
+        8002A9B0 00701823 sub     r3,r16
+        8002A9B4 A2230001 movb    [r17+1h],r3                        [r16+21=0=82-82]
+        8002A9B8 306300FF and     r3,0FFh
+        8002A9BC 00501021 add     r2,r16
+        8002A9C0 14600002 jnz     r3,8002A9CCh
+        8002A9C4 AE220014 + mov   [r17+14h],r2                       [r16+34=801E2882=801E2800+82]
+        8002A9C8 A2200000 movb    [r17],0                            [r16+20=0]
+        8002A9CC 8E220018 mov     r2,[r17+18h]
+        8002A9D0 00000000 nop
+        8002A9D4 00501023 sub     r2,r16
+        8002A9D8 1440000B jnz     r2,8002AA08h
+        8002A9DC AE220018 + mov   [r17+18h],r2                       [r16+38=A0*(400/A0)*2-82]
+        8002A9E0 8E220008 mov     r2,[r17+8h]
+        8002A9E4 00000000 nop
+        8002A9E8 10400003 jz      r2,8002A9F8h
+        8002A9F0 0040F809 call    r2
+        8002A9F4 02202021 + mov   r4,r17
+        8002A9F8 8E22000C mov     r2,[r17+0Ch]
+        8002A9FC 8E230010 mov     r3,[r17+10h]
+        8002AA00 AE220014 mov     [r17+14h],r2
+        8002AA04 AE230018 mov     [r17+18h],r3
+
+        8002AA08 8E220004 mov     r2,[r17+4h]                         [r16+24=12B7E=00012C00-82]                         
+        8002AA0C 00000000 nop
+        8002AA10 10400004 jz      r2,8002AA24h                        [是否已达A0*F0*2，达到则结束]
+        8002AA14 24020001 + mov   r2,1h
+        8002AA18 1E40FFA3 jgtz    r18,8002A8A8h                       [是否已达800，达到则结束]
+
+        结束：
+        8002AA20 00001021 mov     r2,0
+        8002AA24 8FBF0024 mov     ra,[sp+24h]
+        8002AA28 8FB40020 mov     r20,[sp+20h]
+        8002AA2C 8FB3001C mov     r19,[sp+1Ch]
+        8002AA30 8FB20018 mov     r18,[sp+18h]
+        8002AA34 8FB10014 mov     r17,[sp+14h]
+        8002AA38 8FB00010 mov     r16,[sp+10h]
+        8002AA3C 03E00008 ret
+
+
+
+
+
+
+0200:
+4字节标志
+压缩长度
+未知
+2字节参数1
+2字节参数2
+参数2*参数1*2
+8002AD6C 8C620000 mov     r2,[r3]           ;[800EB784]
+8002AD70 00000000 nop
+8002AD74 0040F809 call    r2                ;r2=8002B500
+8002AD78 27A50010 + add   r5,sp,10h         ;sp=807FFEB8
+
+8002B500 27BDFFE0 sub     sp,20h            ;sp=807FFEB8
+8002B504 AFB00018 mov     [sp+18h],r16      ;[807FFEB0], r16=801076E0
+8002B508 00808021 mov     r16,r4            ;r4=801076E0
+8002B50C AFBF001C mov     [sp+1Ch],ra       ;[807FFEB4], ra=8002AD7C
+8002B510 8E060010 mov     r6,[r16+10h]      ;[801076F0]
+8002B514 8E020014 mov     r2,[r16+14h]      ;[801076F4]
+8002B518 24C30010 add     r3,r6,10h         ;r6=801DF000
+8002B51C 2442FFF0 sub     r2,10h            ;r2=00000800
+8002B520 AE030010 mov     [r16+10h],r3      ;[801076F0], r3=801DF010
+8002B524 AE020014 mov     [r16+14h],r2      ;[801076F4], r2=000007F0
+8002B528 8CC20004 mov     r2,[r6+4h]        ;[801DF004]压缩长度
+8002B52C 00000000 nop
+8002B530 2442FFF0 sub     r2,10h            ;r2=00000030
+8002B534 14400005 jnz     r2,8002B54Ch   ;true ;r2=00000020
+8002B538 AE02000C + mov   [r16+0Ch],r2      ;[801076EC], r2=00000020
+
+8002B54C 26040020 add     r4,r16,20h        ;r16=801076E0
+8002B550 A4800024 movh    [r4+24h],0        ;[80107724]
+8002B554 88C8000B movl    r8,[r6+0Bh]       ;[801DF00B]
+8002B558 98C80008 movr    r8,[r6+8h]        ;[801DF008]
+8002B55C 88C9000F movl    r9,[r6+0Fh]       ;[801DF00F]
+8002B560 98C9000C movr    r9,[r6+0Ch]       ;[801DF00C]
+8002B564 AA08003F movl    [r16+3Fh],r8      ;[8010771F], r8=00000000
+8002B568 BA08003C movr    [r16+3Ch],r8      ;[8010771C], r8=00000000
+8002B56C AA090043 movl    [r16+43h],r9      ;[80107723], r9=00010010
+8002B570 BA090040 movr    [r16+40h],r9      ;[80107720], r9=00010010
+8002B574 94820022 movh    r2,[r4+22h]       ;[80107722]
+8002B578 00000000 nop
+8002B57C A4820026 movh    [r4+26h],r2       ;[80107726], r2=00000001
+8002B580 94A30004 movh    r3,[r5+4h]        ;[807FFECC]
+8002B584 9482001C movh    r2,[r4+1Ch]       ;[8010771C]
+8002B588 00000000 nop
+8002B58C 00431021 add     r2,r3             ;r2=00000000, r3=00000000
+8002B590 A482001C movh    [r4+1Ch],r2       ;[8010771C], r2=00000000
+8002B594 84A30006 movhs   r3,[r5+6h]        ;[807FFECE]
+8002B598 9482001E movh    r2,[r4+1Eh]       ;[8010771E]
+8002B59C 00000000 nop
+8002B5A0 00431021 add     r2,r3             ;r2=00000000, r3=00000000
+8002B5A4 A482001E movh    [r4+1Eh],r2       ;[8010771E], r2=00000000
+8002B5A8 80C30001 movbs   r3,[r6+1h]        ;[801DF001]
+8002B5AC 00000000 nop
+8002B5B0 10600006 jz      r3,8002B5CCh   ;true ;r3=00000000
+8002B5B4 3C028003 + mov   r2,80030000h
+
+
+8002B5CC 0800AD93 jmp     8002B64Ch
+8002B5D0 2442B258 + sub   r2,4DA8h          ;r2=80030000
+8002B64C AE020000 mov     [r16],r2          ;[801076E0], r2=8002B258
+8002B650 8FBF001C mov     ra,[sp+1Ch]       ;[807FFEB4]
+8002B654 8FB00018 mov     r16,[sp+18h]      ;[807FFEB0]
+8002B658 03E00008 ret                       ;ra=8002AD7C
+8002B65C 27BD0020 + add   sp,20h            ;sp=807FFE98
+8002AD7C 8FBF0020 mov     ra,[sp+20h]       ;[807FFED8]
+8002AD80 8FB1001C mov     r17,[sp+1Ch]      ;[807FFED4]
+8002AD84 8FB00018 mov     r16,[sp+18h]      ;[807FFED0]
+8002AD88 03E00008 ret                       ;ra=8002AC88
+8002AD8C 27BD0028 + add   sp,28h            ;sp=807FFEB8
+8002AC88 8E020014 mov     r2,[r16+14h]      ;[801076F4]
+8002AC8C 00000000 nop
+8002AC90 1C40FFF9 jgtz    r2,8002AC78h   ;true ;r2=000007F0
+8002AC94 00000000 + nop
+8002AC78 8E020000 mov     r2,[r16]          ;[801076E0]
+8002AC7C 00000000 nop
+8002AC80 0040F809 call    r2                ;r2=8002B258
+8002AC84 02002021 + mov   r4,r16            ;r16=801076E0
+        8002B258 27BDFFD8 sub     sp,28h            ;sp=807FFEE0
+        8002B25C AFB3001C mov     [sp+1Ch],r19      ;[807FFED4], r19=FFFFFFFF
+        8002B260 00809821 mov     r19,r4            ;r4=801076E0
+        8002B264 AFB20018 mov     [sp+18h],r18      ;[807FFED0], r18=80100000
+        8002B268 26720020 add     r18,r19,20h       ;r19=801076E0
+        8002B26C AFBF0024 mov     [sp+24h],ra       ;[807FFEDC], ra=8002AC88
+        8002B270 AFB40020 mov     [sp+20h],r20      ;[807FFED8], r20=00000000
+        8002B274 AFB10014 mov     [sp+14h],r17      ;[807FFECC], r17=00000000
+        8002B278 AFB00010 mov     [sp+10h],r16      ;[807FFEC8], r16=801076E0
+        8002B27C 86420020 movhs   r2,[r18+20h]      ;[80107720]  0010,10000100
+        8002B280 00000000 nop
+        8002B284 00021840 shl     r3,r2,1h          ;r2=00000010
+        8002B288 24020800 mov     r2,800h
+        8002B28C 0043001A sdiv    r2,r3             ;r2=00000800, r3=00000020
+        8002B290 00002012 mov     r4,lo             ;lo=00000040
+        8002B294 86450026 movhs   r5,[r18+26h]      ;[80107726]   0001
+        8002B298 00000000 nop 
+        8002B29C 00A4102A setlt   r2,r5,r4          ;r5=00000001, r4=00000040
+        8002B2A0 10400002 jz      r2,8002B2ACh   ;false ;r2=00000001
+        8002B2A4 0060A021 + mov   r20,r3            ;r3=00000020
+        
+        8002B2A8 00A02021 mov     r4,r5             ;r5=00000001
+        8002B2AC 00830018 smul    r4,r3             ;r4=00000001, r3=00000020
+        8002B2B0 8E700014 mov     r16,[r19+14h]     ;[801076F4]
+        8002B2B4 8E65000C mov     r5,[r19+0Ch]      ;[801076EC]
+        8002B2B8 00000000 nop
+        8002B2BC 00B0102A setlt   r2,r5,r16         ;r5=00000020, r16=000007F0
+        8002B2C0 00004812 mov     r9,lo             ;lo=00000020
+        8002B2C4 10400002 jz      r2,8002B2D0h   ;false ;r2=00000001
+        8002B2C8 00000000 + nop
+        
+        8002B2CC 00A08021 mov     r16,r5            ;r5=00000020
+        8002B2D0 86470024 movhs   r7,[r18+24h]      ;[80107724]
+        8002B2D4 00000000 nop
+        8002B2D8 02072021 add     r4,r16,r7         ;r16=00000020, r7=00000000
+        8002B2DC 0083102A setlt   r2,r4,r3          ;r4=00000020, r3=00000020
+        8002B2E0 10400013 jz      r2,8002B330h   ;true ;r2=00000000
+        8002B2E4 02003021 + mov   r6,r16            ;r16=00000020
+        
+        8002B330 01278823 sub     r17,r9,r7         ;r9=00000020, r7=00000000
+        8002B334 0211102A setlt   r2,r16,r17        ;r16=00000020, r17=00000020
+        8002B338 10400007 jz      r2,8002B358h   ;true ;r2=00000000
+        8002B33C 02203021 + mov   r6,r17            ;r17=00000020
+        
+        8002B358 8E64001C mov     r4,[r19+1Ch]      ;[801076FC]
+        8002B35C 8E650010 mov     r5,[r19+10h]      ;[801076F0]
+        8002B360 0C009A86 call    80026A18h
+        8002B364 00872021 + add   r4,r7             ;r4=801E2800, r7=00000000
+        
+                        80026A18 28C20008 setlt   r2,r6,8h          ;r6=00000020
+                        80026A1C 1040000B jz      r2,80026A4Ch   ;true ;r2=00000000
+                        80026A20 00851826 + xor   r3,r4,r5          ;r4=801E2800, r5=801DF010
+                        80026A4C 30620001 and     r2,r3,1h          ;r3=0003D810
+                        80026A50 10400009 jz      r2,80026A78h   ;true ;r2=00000000
+                        80026A54 30820001 + and   r2,r4,1h          ;r4=801E2800
+                        80026A78 10400007 jz      r2,80026A98h   ;true ;r2=00000000
+                        80026A7C 30620002 + and   r2,r3,2h          ;r3=0003D810
+                        80026A98 1040000C jz      r2,80026ACCh   ;true ;r2=00000000
+                        80026A9C 30C30001 + and   r3,r6,1h          ;r6=00000020
+                        80026ACC 30820002 and     r2,r4,2h          ;r4=801E2800
+                        80026AD0 10400007 jz      r2,80026AF0h   ;true ;r2=00000000
+                        80026AD4 00C01821 + mov   r3,r6             ;r6=00000020
+                        80026AF0 00033083 sar     r6,r3,2h          ;r3=00000020
+                        
+                        80026AF4 8CA20000 mov     r2,[r5]           ;[801DF010]
+                        80026AF8 24A50004 add     r5,4h             ;r5=801DF010
+                        80026AFC 24C6FFFF sub     r6,1h             ;r6=00000008
+                        80026B00 AC820000 mov     [r4],r2           ;[801E2800], r2=90A70000
+                        80026B04 14C0FFFB jnz     r6,80026AF4h      ;r6=00000007
+                        80026B08 24840004 + add   r4,4h             ;r4=801E2800
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+80以下：
+8002AAA4 92630000 movb    r3,[r19]         [801DF3BD=04]
+8002AAA8 00000000 nop
+8002AAAC 30620080 and     r2,r3,80h
+8002AAB0 10400005 jz      r2,8002AAC8h     ;为0跳转
+
+8002AAC8 24620001 add     r2,r3,1h
+8002AACC A2220001 movb    [r17+get_card_status(slot)],r2                                                  [80107701=5]
+8002AAD0 24020003 mov     r2,3h
+8002AAD4 2652FFFF sub     r18,1h           [442=443-1]
+8002AAD8 12400053 jz      r18,8002AC28h
+
+8002AADC A2220000 + movb  [r17],r2                                                                         [80107700=3]
+8002AAE0 92300001 movb    r16,[r17+get_card_status(slot)]                                                  [80107718=00000EF4]
+8002AAE4 8E230018 mov     r3,[r17+18h]
+8002AAE8 00000000 nop
+8002AAEC 0070102A setlt   r2,r3,r16        ;如果 r3 的值 小于 r16 的值，则将目标寄存器 r2 设置为 1。否则，将目标寄存器 r2 设置为 0。
+8002AAF0 10400002 jz      r2,8002AAFCh
+
+8002AAFC 82230000 movbs   r3,[r17]                                                                         [80107700=3]
+8002AB00 00000000 nop
+8002AB04 10740012 je      r3,r20,8002AB50h ;如果相等则跳转
+8002AB08 28620003 + setlt r2,r3,3h
+8002AB0C 10400005 jz      r2,8002AB24h
+
+8002AB24 24020003 mov     r2,3h
+8002AB28 10620015 je      r3,r2,8002AB80h
+
+8002AB80 10400002 jz      r2,8002AB8Ch
+8002AB88 02408021 mov     r16,r18
+
+8002AB8C 8E240014 mov     r4,[r17+RemoveDevice(device_name_lowercase)]                                      [80107714=8013A9E8]
+8002AB90 02602821 mov     r5,r19           [801DF2BE]
+8002AB94 02709821 add     r19,r16          [801DF3C3=801DF2BE+5]
+8002AB98 0C009A86 call    80026A18h
+         80026A18 28C20008 setlt   r2,r6,8h
+         80026A1C 1040000B jz      r2,80026A4Ch
+         80026A20 00851826 + xor   r3,r4,r5          ;按位异或（XOR）操作：规则如下：两个位相同时，结果为 0。两个位不同时，结果为 1。[E5A56=8013A9E8,801DF3BE]
+         80026A24 18C00046 jlez    r6,80026B40h      ;如果小于或等于零则跳转
+
+         80026A2C 90A20000 movb    r2,[r5]          [801DF3BE=53][801DF3BF=03]
+         80026A30 24A50001 add     r5,1h
+         80026A34 24C6FFFF sub     r6,1h
+         80026A38 A0820000 movb    [r4],r2                                    [8013A9E8=53][8013A9E9=03]
+         80026A3C 1CC0FFFB jgtz    r6,80026A2Ch      ;大于零，则跳转
+
+         80026A40 24840001 + add   r4,1h                                      [8013A9EB]
+         80026A44 03E00008 ret
+8002ABA0 02509023 sub     r18,r16                                                                           [43D=442-5]
+8002ABA4 8E220004 mov     r2,[r17+FileRename(old_filename,new_filename)]                                    
+8002ABA8 92230001 movb    r3,[r17+get_card_status(slot)]                                                    [80107701=05]
+8002ABAC 00501023 sub     r2,r16                                                                            
+8002ABB0 AE220004 mov     [r17+FileRename(old_filename,new_filename)],r2                                    [80107704=EEF=EF4-5]
+8002ABB4 8E220014 mov     r2,[r17+RemoveDevice(device_name_lowercase)]                                      
+8002ABB8 00701823 sub     r3,r16
+8002ABBC A2230001 movb    [r17+get_card_status(slot)],r3                                                    [80107701=0=5-5]
+8002ABC0 306300FF and     r3,0FFh
+8002ABC4 00501021 add     r2,r16                                                                            
+8002ABC8 14600002 jnz     r3,8002ABD4h
+8002ABCC AE220014 + mov   [r17+RemoveDevice(device_name_lowercase)],r2                                      [80107714=8013A9ED=8013A9E8+5]
+8002ABD0 A2200000 movb    [r17],0                                                                           [80107700=0]
+8002ABD4 8E220018 mov     r2,[r17+18h]                                                                      
+8002ABD8 00000000 nop
+8002ABDC 00501023 sub     r2,r16
+8002ABE0 1440000B jnz     r2,8002AC10h
+
+8002AC10 8E220004 mov     r2,[r17+FileRename(old_filename,new_filename)]                                    [80107718=EEF=EF4-5]
+8002AC14 00000000 nop
+8002AC18 10400004 jz      r2,8002AC2Ch
+8002AC1C 24020001 + mov   r2,1h
+8002AC20 1E40FF9C jgtz    r18,8002AA94h
+
+
+
+80：
+8002AA94 82220000 movbs   r2,[r17]                                                                          [80107700=0]
+8002AA98 00000000 nop
+8002AA9C 14400010 jnz     r2,8002AAE0h
+8002AAA4 92630000 movb    r3,[r19]                     [801DF3C3=80]
+8002AAA8 00000000 nop
+8002AAAC 30620080 and     r2,r3,80h
+8002AAB0 10400005 jz      r2,8002AAC8h
+8002AAB4 26730001 + add   r19,1h                       
+8002AAB8 2462FF83 sub     r2,r3,7Dh                                                           
+8002AABC A2220001 movb    [r17+get_card_status(slot)],r2                                                    
+8002AAC0 0800AAB5 jmp     8002AAD4h
+
+8002AAD4 2652FFFF sub     r18,1h                                                                            [43C=43D-1]
+8002AAD8 12400053 jz      r18,8002AC28h
+8002AADC A2220000 + movb  [r17],r2                                                                          [80107700=1]
+8002AAE0 92300001 movb    r16,[r17+get_card_status(slot)]                                                   [80107701=03=80-7D]
+8002AAE4 8E230018 mov     r3,[r17+18h]                                                                      [80107718=EEF]
+8002AAE8 00000000 nop
+8002AAEC 0070102A setlt   r2,r3,r16
+8002AAF0 10400002 jz      r2,8002AAFCh
+
+8002AAFC 82230000 movbs   r3,[r17]
+8002AB00 00000000 nop
+8002AB04 10740012 je      r3,r20,8002AB50h
+8002AB08 28620003 + setlt r2,r3,3h
+8002AB0C 10400005 jz      r2,8002AB24h
+8002AB10 24020001 + mov   r2,1h
+8002AB14 10620008 je      r3,r2,8002AB38h
+
+8002AB38 A2340000 movb    [r17],r20                                                                        [80107700=2]
+8002AB3C 92620000 movb    r2,[r19]                     [801DF3C4=1]
+8002AB40 26730001 add     r19,1h
+8002AB44 2652FFFF sub     r18,1h                                                                           [43B]
+8002AB48 00021027 not     r2 
+8002AB4C A6220002 movh    [r17+2h],r2                                                                      [80107702=FFFE]
+8002AB50 8E250014 mov     r5,[r17+RemoveDevice(device_name_lowercase)]                                     [80107714=8013A9ED]
+8002AB54 86220002 movhs   r2,[r17+2h]
+8002AB58 02002021 mov     r4,r16
+8002AB5C 00A21821 add     r3,r5,r2                                                                         [8013A9EB=8013A9ED+FFFFFFFE]
+
+8002AB60 90620000 movb    r2,[r3]                                           [8013A9EB=00][8013A9EC=0F][8013A9ED=00]
+8002AB64 24630001 add     r3,1h
+8002AB68 2484FFFF sub     r4,1h                                                                        
+8002AB6C A0A20000 movb    [r5],r2                                           [8013A9ED=00][8013A9EE=0F][8013A9EF=00]
+8002AB70 1480FFFB jnz     r4,8002AB60h
+
+8002AB74 24A50001 + add   r5,1h
+8002AB78 0800AAE9 jmp     8002ABA4h
+
+8002ABA4 8E220004 mov     r2,[r17+FileRename(old_filename,new_filename)]                                    
+8002ABA8 92230001 movb    r3,[r17+get_card_status(slot)]                                                    
+8002ABAC 00501023 sub     r2,r16
+8002ABB0 AE220004 mov     [r17+FileRename(old_filename,new_filename)],r2                                    [80107704=EEC=EEF-3]
+8002ABB4 8E220014 mov     r2,[r17+RemoveDevice(device_name_lowercase)]                                      
+8002ABB8 00701823 sub     r3,r16
+8002ABBC A2230001 movb    [r17+get_card_status(slot)],r3                                                    [80107701=0=3-3]
+8002ABC0 306300FF and     r3,0FFh
+8002ABC4 00501021 add     r2,r16
+8002ABC8 14600002 jnz     r3,8002ABD4h
+8002ABCC AE220014 + mov   [r17+RemoveDevice(device_name_lowercase)],r2                                      [80107714=8013A9F0=8013A9ED+3]
+8002ABD0 A2200000 movb    [r17],0                                                                           [80107700=0]
+8002ABD4 8E220018 mov     r2,[r17+18h]                                                                      
+8002ABD8 00000000 nop
+8002ABDC 00501023 sub     r2,r16
+8002ABE0 1440000B jnz     r2,8002AC10h
+
+8002AC10 8E220004 mov     r2,[r17+FileRename(old_filename,new_filename)]   
+8002AC14 00000000 nop
+8002AC18 10400004 jz      r2,8002AC2Ch
+8002AC1C 24020001 + mov   r2,1h
+8002AC20 1E40FF9C jgtz    r18,8002AA94h
+
+
+
+
+8002AAA4 92630000 movb    r3,[r19]         [801DF011=CD]
+8002AAA8 00000000 nop
+8002AAAC 30620080 and     r2,r3,80h
+8002AAB0 10400005 jz      r2,8002AAC8h     ;为0跳转
+8002AAA4 92630000 movb    r3,[r19]                     
+8002AAA8 00000000 nop
+8002AAAC 30620080 and     r2,r3,80h
+8002AAB0 10400005 jz      r2,8002AAC8h
+8002AAB4 26730001 + add   r19,1h                       
+8002AAB8 2462FF83 sub     r2,r3,7Dh                                     
+8002AABC A2220001 movb    [r17+get_card_status(slot)],r2       [80107701=50]         
+8002AAC0 0800AAB5 jmp     8002AAD4h
+
+8002AAD4 2652FFFF sub     r18,1h                                                                            [7EE=7EF-1]
+8002AAD8 12400053 jz      r18,8002AC28h
+8002AADC A2220000 + movb  [r17],r2                                                                          [80107700=1]
+8002AAE0 92300001 movb    r16,[r17+get_card_status(slot)]                                                   [80107701=03=80-7D]
+8002AAE4 8E230018 mov     r3,[r17+18h]                                                                      [80107718=EEF]
+8002AAE8 00000000 nop
+8002AAEC 0070102A setlt   r2,r3,r16
+8002AAF0 10400002 jz      r2,8002AAFCh
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+800D066C 3C021100 + mov   r2,11000000h
+800D0670 3C038010 movp    r3,[80100FA8h]
+800D0678 00000000 nop
+800D067C AC620000 mov     [r3],r2
+
+
+文本内存8013A900,压缩文件801DF2CC,801DF000
+
+8002AB60 90620000 movb    r2,[r3]          [0813AF42=02][8013AF43=FF]
+8002AB64 24630001 add     r3,1h
+8002AB68 2484FFFF sub     r4,1h
+8002AB6C A0A20000 movb    [r5],r2          [8013AFB8=02][8013AFB9=FF]
+8002AB70 1480FFFB jnz     r4,8002AB60h
+
+
+8004916C 340CFFF9 mov     r12,0FFF9h
+80049170 94820000 movh    r2,[r4]          [8013AFB8=FF02]
+80049174 00000000 nop
+80049178 A4A20000 movh    [r5],r2          [80137D68=FF02]
+
+
+8005A8B0 96240000 movh    r4,[r17]         [80137D68=FF02][80137D6A=0069]
+8005A8B4 3402FF00 mov     r2,0FF00h
+8005A8B8 3083FF00 and     r3,r4,0FF00h
+8005A8BC 14620081 jne     r3,r2,8005AAC4h  ;比较两个寄存器的值，如果不相等，就跳转到指定的地址。
+
+8005AAC4 A6040000 movh    [r16],r4         [8014D9D8=FF02][8014D9DA=0069]
+8005AAC8 26100002 add     r16,2h
+8005AACC 08016A2C jmp     8005A8B0h
+
+
+
+8005BDC8 00409021 mov     r18,r2           [80137CE8]
+8005BDCC AE400060 mov     [r18+60h],0      [80137D48=0]
+8005BDD0 8EA20008 mov     r2,[r21+8h]      [80138430=00000000]
+8005BDD4 00000000 nop
+8005BDD8 14400003 jnz     r2,8005BDE8h     ;如果不为零，则跳转
+8005BDE0 08016F7D jmp     8005BDF4h
+8005BDE4 AEB20008 + mov   [r21+8h],r18
+8005BDE8 8FA8001C mov     r8,[sp+1Ch]      
+8005BDEC 00000000 nop
+8005BDF0 AD120060 mov     [r8+60h],r18    
+8005BDF4 AFB2001C mov     [sp+1Ch],r18      [807FFF14=00000000]
+8005BDF8 96840000 movh    r4,[r20]          [8014D9DA=0069]
+8005BDFC 0C01706B call    8005C1ACh
+
+8005C1AC 3C081F80 mov     r8,1F800000h
+8005C1B0 01003821 mov     r7,r8
+8005C1B4 24090003 mov     r9,3h
+8005C1B8 00003021 mov     r6,0
+8005C1BC 3C038011 mov     r3,80110000h
+8005C1C0 3084FFFF and     r4,0FFFFh          [00000069,FFFF]
+8005C1C4 00041040 shl     r2,r4,1h           
+8005C1C8 00441021 add     r2,r4              
+8005C1CC 8C63B4D0 mov     r3,[r3-4B30h]      [8010B4D0=801C4400]
+8005C1D0 00021100 shl     r2,4h              [69*30=13B0]
+8005C1D4 00431821 add     r3,r2,r3           [801C57B0=69*30+801C4400]
+8005C1D8 8C6A0000 mov     r10,[r3]           [801C57B0=0FFFFFFF]
+8005C1DC 8C6B0004 mov     r11,[r3+4h]        [801C57B4=0FFFFFFF] 
+8005C1E0 8C6C0008 mov     r12,[r3+8h]        [801C57B8=0FFFFCBF]
+8005C1E4 8C6D000C mov     r13,[r3+0Ch]       [801C57BC=0FFF65A6]
+
+
+
+
+
+
+
+
+压缩文件内存地址801DF000
+
+020332
+800CFC7C:801009E1→1F801802
+
+800CB8EC:8010ECFC→807FFE80→807FFF10
+
+800290E8 8C44772C mov     r4,[r2+772Ch]     ;[8010772C=2393]
+
+8002AED8 8FB10014 mov     r17,[sp+14h]      ;[807FFF14=2393]
+
+8002AE7C AFB10014 mov     [sp+14h],r17      ;[807FFF14], r17=00002393
+
+8002914C 00808821 mov     r17,r4            ;r4=00002393
+
+80029448 8C440000 mov     r4,[r2]           ;[80107A30=2393]
+
+
+
+
+解压
+压缩数据地址  801DF000
+已读取长度    801076E8
+807FFEC8 第一字节01
+807FFEC9 归0
+807FFECC 归0
+807FFECA 第三字节00
+8014A0B8 数据传输地址
+801076F4 扇区待读取长度
+8002CD64 第二字节决定分支，0(8002CD7C)与非0
+
+
+
+8002ACD0 82220000 movbs   r2,[r17]          ;[801DF000=01]
+8002ACD4 00000000 nop
+8002ACD8 14400006 jnz     r2,8002ACF4h   ;true ;r2=00000001
+8002ACDC 00000000 + nop
+8002ACF4 96020008 movh    r2,[r16+8h]       ;[801076E8]
+8002ACF8 00000000 nop
+8002ACFC 24420001 add     r2,1h             ;r2=00000000
+8002AD00 A6020008 movh    [r16+8h],r2       ;[801076E8], r2=00000001
+8002AD04 92220000 movb    r2,[r17]          ;[801DF000]
+8002AD08 00000000 nop
+8002AD0C A3A20010 movb    [sp+10h],r2       ;[807FFEC8], r2=00000001
+8002AD10 96220002 movh    r2,[r17+2h]       ;[801DF002]
+8002AD14 A3A00011 movb    [sp+11h],0        ;[807FFEC9]
+8002AD18 AFA00014 mov     [sp+14h],0        ;[807FFECC]
+8002AD1C A7A20012 movh    [sp+12h],r2       ;[807FFECA], r2=00000000
+8002AD20 8E020004 mov     r2,[r16+4h]       ;[801076E4]
+8002AD24 00000000 nop
+8002AD28 1040000A jz      r2,8002AD54h   ;false ;r2=8002CD30
+8002AD2C 02002021 + mov   r4,r16            ;r16=801076E0
+8002AD30 0040F809 call    r2                ;r2=8002CD30
+8002AD34 27A50010 + add   r5,sp,10h         ;sp=807FFEB8
+8002CD30 27BDFFE0 sub     sp,20h            ;sp=807FFEB8
+8002CD34 AFB00010 mov     [sp+10h],r16      ;[807FFEA8], r16=801076E0
+8002CD38 00808021 mov     r16,r4            ;r4=801076E0
+8002CD3C AFB10014 mov     [sp+14h],r17      ;[807FFEAC], r17=801DF000
+8002CD40 00A08821 mov     r17,r5            ;r5=807FFEC8
+8002CD44 24030001 mov     r3,1h
+8002CD48 AFBF0018 mov     [sp+18h],ra       ;[807FFEB0], ra=8002AD38
+8002CD4C 82220000 movbs   r2,[r17]          ;[807FFEC8]
+8002CD50 8E040010 mov     r4,[r16+10h]      ;[801076F0]
+8002CD54 14430015 jne     r2,r3,8002CDACh   ;false ;r2=00000001, r3=00000001
+8002CD58 00000000 + nop
+8002CD5C 80820001 movbs   r2,[r4+1h]        ;[801DF001]
+8002CD60 00000000 nop
+8002CD64 14400004 jnz     r2,8002CD78h   ;false ;r2=00000000
+8002CD68 00000000 + nop
+8002CD6C 8C820004 mov     r2,[r4+4h]        ;[801DF004]
+8002CD70 0800B35F jmp     8002CD7Ch
+8002CD74 2444FFF8 + sub   r4,r2,8h          ;r2=0000003A
+8002CD7C 3C058001 mov     r5,80010000h
+8002CD80 24A50094 add     r5,94h            ;r5=80010000
+8002CD84 0C00B1AA call    8002C6A8h
+8002CD88 24060062 + mov   r6,62h
+8002C6A8 27BDFFE0 sub     sp,20h            ;sp=807FFE98
+8002C6AC AFB00010 mov     [sp+10h],r16      ;[807FFE88], r16=801076E0
+8002C6B0 00808021 mov     r16,r4            ;r4=00000032
+8002C6B4 AFB10014 mov     [sp+14h],r17      ;[807FFE8C], r17=807FFEC8
+8002C6B8 00A08821 mov     r17,r5            ;r5=80010094
+8002C6BC AFB20018 mov     [sp+18h],r18      ;[807FFE90], r18=80100000
+8002C6C0 AFBF001C mov     [sp+1Ch],ra       ;[807FFE94], ra=8002CD8C
+8002C6C4 0C03ACA4 call    800EB290h
+8002C6C8 00C09021 + mov   r18,r6            ;r6=00000062
+800EB290 10800028 jz      r4,800EB334h   ;false ;r4=00000032
+800EB294 30820007 + and   r2,r4,7h          ;r4=00000032
+800EB298 0803ACA9 jmp     800EB2A4h
+800EB29C 00000000 + nop
+800EB2A4 1440FFFE jnz     r2,800EB2A0h   ;true ;r2=00000002
+800EB2A8 24840001 + add   r4,1h             ;r4=00000032
+800EB2A0 30820007 and     r2,r4,7h          ;r4=00000033
+800EB2A4 1440FFFE jnz     r2,800EB2A0h   ;true ;r2=00000003
+800EB2A8 24840001 + add   r4,1h             ;r4=00000033
+800EB2A0 30820007 and     r2,r4,7h          ;r4=00000034
+800EB2A4 1440FFFE jnz     r2,800EB2A0h   ;true ;r2=00000004
+800EB2A8 24840001 + add   r4,1h             ;r4=00000034
+800EB2A0 30820007 and     r2,r4,7h          ;r4=00000035
+800EB2A4 1440FFFE jnz     r2,800EB2A0h   ;true ;r2=00000005
+800EB2A8 24840001 + add   r4,1h             ;r4=00000035
+800EB2A0 30820007 and     r2,r4,7h          ;r4=00000036
+800EB2A4 1440FFFE jnz     r2,800EB2A0h   ;true ;r2=00000006
+800EB2A8 24840001 + add   r4,1h             ;r4=00000036
+800EB2A0 30820007 and     r2,r4,7h          ;r4=00000037
+800EB2A4 1440FFFE jnz     r2,800EB2A0h   ;true ;r2=00000007
+800EB2A8 24840001 + add   r4,1h             ;r4=00000037
+800EB2A0 30820007 and     r2,r4,7h          ;r4=00000038
+800EB2A4 1440FFFE jnz     r2,800EB2A0h   ;false ;r2=00000000
+800EB2A8 24840001 + add   r4,1h             ;r4=00000038
+800EB2AC 2484FFFF sub     r4,1h             ;r4=00000039
+800EB2B0 24820007 add     r2,r4,7h          ;r4=00000038
+800EB2B4 000210C2 shr     r2,3h             ;r2=0000003F
+800EB2B8 3C068010 mov     r6,80100000h
+800EB2BC 8CC66C84 mov     r6,[r6+6C84h]     ;[80106C84]
+800EB2C0 24450001 add     r5,r2,1h          ;r2=00000007
+800EB2C4 8CC40000 mov     r4,[r6]           ;[80118000]
+800EB2C8 00000000 nop
+800EB2CC 8C830004 mov     r3,[r4+4h]        ;[8016A3FC]
+800EB2D0 00000000 nop
+800EB2D4 0065102A setlt   r2,r3,r5          ;r3=00000000, r5=00000008
+800EB2D8 1440000E jnz     r2,800EB314h   ;true ;r2=00000001
+800EB2DC 00000000 + nop
+800EB314 3C028010 mov     r2,80100000h
+800EB318 8C426C84 mov     r2,[r2+6C84h]     ;[80106C84]
+800EB31C 00000000 nop
+800EB320 10820004 je      r4,r2,800EB334h   ;false ;r4=8016A3F8, r2=80118000
+800EB324 00803021 + mov   r6,r4             ;r4=8016A3F8
+800EB328 8C840000 mov     r4,[r4]           ;[8016A3F8]
+800EB32C 0803ACB3 jmp     800EB2CCh
+800EB330 00000000 + nop
+800EB2CC 8C830004 mov     r3,[r4+4h]        ;[80118004]
+800EB2D0 00000000 nop
+800EB2D4 0065102A setlt   r2,r3,r5          ;r3=0000641E, r5=00000008
+800EB2D8 1440000E jnz     r2,800EB314h   ;false ;r2=00000000
+800EB2DC 00000000 + nop
+800EB2E0 14650004 jne     r3,r5,800EB2F4h   ;true ;r3=0000641E, r5=00000008
+800EB2E4 00651023 + sub   r2,r3,r5          ;r3=0000641E, r5=00000008
+800EB2F4 AC820004 mov     [r4+4h],r2        ;[80118004], r2=00006416
+800EB2F8 000210C0 shl     r2,3h             ;r2=00006416
+800EB2FC 00822021 add     r4,r2             ;r4=80118000, r2=000320B0
+800EB300 AC850004 mov     [r4+4h],r5        ;[8014A0B4], r5=00000008
+800EB304 3C018010 mov     r1,80100000h
+800EB308 AC266C84 mov     [r1+6C84h],r6     ;[80106C84], r6=8016A3F8
+800EB30C 0803ACCE jmp     800EB338h
+800EB310 24820008 + add   r2,r4,8h          ;r4=8014A0B0
+800EB338 03E00008 ret                       ;ra=8002C6CC
+800EB33C 00000000 + nop
+8002C6CC 8FBF001C mov     ra,[sp+1Ch]       ;[807FFE94]
+8002C6D0 AF9206F4 mov     [r28+6F4h],r18    ;[80107388], r18=00000062
+8002C6D4 8FB20018 mov     r18,[sp+18h]      ;[807FFE90]
+8002C6D8 AF9106F0 mov     [r28+6F0h],r17    ;[80107384], r17=80010094
+8002C6DC 8FB10014 mov     r17,[sp+14h]      ;[807FFE8C]
+8002C6E0 AF9006EC mov     [r28+6ECh],r16    ;[80107380], r16=00000032
+8002C6E4 8FB00010 mov     r16,[sp+10h]      ;[807FFE88]
+8002C6E8 03E00008 ret                       ;ra=8002CD8C
+8002C6EC 27BD0020 + add   sp,20h            ;sp=807FFE78
+8002CD8C 3C048011 mov     r4,80110000h
+8002CD90 86030008 movhs   r3,[r16+8h]       ;[801076E8]
+8002CD94 2484B310 sub     r4,4CF0h          ;r4=80110000
+8002CD98 2463FFFF sub     r3,1h             ;r3=00000001
+8002CD9C 00031880 shl     r3,2h             ;r3=00000000
+8002CDA0 00641821 add     r3,r4             ;r3=00000000, r4=8010B310
+8002CDA4 AC620000 mov     [r3],r2           ;[8010B310], r2=8014A0B8
+8002CDA8 AE220004 mov     [r17+4h],r2       ;[807FFECC], r2=8014A0B8
+8002CDAC 8FBF0018 mov     ra,[sp+18h]       ;[807FFEB0]
+8002CDB0 8FB10014 mov     r17,[sp+14h]      ;[807FFEAC]
+8002CDB4 8FB00010 mov     r16,[sp+10h]      ;[807FFEA8]
+8002CDB8 00001021 mov     r2,0
+8002CDBC 03E00008 ret                       ;ra=8002AD38
+8002CDC0 27BD0020 + add   sp,20h            ;sp=807FFE98
+8002AD38 10400006 jz      r2,8002AD54h   ;true ;r2=00000000
+8002AD3C 02002021 + mov   r4,r16            ;r16=801076E0
+8002AD54 3C02800F mov     r2,800F0000h
+8002AD58 82230000 movbs   r3,[r17]          ;[801DF000]
+8002AD5C 2442B780 sub     r2,4880h          ;r2=800F0000
+8002AD60 2463FFFF sub     r3,1h             ;r3=00000001
+8002AD64 00031880 shl     r3,2h             ;r3=00000000
+8002AD68 00621821 add     r3,r2             ;r3=00000000, r2=800EB780
+8002AD6C 8C620000 mov     r2,[r3]           ;[800EB780]
+8002AD70 00000000 nop
+8002AD74 0040F809 call    r2                ;r2=8002B0A0
+8002AD78 27A50010 + add   r5,sp,10h         ;sp=807FFEB8
+8002B0A0 27BDFFE0 sub     sp,20h            ;sp=807FFEB8
+8002B0A4 AFBF001C mov     [sp+1Ch],ra       ;[807FFEB4], ra=8002AD7C
+8002B0A8 AFB00018 mov     [sp+18h],r16      ;[807FFEB0], r16=801076E0
+8002B0AC 8CA20004 mov     r2,[r5+4h]        ;[807FFECC]
+8002B0B0 00000000 nop
+8002B0B4 10400002 jz      r2,8002B0C0h   ;false ;r2=8014A0B8
+8002B0B8 00808021 + mov   r16,r4            ;r4=801076E0
+8002B0BC AE020018 mov     [r16+18h],r2      ;[801076F8], r2=8014A0B8
+8002B0C0 8E040010 mov     r4,[r16+10h]      ;[801076F0]
+8002B0C4 8E020014 mov     r2,[r16+14h]      ;[801076F4]
+8002B0C8 24830008 add     r3,r4,8h          ;r4=801DF000
+8002B0CC 2442FFF8 sub     r2,8h             ;r2=00000800
+8002B0D0 AE030010 mov     [r16+10h],r3      ;[801076F0], r3=801DF008
+8002B0D4 AE020014 mov     [r16+14h],r2      ;[801076F4], r2=000007F8
+8002B0D8 8C820004 mov     r2,[r4+4h]        ;[801DF004]
+8002B0DC 00000000 nop
+8002B0E0 2442FFF8 sub     r2,8h             ;r2=0000003A
+8002B0E4 14400005 jnz     r2,8002B0FCh   ;true ;r2=00000032
+8002B0E8 AE02000C + mov   [r16+0Ch],r2      ;[801076EC], r2=00000032
+8002B0FC 80820001 movbs   r2,[r4+1h]        ;[801DF001]
+8002B100 00000000 nop
+8002B104 14400004 jnz     r2,8002B118h   ;false ;r2=00000000
+8002B108 00000000 + nop
+8002B10C 3C028003 mov     r2,80030000h
+8002B110 0800AC65 jmp     8002B194h
+8002B114 2442AEE8 + sub   r2,5118h          ;r2=80030000
+8002B194 AE020000 mov     [r16],r2          ;[801076E0], r2=8002AEE8
+8002B198 8FBF001C mov     ra,[sp+1Ch]       ;[807FFEB4]
+8002B19C 8FB00018 mov     r16,[sp+18h]      ;[807FFEB0]
+8002B1A0 03E00008 ret                       ;ra=8002AD7C
+8002B1A4 27BD0020 + add   sp,20h            ;sp=807FFE98
+8002AD7C 8FBF0020 mov     ra,[sp+20h]       ;[807FFED8]
+8002AD80 8FB1001C mov     r17,[sp+1Ch]      ;[807FFED4]
+8002AD84 8FB00018 mov     r16,[sp+18h]      ;[807FFED0]
+8002AD88 03E00008 ret                       ;ra=8002AC88
+8002AD8C 27BD0028 + add   sp,28h            ;sp=807FFEB8
+8002AC88 8E020014 mov     r2,[r16+14h]      ;[801076F4]
+8002AC8C 00000000 nop
+8002AC90 1C40FFF9 jgtz    r2,8002AC78h   ;true ;r2=000007F8
+8002AC94 00000000 + nop
+8002AC78 8E020000 mov     r2,[r16]          ;[801076E0]
+8002AC7C 00000000 nop
+8002AC80 0040F809 call    r2                ;r2=8002AEE8
+8002AC84 02002021 + mov   r4,r16            ;r16=801076E0
+8002AEE8 27BDFFE0 sub     sp,20h            ;sp=807FFEE0
+8002AEEC AFB10014 mov     [sp+14h],r17      ;[807FFED4], r17=00000000
+8002AEF0 00808821 mov     r17,r4            ;r4=801076E0
+8002AEF4 AFBF0018 mov     [sp+18h],ra       ;[807FFED8], ra=8002AC88
+8002AEF8 AFB00010 mov     [sp+10h],r16      ;[807FFED0], r16=801076E0
+8002AEFC 8E300014 mov     r16,[r17+14h]     ;[801076F4]
+8002AF00 8E23000C mov     r3,[r17+0Ch]      ;[801076EC]
+8002AF04 00000000 nop
+8002AF08 0070102A setlt   r2,r3,r16         ;r3=00000032, r16=000007F8
+8002AF0C 10400002 jz      r2,8002AF18h   ;false ;r2=00000001
+8002AF10 00000000 + nop
+8002AF14 00608021 mov     r16,r3            ;r3=00000032
+8002AF18 8E240018 mov     r4,[r17+18h]      ;[801076F8]
+8002AF1C 8E250010 mov     r5,[r17+10h]      ;[801076F0]
+8002AF20 0C009A86 call    80026A18h
+8002AF24 02003021 + mov   r6,r16            ;r16=00000032
+80026A18 28C20008 setlt   r2,r6,8h          ;r6=00000032
+80026A1C 1040000B jz      r2,80026A4Ch   ;true ;r2=00000000
+80026A20 00851826 + xor   r3,r4,r5          ;r4=8014A0B8, r5=801DF008
+80026A4C 30620001 and     r2,r3,1h          ;r3=000950B0
+80026A50 10400009 jz      r2,80026A78h   ;true ;r2=00000000
+80026A54 30820001 + and   r2,r4,1h          ;r4=8014A0B8
+80026A78 10400007 jz      r2,80026A98h   ;true ;r2=00000000
+80026A7C 30620002 + and   r2,r3,2h          ;r3=000950B0
+80026A98 1040000C jz      r2,80026ACCh   ;true ;r2=00000000
+80026A9C 30C30001 + and   r3,r6,1h          ;r6=00000032
+80026ACC 30820002 and     r2,r4,2h          ;r4=8014A0B8
+80026AD0 10400007 jz      r2,80026AF0h   ;true ;r2=00000000
+80026AD4 00C01821 + mov   r3,r6             ;r6=00000032
+80026AF0 00033083 sar     r6,r3,2h          ;r3=00000032
+80026AF4 8CA20000 mov     r2,[r5]           ;[801DF008]
+80026AF8 24A50004 add     r5,4h             ;r5=801DF008
+80026AFC 24C6FFFF sub     r6,1h             ;r6=0000000C
+80026B00 AC820000 mov     [r4],r2           ;[8014A0B8], r2=00000010
+80026B04 14C0FFFB jnz     r6,80026AF4h   ;true ;r6=0000000B
+80026B08 24840004 + add   r4,4h             ;r4=8014A0B8
+80026AF4 8CA20000 mov     r2,[r5]           ;[801DF00C]
+80026AF8 24A50004 add     r5,4h             ;r5=801DF00C
+80026AFC 24C6FFFF sub     r6,1h             ;r6=0000000B
+80026B00 AC820000 mov     [r4],r2           ;[8014A0BC], r2=00000018
+80026B04 14C0FFFB jnz     r6,80026AF4h   ;true ;r6=0000000A
+80026B08 24840004 + add   r4,4h             ;r4=8014A0BC
+80026AF4 8CA20000 mov     r2,[r5]           ;[801DF010]
+80026AF8 24A50004 add     r5,4h             ;r5=801DF010
+80026AFC 24C6FFFF sub     r6,1h             ;r6=0000000A
+80026B00 AC820000 mov     [r4],r2           ;[8014A0C0], r2=0000001E
+80026B04 14C0FFFB jnz     r6,80026AF4h   ;true ;r6=00000009
+80026B08 24840004 + add   r4,4h             ;r4=8014A0C0
+80026AF4 8CA20000 mov     r2,[r5]           ;[801DF014]
+80026AF8 24A50004 add     r5,4h             ;r5=801DF014
+80026AFC 24C6FFFF sub     r6,1h             ;r6=00000009
+80026B00 AC820000 mov     [r4],r2           ;[8014A0C4], r2=0000002A
+80026B04 14C0FFFB jnz     r6,80026AF4h   ;true ;r6=00000008
+80026B08 24840004 + add   r4,4h             ;r4=8014A0C4
+80026AF4 8CA20000 mov     r2,[r5]           ;[801DF018]
+80026AF8 24A50004 add     r5,4h             ;r5=801DF018
+80026AFC 24C6FFFF sub     r6,1h             ;r6=00000008
+80026B00 AC820000 mov     [r4],r2           ;[8014A0C8], r2=00BB0103
+80026B04 14C0FFFB jnz     r6,80026AF4h   ;true ;r6=00000007
+80026B08 24840004 + add   r4,4h             ;r4=8014A0C8
+80026AF4 8CA20000 mov     r2,[r5]           ;[801DF01C]
+80026AF8 24A50004 add     r5,4h             ;r5=801DF01C
+80026AFC 24C6FFFF sub     r6,1h             ;r6=00000007
+80026B00 AC820000 mov     [r4],r2           ;[8014A0CC], r2=FFFF00CA
+80026B04 14C0FFFB jnz     r6,80026AF4h   ;true ;r6=00000006
+80026B08 24840004 + add   r4,4h             ;r4=8014A0CC
+80026AF4 8CA20000 mov     r2,[r5]           ;[801DF020]
+80026AF8 24A50004 add     r5,4h             ;r5=801DF020
+80026AFC 24C6FFFF sub     r6,1h             ;r6=00000006
+80026B00 AC820000 mov     [r4],r2           ;[8014A0D0], r2=00F600FD
+80026B04 14C0FFFB jnz     r6,80026AF4h   ;true ;r6=00000005
+80026B08 24840004 + add   r4,4h             ;r4=8014A0D0
+80026AF4 8CA20000 mov     r2,[r5]           ;[801DF024]
+80026AF8 24A50004 add     r5,4h             ;r5=801DF024
+80026AFC 24C6FFFF sub     r6,1h             ;r6=00000005
+80026B00 AC820000 mov     [r4],r2           ;[8014A0D4], r2=00D8FFFF
+80026B04 14C0FFFB jnz     r6,80026AF4h   ;true ;r6=00000004
+80026B08 24840004 + add   r4,4h             ;r4=8014A0D4
+80026AF4 8CA20000 mov     r2,[r5]           ;[801DF028]
+80026AF8 24A50004 add     r5,4h             ;r5=801DF028
+80026AFC 24C6FFFF sub     r6,1h             ;r6=00000004
+80026B00 AC820000 mov     [r4],r2           ;[8014A0D8], r2=000D00FA
+80026B04 14C0FFFB jnz     r6,80026AF4h   ;true ;r6=00000003
+80026B08 24840004 + add   r4,4h             ;r4=8014A0D8
+80026AF4 8CA20000 mov     r2,[r5]           ;[801DF02C]
+80026AF8 24A50004 add     r5,4h             ;r5=801DF02C
+80026AFC 24C6FFFF sub     r6,1h             ;r6=00000003
+80026B00 AC820000 mov     [r4],r2           ;[8014A0DC], r2=000D0101
+80026B04 14C0FFFB jnz     r6,80026AF4h   ;true ;r6=00000002
+80026B08 24840004 + add   r4,4h             ;r4=8014A0DC
+80026AF4 8CA20000 mov     r2,[r5]           ;[801DF030]
+80026AF8 24A50004 add     r5,4h             ;r5=801DF030
+80026AFC 24C6FFFF sub     r6,1h             ;r6=00000002
+80026B00 AC820000 mov     [r4],r2           ;[8014A0E0], r2=00B9FFFF
+80026B04 14C0FFFB jnz     r6,80026AF4h   ;true ;r6=00000001
+80026B08 24840004 + add   r4,4h             ;r4=8014A0E0
+80026AF4 8CA20000 mov     r2,[r5]           ;[801DF034]
+80026AF8 24A50004 add     r5,4h             ;r5=801DF034
+80026AFC 24C6FFFF sub     r6,1h             ;r6=00000001
+80026B00 AC820000 mov     [r4],r2           ;[8014A0E4], r2=010000C4
+80026B04 14C0FFFB jnz     r6,80026AF4h   ;false ;r6=00000000
+80026B08 24840004 + add   r4,4h             ;r4=8014A0E4
+80026B0C 30620002 and     r2,r3,2h          ;r3=00000032
+80026B10 10400006 jz      r2,80026B2Ch   ;false ;r2=00000002
+80026B14 30620001 + and   r2,r3,1h          ;r3=00000032
+80026B18 94A20000 movh    r2,[r5]           ;[801DF038]
+80026B1C 24A50002 add     r5,2h             ;r5=801DF038
+80026B20 A4820000 movh    [r4],r2           ;[8014A0E8], r2=0000FFFF
+80026B24 24840002 add     r4,2h             ;r4=8014A0E8
+80026B28 30620001 and     r2,r3,1h          ;r3=00000032
+80026B2C 10400004 jz      r2,80026B40h   ;true ;r2=00000000
+80026B30 00000000 + nop
+80026B40 03E00008 ret                       ;ra=8002AF28
+80026B44 00000000 + nop
+8002AF28 8E220018 mov     r2,[r17+18h]      ;[801076F8]
+8002AF2C 8E230010 mov     r3,[r17+10h]      ;[801076F0]
+8002AF30 00501021 add     r2,r16            ;r2=8014A0B8, r16=00000032
+8002AF34 AE220018 mov     [r17+18h],r2      ;[801076F8], r2=8014A0EA
+8002AF38 8E220014 mov     r2,[r17+14h]      ;[801076F4]
+8002AF3C 00701821 add     r3,r16            ;r3=801DF008, r16=00000032
+8002AF40 AE230010 mov     [r17+10h],r3      ;[801076F0], r3=801DF03A
+8002AF44 8E23000C mov     r3,[r17+0Ch]      ;[801076EC]
+8002AF48 00501023 sub     r2,r16            ;r2=000007F8, r16=00000032
+8002AF4C 00701823 sub     r3,r16            ;r3=00000032, r16=00000032
+8002AF50 AE220014 mov     [r17+14h],r2      ;[801076F4], r2=000007C6
+8002AF54 14600003 jnz     r3,8002AF64h   ;false ;r3=00000000
+8002AF58 AE23000C + mov   [r17+0Ch],r3      ;[801076EC], r3=00000000
+8002AF5C 0C00AB83 call    8002AE0Ch
+8002AF60 02202021 + mov   r4,r17            ;r17=801076E0
+8002AE0C 84830008 movhs   r3,[r4+8h]        ;[801076E8]
+8002AE10 8482000A movhs   r2,[r4+0Ah]       ;[801076EA]
+8002AE14 00000000 nop
+8002AE18 14620004 jne     r3,r2,8002AE2Ch   ;true ;r3=00000001, r2=00000007
+8002AE1C 00000000 + nop
+8002AE2C 8C830014 mov     r3,[r4+14h]       ;[801076F4]
+8002AE30 00000000 nop
+8002AE34 30650003 and     r5,r3,3h          ;r3=000007C6
+8002AE38 10A00005 jz      r5,8002AE50h   ;false ;r5=00000002
+8002AE3C 00651823 + sub   r3,r5             ;r3=000007C6, r5=00000002
+8002AE40 8C820010 mov     r2,[r4+10h]       ;[801076F0]
+8002AE44 AC830014 mov     [r4+14h],r3       ;[801076F4], r3=000007C4
+8002AE48 00451021 add     r2,r5             ;r2=801DF03A, r5=00000002
+8002AE4C AC820010 mov     [r4+10h],r2       ;[801076F0], r2=801DF03C
+8002AE50 3C028003 mov     r2,80030000h
+8002AE54 2442ACB4 sub     r2,534Ch          ;r2=80030000
+8002AE58 03E00008 ret                       ;ra=8002AF64
+8002AE5C AC820000 + mov   [r4],r2           ;[801076E0], r2=8002ACB4
+8002AF64 8FBF0018 mov     ra,[sp+18h]       ;[807FFED8]
+8002AF68 8FB10014 mov     r17,[sp+14h]      ;[807FFED4]
+8002AF6C 8FB00010 mov     r16,[sp+10h]      ;[807FFED0]
+8002AF70 03E00008 ret                       ;ra=8002AC88
+8002AF74 27BD0020 + add   sp,20h            ;sp=807FFEC0
+8002AC88 8E020014 mov     r2,[r16+14h]      ;[801076F4]
+8002AC8C 00000000 nop
+8002AC90 1C40FFF9 jgtz    r2,8002AC78h   ;true ;r2=000007C4
+8002AC94 00000000 + nop
+8002AC78 8E020000 mov     r2,[r16]          ;[801076E0]
+8002AC7C 00000000 nop
+8002AC80 0040F809 call    r2                ;r2=8002ACB4
+8002AC84 02002021 + mov   r4,r16            ;r16=801076E0
+8002ACB4 27BDFFD8 sub     sp,28h            ;sp=807FFEE0
+8002ACB8 AFB00018 mov     [sp+18h],r16      ;[807FFED0], r16=801076E0
+8002ACBC 00808021 mov     r16,r4            ;r4=801076E0
+8002ACC0 AFBF0020 mov     [sp+20h],ra       ;[807FFED8], ra=8002AC88
+8002ACC4 AFB1001C mov     [sp+1Ch],r17      ;[807FFED4], r17=00000000
+8002ACC8 8E110010 mov     r17,[r16+10h]     ;[801076F0]
+8002ACCC 00000000 nop
+8002ACD0 82220000 movbs   r2,[r17]          ;[801DF03C]
+8002ACD4 00000000 nop
+8002ACD8 14400006 jnz     r2,8002ACF4h   ;true ;r2=00000001
+8002ACDC 00000000 + nop
+8002ACF4 96020008 movh    r2,[r16+8h]       ;[801076E8]
+8002ACF8 00000000 nop
+8002ACFC 24420001 add     r2,1h             ;r2=00000001
+8002AD00 A6020008 movh    [r16+8h],r2       ;[801076E8], r2=00000002
+8002AD04 92220000 movb    r2,[r17]          ;[801DF03C]
+
+
+
+
+
+
+
+
+
+
+801076F4：800计数
+
+                                        8002ACC8 8E110010 mov     r17,[r16+FileDelete(filename)]                       [801076F0=801DF000]
+                                        8002ACCC 00000000 nop
+                                        8002ACD0 82220000 movbs   r2,[r17]                                             [801DF000=01/02]
+                                        8002ACD4 00000000 nop
+                                        8002ACD8 14400006 jnz     r2,8002ACF4h                   ;不为0则跳转
+                                        
+                                        8002ACF4 96020008 movh    r2,[r16+8h]                                          [r16+8=00]
+                                        8002ACF8 00000000 nop
+                                        8002ACFC 24420001 add     r2,1h                                                
+                                        8002AD00 A6020008 movh    [r16+8h],r2                                          [r16+8=01]
+                                        8002AD04 92220000 movb    r2,[r17]                                             [801DF000=01/02]                           
+                                        8002AD08 00000000 nop
+                                        8002AD0C A3A20010 movb    [sp+FileDelete(filename)],r2                         [sp+10=01/02]
+                                        8002AD10 96220002 movh    r2,[r17+2h]                                          [801DF002=0000/0000]
+                                        8002AD14 A3A00011 movb    [sp+11h],0                                           [sp+11=0]
+                                        8002AD18 AFA00014 mov     [sp+RemoveDevice(device_name_lowercase)],0           [sp+14=0]
+                                        8002AD1C A7A20012 movh    [sp+12h],r2                                          [sp+12=0000]
+                                        8002AD20 8E020004 mov     r2,[r16+FileRename(old_filename,new_filename)]       [r16+4=8004ABE8/800BADB0]
+                                        8002AD24 00000000 nop
+                                        8002AD28 1040000A jz      r2,8002AD54h
+                                        8002AD2C 02002021 + mov   r4,r16                                               
+                                        8002AD30 0040F809 call    r2
+                                        8002AD38 10400006 jz      r2,8002AD54h
+                                        
+                                        8002AD54 3C02800F mov     r2,800F0000h
+                                        8002AD58 82230000 movbs   r3,[r17]                                            [801DF000=01/02]
+                                        8002AD5C 2442B780 sub     r2,4880h                                            [800EB780]
+                                        8002AD60 2463FFFF sub     r3,1h                                               [0/1]                 
+                                        8002AD64 00031880 shl     r3,2h                                               
+                                        8002AD68 00621821 add     r3,r2                                               [800EB780+4(X-1)]
+                                        8002AD6C 8C620000 mov     r2,[r3]                                             [800EB780=8002B0A0][800EB784=8002B500]
+                                        8002AD70 00000000 nop
+                                        8002AD74 0040F809 call    r2                                                  【第一字节所引发的分支
+                                        8002AD78 27A50010 + add   r5,sp,10h
+                                                第一字节为01：
+                                                8002B0A0 27BDFFE0 sub     sp,20h                                                             [807FFE98]
+                                                8002B0A4 AFBF001C mov     [sp+1Ch],ra                                                        [807FFEB4=8002AD7C]
+                                                8002B0A8 AFB00018 mov     [sp+18h],r16                                                       [807FFEB0=801076E0]
+                                                8002B0AC 8CA20004 mov     r2,[r5+FileRename(old_filename,new_filename)]                      [807FFECC=801C4400]
+                                                8002B0B0 00000000 nop
+                                                8002B0B4 10400002 jz      r2,8002B0C0h
+                                                8002B0B8 00808021 + mov   r16,r4
+                                                8002B0BC AE020018 mov     [r16+18h],r2                                                       [801076F8=801C4400]
+                                                8002B0C0 8E040010 mov     r4,[r16+FileDelete(filename)]                                      
+                                                8002B0C4 8E020014 mov     r2,[r16+RemoveDevice(device_name_lowercase)]                       
+                                                8002B0C8 24830008 add     r3,r4,8h                                                           
+                                                8002B0CC 2442FFF8 sub     r2,8h                                                              
+                                                8002B0D0 AE030010 mov     [r16+FileDelete(filename)],r3                                      [801076F0=1DF0008=801DF000+8]
+                                                8002B0D4 AE020014 mov     [r16+RemoveDevice(device_name_lowercase)],r2                       [801076F4=7F8=800-8]
+                                                8002B0D8 8C820004 mov     r2,[r4+FileRename(old_filename,new_filename)][801DF004=EA98]
+                                                8002B0DC 00000000 nop
+                                                8002B0E0 2442FFF8 sub     r2,8h
+                                                8002B0E4 14400005 jnz     r2,8002B0FCh
+                                        
+                                                8002B0FC 80820001 movbs   r2,[r4+get_card_status(slot)]                [801DF001=02]
+                                                8002B100 00000000 nop
+                                                8002B104 14400004 jnz     r2,8002B118h
+                                    
+                                                【0100】
+                                                8002B10C 3C028003 mov     r2,80030000h
+                                                8002B110 0800AC65 jmp     8002B194h
+                                                8002B114 2442AEE8 + sub   r2,5118h          ;r2=80030000
+                                                8002B194 AE020000 mov     [r16],r2          ;[801076E0], r2=8002AEE8
+                                                8002B198 8FBF001C mov     ra,[sp+1Ch]       ;[807FFEB4]
+                                                8002B19C 8FB00018 mov     r16,[sp+18h]      ;[807FFEB0]
+                                                8002B1A0 03E00008 ret                       ;ra=8002AD7C
+                                                8002B1A4 27BD0020 + add   sp,20h            ;sp=807FFE98
+                                        8002AD7C 8FBF0020 mov     ra,[sp+20h]       ;[807FFED8]
+                                        8002AD80 8FB1001C mov     r17,[sp+1Ch]      ;[807FFED4]
+                                        8002AD84 8FB00018 mov     r16,[sp+18h]      ;[807FFED0]
+                                        8002AD88 03E00008 ret                       ;ra=8002AC88
+                                        8002AD8C 27BD0028 + add   sp,28h            ;sp=807FFEB8
+                                8002AC88 8E020014 mov     r2,[r16+14h]      ;[801076F4]
+                                8002AC8C 00000000 nop
+                                8002AC90 1C40FFF9 jgtz    r2,8002AC78h   ;true ;r2=000007F8
+                                8002AC94 00000000 + nop
+                                
+                                8002AC78 8E020000 mov     r2,[r16]          ;[801076E0]
+                                8002AC7C 00000000 nop
+                                8002AC80 0040F809 call    r2                ;r2=8002AEE8
+                                8002AC84 02002021 + mov   r4,r16            ;r16=801076E0
+                                        8002AEE8 27BDFFE0 sub     sp,20h            ;sp=807FFEE0
+                                        8002AEEC AFB10014 mov     [sp+14h],r17      ;[807FFED4], r17=00000000
+                                        8002AEF0 00808821 mov     r17,r4            ;r4=801076E0
+                                        8002AEF4 AFBF0018 mov     [sp+18h],ra       ;[807FFED8], ra=8002AC88
+                                        8002AEF8 AFB00010 mov     [sp+10h],r16      ;[807FFED0], r16=801076E0
+                                        8002AEFC 8E300014 mov     r16,[r17+14h]     ;[801076F4]
+                                        8002AF00 8E23000C mov     r3,[r17+0Ch]      ;[801076EC]
+                                        8002AF04 00000000 nop
+                                        8002AF08 0070102A setlt   r2,r3,r16         ;r3=00010350, r16=000007F8【检查是剩余待传输字节是否能在该扇区内传完？】
+                                        8002AF0C 10400002 jz      r2,8002AF18h   ;true ;r2=00000000
+                                        8002AF10 00000000 + nop
+                                
+                                        8002AF18 8E240018 mov     r4,[r17+18h]      ;[801076F8]
+                                        8002AF1C 8E250010 mov     r5,[r17+10h]      ;[801076F0]
+                                        8002AF20 0C009A86 call    80026A18h
+                                        8002AF24 02003021 + mov   r6,r16            ;r16=000007F8
+                                                80026A18 28C20008 setlt   r2,r6,8h          ;r6=000007F8
+                                                80026A1C 1040000B jz      r2,80026A4Ch   ;true ;r2=00000000
+                                                80026A20 00851826 + xor   r3,r4,r5          ;r4=801C4400, r5=801DF008
+                                
+                                                80026A4C 30620001 and     r2,r3,1h          ;r3=0001B408
+                                                80026A50 10400009 jz      r2,80026A78h   ;true ;r2=00000000
+                                                80026A54 30820001 + and   r2,r4,1h          ;r4=801C4400
+                                
+                                                80026A78 10400007 jz      r2,80026A98h   ;true ;r2=00000000
+                                                80026A7C 30620002 + and   r2,r3,2h          ;r3=0001B408
+                                
+                                                80026A98 1040000C jz      r2,80026ACCh   ;true ;r2=00000000
+                                                80026A9C 30C30001 + and   r3,r6,1h          ;r6=000007F8
+                                
+                                                80026ACC 30820002 and     r2,r4,2h          ;r4=801C4400
+                                                80026AD0 10400007 jz      r2,80026AF0h   ;true ;r2=00000000
+                                                80026AD4 00C01821 + mov   r3,r6             ;r6=000007F8
+                                
+                                                80026AF0 00033083 sar     r6,r3,2h          ;r3=000007F8
+                                                循环
+                                                80026AF4 8CA20000 mov     r2,[r5]           ;[801DF008]
+                                                80026AF8 24A50004 add     r5,4h             ;r5=801DF008
+                                                80026AFC 24C6FFFF sub     r6,1h             ;r6=000001FE
+                                                80026B00 AC820000 mov     [r4],r2           ;[801C4400], r2=0FFFFFFF
+                                                80026B04 14C0FFFB jnz     r6,80026AF4h   ;true ;r6=000001FD
+                                                80026B08 24840004 + add   r4,4h             ;r4=801C4400
+                                
+                                                80026AF4 8CA20000 mov     r2,[r5]           ;[801DF00C]
+                                                80026AF8 24A50004 add     r5,4h             ;r5=801DF00C
+                                                80026AFC 24C6FFFF sub     r6,1h             ;r6=000001FD
+                                                80026B00 AC820000 mov     [r4],r2           ;[801C4404], r2=0FFFFFFF
+                                                80026B04 14C0FFFB jnz     r6,80026AF4h   ;true ;r6=000001FC
+                                                80026B08 24840004 + add   r4,4h             ;r4=801C4404
+                                
+                                                80026B0C 30620002 and     r2,r3,2h          ;r3=000007F8      【是否剩2字节】
+                                                80026B10 10400006 jz      r2,80026B2Ch   ;true ;r2=00000000
+                                                80026B14 30620001 + and   r2,r3,1h          ;r3=000007F8      【是否剩1字节】
+                                
+                                                80026B2C 10400004 jz      r2,80026B40h   ;true ;r2=00000000
+                                                80026B30 00000000 + nop
+                                
+                                                80026B40 03E00008 ret                       ;ra=8002AF28
+                                                80026B44 00000000 + nop
+                                        8002AF28 8E220018 mov     r2,[r17+18h]      ;[801076F8]
+                                        8002AF2C 8E230010 mov     r3,[r17+10h]      ;[801076F0]
+                                        8002AF30 00501021 add     r2,r16            ;r2=801C4400, r16=000007F8
+                                        8002AF34 AE220018 mov     [r17+18h],r2      ;[801076F8], r2=801C4BF8
+                                        8002AF38 8E220014 mov     r2,[r17+14h]      ;[801076F4]
+                                        8002AF3C 00701821 add     r3,r16            ;r3=801DF008, r16=000007F8
+                                        8002AF40 AE230010 mov     [r17+10h],r3      ;[801076F0], r3=801DF800   【新压缩地址】
+                                        8002AF44 8E23000C mov     r3,[r17+0Ch]      ;[801076EC]
+                                        8002AF48 00501023 sub     r2,r16            ;r2=000007F8, r16=000007F8
+                                        8002AF4C 00701823 sub     r3,r16            ;r3=00010350, r16=000007F8  
+                                        8002AF50 AE220014 mov     [r17+14h],r2      ;[801076F4], r2=00000000
+                                        8002AF54 14600003 jnz     r3,8002AF64h   ;true ;r3=0000FB58            【是否解压完全部字节】
+                                        8002AF58 AE23000C + mov   [r17+0Ch],r3      ;[801076EC], r3=0000FB58
+                                
+                                        8002AF64 8FBF0018 mov     ra,[sp+18h]       ;[807FFED8]
+                                        8002AF68 8FB10014 mov     r17,[sp+14h]      ;[807FFED4]
+                                        8002AF6C 8FB00010 mov     r16,[sp+10h]      ;[807FFED0]
+                                        8002AF70 03E00008 ret                       ;ra=8002AC88
+                                        8002AF74 27BD0020 + add   sp,20h            ;sp=807FFEC0
+                                8002AC88 8E020014 mov     r2,[r16+14h]      ;[801076F4]
+                                8002AC8C 00000000 nop
+                                8002AC90 1C40FFF9 jgtz    r2,8002AC78h   ;false ;r2=00000000
+                                8002AC94 00000000 + nop
+                                
+                                8002AC98 8E020000 mov     r2,[r16]          ;[801076E0]
+                                8002AC9C 00000000 nop
+                                8002ACA0 2C420001 setz    r2,r2             ;r2=8002AEE8
+                                8002ACA4 8FBF0014 mov     ra,[sp+14h]       ;[807FFEF4]
+                                8002ACA8 8FB00010 mov     r16,[sp+10h]      ;[807FFEF0]
+                                8002ACAC 03E00008 ret                       ;ra=80029524
+                                8002ACB0 27BD0018 + add   sp,18h            ;sp=807FFEE0
+                        80029524 10400003 jz      r2,80029534h   ;true ;r2=00000000
+                        80029528 00000000 + nop
+                        
+                        80029534 0C03AA5C call    800EA970h
+                        80029538 00000000 + nop
+                                800EA970 24040001 mov     r4,1h
+                                800EA974 0000000C syscall 0h
+                                800EA978 03E00008 ret                       ;ra=8002953C
+                                800EA97C 00000000 + nop
+                        8002953C 924276D8 movb    r2,[r18+76D8h]    ;[801076D8]
+                        80029540 00000000 nop
+                        80029544 2442FFFF sub     r2,1h             ;r2=00000001
+                        80029548 A24276D8 movb    [r18+76D8h],r2    ;[801076D8], r2=00000000
+                        8002954C 920276D9 movb    r2,[r16+76D9h]    ;[801076D9]
+                        80029550 00000000 nop
+                        80029554 24420001 add     r2,1h             ;r2=00000000
+                        80029558 A20276D9 movb    [r16+76D9h],r2    ;[801076D9], r2=00000001
+                        8002955C 920276D9 movb    r2,[r16+76D9h]    ;[801076D9]
+                        80029560 24030007 mov     r3,7h
+                        80029564 00021600 shl     r2,18h            ;r2=00000001
+                        80029568 00021603 sar     r2,18h            ;r2=01000000
+                        8002956C 14430005 jne     r2,r3,80029584h   ;true ;r2=00000001, r3=00000007
+                        80029570 00000000 + nop
+                        
+                        80029584 0C03AA60 call    800EA980h
+                        80029588 00000000 + nop
+                                800EA980 24040002 mov     r4,2h
+                                800EA984 0000000C syscall 0h
+                                800EA988 03E00008 ret                       ;ra=8002958C
+                                800EA98C 00000000 + nop
+                        8002958C 06600004 js      r19,800295A0h     ;r19=FFFFFFFF
+                        80029590 00000000 + nop
+                        
+                        800295A0 924276D8 movb    r2,[r18+76D8h]    ;[801076D8]
+                        800295A4 00000000 nop
+                        800295A8 00021600 shl     r2,18h            ;r2=00000000
+                        800295AC 1C40FFD4 jgtz    r2,80029500h   ;false ;r2=00000000
+                        800295B0 3C05801D + mov   r5,801D0000h
+                        800295B4 8FBF0020 mov     ra,[sp+20h]       ;[807FFF18]
+                        800295B8 8FB3001C mov     r19,[sp+1Ch]      ;[807FFF14]
+                        800295BC 8FB20018 mov     r18,[sp+18h]      ;[807FFF10]
+                        800295C0 8FB10014 mov     r17,[sp+14h]      ;[807FFF0C]
+                        800295C4 8FB00010 mov     r16,[sp+10h]      ;[807FFF08]
+                        800295C8 03E00008 ret                       ;ra=800286D8
+                        800295CC 27BD0028 + add   sp,28h            ;sp=807FFEF8
+                800286D8 8FBF0018 mov     ra,[sp+18h]       ;[807FFF38]
+                800286DC 8FB10014 mov     r17,[sp+14h]      ;[807FFF34]
+                800286E0 8FB00010 mov     r16,[sp+10h]      ;[807FFF30]
+                800286E4 03E00008 ret                       ;ra=800286FC
+                800286E8 27BD0020 + add   sp,20h            ;sp=807FFF20
+        800286FC 8FBF0010 mov     ra,[sp+10h]       ;[807FFF50]
+        80028700 00000000 nop
+        80028704 03E00008 ret                       ;ra=8003F814
+        80028708 27BD0018 + add   sp,18h            ;sp=807FFF40
+8003F814 0C009B03 call    80026C0Ch
+8003F818 00000000 + nop
+        80026C0C 03E00008 ret                       ;ra=8003F81C
+        80026C10 00000000 + nop
+8003F81C 0C00FDE2 call    8003F788h
+8003F820 00000000 + nop
+        8003F788 27BDFFE8 sub     sp,18h            ;sp=807FFF58
+        8003F78C AFBF0010 mov     [sp+10h],ra       ;[807FFF50], ra=8003F824
+        8003F790 0C00A143 call    8002850Ch
+        8003F794 00000000 + nop
+                8002850C 3C02800F mov     r2,800F0000h
+                80028510 9042B71C movb    r2,[r2-48E4h]     ;[800EB71C]
+                80028514 00000000 nop
+                80028518 2442FFF6 sub     r2,0Ah            ;r2=0000000D
+                8002851C 03E00008 ret                       ;ra=8003F798
+                80028520 2C420006 + setb  r2,r2,6h          ;r2=00000003
+        8003F798 14400005 jnz     r2,8003F7B0h   ;true ;r2=00000001
+        8003F79C 00000000 + nop
+
+        8003F7B0 24020001 mov     r2,1h
+        8003F7B4 8FBF0010 mov     ra,[sp+10h]       ;[807FFF50]
+        8003F7B8 00000000 nop
+        8003F7BC 03E00008 ret                       ;ra=8003F824
+        8003F7C0 27BD0018 + add   sp,18h            ;sp=807FFF40
+8003F824 1440FFF9 jnz     r2,8003F80Ch   ;true ;r2=00000001
+8003F828 00000000 + nop
+
+8003F80C 0C00A1BB call    800286ECh
+8003F810 00000000 + nop
+        800286EC 27BDFFE8 sub     sp,18h            ;sp=807FFF58
+        800286F0 AFBF0010 mov     [sp+10h],ra       ;[807FFF50], ra=8003F814
+        800286F4 0C00A149 call    80028524h
+        800286F8 2404FFFF + mov   r4,-1h
+                80028524 27BDFFE0 sub     sp,20h            ;sp=807FFF40
+                80028528 AFB00010 mov     [sp+10h],r16      ;[807FFF30], r16=00000100
+                8002852C 3C10800F mov     r16,800F0000h
+                80028530 8203B71C movbs   r3,[r16-48E4h]    ;[800EB71C]
+                80028534 AFB10014 mov     [sp+14h],r17      ;[807FFF34], r17=00000040
+                80028538 00808821 mov     r17,r4            ;r4=FFFFFFFF
+                8002853C 28620003 setlt   r2,r3,3h          ;r3=0000000D
+                80028540 10400003 jz      r2,80028550h   ;true ;r2=00000000
+                80028544 AFBF0018 + mov   [sp+18h],ra       ;[807FFF38], ra=800286FC
+
+                80028550 3C048010 mov     r4,80100000h
+                80028554 90827730 movb    r2,[r4+7730h]     ;[80107730]
+                80028558 24030006 mov     r3,6h
+                8002855C 00021600 shl     r2,18h            ;r2=00000001
+                80028560 00021603 sar     r2,18h            ;r2=01000000
+                80028564 1043005C je      r2,r3,800286D8h   ;false ;r2=00000001, r3=00000006
+                80028568 00000000 + nop
+                8002856C 90827730 movb    r2,[r4+7730h]     ;[80107730]
+                80028570 24030003 mov     r3,3h
+                80028574 00021600 shl     r2,18h            ;r2=00000001
+                80028578 00021603 sar     r2,18h            ;r2=01000000
+                8002857C 10430056 je      r2,r3,800286D8h   ;false ;r2=00000001, r3=00000003
+                80028580 3C028010 + mov   r2,80100000h
+                80028584 3C048010 mov     r4,80100000h
+                80028588 8C437520 mov     r3,[r2+7520h]     ;[80107520]
+                8002858C 8C8276B0 mov     r2,[r4+76B0h]     ;[801076B0]
+                80028590 00000000 nop
+                80028594 10430048 je      r2,r3,800286B8h   ;true ;r2=00000265, r3=00000265
+                80028598 3C02800F + mov   r2,800F0000h
+
+                800286B8 9042B71C movb    r2,[r2-48E4h]     ;[800EB71C]
+                800286BC 00000000 nop
+                800286C0 2442FFF4 sub     r2,0Ch            ;r2=0000000D
+                800286C4 2C420004 setb    r2,r2,4h          ;r2=00000001
+                800286C8 10400003 jz      r2,800286D8h   ;false ;r2=00000001
+                800286CC 00000000 + nop
+                800286D0 0C00A51B call    8002946Ch
+                800286D4 02202021 + mov   r4,r17            ;r17=FFFFFFFF
+                        8002946C 3C028010 mov     r2,80100000h
+                        80029470 804276A8 movbs   r2,[r2+76A8h]     ;[801076A8]
+                        80029474 27BDFFD8 sub     sp,28h            ;sp=807FFF20
+                        80029478 AFB3001C mov     [sp+1Ch],r19      ;[807FFF14], r19=00000000
+                        8002947C 00809821 mov     r19,r4            ;r4=FFFFFFFF
+                        80029480 AFBF0020 mov     [sp+20h],ra       ;[807FFF18], ra=800286D8
+                        80029484 AFB20018 mov     [sp+18h],r18      ;[807FFF10], r18=00000001
+                        80029488 AFB10014 mov     [sp+14h],r17      ;[807FFF0C], r17=FFFFFFFF
+                        8002948C 1040000A jz      r2,800294B8h   ;true ;r2=00000000
+                        80029490 AFB00010 + mov   [sp+10h],r16      ;[807FFF08], r16=800F0000
+
+                        800294B8 3C02800F mov     r2,800F0000h
+                        800294BC 8043B71C movbs   r3,[r2-48E4h]     ;[800EB71C]
+                        800294C0 2402000F mov     r2,0Fh
+                        800294C4 14620004 jne     r3,r2,800294D8h   ;true ;r3=0000000D, r2=0000000F
+                        800294C8 3C048010 + mov   r4,80100000h
+
+                        800294D8 908276D8 movb    r2,[r4+76D8h]     ;[801076D8]
+                        800294DC 908376D8 movb    r3,[r4+76D8h]     ;[801076D8]
+                        800294E0 00021600 shl     r2,18h            ;r2=00000000
+                        800294E4 00021603 sar     r2,18h            ;r2=00000000
+                        800294E8 00031E00 shl     r3,18h            ;r3=00000000
+                        800294EC 18600031 jlez    r3,800295B4h   ;true ;r3=00000000
+                        800294F0 00538821 + add   r17,r2,r19        ;r2=00000000, r19=FFFFFFFF
+
+                        800295B4 8FBF0020 mov     ra,[sp+20h]       ;[807FFF18]
+                        800295B8 8FB3001C mov     r19,[sp+1Ch]      ;[807FFF14]
+                        800295BC 8FB20018 mov     r18,[sp+18h]      ;[807FFF10]
+                        800295C0 8FB10014 mov     r17,[sp+14h]      ;[807FFF0C]
+                        800295C4 8FB00010 mov     r16,[sp+10h]      ;[807FFF08]
+                        800295C8 03E00008 ret                       ;ra=800286D8
+                        800295CC 27BD0028 + add   sp,28h            ;sp=807FFEF8
+                800286D8 8FBF0018 mov     ra,[sp+18h]       ;[807FFF38]
+                800286DC 8FB10014 mov     r17,[sp+14h]      ;[807FFF34]
+                800286E0 8FB00010 mov     r16,[sp+10h]      ;[807FFF30]
+                800286E4 03E00008 ret                       ;ra=800286FC
+                800286E8 27BD0020 + add   sp,20h            ;sp=807FFF20
+        800286FC 8FBF0010 mov     ra,[sp+10h]       ;[807FFF50]
+        80028700 00000000 nop
+        80028704 03E00008 ret                       ;ra=8003F814
+        80028708 27BD0018 + add   sp,18h            ;sp=807FFF40
+8003F814 0C009B03 call    80026C0Ch
+8003F818 00000000 + nop
+        80026C0C 03E00008 ret                       ;ra=8003F81C
+        80026C10 00000000 + nop
+8003F81C 0C00FDE2 call    8003F788h
+8003F820 00000000 + nop
+        8003F788 27BDFFE8 sub     sp,18h            ;sp=807FFF58
+        8003F78C AFBF0010 mov     [sp+10h],ra       ;[807FFF50], ra=8003F824
+        8003F790 0C00A143 call    8002850Ch
+        8003F794 00000000 + nop
+                8002850C 3C02800F mov     r2,800F0000h
+                80028510 9042B71C movb    r2,[r2-48E4h]     ;[800EB71C]
+                80028514 00000000 nop
+                80028518 2442FFF6 sub     r2,0Ah            ;r2=0000000D
+                8002851C 03E00008 ret                       ;ra=8003F798
+                80028520 2C420006 + setb  r2,r2,6h          ;r2=00000003
+        8003F798 14400005 jnz     r2,8003F7B0h   ;true ;r2=00000001
+        8003F79C 00000000 + nop
+
+        8003F7B0 24020001 mov     r2,1h
+        8003F7B4 8FBF0010 mov     ra,[sp+10h]       ;[807FFF50]
+        8003F7B8 00000000 nop
+        8003F7BC 03E00008 ret                       ;ra=8003F824
+        8003F7C0 27BD0018 + add   sp,18h            ;sp=807FFF40
+8003F824 1440FFF9 jnz     r2,8003F80Ch   ;true ;r2=00000001
+8003F828 00000000 + nop
+
+8003F80C 0C00A1BB call    800286ECh
+8003F810 00000000 + nop
+        800286EC 27BDFFE8 sub     sp,18h            ;sp=807FFF58
+        800286F0 AFBF0010 mov     [sp+10h],ra       ;[807FFF50], ra=8003F814
+        800286F4 0C00A149 call    80028524h
+        800286F8 2404FFFF + mov   r4,-1h
+                80028524 27BDFFE0 sub     sp,20h            ;sp=807FFF40
+                80028528 AFB00010 mov     [sp+10h],r16      ;[807FFF30], r16=00000100
+                8002852C 3C10800F mov     r16,800F0000h
+                80028530 8203B71C movbs   r3,[r16-48E4h]    ;[800EB71C]
+                80028534 AFB10014 mov     [sp+14h],r17      ;[807FFF34], r17=00000040
+                80028538 00808821 mov     r17,r4            ;r4=FFFFFFFF
+                8002853C 28620003 setlt   r2,r3,3h          ;r3=0000000D
+                80028540 10400003 jz      r2,80028550h   ;true ;r2=00000000
+                80028544 AFBF0018 + mov   [sp+18h],ra       ;[807FFF38], ra=800286FC
+
+                80028550 3C048010 mov     r4,80100000h
+                80028554 90827730 movb    r2,[r4+7730h]     ;[80107730]
+                80028558 24030006 mov     r3,6h
+                8002855C 00021600 shl     r2,18h            ;r2=00000001
+                80028560 00021603 sar     r2,18h            ;r2=01000000
+                80028564 1043005C je      r2,r3,800286D8h   ;false ;r2=00000001, r3=00000006
+                80028568 00000000 + nop
+                8002856C 90827730 movb    r2,[r4+7730h]     ;[80107730]
+                80028570 24030003 mov     r3,3h
+                80028574 00021600 shl     r2,18h            ;r2=00000001
+                80028578 00021603 sar     r2,18h            ;r2=01000000
+                8002857C 10430056 je      r2,r3,800286D8h   ;false ;r2=00000001, r3=00000003
+                80028580 3C028010 + mov   r2,80100000h
+                80028584 3C048010 mov     r4,80100000h
+                80028588 8C437520 mov     r3,[r2+7520h]     ;[80107520]
+                8002858C 8C8276B0 mov     r2,[r4+76B0h]     ;[801076B0]
+                80028590 00000000 nop
+                80028594 10430048 je      r2,r3,800286B8h   ;true ;r2=00000265, r3=00000265
+                80028598 3C02800F + mov   r2,800F0000h
+
+                800286B8 9042B71C movb    r2,[r2-48E4h]     ;[800EB71C]
+                800286BC 00000000 nop
+                800286C0 2442FFF4 sub     r2,0Ch            ;r2=0000000D
+                800286C4 2C420004 setb    r2,r2,4h          ;r2=00000001
+                800286C8 10400003 jz      r2,800286D8h   ;false ;r2=00000001
+                800286CC 00000000 + nop
+                800286D0 0C00A51B call    8002946Ch
+                800286D4 02202021 + mov   r4,r17            ;r17=FFFFFFFF
+                        8002946C 3C028010 mov     r2,80100000h
+                        80029470 804276A8 movbs   r2,[r2+76A8h]     ;[801076A8]
+                        80029474 27BDFFD8 sub     sp,28h            ;sp=807FFF20
+                        80029478 AFB3001C mov     [sp+1Ch],r19      ;[807FFF14], r19=00000000
+                        8002947C 00809821 mov     r19,r4            ;r4=FFFFFFFF
+                        80029480 AFBF0020 mov     [sp+20h],ra       ;[807FFF18], ra=800286D8
+                        80029484 AFB20018 mov     [sp+18h],r18      ;[807FFF10], r18=00000001
+                        80029488 AFB10014 mov     [sp+14h],r17      ;[807FFF0C], r17=FFFFFFFF
+                        8002948C 1040000A jz      r2,800294B8h   ;true ;r2=00000000
+                        80029490 AFB00010 + mov   [sp+10h],r16      ;[807FFF08], r16=800F0000
+
+                        800294B8 3C02800F mov     r2,800F0000h
+                        800294BC 8043B71C movbs   r3,[r2-48E4h]     ;[800EB71C]
+                        800294C0 2402000F mov     r2,0Fh
+                        800294C4 14620004 jne     r3,r2,800294D8h   ;true ;r3=0000000D, r2=0000000F
+                        800294C8 3C048010 + mov   r4,80100000h
+
+                        800294D8 908276D8 movb    r2,[r4+76D8h]     ;[801076D8]
+                        800294DC 908376D8 movb    r3,[r4+76D8h]     ;[801076D8]
+                        800294E0 00021600 shl     r2,18h            ;r2=00000000
+                        800294E4 00021603 sar     r2,18h            ;r2=00000000
+                        800294E8 00031E00 shl     r3,18h            ;r3=00000000
+                        800294EC 18600031 jlez    r3,800295B4h   ;true ;r3=00000000
+                        800294F0 00538821 + add   r17,r2,r19        ;r2=00000000, r19=FFFFFFFF
+
+                        800295B4 8FBF0020 mov     ra,[sp+20h]       ;[807FFF18]
+                        800295B8 8FB3001C mov     r19,[sp+1Ch]      ;[807FFF14]
+                        800295BC 8FB20018 mov     r18,[sp+18h]      ;[807FFF10]
+                        800295C0 8FB10014 mov     r17,[sp+14h]      ;[807FFF0C]
+                        800295C4 8FB00010 mov     r16,[sp+10h]      ;[807FFF08]
+                        800295C8 03E00008 ret                       ;ra=800286D8
+                        800295CC 27BD0028 + add   sp,28h            ;sp=807FFEF8
+                800286D8 8FBF0018 mov     ra,[sp+18h]       ;[807FFF38]
+                800286DC 8FB10014 mov     r17,[sp+14h]      ;[807FFF34]
+                800286E0 8FB00010 mov     r16,[sp+10h]      ;[807FFF30]
+                800286E4 03E00008 ret                       ;ra=800286FC
+                800286E8 27BD0020 + add   sp,20h            ;sp=807FFF20
+        800286FC 8FBF0010 mov     ra,[sp+10h]       ;[807FFF50]
+        80028700 00000000 nop
+        80028704 03E00008 ret                       ;ra=8003F814
+        80028708 27BD0018 + add   sp,18h            ;sp=807FFF40
+8003F814 0C009B03 call    80026C0Ch
+8003F818 00000000 + nop
+        80026C0C 03E00008 ret                       ;ra=8003F81C
+        80026C10 00000000 + nop
+8003F81C 0C00FDE2 call    8003F788h
+8003F820 00000000 + nop
+        8003F788 27BDFFE8 sub     sp,18h            ;sp=807FFF58
+        8003F78C AFBF0010 mov     [sp+10h],ra       ;[807FFF50], ra=8003F824
+        8003F790 0C00A143 call    8002850Ch
+        8003F794 00000000 + nop
+                8002850C 3C02800F mov     r2,800F0000h
+                80028510 9042B71C movb    r2,[r2-48E4h]     ;[800EB71C]
+                80028514 00000000 nop
+                80028518 2442FFF6 sub     r2,0Ah            ;r2=0000000D
+                8002851C 03E00008 ret                       ;ra=8003F798
+                80028520 2C420006 + setb  r2,r2,6h          ;r2=00000003
+        8003F798 14400005 jnz     r2,8003F7B0h   ;true ;r2=00000001
+        8003F79C 00000000 + nop
+
+        8003F7B0 24020001 mov     r2,1h
+        8003F7B4 8FBF0010 mov     ra,[sp+10h]       ;[807FFF50]
+        8003F7B8 00000000 nop
+        8003F7BC 03E00008 ret                       ;ra=8003F824
+        8003F7C0 27BD0018 + add   sp,18h            ;sp=807FFF40
+8003F824 1440FFF9 jnz     r2,8003F80Ch   ;true ;r2=00000001
+8003F828 00000000 + nop
+
+
+8003F80C 0C00A1BB call    800286ECh
+8003F810 00000000 + nop
+        800286EC 27BDFFE8 sub     sp,18h            ;sp=807FFF58
+        800286F0 AFBF0010 mov     [sp+10h],ra       ;[807FFF50], ra=8003F814
+        800286F4 0C00A149 call    80028524h
+        800286F8 2404FFFF + mov   r4,-1h
+                80028524 27BDFFE0 sub     sp,20h            ;sp=807FFF40
+                80028528 AFB00010 mov     [sp+10h],r16      ;[807FFF30], r16=00000100
+                8002852C 3C10800F mov     r16,800F0000h
+                80028530 8203B71C movbs   r3,[r16-48E4h]    ;[800EB71C]
+                80028534 AFB10014 mov     [sp+14h],r17      ;[807FFF34], r17=00000040
+                80028538 00808821 mov     r17,r4            ;r4=FFFFFFFF
+                8002853C 28620003 setlt   r2,r3,3h          ;r3=0000000D
+                80028540 10400003 jz      r2,80028550h   ;true ;r2=00000000
+                80028544 AFBF0018 + mov   [sp+18h],ra       ;[807FFF38], ra=800286FC
+
+                80028550 3C048010 mov     r4,80100000h
+                80028554 90827730 movb    r2,[r4+7730h]     ;[80107730]
+                80028558 24030006 mov     r3,6h
+                8002855C 00021600 shl     r2,18h            ;r2=00000001
+                80028560 00021603 sar     r2,18h            ;r2=01000000
+                80028564 1043005C je      r2,r3,800286D8h   ;false ;r2=00000001, r3=00000006
+                80028568 00000000 + nop
+                8002856C 90827730 movb    r2,[r4+7730h]     ;[80107730]
+                80028570 24030003 mov     r3,3h
+                80028574 00021600 shl     r2,18h            ;r2=00000001
+                80028578 00021603 sar     r2,18h            ;r2=01000000
+                8002857C 10430056 je      r2,r3,800286D8h   ;false ;r2=00000001, r3=00000003
+                80028580 3C028010 + mov   r2,80100000h
+                80028584 3C048010 mov     r4,80100000h
+                80028588 8C437520 mov     r3,[r2+7520h]     ;[80107520]
+                8002858C 8C8276B0 mov     r2,[r4+76B0h]     ;[801076B0]
+                80028590 00000000 nop
+                80028594 10430048 je      r2,r3,800286B8h   ;true ;r2=00000265, r3=00000265
+                80028598 3C02800F + mov   r2,800F0000h
+
+                800286B8 9042B71C movb    r2,[r2-48E4h]     ;[800EB71C]
+                800286BC 00000000 nop
+                800286C0 2442FFF4 sub     r2,0Ch            ;r2=0000000D
+                800286C4 2C420004 setb    r2,r2,4h          ;r2=00000001
+                800286C8 10400003 jz      r2,800286D8h   ;false ;r2=00000001
+                800286CC 00000000 + nop
+                800286D0 0C00A51B call    8002946Ch
+                800286D4 02202021 + mov   r4,r17            ;r17=FFFFFFFF
+                        8002946C 3C028010 mov     r2,80100000h
+                        80029470 804276A8 movbs   r2,[r2+76A8h]     ;[801076A8]
+                        80029474 27BDFFD8 sub     sp,28h            ;sp=807FFF20
+                        80029478 AFB3001C mov     [sp+1Ch],r19      ;[807FFF14], r19=00000000
+                        8002947C 00809821 mov     r19,r4            ;r4=FFFFFFFF
+                        80029480 AFBF0020 mov     [sp+20h],ra       ;[807FFF18], ra=800286D8
+                        80029484 AFB20018 mov     [sp+18h],r18      ;[807FFF10], r18=00000001
+                        80029488 AFB10014 mov     [sp+14h],r17      ;[807FFF0C], r17=FFFFFFFF
+                        8002948C 1040000A jz      r2,800294B8h   ;true ;r2=00000000
+                        80029490 AFB00010 + mov   [sp+10h],r16      ;[807FFF08], r16=800F0000
+        
+                        800294B8 3C02800F mov     r2,800F0000h
+                        800294BC 8043B71C movbs   r3,[r2-48E4h]     ;[800EB71C]
+                        800294C0 2402000F mov     r2,0Fh
+                        800294C4 14620004 jne     r3,r2,800294D8h   ;true ;r3=0000000D, r2=0000000F
+                        800294C8 3C048010 + mov   r4,80100000h
+        
+                        800294D8 908276D8 movb    r2,[r4+76D8h]     ;[801076D8]
+                        800294DC 908376D8 movb    r3,[r4+76D8h]     ;[801076D8]
+                        800294E0 00021600 shl     r2,18h            ;r2=00000000
+                        800294E4 00021603 sar     r2,18h            ;r2=00000000
+                        800294E8 00031E00 shl     r3,18h            ;r3=00000000
+                        800294EC 18600031 jlez    r3,800295B4h   ;true ;r3=00000000
+                        800294F0 00538821 + add   r17,r2,r19        ;r2=00000000, r19=FFFFFFFF
+        
+                        800295B4 8FBF0020 mov     ra,[sp+20h]       ;[807FFF18]
+                        800295B8 8FB3001C mov     r19,[sp+1Ch]      ;[807FFF14]
+                        800295BC 8FB20018 mov     r18,[sp+18h]      ;[807FFF10]
+                        800295C0 8FB10014 mov     r17,[sp+14h]      ;[807FFF0C]
+                        800295C4 8FB00010 mov     r16,[sp+10h]      ;[807FFF08]
+                        800295C8 03E00008 ret                       ;ra=800286D8
+                        800295CC 27BD0028 + add   sp,28h            ;sp=807FFEF8
+                800286D8 8FBF0018 mov     ra,[sp+18h]       ;[807FFF38]
+                800286DC 8FB10014 mov     r17,[sp+14h]      ;[807FFF34]
+                800286E0 8FB00010 mov     r16,[sp+10h]      ;[807FFF30]
+                800286E4 03E00008 ret                       ;ra=800286FC
+                800286E8 27BD0020 + add   sp,20h            ;sp=807FFF20
+        800286FC 8FBF0010 mov     ra,[sp+10h]       ;[807FFF50]
+        80028700 00000000 nop
+        80028704 03E00008 ret                       ;ra=8003F814
+        80028708 27BD0018 + add   sp,18h            ;sp=807FFF40
+8003F814 0C009B03 call    80026C0Ch
+8003F818 00000000 + nop
+        80026C0C 03E00008 ret                       ;ra=8003F81C
+        80026C10 00000000 + nop
+8003F81C 0C00FDE2 call    8003F788h
+8003F820 00000000 + nop
+        8003F788 27BDFFE8 sub     sp,18h            ;sp=807FFF58
+        8003F78C AFBF0010 mov     [sp+10h],ra       ;[807FFF50], ra=8003F824
+                8003F790 0C00A143 call    8002850Ch
+                8003F794 00000000 + nop
+                        8002850C 3C02800F mov     r2,800F0000h
+                        80028510 9042B71C movb    r2,[r2-48E4h]     ;[800EB71C]
+                        80028514 00000000 nop
+                        80028518 2442FFF6 sub     r2,0Ah            ;r2=0000000D
+                        8002851C 03E00008 ret                       ;ra=8003F798
+                        80028520 2C420006 + setb  r2,r2,6h          ;r2=00000003
+                8003F798 14400005 jnz     r2,8003F7B0h   ;true ;r2=00000001
+                8003F79C 00000000 + nop
+
+        8003F7B0 24020001 mov     r2,1h
+        8003F7B4 8FBF0010 mov     ra,[sp+10h]       ;[807FFF50]
+        8003F7B8 00000000 nop
+        8003F7BC 03E00008 ret                       ;ra=8003F824
+        8003F7C0 27BD0018 + add   sp,18h            ;sp=807FFF40
+8003F824 1440FFF9 jnz     r2,8003F80Ch   ;true ;r2=00000001
+8003F828 00000000 + nop
+
+8003F80C 0C00A1BB call    800286ECh
+8003F810 00000000 + nop
+        800286EC 27BDFFE8 sub     sp,18h            ;sp=807FFF58
+        800286F0 AFBF0010 mov     [sp+10h],ra       ;[807FFF50], ra=8003F814
+        800286F4 0C00A149 call    80028524h
+        800286F8 2404FFFF + mov   r4,-1h
+                80028524 27BDFFE0 sub     sp,20h            ;sp=807FFF40
+                80028528 AFB00010 mov     [sp+10h],r16      ;[807FFF30], r16=00000100
+                8002852C 3C10800F mov     r16,800F0000h
+                80028530 8203B71C movbs   r3,[r16-48E4h]    ;[800EB71C]
+                80028534 AFB10014 mov     [sp+14h],r17      ;[807FFF34], r17=00000040
+                80028538 00808821 mov     r17,r4            ;r4=FFFFFFFF
+                8002853C 28620003 setlt   r2,r3,3h          ;r3=0000000D
+                80028540 10400003 jz      r2,80028550h   ;true ;r2=00000000
+                80028544 AFBF0018 + mov   [sp+18h],ra       ;[807FFF38], ra=800286FC
+
+                80028550 3C048010 mov     r4,80100000h
+                80028554 90827730 movb    r2,[r4+7730h]     ;[80107730]
+                80028558 24030006 mov     r3,6h
+                8002855C 00021600 shl     r2,18h            ;r2=00000001
+                80028560 00021603 sar     r2,18h            ;r2=01000000
+                80028564 1043005C je      r2,r3,800286D8h   ;false ;r2=00000001, r3=00000006
+                80028568 00000000 + nop
+                8002856C 90827730 movb    r2,[r4+7730h]     ;[80107730]
+                80028570 24030003 mov     r3,3h
+                80028574 00021600 shl     r2,18h            ;r2=00000001
+                80028578 00021603 sar     r2,18h            ;r2=01000000
+                8002857C 10430056 je      r2,r3,800286D8h   ;false ;r2=00000001, r3=00000003
+                80028580 3C028010 + mov   r2,80100000h
+                80028584 3C048010 mov     r4,80100000h
+                80028588 8C437520 mov     r3,[r2+7520h]     ;[80107520]
+                8002858C 8C8276B0 mov     r2,[r4+76B0h]     ;[801076B0]
+                80028590 00000000 nop
+                80028594 10430048 je      r2,r3,800286B8h   ;true ;r2=00000265, r3=00000265
+                80028598 3C02800F + mov   r2,800F0000h
+
+                800286B8 9042B71C movb    r2,[r2-48E4h]     ;[800EB71C]
+                800286BC 00000000 nop
+                800286C0 2442FFF4 sub     r2,0Ch            ;r2=0000000D
+                800286C4 2C420004 setb    r2,r2,4h          ;r2=00000001
+                800286C8 10400003 jz      r2,800286D8h   ;false ;r2=00000001
+                800286CC 00000000 + nop
+                800286D0 0C00A51B call    8002946Ch
+                800286D4 02202021 + mov   r4,r17            ;r17=FFFFFFFF
+                        8002946C 3C028010 mov     r2,80100000h
+                        80029470 804276A8 movbs   r2,[r2+76A8h]     ;[801076A8]
+                        80029474 27BDFFD8 sub     sp,28h            ;sp=807FFF20
+                        80029478 AFB3001C mov     [sp+1Ch],r19      ;[807FFF14], r19=00000000
+                        8002947C 00809821 mov     r19,r4            ;r4=FFFFFFFF
+                        80029480 AFBF0020 mov     [sp+20h],ra       ;[807FFF18], ra=800286D8
+                        80029484 AFB20018 mov     [sp+18h],r18      ;[807FFF10], r18=00000001
+                        80029488 AFB10014 mov     [sp+14h],r17      ;[807FFF0C], r17=FFFFFFFF
+                        8002948C 1040000A jz      r2,800294B8h   ;true ;r2=00000000
+                        80029490 AFB00010 + mov   [sp+10h],r16      ;[807FFF08], r16=800F0000
+
+                        800294B8 3C02800F mov     r2,800F0000h
+                        800294BC 8043B71C movbs   r3,[r2-48E4h]     ;[800EB71C]
+                        800294C0 2402000F mov     r2,0Fh
+                        800294C4 14620004 jne     r3,r2,800294D8h   ;true ;r3=0000000D, r2=0000000F
+                        800294C8 3C048010 + mov   r4,80100000h
+
+                        800294D8 908276D8 movb    r2,[r4+76D8h]     ;[801076D8]
+                        800294DC 908376D8 movb    r3,[r4+76D8h]     ;[801076D8]
+                        800294E0 00021600 shl     r2,18h            ;r2=00000000
+                        800294E4 00021603 sar     r2,18h            ;r2=00000000
+                        800294E8 00031E00 shl     r3,18h            ;r3=00000000
+                        800294EC 18600031 jlez    r3,800295B4h   ;true ;r3=00000000
+                        800294F0 00538821 + add   r17,r2,r19        ;r2=00000000, r19=FFFFFFFF
+
+                        800295B4 8FBF0020 mov     ra,[sp+20h]       ;[807FFF18]
+                        800295B8 8FB3001C mov     r19,[sp+1Ch]      ;[807FFF14]
+                        800295BC 8FB20018 mov     r18,[sp+18h]      ;[807FFF10]
+                        800295C0 8FB10014 mov     r17,[sp+14h]      ;[807FFF0C]
+                        800295C4 8FB00010 mov     r16,[sp+10h]      ;[807FFF08]
+                        800295C8 03E00008 ret                       ;ra=800286D8
+                        800295CC 27BD0028 + add   sp,28h            ;sp=807FFEF8
+                800286D8 8FBF0018 mov     ra,[sp+18h]       ;[807FFF38]
+                800286DC 8FB10014 mov     r17,[sp+14h]      ;[807FFF34]
+                800286E0 8FB00010 mov     r16,[sp+10h]      ;[807FFF30]
+                800286E4 03E00008 ret                       ;ra=800286FC
+                800286E8 27BD0020 + add   sp,20h            ;sp=807FFF20
+        800286FC 8FBF0010 mov     ra,[sp+10h]       ;[807FFF50]
+        80028700 00000000 nop
+        80028704 03E00008 ret                       ;ra=8003F814
+        80028708 27BD0018 + add   sp,18h            ;sp=807FFF40
+8003F814 0C009B03 call    80026C0Ch
+8003F818 00000000 + nop
+        80026C0C 03E00008 ret                       ;ra=8003F81C
+        80026C10 00000000 + nop
+8003F81C 0C00FDE2 call    8003F788h
+8003F820 00000000 + nop
+        8003F788 27BDFFE8 sub     sp,18h            ;sp=807FFF58
+        8003F78C AFBF0010 mov     [sp+10h],ra       ;[807FFF50], ra=8003F824
+        8003F790 0C00A143 call    8002850Ch
+        8003F794 00000000 + nop
+                8002850C 3C02800F mov     r2,800F0000h
+                80028510 9042B71C movb    r2,[r2-48E4h]     ;[800EB71C]
+                80028514 00000000 nop
+                80028518 2442FFF6 sub     r2,0Ah            ;r2=0000000D
+                8002851C 03E00008 ret                       ;ra=8003F798
+                80028520 2C420006 + setb  r2,r2,6h          ;r2=00000003
+        8003F798 14400005 jnz     r2,8003F7B0h   ;true ;r2=00000001
+        8003F79C 00000000 + nop
+
+        8003F7B0 24020001 mov     r2,1h
+        8003F7B4 8FBF0010 mov     ra,[sp+10h]       ;[807FFF50]
+        8003F7B8 00000000 nop
+        8003F7BC 03E00008 ret                       ;ra=8003F824
+        8003F7C0 27BD0018 + add   sp,18h            ;sp=807FFF40
+8003F824 1440FFF9 jnz     r2,8003F80Ch   ;true ;r2=00000001
+8003F828 00000000 + nop
+
+8003F80C 0C00A1BB call    800286ECh
+8003F810 00000000 + nop
+        800286EC 27BDFFE8 sub     sp,18h            ;sp=807FFF58
+        800286F0 AFBF0010 mov     [sp+10h],ra       ;[807FFF50], ra=8003F814
+        800286F4 0C00A149 call    80028524h
+        800286F8 2404FFFF + mov   r4,-1h
+                80028524 27BDFFE0 sub     sp,20h            ;sp=807FFF40
+                80028528 AFB00010 mov     [sp+10h],r16      ;[807FFF30], r16=00000100
+                8002852C 3C10800F mov     r16,800F0000h
+                80028530 8203B71C movbs   r3,[r16-48E4h]    ;[800EB71C]
+                80028534 AFB10014 mov     [sp+14h],r17      ;[807FFF34], r17=00000040
+                80028538 00808821 mov     r17,r4            ;r4=FFFFFFFF
+                8002853C 28620003 setlt   r2,r3,3h          ;r3=0000000D
+                80028540 10400003 jz      r2,80028550h   ;true ;r2=00000000
+                80028544 AFBF0018 + mov   [sp+18h],ra       ;[807FFF38], ra=800286FC
+
+                80028550 3C048010 mov     r4,80100000h
+                80028554 90827730 movb    r2,[r4+7730h]     ;[80107730]
+                80028558 24030006 mov     r3,6h
+                8002855C 00021600 shl     r2,18h            ;r2=00000001
+                80028560 00021603 sar     r2,18h            ;r2=01000000
+                80028564 1043005C je      r2,r3,800286D8h   ;false ;r2=00000001, r3=00000006
+                80028568 00000000 + nop
+                8002856C 90827730 movb    r2,[r4+7730h]     ;[80107730]
+
+
+
+VB2bpp字模是在801C 6EF0，它居然是先把字模储存在1F80 0000，之后再改成gba4bpp储存在8013 7C90，最后再批量传送到显存
+8005C1AC 3C081F80 mov     r8,1F800000h
+8005C1B0 01003821 mov     r7,r8             ;r8=1F800000
+8005C1B4 24090003 mov     r9,3h
+8005C1B8 00003021 mov     r6,0
+8005C1BC 3C038011 mov     r3,80110000h
+8005C1C0 3084FFFF and     r4,0FFFFh         ;r4=000000E5
+8005C1C4 00041040 shl     r2,r4,1h          ;r4=000000E5
+8005C1C8 00441021 add     r2,r4             ;r2=000001CA, r4=000000E5
+8005C1CC 8C63B4D0 mov     r3,[r3-4B30h]     ;[8010B4D0]
+8005C1D0 00021100 shl     r2,4h             ;r2=000002AF
+8005C1D4 00431821 add     r3,r2,r3          ;r2=00002AF0, r3=801C4400    字模地址=码值x0x30+字库基址
+                                                                修改为   字模地址=码值x0x18+字库基址
+8005C1D8 8C6A0000 mov     r10,[r3]          ;[801C6EF0]
+8005C1DC 8C6B0004 mov     r11,[r3+4h]       ;[801C6EF4]
+8005C1E0 8C6C0008 mov     r12,[r3+8h]       ;[801C6EF8]
+8005C1E4 8C6D000C mov     r13,[r3+0Ch]      ;[801C6EFC]
+8005C1E8 ACEA0000 mov     [r7],r10          ;[1F800000], r10=0FFFFFFF
+8005C1EC ACEB0004 mov     [r7+4h],r11       ;[1F800004], r11=0FFFFFFF
+8005C1F0 ACEC0008 mov     [r7+8h],r12       ;[1F800008], r12=0FFD9FFF
+8005C1F4 ACED000C mov     [r7+0Ch],r13      ;[1F80000C], r13=0FFD9FFF     传输0x10字节
+8005C1F8 24C60001 add     r6,1h             ;r6=00000000
+8005C1FC 24E70010 add     r7,10h            ;r7=1F800000
+8005C200 00C9102B setb    r2,r6,r9          ;r6=00000001, r9=00000003
+8005C204 1440FFF4 jnz     r2,8005C1D8h      ;r2=00000001
+8005C208 24630010 + add   r3,10h            ;r3=801C6EF0
+
+
+VB2BPP转GBA4bpp:
+8005C20C 00003021 mov     r6,0
+8005C210 3C090003 mov     r9,30000h
+8005C214 3C07000C mov     r7,0C0000h
+
+8005C218 8D040000 mov     r4,[r8]           ;[1F800000]                读取四字节
+8005C21C 24C60001 add     r6,1h             ;r6=00000000               计数？
+8005C220 30830003 and     r3,r4,3h          ;r4=0FFFFFFF               提取0,1位（从右往左）
+8005C224 3082000C and     r2,r4,0Ch         ;r4=0FFFFFFF               提取2,3位
+8005C228 00021080 shl     r2,2h             ;r2=0000000C               
+8005C22C 00621825 or      r3,r2             ;r3=00000003, r2=00000030  2,3位左移两位再加0,1位
+8005C230 30820030 and     r2,r4,30h         ;r4=0FFFFFFF               提取4,5位
+8005C234 00021100 shl     r2,4h             ;r2=00000030
+8005C238 00621825 or      r3,r2             ;r3=00000033, r2=00000300  4,5位左移四位+2,3位左移两位+0,1位
+8005C23C 308200C0 and     r2,r4,0C0h        ;r4=0FFFFFFF               提取6,7位
+8005C240 00021180 shl     r2,6h             ;r2=000000C0
+8005C244 00621825 or      r3,r2             ;r3=00000333, r2=00003000  6,7位左移6位+4,5位左移4位+2,3位左移2位+0,1位
+8005C248 30820300 and     r2,r4,300h        ;r4=0FFFFFFF               
+8005C24C 00021200 shl     r2,8h             ;r2=00000300
+8005C250 00621825 or      r3,r2             ;r3=00003333, r2=00030000  
+8005C254 30820C00 and     r2,r4,0C00h       ;r4=0FFFFFFF
+8005C258 00021280 shl     r2,0Ah            ;r2=00000C00
+8005C25C 00621825 or      r3,r2             ;r3=00033333, r2=00300000  
+8005C260 30823000 and     r2,r4,3000h       ;r4=0FFFFFFF
+8005C264 00021300 shl     r2,0Ch            ;r2=00003000
+8005C268 00621825 or      r3,r2             ;r3=00333333, r2=03000000
+8005C26C 3084C000 and     r4,0C000h         ;r4=0FFFFFFF
+8005C270 00042380 shl     r4,0Eh            ;r4=0000C000
+8005C274 00641825 or      r3,r4             ;r3=03333333, r4=30000000  14,15位左移14位+……
+8005C278 ACA30000 mov     [r5],r3           ;[80137C90], r3=33333333   储存四字节
+8005C27C 24A50004 add     r5,4h             ;r5=80137C90
+8005C280 8D040000 mov     r4,[r8]           ;[1F800000]
+8005C284 25080004 add     r8,4h             ;r8=1F800000
+8005C288 00891824 and     r3,r4,r9          ;r4=0FFFFFFF, r9=00030000
+8005C28C 00031C02 shr     r3,10h            ;r3=00030000
+8005C290 00871024 and     r2,r4,r7          ;r4=0FFFFFFF, r7=000C0000
+8005C294 00021382 shr     r2,0Eh            ;r2=000C0000
+8005C298 00621825 or      r3,r2             ;r3=00000003, r2=00000030
+8005C29C 00041302 shr     r2,r4,0Ch         ;r4=0FFFFFFF
+8005C2A0 30420300 and     r2,300h           ;r2=0000FFFF
+8005C2A4 00621825 or      r3,r2             ;r3=00000033, r2=00000300
+8005C2A8 00041282 shr     r2,r4,0Ah         ;r4=0FFFFFFF
+8005C2AC 30423000 and     r2,3000h          ;r2=0003FFFF
+8005C2B0 00621825 or      r3,r2             ;r3=00000333, r2=00003000
+8005C2B4 3C020300 mov     r2,3000000h
+8005C2B8 00821024 and     r2,r4,r2          ;r4=0FFFFFFF, r2=03000000
+8005C2BC 00021202 shr     r2,8h             ;r2=03000000
+8005C2C0 00621825 or      r3,r2             ;r3=00003333, r2=00030000
+8005C2C4 3C020C00 mov     r2,0C000000h
+8005C2C8 00822024 and     r4,r2             ;r4=0FFFFFFF, r2=0C000000
+8005C2CC 00042182 shr     r4,6h             ;r4=0C000000
+8005C2D0 00641825 or      r3,r4             ;r3=00033333, r4=00300000
+8005C2D4 ACA30000 mov     [r5],r3           ;[80137C94], r3=00333333   储存四字节
+8005C2D8 28C2000C setlt   r2,r6,0Ch         ;r6=00000001               
+8005C2DC 1440FFCE jnz     r2,8005C218h   ;true ;r2=00000001            
+8005C2E0 24A50004 + add   r5,4h             ;r5=80137C94
+传完0x30字节
+
+
+SLPM_871.54
+4C9AC--8005C1AC
+    F800
+4CA0C--8005C20C
+
+8005C20C 00003021 addu    a2,0,0
+8005C210 3C090003 lui     t1,$3
+8005C214 3C07000C lui     a3,$C
+
+8005C218 8D040000 lw      a0,$0(t0)         ;[1F800000]
+8005C21C 24C60001 addiu   a2,$1             ;a2=00000000
+8005C220 30830003 andi    v1,a0,$3          ;a0=0FFFFFFF
+8005C224 3082000C andi    v0,a0,$C          ;a0=0FFFFFFF
+8005C228 00021080 sll     v0,$2             ;v0=0000000C
+8005C22C 00621825 or      v1,v0             ;v1=00000003, v0=00000030
+8005C230 30820030 andi    v0,a0,$30         ;a0=0FFFFFFF
+8005C234 00021100 sll     v0,$4             ;v0=00000030
+8005C238 00621825 or      v1,v0             ;v1=00000033, v0=00000300
+8005C23C 308200C0 andi    v0,a0,$C0         ;a0=0FFFFFFF
+8005C240 00021180 sll     v0,$6             ;v0=000000C0
+8005C244 00621825 or      v1,v0             ;v1=00000333, v0=00003000
+8005C248 30820300 andi    v0,a0,$300        ;a0=0FFFFFFF
+8005C24C 00021200 sll     v0,$8             ;v0=00000300
+8005C250 00621825 or      v1,v0             ;v1=00003333, v0=00030000
+8005C254 30820C00 andi    v0,a0,$C00        ;a0=0FFFFFFF
+8005C258 00021280 sll     v0,$A             ;v0=00000C00
+8005C25C 00621825 or      v1,v0             ;v1=00033333, v0=00300000
+8005C260 30823000 andi    v0,a0,$3000       ;a0=0FFFFFFF
+8005C264 00021300 sll     v0,$C             ;v0=00003000
+8005C268 00621825 or      v1,v0             ;v1=00333333, v0=03000000
+8005C26C 3084C000 andi    a0,$C000          ;a0=0FFFFFFF
+8005C270 00042380 sll     a0,$E             ;a0=0000C000
+8005C274 00641825 or      v1,a0             ;v1=03333333, a0=30000000
+8005C278 ACA30000 sw      v1,$0(a1)         ;[80137C90], v1=33333333
+8005C27C 24A50004 addiu   a1,$4             ;a1=80137C90
+8005C280 8D040000 lw      a0,$0(t0)         ;[1F800000]
+8005C284 25080004 addiu   t0,$4             ;t0=1F800000
+8005C288 00891824 and     v1,a0,t1          ;a0=0FFFFFFF, t1=00030000
+8005C28C 00031C02 srl     v1,$10            ;v1=00030000
+8005C290 00871024 and     v0,a0,a3          ;a0=0FFFFFFF, a3=000C0000
+8005C294 00021382 srl     v0,$E             ;v0=000C0000
+8005C298 00621825 or      v1,v0             ;v1=00000003, v0=00000030
+8005C29C 00041302 srl     v0,a0,$C          ;a0=0FFFFFFF
+8005C2A0 30420300 andi    v0,$300           ;v0=0000FFFF
+8005C2A4 00621825 or      v1,v0             ;v1=00000033, v0=00000300
+8005C2A8 00041282 srl     v0,a0,$A          ;a0=0FFFFFFF
+8005C2AC 30423000 andi    v0,$3000          ;v0=0003FFFF
+8005C2B0 00621825 or      v1,v0             ;v1=00000333, v0=00003000
+8005C2B4 3C020300 lui     v0,$300
+8005C2B8 00821024 and     v0,a0,v0          ;a0=0FFFFFFF, v0=03000000
+8005C2BC 00021202 srl     v0,$8             ;v0=03000000
+8005C2C0 00621825 or      v1,v0             ;v1=00003333, v0=00030000
+8005C2C4 3C020C00 lui     v0,$C00
+8005C2C8 00822024 and     a0,v0             ;a0=0FFFFFFF, v0=0C000000
+8005C2CC 00042182 srl     a0,$6             ;a0=0C000000
+8005C2D0 00641825 or      v1,a0             ;v1=00033333, a0=00300000
+8005C2D4 ACA30000 sw      v1,$0(a1)         ;[80137C94], v1=00333333
+8005C2D8 28C2000C slti    v0,a2,$C          ;a2=00000001
+8005C2DC 1440FFCE bne     v0,0,$8005C218   ;true ;v0=00000001
+8005C2E0 24A50004 addiu   a1,$4             ;a1=80137C94
+
+
+
+
+
+F0088
+真
+8013C364-80192914-8014AE20-8013C378
+指针     文本      索引表   DMAchain
+80047894 00041080 shl     r2,r4,2h          ;r4=00000336
+
+800478A0 01A23021 add     r6,r13,r2         ;r13=8014A148, r2=00000CD8
