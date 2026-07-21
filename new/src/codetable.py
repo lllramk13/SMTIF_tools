@@ -17,6 +17,13 @@ NEW_CODETABLE_ENTRIES = {
     '9809': 'i',
     '9909': 'f',
     '9A09': '》',
+    # Added 2026-07-21 for the F0098 race/item-category name-table translation.
+    '9F09': '辅',
+    'A009': '槽',
+    'A109': '页',
+    'A209': '循',
+    'A309': '框',
+    'A409': '哑',
 }
 
 CONTROL_MARKERS = [

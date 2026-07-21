@@ -28,7 +28,16 @@ from src.slpm_text import (
     load_slpm_text_records,
     translated_slpm_texts,
 )
+from src.f0098_text import (
+    apply_f0098_text_patches,
+    build_f0098_text_patches,
+    load_f0098_text_records,
+    translated_f0098_texts,
+)
 from src.original_ui_glyphs import load_original_ui_glyph_overrides
+
+
+EXTRAC_DIRECTORY = Path(__file__).resolve().parent.parent / "extrac"
 
 
 NEW_DIRECTORY = Path(__file__).resolve().parent
@@ -71,6 +80,7 @@ def build_assets(
 ):
     BUILD_DIRECTORY.mkdir(parents=True, exist_ok=True)
     slpm_text_records = load_slpm_text_records()
+    f0098_text_records = load_f0098_text_records()
     if use_unified_normal_text and (
         use_static_aliases or relocate_dynamic_low_codes
     ):
@@ -84,9 +94,9 @@ def build_assets(
         normal_text_plan = build_unified_normal_text_plan(
             NEW_DIRECTORY / "data" / "codetable.json",
             NEW_DIRECTORY / "data" / "text.json",
-            extra_used_texts=translated_slpm_texts(
-                slpm_text_records,
-                renderer="dynamic",
+            extra_used_texts=(
+                translated_slpm_texts(slpm_text_records, renderer="dynamic")
+                + translated_f0098_texts(f0098_text_records)
             ),
             extra_static_texts=translated_slpm_texts(
                 slpm_text_records,
@@ -130,6 +140,19 @@ def build_assets(
             f"{len(slpm_text_patches)}/{len(slpm_text_records)} translated"
         )
 
+    f0098_text_patches = ()
+    if normal_text_plan:
+        f0098_text_patches = build_f0098_text_patches(
+            f0098_text_records,
+            global_character_overrides=(
+                normal_text_plan.global_character_overrides
+            ),
+        )
+        print(
+            "F0098 name-table text: "
+            f"{len(f0098_text_patches)}/{len(f0098_text_records)} translated"
+        )
+
     print("[1/5] Rendering dynamic/static fonts")
     glyph_overrides = {}
     if normal_text_plan:
@@ -148,10 +171,17 @@ def build_assets(
         preview_path=BUILD_DIRECTORY / "font_f13_preview.png",
         glyph_overrides=f13_glyph_overrides,
     )
+    # The static F14 font also renders name-entry text (equip/status header),
+    # which stores the original UI kana codes.  Give F14 the same original-UI
+    # glyph restoration as F13 so those reserved-code kana render correctly
+    # there instead of showing whatever our contiguous codetable placed at the
+    # reserved indices.
+    f14_glyph_overrides = dict(glyph_overrides)
+    f14_glyph_overrides.update(load_original_ui_glyph_overrides())
     render_font(
         output_path=f14_font_path,
         preview_path=BUILD_DIRECTORY / "font_f14_preview.png",
-        glyph_overrides=(glyph_overrides or None),
+        glyph_overrides=(f14_glyph_overrides or None),
     )
 
     print("[2/5] Building F0013 dynamic font resource")
@@ -218,6 +248,16 @@ def build_assets(
     replacements["D/F0013.BIN"] = f13_data
     replacements["D/F0014.BIN"] = f14_data
     replacements["SLPM_871.54"] = executable_data
+
+    if f0098_text_patches:
+        f0098_key = "D/F0098.BIN"
+        base_f0098 = replacements.get(f0098_key)
+        if base_f0098 is None:
+            base_f0098 = (EXTRAC_DIRECTORY / "D" / "F0098.BIN").read_bytes()
+        replacements[f0098_key] = apply_f0098_text_patches(
+            base_f0098,
+            f0098_text_patches,
+        )
 
     return {
         "alias_plan": alias_plan,

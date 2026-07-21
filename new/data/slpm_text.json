@@ -1,13 +1,238 @@
 {
   "text_slpm": [
     {
+      "id": "SLPM-000E4768",
+      "offset": "000E4768",
+      "max_bytes": 6,
+      "source": "学校",
+      "translation": "学校",
+      "translation_origin": "manual",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "SLPM-000E476E",
+      "offset": "000E476E",
+      "max_bytes": 10,
+      "source": "封印の間",
+      "translation": "封印之间",
+      "translation_origin": "manual",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "SLPM-000E4778",
+      "offset": "000E4778",
+      "max_bytes": 8,
+      "source": "傲慢界",
+      "translation": "傲慢界",
+      "translation_origin": "manual",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "SLPM-000E4780",
+      "offset": "000E4780",
+      "max_bytes": 12,
+      "source": "傲慢界・街",
+      "translation": "傲慢界・城",
+      "translation_origin": "manual",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "SLPM-000E478C",
+      "offset": "000E478C",
+      "max_bytes": 8,
+      "source": "飽食界",
+      "translation": "饱食界",
+      "translation_origin": "manual",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "SLPM-000E4794",
+      "offset": "000E4794",
+      "max_bytes": 12,
+      "source": "飽食界・街",
+      "translation": "饱食界・城",
+      "translation_origin": "manual",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "SLPM-000E47A0",
+      "offset": "000E47A0",
+      "max_bytes": 16,
+      "source": "飽食界・カジノ",
+      "translation": "饱食界・赌场",
+      "translation_origin": "manual",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "SLPM-000E47B0",
+      "offset": "000E47B0",
+      "max_bytes": 14,
+      "source": "オーカス体内",
+      "translation": "奥卡斯体内",
+      "translation_origin": "manual",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "SLPM-000E47BE",
+      "offset": "000E47BE",
+      "max_bytes": 8,
+      "source": "怠惰界",
+      "translation": "怠惰界",
+      "translation_origin": "manual",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "SLPM-000E47C6",
+      "offset": "000E47C6",
+      "max_bytes": 8,
+      "source": "嫉妬界",
+      "translation": "嫉妒界",
+      "translation_origin": "manual",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "SLPM-000E47CE",
+      "offset": "000E47CE",
+      "max_bytes": 12,
+      "source": "嫉妬界・街",
+      "translation": "嫉妒界・城",
+      "translation_origin": "manual",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "SLPM-000E47DA",
+      "offset": "000E47DA",
+      "max_bytes": 8,
+      "source": "貪欲界",
+      "translation": "贪欲界",
+      "translation_origin": "manual",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "SLPM-000E47E2",
+      "offset": "000E47E2",
+      "max_bytes": 12,
+      "source": "貪欲界・街",
+      "translation": "贪欲界・城",
+      "translation_origin": "manual",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "SLPM-000E47EE",
+      "offset": "000E47EE",
+      "max_bytes": 12,
+      "source": "地のノモス",
+      "translation": "地之法阶",
+      "translation_origin": "manual",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "SLPM-000E47FA",
+      "offset": "000E47FA",
+      "max_bytes": 8,
+      "source": "憤怒界",
+      "translation": "愤怒界",
+      "translation_origin": "manual",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "SLPM-000E4802",
+      "offset": "000E4802",
+      "max_bytes": 12,
+      "source": "憤怒界・街",
+      "translation": "愤怒界・城",
+      "translation_origin": "manual",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "SLPM-000E480E",
+      "offset": "000E480E",
+      "max_bytes": 16,
+      "source": "貪欲界・カジノ",
+      "translation": "贪欲界・赌场",
+      "translation_origin": "manual",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "SLPM-000E481E",
+      "offset": "000E481E",
+      "max_bytes": 6,
+      "source": "学校",
+      "translation": "学校",
+      "translation_origin": "manual",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "SLPM-000E4824",
+      "offset": "000E4824",
+      "max_bytes": 10,
+      "source": "精神世界",
+      "translation": "精神世界",
+      "translation_origin": "manual",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "SLPM-000E482E",
+      "offset": "000E482E",
+      "max_bytes": 12,
+      "source": "第１ノモス",
+      "translation": "第１法阶",
+      "translation_origin": "manual",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "SLPM-000E483A",
+      "offset": "000E483A",
+      "max_bytes": 12,
+      "source": "第２ノモス",
+      "translation": "第２法阶",
+      "translation_origin": "manual",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "SLPM-000E4846",
+      "offset": "000E4846",
+      "max_bytes": 12,
+      "source": "第３ノモス",
+      "translation": "第３法阶",
+      "translation_origin": "manual",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "SLPM-000E4852",
+      "offset": "000E4852",
+      "max_bytes": 12,
+      "source": "第４ノモス",
+      "translation": "第４法阶",
+      "translation_origin": "manual",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "SLPM-000E485E",
+      "offset": "000E485E",
+      "max_bytes": 12,
+      "source": "天のノモス",
+      "translation": "天之法阶",
+      "translation_origin": "manual",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "SLPM-000E486A",
+      "offset": "000E486A",
+      "max_bytes": 20,
+      "source": "第１ノモス・カジノ",
+      "translation": "第１法阶・赌场",
+      "translation_origin": "manual",
+      "renderer": "dynamic"
+    },
+    {
       "id": "SLPM-000E5C44",
       "offset": "000E5C44",
       "max_bytes": 8,
       "source": "攻撃{72FF}",
       "translation": "攻击{72FF}",
       "translation_origin": "manual",
-      "renderer": "dynamic"
+      "renderer": "static"
     },
     {
       "id": "SLPM-000E5C4C",
@@ -16,7 +241,7 @@
       "source": "命中{72FF}",
       "translation": "命中{72FF}",
       "translation_origin": "manual",
-      "renderer": "dynamic"
+      "renderer": "static"
     },
     {
       "id": "SLPM-000E5C54",
@@ -25,7 +250,7 @@
       "source": "防御{72FF}",
       "translation": "防御{72FF}",
       "translation_origin": "manual",
-      "renderer": "dynamic"
+      "renderer": "static"
     },
     {
       "id": "SLPM-000E5C5C",
@@ -34,7 +259,7 @@
       "source": "回避{72FF}",
       "translation": "回避{72FF}",
       "translation_origin": "manual",
-      "renderer": "dynamic"
+      "renderer": "static"
     },
     {
       "id": "SLPM-000E5C64",
@@ -43,7 +268,7 @@
       "source": "魔法威力{72FF}",
       "translation": "魔法威力{72FF}",
       "translation_origin": "manual",
-      "renderer": "dynamic"
+      "renderer": "static"
     },
     {
       "id": "SLPM-000E5C70",
@@ -52,7 +277,7 @@
       "source": "魔法効果{72FF}",
       "translation": "魔法效果{72FF}",
       "translation_origin": "manual",
-      "renderer": "dynamic"
+      "renderer": "static"
     },
     {
       "id": "SLPM-000E5C7C",
@@ -61,7 +286,7 @@
       "source": "攻撃回数{72FF}",
       "translation": "攻击次数{72FF}",
       "translation_origin": "manual",
-      "renderer": "dynamic"
+      "renderer": "static"
     },
     {
       "id": "SLPM-000E5C88",
@@ -70,7 +295,7 @@
       "source": "追加効果{72FF}",
       "translation": "追加效果{72FF}",
       "translation_origin": "manual",
-      "renderer": "dynamic"
+      "renderer": "static"
     },
     {
       "id": "SLPM-000E5C94",
@@ -79,7 +304,7 @@
       "source": "性別{72FF}",
       "translation": "性别{72FF}",
       "translation_origin": "manual",
-      "renderer": "dynamic"
+      "renderer": "static"
     },
     {
       "id": "SLPM-000E5C9C",
@@ -88,7 +313,7 @@
       "source": "－－－－－－－－{72FF}",
       "translation": "－－－－－－－－{72FF}",
       "translation_origin": "manual",
-      "renderer": "dynamic"
+      "renderer": "static"
     },
     {
       "id": "SLPM-000E5CB0",
@@ -97,7 +322,7 @@
       "source": "追加効果{72FF}",
       "translation": "追加效果{72FF}",
       "translation_origin": "manual",
-      "renderer": "dynamic"
+      "renderer": "static"
     },
     {
       "id": "SLPM-000E5CBC",
@@ -106,7 +331,7 @@
       "source": "相性{72FF}",
       "translation": "相性{72FF}",
       "translation_origin": "manual",
-      "renderer": "dynamic"
+      "renderer": "static"
     },
     {
       "id": "SLPM-000E5CC4",
@@ -115,7 +340,7 @@
       "source": "ノーマル{72FF}",
       "translation": "普通{72FF}",
       "translation_origin": "manual",
-      "renderer": "dynamic"
+      "renderer": "static"
     },
     {
       "id": "SLPM-000E5CD0",
@@ -124,7 +349,7 @@
       "source": "対火炎{72FF}",
       "translation": "抗火炎{72FF}",
       "translation_origin": "manual",
-      "renderer": "dynamic"
+      "renderer": "static"
     },
     {
       "id": "SLPM-000E5CDA",
@@ -133,7 +358,7 @@
       "source": "対氷結{72FF}",
       "translation": "抗冰结{72FF}",
       "translation_origin": "manual",
-      "renderer": "dynamic"
+      "renderer": "static"
     },
     {
       "id": "SLPM-000E5CE4",
@@ -142,7 +367,7 @@
       "source": "対電撃{72FF}",
       "translation": "抗电击{72FF}",
       "translation_origin": "manual",
-      "renderer": "dynamic"
+      "renderer": "static"
     },
     {
       "id": "SLPM-000E5CEE",
@@ -151,7 +376,7 @@
       "source": "対衝撃{72FF}",
       "translation": "抗冲击{72FF}",
       "translation_origin": "manual",
-      "renderer": "dynamic"
+      "renderer": "static"
     },
     {
       "id": "SLPM-000E5CF8",
@@ -160,7 +385,7 @@
       "source": "対サイコ{72FF}",
       "translation": "抗精神{72FF}",
       "translation_origin": "manual",
-      "renderer": "dynamic"
+      "renderer": "static"
     },
     {
       "id": "SLPM-000E5D04",
@@ -169,7 +394,7 @@
       "source": "対物理{72FF}",
       "translation": "抗物理{72FF}",
       "translation_origin": "manual",
-      "renderer": "dynamic"
+      "renderer": "static"
     },
     {
       "id": "SLPM-000E5D0E",
@@ -178,7 +403,7 @@
       "source": "対電/衝{72FF}",
       "translation": "抗电/冲{72FF}",
       "translation_origin": "manual",
-      "renderer": "dynamic"
+      "renderer": "static"
     },
     {
       "id": "SLPM-000E5D1A",
@@ -187,7 +412,7 @@
       "source": "対火/氷{72FF}",
       "translation": "抗火/冰{72FF}",
       "translation_origin": "manual",
-      "renderer": "dynamic"
+      "renderer": "static"
     },
     {
       "id": "SLPM-000E5D26",
@@ -196,7 +421,7 @@
       "source": "反サイコ{72FF}",
       "translation": "反精神{72FF}",
       "translation_origin": "manual",
-      "renderer": "dynamic"
+      "renderer": "static"
     },
     {
       "id": "SLPM-000E5D32",
@@ -205,7 +430,7 @@
       "source": "反物理{72FF}",
       "translation": "反物理{72FF}",
       "translation_origin": "manual",
-      "renderer": "dynamic"
+      "renderer": "static"
     },
     {
       "id": "SLPM-000E5D3C",
@@ -214,7 +439,7 @@
       "source": "吸火炎{72FF}",
       "translation": "吸火炎{72FF}",
       "translation_origin": "manual",
-      "renderer": "dynamic"
+      "renderer": "static"
     },
     {
       "id": "SLPM-000E5D46",
@@ -223,7 +448,7 @@
       "source": "吸電撃{72FF}",
       "translation": "吸电击{72FF}",
       "translation_origin": "manual",
-      "renderer": "dynamic"
+      "renderer": "static"
     },
     {
       "id": "SLPM-000E5D50",
@@ -232,7 +457,7 @@
       "source": "魔性防具{72FF}",
       "translation": "魔性防具{72FF}",
       "translation_origin": "manual",
-      "renderer": "dynamic"
+      "renderer": "static"
     },
     {
       "id": "SLPM-000E5D5C",
@@ -241,7 +466,7 @@
       "source": "神聖防具{72FF}",
       "translation": "神圣防具{72FF}",
       "translation_origin": "manual",
-      "renderer": "dynamic"
+      "renderer": "static"
     },
     {
       "id": "SLPM-000E5D68",
@@ -250,7 +475,7 @@
       "source": "全対応{72FF}",
       "translation": "全抗性{72FF}",
       "translation_origin": "manual",
-      "renderer": "dynamic"
+      "renderer": "static"
     },
     {
       "id": "SLPM-000E5D72",
@@ -259,7 +484,7 @@
       "source": "？？？{72FF}",
       "translation": "？？？{72FF}",
       "translation_origin": "manual",
-      "renderer": "dynamic"
+      "renderer": "static"
     },
     {
       "id": "SLPM-000E5D7C",
@@ -268,7 +493,7 @@
       "source": "？？？？？？？？{72FF}",
       "translation": "？？？？？？？？{72FF}",
       "translation_origin": "manual",
-      "renderer": "dynamic"
+      "renderer": "static"
     },
     {
       "id": "SLPM-000E5D90",
@@ -277,7 +502,7 @@
       "source": "合体剣{72FF}",
       "translation": "合体剑{72FF}",
       "translation_origin": "manual",
-      "renderer": "dynamic"
+      "renderer": "static"
     },
     {
       "id": "SLPM-000E5D9A",
@@ -286,7 +511,7 @@
       "source": "合体銃{72FF}",
       "translation": "合体枪{72FF}",
       "translation_origin": "manual",
-      "renderer": "dynamic"
+      "renderer": "static"
     },
     {
       "id": "SLPM-000E5DA4",
@@ -295,7 +520,7 @@
       "source": "頭防具{72FF}",
       "translation": "头防具{72FF}",
       "translation_origin": "manual",
-      "renderer": "dynamic"
+      "renderer": "static"
     },
     {
       "id": "SLPM-000E5DAE",
@@ -304,7 +529,7 @@
       "source": "体防具{72FF}",
       "translation": "体防具{72FF}",
       "translation_origin": "manual",
-      "renderer": "dynamic"
+      "renderer": "static"
     },
     {
       "id": "SLPM-000E5DB8",
@@ -313,7 +538,7 @@
       "source": "腕防具{72FF}",
       "translation": "腕防具{72FF}",
       "translation_origin": "manual",
-      "renderer": "dynamic"
+      "renderer": "static"
     },
     {
       "id": "SLPM-000E5DC2",
@@ -322,7 +547,7 @@
       "source": "脚防具{72FF}",
       "translation": "脚防具{72FF}",
       "translation_origin": "manual",
-      "renderer": "dynamic"
+      "renderer": "static"
     },
     {
       "id": "SLPM-000E602C",

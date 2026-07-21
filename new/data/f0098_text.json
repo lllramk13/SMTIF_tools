@@ -1,0 +1,684 @@
+{
+  "text_f0098": [
+    {
+      "id": "F0098-00000800",
+      "offset": "00000800",
+      "max_bytes": 6,
+      "source": "歩行",
+      "translation": "步行",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-00000806",
+      "offset": "00000806",
+      "max_bytes": 14,
+      "source": "非戦闘系魔法",
+      "translation": "非战斗系魔法",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-00000814",
+      "offset": "00000814",
+      "max_bytes": 12,
+      "source": "ページ変更",
+      "translation": "翻页",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-00000820",
+      "offset": "00000820",
+      "max_bytes": 20,
+      "source": "ドア（普通、金属）",
+      "translation": "门（普通、金属）",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-00000834",
+      "offset": "00000834",
+      "max_bytes": 6,
+      "source": "飛天",
+      "translation": "飞天",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-00000840",
+      "offset": "00000840",
+      "max_bytes": 6,
+      "source": "鬼族",
+      "translation": "鬼族",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-00000846",
+      "offset": "00000846",
+      "max_bytes": 6,
+      "source": "鳥族",
+      "translation": "鸟族",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-0000084C",
+      "offset": "0000084C",
+      "max_bytes": 6,
+      "source": "邪霊",
+      "translation": "邪灵",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-00000852",
+      "offset": "00000852",
+      "max_bytes": 6,
+      "source": "鬼神",
+      "translation": "鬼神",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-00000858",
+      "offset": "00000858",
+      "max_bytes": 6,
+      "source": "獣族",
+      "translation": "兽族",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-0000085E",
+      "offset": "0000085E",
+      "max_bytes": 6,
+      "source": "魔族",
+      "translation": "魔族",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-00000864",
+      "offset": "00000864",
+      "max_bytes": 6,
+      "source": "樹霊",
+      "translation": "树灵",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-0000086A",
+      "offset": "0000086A",
+      "max_bytes": 6,
+      "source": "龍族",
+      "translation": "龙族",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-00000870",
+      "offset": "00000870",
+      "max_bytes": 10,
+      "source": "剣（小）",
+      "translation": "剑（小）",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-0000087A",
+      "offset": "0000087A",
+      "max_bytes": 10,
+      "source": "剣（中）",
+      "translation": "剑（中）",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-00000884",
+      "offset": "00000884",
+      "max_bytes": 10,
+      "source": "剣（大）",
+      "translation": "剑（大）",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-0000088E",
+      "offset": "0000088E",
+      "max_bytes": 14,
+      "source": "剣（合体剣）",
+      "translation": "剑（合体剑）",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-0000089C",
+      "offset": "0000089C",
+      "max_bytes": 10,
+      "source": "槍（小）",
+      "translation": "枪（小）",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-000008A6",
+      "offset": "000008A6",
+      "max_bytes": 10,
+      "source": "槍（大）",
+      "translation": "枪（大）",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-000008B0",
+      "offset": "000008B0",
+      "max_bytes": 10,
+      "source": "棒（小）",
+      "translation": "棒（小）",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-000008BA",
+      "offset": "000008BA",
+      "max_bytes": 10,
+      "source": "棒（大）",
+      "translation": "棒（大）",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-000008C4",
+      "offset": "000008C4",
+      "max_bytes": 16,
+      "source": "棒（隠し武器）",
+      "translation": "棒（隐藏武器）",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-000008D4",
+      "offset": "000008D4",
+      "max_bytes": 10,
+      "source": "鞭（小）",
+      "translation": "鞭（小）",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-000008DE",
+      "offset": "000008DE",
+      "max_bytes": 10,
+      "source": "鞭（大）",
+      "translation": "鞭（大）",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-000008E8",
+      "offset": "000008E8",
+      "max_bytes": 10,
+      "source": "銃（単）",
+      "translation": "枪（单）",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-000008F2",
+      "offset": "000008F2",
+      "max_bytes": 10,
+      "source": "銃（連）",
+      "translation": "枪（连）",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-000008FC",
+      "offset": "000008FC",
+      "max_bytes": 10,
+      "source": "銃（？）",
+      "translation": "枪（？）",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-0000093E",
+      "offset": "0000093E",
+      "max_bytes": 10,
+      "source": "マハブフ",
+      "translation": "冰系阵",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-000009C4",
+      "offset": "000009C4",
+      "max_bytes": 12,
+      "source": "精神（１）",
+      "translation": "精神（１）",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-000009D0",
+      "offset": "000009D0",
+      "max_bytes": 12,
+      "source": "精神（２）",
+      "translation": "精神（２）",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-000009F8",
+      "offset": "000009F8",
+      "max_bytes": 14,
+      "source": "補助（上昇）",
+      "translation": "辅助（上升）",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-00000A06",
+      "offset": "00000A06",
+      "max_bytes": 16,
+      "source": "ブレス（補助）",
+      "translation": "吐息（辅助）",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-00000A22",
+      "offset": "00000A22",
+      "max_bytes": 16,
+      "source": "ブレス（攻撃）",
+      "translation": "吐息（攻击）",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-00000A40",
+      "offset": "00000A40",
+      "max_bytes": 14,
+      "source": "打撃（単体）",
+      "translation": "打击（单体）",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-00000A5A",
+      "offset": "00000A5A",
+      "max_bytes": 6,
+      "source": "回復",
+      "translation": "回复",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-00000A60",
+      "offset": "00000A60",
+      "max_bytes": 6,
+      "source": "蹴り",
+      "translation": "踢",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-00000A66",
+      "offset": "00000A66",
+      "max_bytes": 14,
+      "source": "打撃（全体）",
+      "translation": "打击（全体）",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-00000A88",
+      "offset": "00000A88",
+      "max_bytes": 6,
+      "source": "？液",
+      "translation": "？液",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-00000A8E",
+      "offset": "00000A8E",
+      "max_bytes": 6,
+      "source": "召喚",
+      "translation": "召唤",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-00000A94",
+      "offset": "00000A94",
+      "max_bytes": 14,
+      "source": "補助（下降）",
+      "translation": "辅助（下降）",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-00000C06",
+      "offset": "00000C06",
+      "max_bytes": 14,
+      "source": "味方ダメージ",
+      "translation": "我方伤害",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-00000C14",
+      "offset": "00000C14",
+      "max_bytes": 12,
+      "source": "敵ダメージ",
+      "translation": "敌方伤害",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-00000C20",
+      "offset": "00000C20",
+      "max_bytes": 10,
+      "source": "味方死亡",
+      "translation": "我方死亡",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-00000C2A",
+      "offset": "00000C2A",
+      "max_bytes": 10,
+      "source": "仲魔死亡",
+      "translation": "仲魔死亡",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-00000C34",
+      "offset": "00000C34",
+      "max_bytes": 8,
+      "source": "敵死亡",
+      "translation": "敌死亡",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-00000C60",
+      "offset": "00000C60",
+      "max_bytes": 12,
+      "source": "火をつける",
+      "translation": "着火",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-00000C6C",
+      "offset": "00000C6C",
+      "max_bytes": 8,
+      "source": "コケる",
+      "translation": "摔倒",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-00000C74",
+      "offset": "00000C74",
+      "max_bytes": 12,
+      "source": "歌（上手）",
+      "translation": "歌（好听）",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-00000C80",
+      "offset": "00000C80",
+      "max_bytes": 12,
+      "source": "歌（下手）",
+      "translation": "歌（难听）",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-00000C8C",
+      "offset": "00000C8C",
+      "max_bytes": 8,
+      "source": "愛の歌",
+      "translation": "爱之歌",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-00000C94",
+      "offset": "00000C94",
+      "max_bytes": 12,
+      "source": "悪魔？ける",
+      "translation": "恶魔？了",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-00000CA0",
+      "offset": "00000CA0",
+      "max_bytes": 12,
+      "source": "？？星光る",
+      "translation": "？？星光",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-00000CAC",
+      "offset": "00000CAC",
+      "max_bytes": 12,
+      "source": "水？？立つ",
+      "translation": "水？？立",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-00000CB8",
+      "offset": "00000CB8",
+      "max_bytes": 14,
+      "source": "ニュートラル",
+      "translation": "中立",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-00000CC6",
+      "offset": "00000CC6",
+      "max_bytes": 6,
+      "source": "ロウ",
+      "translation": "秩序",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-00000CCC",
+      "offset": "00000CCC",
+      "max_bytes": 8,
+      "source": "カオス",
+      "translation": "混沌",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-00000CD4",
+      "offset": "00000CD4",
+      "max_bytes": 12,
+      "source": "ゲーム終了",
+      "translation": "游戏结束",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-00000CE0",
+      "offset": "00000CE0",
+      "max_bytes": 20,
+      "source": "払い戻し（ループ）",
+      "translation": "退款（循环）",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-00000CF4",
+      "offset": "00000CF4",
+      "max_bytes": 16,
+      "source": "ゲームスタート",
+      "translation": "游戏开始",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-00000D04",
+      "offset": "00000D04",
+      "max_bytes": 16,
+      "source": "リールストップ",
+      "translation": "停止滚轮",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-00000D14",
+      "offset": "00000D14",
+      "max_bytes": 14,
+      "source": "ホールド選択",
+      "translation": "选择ＨＯＬＤ",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-00000D22",
+      "offset": "00000D22",
+      "max_bytes": 14,
+      "source": "当たり（小）",
+      "translation": "中奖（小）",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-00000D30",
+      "offset": "00000D30",
+      "max_bytes": 14,
+      "source": "当たり（大）",
+      "translation": "中奖（大）",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-00000D3E",
+      "offset": "00000D3E",
+      "max_bytes": 18,
+      "source": "ボーナスフレーム",
+      "translation": "奖励框",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-00000D50",
+      "offset": "00000D50",
+      "max_bytes": 16,
+      "source": "ボーナスパネル",
+      "translation": "奖励格",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-00000D60",
+      "offset": "00000D60",
+      "max_bytes": 14,
+      "source": "リザルト選択",
+      "translation": "选择结算",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-00000D6E",
+      "offset": "00000D6E",
+      "max_bytes": 14,
+      "source": "イレース選択",
+      "translation": "选择删除",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-00000D7C",
+      "offset": "00000D7C",
+      "max_bytes": 14,
+      "source": "ピックアップ",
+      "translation": "ＰＩＣＫＵＰ",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-00000D8A",
+      "offset": "00000D8A",
+      "max_bytes": 18,
+      "source": "ラッキーナンバー",
+      "translation": "幸运数字",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-00000D9C",
+      "offset": "00000D9C",
+      "max_bytes": 6,
+      "source": "スカ",
+      "translation": "斯卡",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-00000DA2",
+      "offset": "00000DA2",
+      "max_bytes": 12,
+      "source": "カード配り",
+      "translation": "发牌",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-00000DAE",
+      "offset": "00000DAE",
+      "max_bytes": 14,
+      "source": "ターンアップ",
+      "translation": "回合推进",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-00000DBC",
+      "offset": "00000DBC",
+      "max_bytes": 12,
+      "source": "ナチュラル",
+      "translation": "自然",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-00000DC8",
+      "offset": "00000DC8",
+      "max_bytes": 10,
+      "source": "弾丸装？",
+      "translation": "弹丸装？",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-00000DD2",
+      "offset": "00000DD2",
+      "max_bytes": 16,
+      "source": "シリンダー装？",
+      "translation": "弹槽装？",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-00000DE2",
+      "offset": "00000DE2",
+      "max_bytes": 16,
+      "source": "シリンダー回転",
+      "translation": "旋转弹槽",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-00000DF2",
+      "offset": "00000DF2",
+      "max_bytes": 16,
+      "source": "ハンマー起こし",
+      "translation": "扳起击锤",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-00000E02",
+      "offset": "00000E02",
+      "max_bytes": 6,
+      "source": "不発",
+      "translation": "哑火",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-00000E08",
+      "offset": "00000E08",
+      "max_bytes": 6,
+      "source": "発射",
+      "translation": "发射",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-00000E0E",
+      "offset": "00000E0E",
+      "max_bytes": 10,
+      "source": "数字回転",
+      "translation": "旋转数字",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-00000E18",
+      "offset": "00000E18",
+      "max_bytes": 16,
+      "source": "ゲームスタート",
+      "translation": "开始游戏",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-00000E28",
+      "offset": "00000E28",
+      "max_bytes": 14,
+      "source": "小？を落とす",
+      "translation": "落下小？",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-00000E36",
+      "offset": "00000E36",
+      "max_bytes": 10,
+      "source": "？が飛ぶ",
+      "translation": "放飞？",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-00000E40",
+      "offset": "00000E40",
+      "max_bytes": 18,
+      "source": "オーカス食事ＬＰ",
+      "translation": "奥卡斯进食ＬＰ",
+      "renderer": "dynamic"
+    },
+    {
+      "id": "F0098-00000E52",
+      "offset": "00000E52",
+      "max_bytes": 10,
+      "source": "地？ＬＰ",
+      "translation": "地？ＬＰ",
+      "renderer": "dynamic"
+    }
+  ]
+}

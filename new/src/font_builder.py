@@ -154,6 +154,13 @@ def render_font(
             codetable[index], font
         )
 
+    # In the original game glyph index 0 is empty: it is the blank slot the
+    # name-entry UI inserts for a space (and that text uses for a full-width
+    # space).  Our codetable must be contiguous, so a character necessarily
+    # occupies index 0; force its glyph transparent (all bits set = background)
+    # so a space renders blank instead of showing that stand-in character.
+    font_data[0:BYTES_PER_GLYPH] = b'\xFF' * BYTES_PER_GLYPH
+
     expected_size = glyph_count * BYTES_PER_GLYPH
     if len(font_data) != expected_size:
         raise AssertionError(
