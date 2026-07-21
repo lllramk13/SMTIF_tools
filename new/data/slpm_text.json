@@ -2899,12 +2899,21 @@
       "translation_origin": "untranslated"
     },
     {
+      "id": "SLPM-000E819C",
+      "offset": "000E819C",
+      "max_bytes": 36,
+      "source": "メッセージを通常の速さで表示します",
+      "translation": "以通常速度显示消息",
+      "renderer": "static",
+      "translation_origin": "manual"
+    },
+    {
       "id": "SLPM-000E81C0",
       "offset": "000E81C0",
       "max_bytes": 42,
       "source": "メッセージを通常より速い速度で表示します",
-      "translation": "以比通常更快的速度显示消息",
-      "renderer": "dynamic",
+      "translation": "以更快速度显示消息",
+      "renderer": "static",
       "translation_origin": "untranslated"
     },
     {
@@ -2912,8 +2921,8 @@
       "offset": "000E81EA",
       "max_bytes": 44,
       "source": "戦闘時のメッセージを通常の速度で表示します",
-      "translation": "以通常的速度显示战斗中的消息",
-      "renderer": "dynamic",
+      "translation": "以通常速度显示战斗消息",
+      "renderer": "static",
       "translation_origin": "untranslated"
     },
     {
@@ -2921,8 +2930,8 @@
       "offset": "000E8216",
       "max_bytes": 52,
       "source": "戦闘時のメッセージを\n通常より速い速度で表示します",
-      "translation": "以比通常更快的速度显示战斗中的消息",
-      "renderer": "dynamic",
+      "translation": "以更快速度显示战斗消息",
+      "renderer": "static",
       "translation_origin": "untranslated"
     },
     {
@@ -2931,7 +2940,7 @@
       "max_bytes": 28,
       "source": "攻撃エフェクトを表示します",
       "translation": "显示攻击特效",
-      "renderer": "dynamic",
+      "renderer": "static",
       "translation_origin": "existing_exact_match"
     },
     {
@@ -2940,7 +2949,7 @@
       "max_bytes": 32,
       "source": "攻撃エフェクトを非表示にします",
       "translation": "不显示攻击特效",
-      "renderer": "dynamic",
+      "renderer": "static",
       "translation_origin": "untranslated"
     },
     {
@@ -2948,8 +2957,8 @@
       "offset": "000E8286",
       "max_bytes": 28,
       "source": "剣・銃・通常攻撃を繰り返す",
-      "translation": "反复进行剑、枪、一般攻击",
-      "renderer": "dynamic",
+      "translation": "重复剑、枪和普通攻击",
+      "renderer": "static",
       "translation_origin": "untranslated"
     },
     {
@@ -2957,8 +2966,8 @@
       "offset": "000E82A2",
       "max_bytes": 46,
       "source": "前回行動を繰り返す　アイテム・ＭＰ切れで攻撃",
-      "translation": "重复上次行动　道具・ＭＰ用尽时改为攻击",
-      "renderer": "dynamic",
+      "translation": "重复上次行动　道具或ＭＰ用尽时攻击",
+      "renderer": "static",
       "translation_origin": "untranslated"
     },
     {
@@ -2966,8 +2975,8 @@
       "offset": "000E82D0",
       "max_bytes": 46,
       "source": "前回行動を繰り返す　アイテム・ＭＰ切れで防御",
-      "translation": "重复上次行动　道具・ＭＰ用尽时改为防御",
-      "renderer": "dynamic",
+      "translation": "重复上次行动　道具或ＭＰ用尽时防御",
+      "renderer": "static",
       "translation_origin": "untranslated"
     },
     {
@@ -2975,8 +2984,8 @@
       "offset": "000E82FE",
       "max_bytes": 24,
       "source": "オートマップの向き固定",
-      "translation": "固定自动地图的朝向",
-      "renderer": "dynamic",
+      "translation": "固定自动地图朝向",
+      "renderer": "static",
       "translation_origin": "untranslated"
     },
     {
@@ -2984,8 +2993,8 @@
       "offset": "000E8316",
       "max_bytes": 42,
       "source": "オートマップの向きを自分の向きに合わせる",
-      "translation": "自动地图的朝向与自己相同",
-      "renderer": "dynamic",
+      "translation": "自动地图朝向与自身一致",
+      "renderer": "static",
       "translation_origin": "untranslated"
     },
     {
@@ -2993,8 +3002,8 @@
       "offset": "000E8340",
       "max_bytes": 36,
       "source": "３Ｄマップを通常の速さで移動します",
-      "translation": "以通常的速度在３Ｄ地图中移动",
-      "renderer": "dynamic",
+      "translation": "以通常速度在３Ｄ地图移动",
+      "renderer": "static",
       "translation_origin": "untranslated"
     },
     {
@@ -3002,8 +3011,8 @@
       "offset": "000E8364",
       "max_bytes": 42,
       "source": "３Ｄマップを通常より速い速度で移動します",
-      "translation": "以比通常更快的速度在３Ｄ地图中移动",
-      "renderer": "dynamic",
+      "translation": "以更快速度在３Ｄ地图移动",
+      "renderer": "static",
       "translation_origin": "untranslated"
     },
     {
@@ -3011,8 +3020,8 @@
       "offset": "000E838E",
       "max_bytes": 34,
       "source": "アイテムを使用して自動回復します",
-      "translation": "使用道具自动回复",
-      "renderer": "dynamic",
+      "translation": "使用道具自动恢复",
+      "renderer": "static",
       "translation_origin": "untranslated"
     },
     {
@@ -3020,8 +3029,8 @@
       "offset": "000E83B0",
       "max_bytes": 34,
       "source": "魔法のみを使用して自動回復します",
-      "translation": "仅使用魔法自动回复",
-      "renderer": "dynamic",
+      "translation": "仅使用魔法自动恢复",
+      "renderer": "static",
       "translation_origin": "untranslated"
     },
     {
@@ -3030,7 +3039,7 @@
       "max_bytes": 32,
       "source": "サウンドをモノラルで再生します",
       "translation": "以单声道播放声音",
-      "renderer": "dynamic",
+      "renderer": "static",
       "translation_origin": "untranslated"
     },
     {
@@ -3039,7 +3048,7 @@
       "max_bytes": 32,
       "source": "サウンドをステレオで再生します",
       "translation": "以立体声播放声音",
-      "renderer": "dynamic",
+      "renderer": "static",
       "translation_origin": "untranslated"
     },
     {

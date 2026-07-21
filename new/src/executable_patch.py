@@ -19,6 +19,11 @@ EXPECTED_BASE_SHA256 = (
 )
 LOAD_ADDRESS = 0x8000F800
 STATIC_WIDTH_TABLE_ADDRESS = 0x800F2910
+STAT_ABBREVIATION_TABLE_OFFSET = 0xE5C20
+STAT_ABBREVIATION_ENTRY_SIZE = 6
+LUCK_STAT_ENTRY_INDEX = 5
+ORIGINAL_LUCK_GLYPH_INDEX = 0x0131
+SIMPLIFIED_LUCK_GLYPH_INDEX = 0x0180
 
 
 def sha256(data: bytes) -> str:
@@ -104,6 +109,7 @@ def patch_executable(
         0x8005B2E4: bytes.fromhex('0C000724'),
         0x8004A064: bytes.fromhex('0C000724'),
         0x8006C27C: bytes.fromhex('7F1D010C'),
+        0x8006D9E4: bytes.fromhex('7F1D010C'),
         0x8005C1D0: bytes.fromhex('C0100200'),
     }
     for address, expected in expected_opcodes.items():
@@ -118,12 +124,31 @@ def patch_executable(
     armips_changed_bytes = sum(
         old != new for old, new in zip(base_data, patched_data)
     )
-    if armips_changed_bytes != 308:
+    if armips_changed_bytes != 310:
         raise AssertionError(
-            f'Expected CN.asm to change 308 bytes, got {armips_changed_bytes}'
+            f'Expected CN.asm to change 310 bytes, got {armips_changed_bytes}'
         )
 
     patched_data = bytearray(patched_data)
+
+    # The status screen stores six glyph indices directly in the executable.
+    # Replace the original Japanese/traditional 運 entry with the simplified
+    # Chinese 运 glyph already present in the generated F14 font.
+    luck_stat_offset = (
+        STAT_ABBREVIATION_TABLE_OFFSET
+        + LUCK_STAT_ENTRY_INDEX * STAT_ABBREVIATION_ENTRY_SIZE
+    )
+    expected_luck_code = ORIGINAL_LUCK_GLYPH_INDEX.to_bytes(2, 'little')
+    actual_luck_code = bytes(patched_data[luck_stat_offset:luck_stat_offset + 2])
+    if actual_luck_code != expected_luck_code:
+        raise AssertionError(
+            'Unexpected original luck-stat glyph code at '
+            f'{luck_stat_offset:#x}: expected {expected_luck_code.hex()}, '
+            f'got {actual_luck_code.hex()}'
+        )
+    simplified_luck_code = SIMPLIFIED_LUCK_GLYPH_INDEX.to_bytes(2, 'little')
+    patched_data[luck_stat_offset:luck_stat_offset + 2] = simplified_luck_code
+
     for glyph_index, width_value in (width_table_overrides or {}).items():
         if not 0 <= glyph_index <= 0x0566:
             raise ValueError(
@@ -170,6 +195,9 @@ def patch_executable(
         patched_data[offset:end] = data
 
     patched_data = bytes(patched_data)
+    if patched_data[luck_stat_offset:luck_stat_offset + 2] != simplified_luck_code:
+        raise AssertionError('Luck-stat glyph-code patch verification failed')
+
     for glyph_index, width_value in (width_table_overrides or {}).items():
         table_offset = virtual_address_to_file_offset(
             STATIC_WIDTH_TABLE_ADDRESS + glyph_index

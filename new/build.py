@@ -34,6 +34,11 @@ from src.f0098_text import (
     load_f0098_text_records,
     translated_f0098_texts,
 )
+from src.video_replacement import (
+    DEFAULT_JPSXDEC_JAR,
+    DEFAULT_VIDEO_DIRECTORY,
+    build_subtitle_video_replacements,
+)
 from src.original_ui_glyphs import load_original_ui_glyph_overrides
 
 
@@ -76,6 +81,9 @@ def build_assets(
     use_static_aliases=False,
     relocate_dynamic_low_codes=False,
     use_unified_normal_text=False,
+    subtitle_video_directory=None,
+    jpsxdec_jar=DEFAULT_JPSXDEC_JAR,
+    rebuild_subtitle_videos=False,
 ):
     BUILD_DIRECTORY.mkdir(parents=True, exist_ok=True)
     slpm_text_records = load_slpm_text_records()
@@ -258,6 +266,18 @@ def build_assets(
             f0098_text_patches,
         )
 
+    subtitle_video_replacements = {}
+    if subtitle_video_directory is not None:
+        subtitle_video_replacements = build_subtitle_video_replacements(
+            video_directory=subtitle_video_directory,
+            jpsxdec_jar=jpsxdec_jar,
+            force=rebuild_subtitle_videos,
+        )
+        overlap = set(replacements) & set(subtitle_video_replacements)
+        if overlap:
+            raise ValueError(f"Subtitle videos overlap existing replacements: {sorted(overlap)}")
+        replacements.update(subtitle_video_replacements)
+
     return {
         "alias_plan": alias_plan,
         "relocation_plan": relocation_plan,
@@ -265,6 +285,7 @@ def build_assets(
         "slpm_text_records": slpm_text_records,
         "slpm_text_patches": slpm_text_patches,
         "text_result": text_result,
+        "subtitle_video_replacements": subtitle_video_replacements,
         "replacements": replacements,
     }
 
@@ -291,6 +312,9 @@ def build_disc(
     use_static_aliases=False,
     relocate_dynamic_low_codes=False,
     use_unified_normal_text=False,
+    subtitle_video_directory=None,
+    jpsxdec_jar=DEFAULT_JPSXDEC_JAR,
+    rebuild_subtitle_videos=False,
 ):
     base_image = Path(base_image).resolve()
     output_image = Path(output_image).resolve()
@@ -319,6 +343,9 @@ def build_disc(
         use_static_aliases=use_static_aliases,
         relocate_dynamic_low_codes=relocate_dynamic_low_codes,
         use_unified_normal_text=use_unified_normal_text,
+        subtitle_video_directory=subtitle_video_directory,
+        jpsxdec_jar=jpsxdec_jar,
+        rebuild_subtitle_videos=rebuild_subtitle_videos,
     )
     text_summary = summarize_text_build(assets["text_result"])
     replacements = assets["replacements"]
@@ -416,6 +443,22 @@ def parse_arguments():
             "text without replacing low name/UI glyphs."
         ),
     )
+    parser.add_argument(
+        "--subtitle-videos",
+        nargs="?",
+        type=Path,
+        const=DEFAULT_VIDEO_DIRECTORY,
+        help=(
+            "Re-encode and inject all Fxxxx*.AVI files from the optional "
+            "directory (default: MP4_Subtitle)."
+        ),
+    )
+    parser.add_argument("--jpsxdec-jar", type=Path, default=DEFAULT_JPSXDEC_JAR)
+    parser.add_argument(
+        "--rebuild-subtitle-videos",
+        action="store_true",
+        help="Ignore cached PS1 video containers and encode every frame again.",
+    )
     return parser.parse_args()
 
 
@@ -432,4 +475,7 @@ if __name__ == "__main__":
         use_static_aliases=arguments.static_aliases,
         relocate_dynamic_low_codes=arguments.relocate_dynamic_low_codes,
         use_unified_normal_text=arguments.unified_normal_text,
+        subtitle_video_directory=arguments.subtitle_videos,
+        jpsxdec_jar=arguments.jpsxdec_jar,
+        rebuild_subtitle_videos=arguments.rebuild_subtitle_videos,
     )

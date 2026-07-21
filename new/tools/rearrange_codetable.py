@@ -7,9 +7,9 @@ Constraints encoded here (discovered the hard way; see memory notes):
 2. Index 0 must be the full-width space: the original game leaves glyph 0
    empty and the name-entry UI inserts it for a blank; font_builder also
    forces glyph 0 transparent.
-3. Hardcoded UI codes must keep their original meaning.  The status screen's
-   six stat abbreviations are drawn from a fixed table of original glyph
-   codes, so 力知魔体速運 are pinned to their original indices.
+3. Hardcoded UI codes must keep their patched meaning.  The status screen's
+   six stat abbreviations are drawn from a fixed table of glyph codes, so
+   力知魔体速运 are pinned to the indices used by executable_patch.py.
 4. Characters used by static/F14-rendered text must land below 0x567 (F14's
    capacity).  That includes text_17/text_88, static SLPM slots, the F0098
    name tables, and every string that can appear in the party panel (preset
@@ -49,9 +49,10 @@ CODETABLE = NEW_DIR / 'data' / 'codetable.json'
 BASELINE = NEW_DIR / 'data' / 'codetable.json.prerearrange.bak'
 
 SPACE = '　'
-# Hardcoded stat-abbreviation codes (SLPM table at 0xE5C20 stores these
-# original glyph indices directly).
-PINS = {0x53B: '力', 0x3CD: '知', 0x4D2: '魔', 0x3A8: '体', 0x39A: '速', 0x131: '運'}
+# Hardcoded stat-abbreviation codes (SLPM table at 0xE5C20 stores these glyph
+# indices directly).  executable_patch.py changes the last entry from the
+# original 運=0x131 to the simplified Chinese 运=0x180.
+PINS = {0x53B: '力', 0x3CD: '知', 0x4D2: '魔', 0x3A8: '体', 0x39A: '速', 0x180: '运'}
 # Preset partner names shown in the party panel.
 PARTY_PRESET_NAMES = ('由美', '查理', '明')
 
