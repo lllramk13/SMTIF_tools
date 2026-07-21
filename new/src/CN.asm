@@ -27,6 +27,17 @@ addiu   a3,$zero,0xC;宽度固定为12
 addiu   a3,$zero,0xC
 
 
+; Party-panel names are stored as 16-bit internal glyph indices.  The
+; original call at 0x8006C27C used 0x80046FEC, which first converts those
+; indices back to the small Shift-JIS system-font table.  That converter only
+; recognizes the original punctuation/kana range (< 0x0109), so translated
+; preset names such as 0x0119/0x011A (由美) collapse to the shared fallback
+; tile.  0x800475FC has the same calling convention, but renders the 16-bit
+; indices directly through the 0x0567-entry F14 font.
+.org    0x8006C27C
+jal     0x800475FC
+
+
 .org    0x8005C1D0
 sll     r2,0x3
 

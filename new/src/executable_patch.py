@@ -103,6 +103,7 @@ def patch_executable(
         0x80049578: bytes.fromhex('CE0A0224'),
         0x8005B2E4: bytes.fromhex('0C000724'),
         0x8004A064: bytes.fromhex('0C000724'),
+        0x8006C27C: bytes.fromhex('7F1D010C'),
         0x8005C1D0: bytes.fromhex('C0100200'),
     }
     for address, expected in expected_opcodes.items():
@@ -117,9 +118,9 @@ def patch_executable(
     armips_changed_bytes = sum(
         old != new for old, new in zip(base_data, patched_data)
     )
-    if armips_changed_bytes != 306:
+    if armips_changed_bytes != 308:
         raise AssertionError(
-            f'Expected CN.asm to change 306 bytes, got {armips_changed_bytes}'
+            f'Expected CN.asm to change 308 bytes, got {armips_changed_bytes}'
         )
 
     patched_data = bytearray(patched_data)

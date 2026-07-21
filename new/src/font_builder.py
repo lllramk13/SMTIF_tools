@@ -136,6 +136,7 @@ def render_font(
     codetable_path=CODETABLE_PATH,
     font_path=FONT_PATH,
     glyph_overrides=None,
+    glyph_font_sizes=None,
 ):
     codetable = load_codetable(codetable_path)
     if glyph_overrides:
@@ -144,14 +145,32 @@ def render_font(
     if not font_path.is_file():
         raise FileNotFoundError(f'Font file not found: {font_path}')
 
-    font = ImageFont.truetype(str(font_path), FONT_PX)
+    glyph_font_sizes = dict(glyph_font_sizes or {})
+    for index, font_size in glyph_font_sizes.items():
+        if index not in codetable:
+            raise ValueError(
+                f'Font-size override refers to missing glyph index: {index:#x}'
+            )
+        if not isinstance(font_size, int) or isinstance(font_size, bool):
+            raise ValueError(
+                f'Glyph font size must be an integer: {index:#x}={font_size!r}'
+            )
+        if font_size <= 0:
+            raise ValueError(
+                f'Glyph font size must be positive: {index:#x}={font_size}'
+            )
+
+    fonts = {
+        font_size: ImageFont.truetype(str(font_path), font_size)
+        for font_size in ({FONT_PX} | set(glyph_font_sizes.values()))
+    }
     glyph_count = max(codetable) + 1
     font_data = bytearray(glyph_count * BYTES_PER_GLYPH)
 
     for index in range(glyph_count):
         start = index * BYTES_PER_GLYPH
         font_data[start:start + BYTES_PER_GLYPH] = render_glyph(
-            codetable[index], font
+            codetable[index], fonts[glyph_font_sizes.get(index, FONT_PX)]
         )
 
     # In the original game glyph index 0 is empty: it is the blank slot the
