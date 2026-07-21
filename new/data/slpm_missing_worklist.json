@@ -1,0 +1,298 @@
+[
+  {
+    "id": "SLPM-000E5C44",
+    "offset": "000E5C44",
+    "max_bytes": 8,
+    "source": "攻撃〓",
+    "translation": "",
+    "renderer": "dynamic"
+  },
+  {
+    "id": "SLPM-000E5C4C",
+    "offset": "000E5C4C",
+    "max_bytes": 8,
+    "source": "命中〓",
+    "translation": "",
+    "renderer": "dynamic"
+  },
+  {
+    "id": "SLPM-000E5C54",
+    "offset": "000E5C54",
+    "max_bytes": 8,
+    "source": "防御〓",
+    "translation": "",
+    "renderer": "dynamic"
+  },
+  {
+    "id": "SLPM-000E5C5C",
+    "offset": "000E5C5C",
+    "max_bytes": 8,
+    "source": "回避〓",
+    "translation": "",
+    "renderer": "dynamic"
+  },
+  {
+    "id": "SLPM-000E5C64",
+    "offset": "000E5C64",
+    "max_bytes": 12,
+    "source": "魔法威力〓",
+    "translation": "",
+    "renderer": "dynamic"
+  },
+  {
+    "id": "SLPM-000E5C70",
+    "offset": "000E5C70",
+    "max_bytes": 12,
+    "source": "魔法効果〓",
+    "translation": "",
+    "renderer": "dynamic"
+  },
+  {
+    "id": "SLPM-000E5C7C",
+    "offset": "000E5C7C",
+    "max_bytes": 12,
+    "source": "攻撃回数〓",
+    "translation": "",
+    "renderer": "dynamic"
+  },
+  {
+    "id": "SLPM-000E5C88",
+    "offset": "000E5C88",
+    "max_bytes": 12,
+    "source": "追加効果〓",
+    "translation": "",
+    "renderer": "dynamic"
+  },
+  {
+    "id": "SLPM-000E5C94",
+    "offset": "000E5C94",
+    "max_bytes": 8,
+    "source": "性別〓",
+    "translation": "",
+    "renderer": "dynamic"
+  },
+  {
+    "id": "SLPM-000E5C9C",
+    "offset": "000E5C9C",
+    "max_bytes": 20,
+    "source": "－－－－－－－－〓",
+    "translation": "",
+    "renderer": "dynamic"
+  },
+  {
+    "id": "SLPM-000E5CB0",
+    "offset": "000E5CB0",
+    "max_bytes": 12,
+    "source": "追加効果〓",
+    "translation": "",
+    "renderer": "dynamic"
+  },
+  {
+    "id": "SLPM-000E5CBC",
+    "offset": "000E5CBC",
+    "max_bytes": 8,
+    "source": "相性〓",
+    "translation": "",
+    "renderer": "dynamic"
+  },
+  {
+    "id": "SLPM-000E5CC4",
+    "offset": "000E5CC4",
+    "max_bytes": 12,
+    "source": "ノーマル〓",
+    "translation": "",
+    "renderer": "dynamic"
+  },
+  {
+    "id": "SLPM-000E5CD0",
+    "offset": "000E5CD0",
+    "max_bytes": 10,
+    "source": "対火炎〓",
+    "translation": "",
+    "renderer": "dynamic"
+  },
+  {
+    "id": "SLPM-000E5CDA",
+    "offset": "000E5CDA",
+    "max_bytes": 10,
+    "source": "対氷結〓",
+    "translation": "",
+    "renderer": "dynamic"
+  },
+  {
+    "id": "SLPM-000E5CE4",
+    "offset": "000E5CE4",
+    "max_bytes": 10,
+    "source": "対電撃〓",
+    "translation": "",
+    "renderer": "dynamic"
+  },
+  {
+    "id": "SLPM-000E5CEE",
+    "offset": "000E5CEE",
+    "max_bytes": 10,
+    "source": "対衝撃〓",
+    "translation": "",
+    "renderer": "dynamic"
+  },
+  {
+    "id": "SLPM-000E5CF8",
+    "offset": "000E5CF8",
+    "max_bytes": 12,
+    "source": "対サイコ〓",
+    "translation": "",
+    "renderer": "dynamic"
+  },
+  {
+    "id": "SLPM-000E5D04",
+    "offset": "000E5D04",
+    "max_bytes": 10,
+    "source": "対物理〓",
+    "translation": "",
+    "renderer": "dynamic"
+  },
+  {
+    "id": "SLPM-000E5D0E",
+    "offset": "000E5D0E",
+    "max_bytes": 12,
+    "source": "対電/衝〓",
+    "translation": "",
+    "renderer": "dynamic"
+  },
+  {
+    "id": "SLPM-000E5D1A",
+    "offset": "000E5D1A",
+    "max_bytes": 12,
+    "source": "対火/氷〓",
+    "translation": "",
+    "renderer": "dynamic"
+  },
+  {
+    "id": "SLPM-000E5D26",
+    "offset": "000E5D26",
+    "max_bytes": 12,
+    "source": "反サイコ〓",
+    "translation": "",
+    "renderer": "dynamic"
+  },
+  {
+    "id": "SLPM-000E5D32",
+    "offset": "000E5D32",
+    "max_bytes": 10,
+    "source": "反物理〓",
+    "translation": "",
+    "renderer": "dynamic"
+  },
+  {
+    "id": "SLPM-000E5D3C",
+    "offset": "000E5D3C",
+    "max_bytes": 10,
+    "source": "吸火炎〓",
+    "translation": "",
+    "renderer": "dynamic"
+  },
+  {
+    "id": "SLPM-000E5D46",
+    "offset": "000E5D46",
+    "max_bytes": 10,
+    "source": "吸電撃〓",
+    "translation": "",
+    "renderer": "dynamic"
+  },
+  {
+    "id": "SLPM-000E5D50",
+    "offset": "000E5D50",
+    "max_bytes": 12,
+    "source": "魔性防具〓",
+    "translation": "",
+    "renderer": "dynamic"
+  },
+  {
+    "id": "SLPM-000E5D5C",
+    "offset": "000E5D5C",
+    "max_bytes": 12,
+    "source": "神聖防具〓",
+    "translation": "",
+    "renderer": "dynamic"
+  },
+  {
+    "id": "SLPM-000E5D68",
+    "offset": "000E5D68",
+    "max_bytes": 10,
+    "source": "全対応〓",
+    "translation": "",
+    "renderer": "dynamic"
+  },
+  {
+    "id": "SLPM-000E5D72",
+    "offset": "000E5D72",
+    "max_bytes": 10,
+    "source": "？？？〓",
+    "translation": "",
+    "renderer": "dynamic"
+  },
+  {
+    "id": "SLPM-000E5D7C",
+    "offset": "000E5D7C",
+    "max_bytes": 20,
+    "source": "？？？？？？？？〓",
+    "translation": "",
+    "renderer": "dynamic"
+  },
+  {
+    "id": "SLPM-000E5D90",
+    "offset": "000E5D90",
+    "max_bytes": 10,
+    "source": "合体剣〓",
+    "translation": "",
+    "renderer": "dynamic"
+  },
+  {
+    "id": "SLPM-000E5D9A",
+    "offset": "000E5D9A",
+    "max_bytes": 10,
+    "source": "合体銃〓",
+    "translation": "",
+    "renderer": "dynamic"
+  },
+  {
+    "id": "SLPM-000E5DA4",
+    "offset": "000E5DA4",
+    "max_bytes": 10,
+    "source": "頭防具〓",
+    "translation": "",
+    "renderer": "dynamic"
+  },
+  {
+    "id": "SLPM-000E5DAE",
+    "offset": "000E5DAE",
+    "max_bytes": 10,
+    "source": "体防具〓",
+    "translation": "",
+    "renderer": "dynamic"
+  },
+  {
+    "id": "SLPM-000E5DB8",
+    "offset": "000E5DB8",
+    "max_bytes": 10,
+    "source": "腕防具〓",
+    "translation": "",
+    "renderer": "dynamic"
+  },
+  {
+    "id": "SLPM-000E5DC2",
+    "offset": "000E5DC2",
+    "max_bytes": 10,
+    "source": "脚防具〓",
+    "translation": "",
+    "renderer": "dynamic"
+  },
+  {
+    "id": "SLPM-000E85FA",
+    "offset": "000E85FA",
+    "max_bytes": 6,
+    "source": "〓ァさ",
+    "translation": "",
+    "renderer": "dynamic"
+  }
+]

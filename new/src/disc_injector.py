@@ -244,6 +244,119 @@ def replace_file_in_image(
     print(f'Image: {image_path}')
 
 
+def replace_files_in_image(
+    image_path,
+    manifest_path,
+    replacements,
+):
+    """Replace multiple manifest files using in-memory byte payloads."""
+    image_path = Path(image_path)
+
+    if not isinstance(replacements, dict) or not replacements:
+        raise ValueError('replacements must be a non-empty dictionary')
+    if image_path.stat().st_size % RAW_SECTOR_SIZE:
+        raise ValueError('Disc image size is not a multiple of 2352 bytes')
+
+    prepared = []
+    occupied_lbas = {}
+
+    for disc_path, replacement in replacements.items():
+        if not isinstance(disc_path, str) or not disc_path:
+            raise ValueError('Replacement disc paths must be non-empty strings')
+        if not isinstance(replacement, bytes):
+            raise ValueError(f'Replacement for {disc_path} must be bytes')
+
+        entry = load_manifest_entry(manifest_path, disc_path)
+        if len(replacement) != entry['size']:
+            raise ValueError(
+                f'Replacement for {entry["path"]} must be exactly '
+                f'{entry["size"]} bytes, got {len(replacement)}'
+            )
+
+        sector_count = (
+            len(replacement) + MODE2_FORM1_USER_SIZE - 1
+        ) // MODE2_FORM1_USER_SIZE
+        final_lba = entry['extent_lba'] + sector_count
+        if final_lba * RAW_SECTOR_SIZE > image_path.stat().st_size:
+            raise ValueError(
+                f'Replacement for {entry["path"]} extends beyond the image'
+            )
+
+        for lba in range(entry['extent_lba'], final_lba):
+            previous_path = occupied_lbas.get(lba)
+            if previous_path is not None:
+                raise ValueError(
+                    f'Replacements overlap at LBA {lba}: '
+                    f'{previous_path} and {entry["path"]}'
+                )
+            occupied_lbas[lba] = entry['path']
+
+        prepared.append({
+            'entry': entry,
+            'replacement': replacement,
+            'sector_count': sector_count,
+            'final_lba': final_lba,
+        })
+
+    prepared.sort(key=lambda item: item['entry']['extent_lba'])
+
+    # Complete checksum validation before the first write so ordinary input
+    # errors cannot leave a partially modified image.
+    with image_path.open('rb') as image_file:
+        for item in prepared:
+            entry = item['entry']
+            for sector_number in range(item['sector_count']):
+                lba = entry['extent_lba'] + sector_number
+                image_file.seek(lba * RAW_SECTOR_SIZE)
+                sector = image_file.read(RAW_SECTOR_SIZE)
+                validate_existing_sector_checksums(sector, lba)
+
+    summaries = []
+
+    with image_path.open('r+b') as image_file:
+        for item in prepared:
+            entry = item['entry']
+            replacement = item['replacement']
+
+            for sector_number in range(item['sector_count']):
+                lba = entry['extent_lba'] + sector_number
+                sector_offset = lba * RAW_SECTOR_SIZE
+                image_file.seek(sector_offset)
+                sector = bytearray(image_file.read(RAW_SECTOR_SIZE))
+                validate_existing_sector_checksums(sector, lba)
+
+                source_offset = sector_number * MODE2_FORM1_USER_SIZE
+                chunk = replacement[
+                    source_offset:source_offset + MODE2_FORM1_USER_SIZE
+                ]
+                user_start = MODE2_FORM1_USER_OFFSET
+                sector[user_start:user_start + len(chunk)] = chunk
+                rebuild_mode2_form1_checksums(sector)
+
+                image_file.seek(sector_offset)
+                image_file.write(sector)
+
+            summaries.append({
+                'path': entry['path'],
+                'first_lba': entry['extent_lba'],
+                'final_lba': item['final_lba'] - 1,
+                'sector_count': item['sector_count'],
+                'size': len(replacement),
+            })
+
+        image_file.flush()
+
+        for item in prepared:
+            extracted = extract_file_from_image(image_file, item['entry'])
+            if extracted != item['replacement']:
+                raise AssertionError(
+                    f'Post-write verification failed for '
+                    f'{item["entry"]["path"]}'
+                )
+
+    return summaries
+
+
 def parse_arguments():
     parser = argparse.ArgumentParser(
         description='Replace a Mode 2 Form 1 file inside a raw PS1 BIN image.'

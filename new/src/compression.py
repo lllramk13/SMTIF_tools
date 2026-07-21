@@ -234,7 +234,8 @@ def decompress_resource(resource: bytes) -> bytes:
     if len(resource) < 8:
         raise ValueError('Resource is shorter than its 8-byte base header')
 
-    magic = resource[:4]
+    resource_header = resource[:4]
+    magic = resource_header[:2] + b'\x00\x00'
     total_size = int.from_bytes(resource[4:8], 'little')
     if total_size < 8 or total_size > len(resource):
         raise ValueError(
@@ -245,7 +246,9 @@ def decompress_resource(resource: bytes) -> bytes:
     if magic == RAW_MAGIC:
         return resource[8:total_size]
     if magic not in {RLE_MAGIC, LZ77_MAGIC}:
-        raise ValueError(f'Unsupported resource magic: {magic.hex().upper()}')
+        raise ValueError(
+            f'Unsupported resource magic: {resource_header.hex().upper()}'
+        )
     if total_size < 12:
         raise ValueError('Compressed resource is shorter than its 12-byte header')
 
@@ -408,6 +411,107 @@ def expand_lz77_to_size(resource: bytes, target_size: int) -> bytes:
     return expanded
 
 
+def expand_rle_to_size(resource: bytes, target_size: int) -> bytes:
+    """Retokenize an RLE stream to an exact larger declared size.
+
+    A literal run of ``N`` bytes occupies ``N + 1`` bytes.  Splitting that
+    run into multiple literal tokens adds one byte per split without changing
+    the decompressed data.  This gives graphic resources a safe way to retain
+    their original declared size and, consequently, the fixed offsets of
+    palettes or other resources stored after the main image.
+    """
+    resource = bytes(resource)
+    if resource[:4] != RLE_MAGIC:
+        raise ValueError('Only 0x01/0x01 RLE resources can be expanded')
+
+    current_size = int.from_bytes(resource[4:8], 'little')
+    if current_size > len(resource):
+        raise ValueError('Declared RLE size exceeds the supplied buffer')
+    if target_size < current_size:
+        raise ValueError('Target size must not be smaller than the stream')
+    if target_size == current_size:
+        return resource[:current_size]
+
+    raw_data = decompress_resource(resource)
+    tokens = []
+    source_position = 12
+    output_position = 0
+    split_capacity = 0
+
+    while source_position < current_size:
+        control = resource[source_position]
+        source_position += 1
+
+        if control < 0x80:
+            length = control + 1
+            end = source_position + length
+            if end > current_size:
+                raise ValueError('Literal token exceeds the declared RLE stream')
+            literal = resource[source_position:end]
+            tokens.append(('literal', literal))
+            split_capacity += length - 1
+            source_position = end
+        else:
+            length = control - 0x7D
+            if source_position >= current_size:
+                raise ValueError('Repeat token has no value byte')
+            value = resource[source_position]
+            source_position += 1
+            tokens.append(('repeat', bytes((control, value))))
+
+        output_position += length
+
+    if source_position != current_size or output_position != len(raw_data):
+        raise ValueError('RLE token stream does not end at its declared size')
+
+    required_growth = target_size - current_size
+    if required_growth > split_capacity:
+        raise ValueError(
+            f'Cannot expand RLE stream by {required_growth} bytes; '
+            f'literal split capacity is {split_capacity}'
+        )
+
+    body = bytearray()
+    remaining_growth = required_growth
+
+    for token_type, encoded in tokens:
+        if token_type == 'repeat':
+            body.extend(encoded)
+            continue
+
+        split_count = min(remaining_growth, len(encoded) - 1)
+
+        # Emit one-byte literal tokens for each requested split, followed by
+        # the unsplit remainder.  This grows the stream by split_count bytes.
+        for value in encoded[:split_count]:
+            body.extend((0, value))
+
+        remainder = encoded[split_count:]
+        if remainder:
+            body.append(len(remainder) - 1)
+            body.extend(remainder)
+
+        remaining_growth -= split_count
+
+    if remaining_growth:
+        raise AssertionError('RLE expansion did not consume the requested growth')
+
+    expanded = b''.join((
+        resource[:4],
+        target_size.to_bytes(4, 'little'),
+        len(raw_data).to_bytes(4, 'little'),
+        body,
+    ))
+    if len(expanded) != target_size:
+        raise AssertionError(
+            f'Expanded RLE stream is {len(expanded)} bytes, '
+            f'expected {target_size}'
+        )
+    if decompress_resource(expanded) != raw_data:
+        raise AssertionError('Expanded RLE stream changed decompressed data')
+    return expanded
+
+
 def _selftest() -> None:
     samples = (
         b'',
@@ -420,6 +524,11 @@ def _selftest() -> None:
     for sample in samples:
         verify_lz77_roundtrip(sample)
         assert decompress_resource(pack_uncompressed(sample)) == sample
+
+    rle_sample = bytes(range(128)) * 2
+    rle_resource = compress_rle(rle_sample)
+    expanded_rle = expand_rle_to_size(rle_resource, len(rle_resource) + 17)
+    assert decompress_resource(expanded_rle) == rle_sample
 
     print('compression self-test passed')
 

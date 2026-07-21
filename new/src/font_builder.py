@@ -135,8 +135,11 @@ def render_font(
     preview_path=PREVIEW_OUTPUT_PATH,
     codetable_path=CODETABLE_PATH,
     font_path=FONT_PATH,
+    glyph_overrides=None,
 ):
     codetable = load_codetable(codetable_path)
+    if glyph_overrides:
+        codetable.update(glyph_overrides)
     font_path = Path(font_path)
     if not font_path.is_file():
         raise FileNotFoundError(f'Font file not found: {font_path}')

@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from compression import (
+from src.compression import (
     compress_rle,
     compress_lz77_non_overlapping,
     decompress_resource,
@@ -83,9 +83,25 @@ def build_f13(
     # Bytes after the main resource are not disposable padding.  Original
     # F0013 contains a second 22-byte compressed resource there (32 raw bytes,
     # consistent with a 16-colour PS1 CLUT).  Preserve the entire tail.
+    #
+    # That CLUT is the menu/system font palette (VRAM CLUT 0x7E10): index 0 is
+    # the dim 0xAD68 shade, index 2 is the bright 0xE318 text shade.  The two
+    # dynamic decoders share one glyph cache but encode strokes differently:
+    # the dialogue decoder emits strokes as palette value 0, the menu decoder
+    # as value 2.  A glyph first cached by dialogue therefore draws its strokes
+    # through index 0 and looks darker in menus than a freshly menu-decoded
+    # glyph (index 2).  Recolour index 0 to the same 0xE318 so every menu glyph
+    # is one consistent colour regardless of which decoder cached it.  The two
+    # bytes live inside the LZ77 literal run, so the block length is unchanged.
+    tail = bytearray(original_f13[original_declared_size:])
+    clut_index0_offset = 0xEAA5 - original_declared_size
+    if bytes(tail[clut_index0_offset:clut_index0_offset + 2]) != b'\x68\xad':
+        raise AssertionError('Unexpected F13 tail CLUT layout; refusing to patch')
+    tail[clut_index0_offset:clut_index0_offset + 2] = b'\x18\xe3'  # 0xE318
+
     rebuilt_f13 = b''.join((
         compressed.ljust(original_declared_size, b'\x00'),
-        original_f13[original_declared_size:],
+        bytes(tail),
     ))
     if len(rebuilt_f13) != len(original_f13):
         raise AssertionError('Rebuilt F13 changed the file size')

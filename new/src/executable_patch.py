@@ -18,6 +18,7 @@ EXPECTED_BASE_SHA256 = (
     '8F06D6B81DE1BAC70D3658424AFC635C42F8AC3B2F727CAF6BF88D99B4B31CF4'
 )
 LOAD_ADDRESS = 0x8000F800
+STATIC_WIDTH_TABLE_ADDRESS = 0x800F2910
 
 
 def sha256(data: bytes) -> str:
@@ -46,6 +47,8 @@ def patch_executable(
     source_asm_path=SOURCE_ASM_PATH,
     armips_path=ARMIPS_PATH,
     output_path=OUTPUT_SLPM_PATH,
+    width_table_overrides=None,
+    embedded_text_patches=None,
 ):
     base_slpm_path = Path(base_slpm_path)
     source_asm_path = Path(source_asm_path)
@@ -95,7 +98,11 @@ def patch_executable(
         )
 
     expected_opcodes = {
+        0x8004ACB8: bytes.fromhex('FFFF8430'),
+        0x8004AD58: bytes.fromhex('1800C228'),
+        0x80049578: bytes.fromhex('CE0A0224'),
         0x8005B2E4: bytes.fromhex('0C000724'),
+        0x8004A064: bytes.fromhex('0C000724'),
         0x8005C1D0: bytes.fromhex('C0100200'),
     }
     for address, expected in expected_opcodes.items():
@@ -107,16 +114,82 @@ def patch_executable(
                 f'expected {expected.hex()}, got {actual.hex()}'
             )
 
+    armips_changed_bytes = sum(
+        old != new for old, new in zip(base_data, patched_data)
+    )
+    if armips_changed_bytes != 306:
+        raise AssertionError(
+            f'Expected CN.asm to change 306 bytes, got {armips_changed_bytes}'
+        )
+
+    patched_data = bytearray(patched_data)
+    for glyph_index, width_value in (width_table_overrides or {}).items():
+        if not 0 <= glyph_index <= 0x0566:
+            raise ValueError(
+                f'Static width glyph index is out of range: {glyph_index:#x}'
+            )
+        if not 0 <= width_value <= 0xFF:
+            raise ValueError(f'Invalid static width byte: {width_value:#x}')
+
+        table_address = STATIC_WIDTH_TABLE_ADDRESS + glyph_index
+        table_offset = virtual_address_to_file_offset(table_address)
+        patched_data[table_offset] = width_value
+
+    previous_patch_end = -1
+    for patch in sorted(
+        embedded_text_patches or (),
+        key=lambda item: item["offset"],
+    ):
+        patch_id = patch.get("id", "<unknown>")
+        offset = patch.get("offset")
+        max_bytes = patch.get("max_bytes")
+        data = patch.get("data")
+        if not isinstance(offset, int) or offset < 0:
+            raise ValueError(f"{patch_id}: invalid embedded-text offset")
+        if not isinstance(max_bytes, int) or max_bytes < 2:
+            raise ValueError(f"{patch_id}: invalid embedded-text slot size")
+        if not isinstance(data, bytes) or len(data) != max_bytes:
+            raise ValueError(
+                f"{patch_id}: embedded-text patch must exactly fill its slot"
+            )
+
+        end = offset + max_bytes
+        if end > len(patched_data):
+            raise ValueError(f"{patch_id}: embedded-text slot exceeds SLPM")
+        if offset < previous_patch_end:
+            raise ValueError(f"{patch_id}: embedded-text patches overlap")
+        previous_patch_end = end
+
+        original_slot = base_data[offset:end]
+        current_slot = bytes(patched_data[offset:end])
+        if current_slot != original_slot:
+            raise AssertionError(
+                f"{patch_id}: CN.asm unexpectedly changed the text slot"
+            )
+        patched_data[offset:end] = data
+
+    patched_data = bytes(patched_data)
+    for glyph_index, width_value in (width_table_overrides or {}).items():
+        table_offset = virtual_address_to_file_offset(
+            STATIC_WIDTH_TABLE_ADDRESS + glyph_index
+        )
+        if patched_data[table_offset] != width_value:
+            raise AssertionError('Static width-table patch verification failed')
+
+    for patch in embedded_text_patches or ():
+        offset = patch["offset"]
+        end = offset + patch["max_bytes"]
+        if patched_data[offset:end] != patch["data"]:
+            raise AssertionError(
+                f"{patch['id']}: embedded-text patch verification failed"
+            )
+
     changed_bytes = sum(
         old != new for old, new in zip(base_data, patched_data)
     )
-    if changed_bytes != 155:
-        raise AssertionError(
-            f'Expected CN.asm to change 155 bytes, got {changed_bytes}'
-        )
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    shutil.copyfile(work_output, output_path)
+    output_path.write_bytes(patched_data)
 
     print(f'Base SHA-256: {base_hash}')
     print(f'Patched SHA-256: {sha256(patched_data)}')
