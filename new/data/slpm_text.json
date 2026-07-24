@@ -1,3136 +1,3409 @@
 {
-  "text_slpm": [
-    {
-      "id": "SLPM-000E4768",
-      "offset": "000E4768",
-      "max_bytes": 6,
-      "source": "学校",
-      "translation": "学校",
-      "translation_origin": "manual",
-      "renderer": "dynamic"
-    },
-    {
-      "id": "SLPM-000E476E",
-      "offset": "000E476E",
-      "max_bytes": 10,
-      "source": "封印の間",
-      "translation": "封印之间",
-      "translation_origin": "manual",
-      "renderer": "dynamic"
-    },
-    {
-      "id": "SLPM-000E4778",
-      "offset": "000E4778",
-      "max_bytes": 8,
-      "source": "傲慢界",
-      "translation": "傲慢界",
-      "translation_origin": "manual",
-      "renderer": "dynamic"
-    },
-    {
-      "id": "SLPM-000E4780",
-      "offset": "000E4780",
-      "max_bytes": 12,
-      "source": "傲慢界・街",
-      "translation": "傲慢界・城",
-      "translation_origin": "manual",
-      "renderer": "dynamic"
-    },
-    {
-      "id": "SLPM-000E478C",
-      "offset": "000E478C",
-      "max_bytes": 8,
-      "source": "飽食界",
-      "translation": "饱食界",
-      "translation_origin": "manual",
-      "renderer": "dynamic"
-    },
-    {
-      "id": "SLPM-000E4794",
-      "offset": "000E4794",
-      "max_bytes": 12,
-      "source": "飽食界・街",
-      "translation": "饱食界・城",
-      "translation_origin": "manual",
-      "renderer": "dynamic"
-    },
-    {
-      "id": "SLPM-000E47A0",
-      "offset": "000E47A0",
-      "max_bytes": 16,
-      "source": "飽食界・カジノ",
-      "translation": "饱食界・赌场",
-      "translation_origin": "manual",
-      "renderer": "dynamic"
-    },
-    {
-      "id": "SLPM-000E47B0",
-      "offset": "000E47B0",
-      "max_bytes": 14,
-      "source": "オーカス体内",
-      "translation": "奥卡斯体内",
-      "translation_origin": "manual",
-      "renderer": "dynamic"
-    },
-    {
-      "id": "SLPM-000E47BE",
-      "offset": "000E47BE",
-      "max_bytes": 8,
-      "source": "怠惰界",
-      "translation": "怠惰界",
-      "translation_origin": "manual",
-      "renderer": "dynamic"
-    },
-    {
-      "id": "SLPM-000E47C6",
-      "offset": "000E47C6",
-      "max_bytes": 8,
-      "source": "嫉妬界",
-      "translation": "嫉妒界",
-      "translation_origin": "manual",
-      "renderer": "dynamic"
-    },
-    {
-      "id": "SLPM-000E47CE",
-      "offset": "000E47CE",
-      "max_bytes": 12,
-      "source": "嫉妬界・街",
-      "translation": "嫉妒界・城",
-      "translation_origin": "manual",
-      "renderer": "dynamic"
-    },
-    {
-      "id": "SLPM-000E47DA",
-      "offset": "000E47DA",
-      "max_bytes": 8,
-      "source": "貪欲界",
-      "translation": "贪欲界",
-      "translation_origin": "manual",
-      "renderer": "dynamic"
-    },
-    {
-      "id": "SLPM-000E47E2",
-      "offset": "000E47E2",
-      "max_bytes": 12,
-      "source": "貪欲界・街",
-      "translation": "贪欲界・城",
-      "translation_origin": "manual",
-      "renderer": "dynamic"
-    },
-    {
-      "id": "SLPM-000E47EE",
-      "offset": "000E47EE",
-      "max_bytes": 12,
-      "source": "地のノモス",
-      "translation": "地之法阶",
-      "translation_origin": "manual",
-      "renderer": "dynamic"
-    },
-    {
-      "id": "SLPM-000E47FA",
-      "offset": "000E47FA",
-      "max_bytes": 8,
-      "source": "憤怒界",
-      "translation": "愤怒界",
-      "translation_origin": "manual",
-      "renderer": "dynamic"
-    },
-    {
-      "id": "SLPM-000E4802",
-      "offset": "000E4802",
-      "max_bytes": 12,
-      "source": "憤怒界・街",
-      "translation": "愤怒界・城",
-      "translation_origin": "manual",
-      "renderer": "dynamic"
-    },
-    {
-      "id": "SLPM-000E480E",
-      "offset": "000E480E",
-      "max_bytes": 16,
-      "source": "貪欲界・カジノ",
-      "translation": "贪欲界・赌场",
-      "translation_origin": "manual",
-      "renderer": "dynamic"
-    },
-    {
-      "id": "SLPM-000E481E",
-      "offset": "000E481E",
-      "max_bytes": 6,
-      "source": "学校",
-      "translation": "学校",
-      "translation_origin": "manual",
-      "renderer": "dynamic"
-    },
-    {
-      "id": "SLPM-000E4824",
-      "offset": "000E4824",
-      "max_bytes": 10,
-      "source": "精神世界",
-      "translation": "精神世界",
-      "translation_origin": "manual",
-      "renderer": "dynamic"
-    },
-    {
-      "id": "SLPM-000E482E",
-      "offset": "000E482E",
-      "max_bytes": 12,
-      "source": "第１ノモス",
-      "translation": "第１法阶",
-      "translation_origin": "manual",
-      "renderer": "dynamic"
-    },
-    {
-      "id": "SLPM-000E483A",
-      "offset": "000E483A",
-      "max_bytes": 12,
-      "source": "第２ノモス",
-      "translation": "第２法阶",
-      "translation_origin": "manual",
-      "renderer": "dynamic"
-    },
-    {
-      "id": "SLPM-000E4846",
-      "offset": "000E4846",
-      "max_bytes": 12,
-      "source": "第３ノモス",
-      "translation": "第３法阶",
-      "translation_origin": "manual",
-      "renderer": "dynamic"
-    },
-    {
-      "id": "SLPM-000E4852",
-      "offset": "000E4852",
-      "max_bytes": 12,
-      "source": "第４ノモス",
-      "translation": "第４法阶",
-      "translation_origin": "manual",
-      "renderer": "dynamic"
-    },
-    {
-      "id": "SLPM-000E485E",
-      "offset": "000E485E",
-      "max_bytes": 12,
-      "source": "天のノモス",
-      "translation": "天之法阶",
-      "translation_origin": "manual",
-      "renderer": "dynamic"
-    },
-    {
-      "id": "SLPM-000E486A",
-      "offset": "000E486A",
-      "max_bytes": 20,
-      "source": "第１ノモス・カジノ",
-      "translation": "第１法阶・赌场",
-      "translation_origin": "manual",
-      "renderer": "dynamic"
-    },
-    {
-      "id": "SLPM-000E5C44",
-      "offset": "000E5C44",
-      "max_bytes": 8,
-      "source": "攻撃{72FF}",
-      "translation": "攻击{72FF}",
-      "translation_origin": "manual",
-      "renderer": "static"
-    },
-    {
-      "id": "SLPM-000E5C4C",
-      "offset": "000E5C4C",
-      "max_bytes": 8,
-      "source": "命中{72FF}",
-      "translation": "命中{72FF}",
-      "translation_origin": "manual",
-      "renderer": "static"
-    },
-    {
-      "id": "SLPM-000E5C54",
-      "offset": "000E5C54",
-      "max_bytes": 8,
-      "source": "防御{72FF}",
-      "translation": "防御{72FF}",
-      "translation_origin": "manual",
-      "renderer": "static"
-    },
-    {
-      "id": "SLPM-000E5C5C",
-      "offset": "000E5C5C",
-      "max_bytes": 8,
-      "source": "回避{72FF}",
-      "translation": "回避{72FF}",
-      "translation_origin": "manual",
-      "renderer": "static"
-    },
-    {
-      "id": "SLPM-000E5C64",
-      "offset": "000E5C64",
-      "max_bytes": 12,
-      "source": "魔法威力{72FF}",
-      "translation": "魔法威力{72FF}",
-      "translation_origin": "manual",
-      "renderer": "static"
-    },
-    {
-      "id": "SLPM-000E5C70",
-      "offset": "000E5C70",
-      "max_bytes": 12,
-      "source": "魔法効果{72FF}",
-      "translation": "魔法效果{72FF}",
-      "translation_origin": "manual",
-      "renderer": "static"
-    },
-    {
-      "id": "SLPM-000E5C7C",
-      "offset": "000E5C7C",
-      "max_bytes": 12,
-      "source": "攻撃回数{72FF}",
-      "translation": "攻击次数{72FF}",
-      "translation_origin": "manual",
-      "renderer": "static"
-    },
-    {
-      "id": "SLPM-000E5C88",
-      "offset": "000E5C88",
-      "max_bytes": 12,
-      "source": "追加効果{72FF}",
-      "translation": "追加效果{72FF}",
-      "translation_origin": "manual",
-      "renderer": "static"
-    },
-    {
-      "id": "SLPM-000E5C94",
-      "offset": "000E5C94",
-      "max_bytes": 8,
-      "source": "性別{72FF}",
-      "translation": "性别{72FF}",
-      "translation_origin": "manual",
-      "renderer": "static"
-    },
-    {
-      "id": "SLPM-000E5C9C",
-      "offset": "000E5C9C",
-      "max_bytes": 20,
-      "source": "－－－－－－－－{72FF}",
-      "translation": "－－－－－－－－{72FF}",
-      "translation_origin": "manual",
-      "renderer": "static"
-    },
-    {
-      "id": "SLPM-000E5CB0",
-      "offset": "000E5CB0",
-      "max_bytes": 12,
-      "source": "追加効果{72FF}",
-      "translation": "追加效果{72FF}",
-      "translation_origin": "manual",
-      "renderer": "static"
-    },
-    {
-      "id": "SLPM-000E5CBC",
-      "offset": "000E5CBC",
-      "max_bytes": 8,
-      "source": "相性{72FF}",
-      "translation": "相性{72FF}",
-      "translation_origin": "manual",
-      "renderer": "static"
-    },
-    {
-      "id": "SLPM-000E5CC4",
-      "offset": "000E5CC4",
-      "max_bytes": 12,
-      "source": "ノーマル{72FF}",
-      "translation": "普通{72FF}",
-      "translation_origin": "manual",
-      "renderer": "static"
-    },
-    {
-      "id": "SLPM-000E5CD0",
-      "offset": "000E5CD0",
-      "max_bytes": 10,
-      "source": "対火炎{72FF}",
-      "translation": "抗火炎{72FF}",
-      "translation_origin": "manual",
-      "renderer": "static"
-    },
-    {
-      "id": "SLPM-000E5CDA",
-      "offset": "000E5CDA",
-      "max_bytes": 10,
-      "source": "対氷結{72FF}",
-      "translation": "抗冰结{72FF}",
-      "translation_origin": "manual",
-      "renderer": "static"
-    },
-    {
-      "id": "SLPM-000E5CE4",
-      "offset": "000E5CE4",
-      "max_bytes": 10,
-      "source": "対電撃{72FF}",
-      "translation": "抗电击{72FF}",
-      "translation_origin": "manual",
-      "renderer": "static"
-    },
-    {
-      "id": "SLPM-000E5CEE",
-      "offset": "000E5CEE",
-      "max_bytes": 10,
-      "source": "対衝撃{72FF}",
-      "translation": "抗冲击{72FF}",
-      "translation_origin": "manual",
-      "renderer": "static"
-    },
-    {
-      "id": "SLPM-000E5CF8",
-      "offset": "000E5CF8",
-      "max_bytes": 12,
-      "source": "対サイコ{72FF}",
-      "translation": "抗精神{72FF}",
-      "translation_origin": "manual",
-      "renderer": "static"
-    },
-    {
-      "id": "SLPM-000E5D04",
-      "offset": "000E5D04",
-      "max_bytes": 10,
-      "source": "対物理{72FF}",
-      "translation": "抗物理{72FF}",
-      "translation_origin": "manual",
-      "renderer": "static"
-    },
-    {
-      "id": "SLPM-000E5D0E",
-      "offset": "000E5D0E",
-      "max_bytes": 12,
-      "source": "対電/衝{72FF}",
-      "translation": "抗电/冲{72FF}",
-      "translation_origin": "manual",
-      "renderer": "static"
-    },
-    {
-      "id": "SLPM-000E5D1A",
-      "offset": "000E5D1A",
-      "max_bytes": 12,
-      "source": "対火/氷{72FF}",
-      "translation": "抗火/冰{72FF}",
-      "translation_origin": "manual",
-      "renderer": "static"
-    },
-    {
-      "id": "SLPM-000E5D26",
-      "offset": "000E5D26",
-      "max_bytes": 12,
-      "source": "反サイコ{72FF}",
-      "translation": "反精神{72FF}",
-      "translation_origin": "manual",
-      "renderer": "static"
-    },
-    {
-      "id": "SLPM-000E5D32",
-      "offset": "000E5D32",
-      "max_bytes": 10,
-      "source": "反物理{72FF}",
-      "translation": "反物理{72FF}",
-      "translation_origin": "manual",
-      "renderer": "static"
-    },
-    {
-      "id": "SLPM-000E5D3C",
-      "offset": "000E5D3C",
-      "max_bytes": 10,
-      "source": "吸火炎{72FF}",
-      "translation": "吸火炎{72FF}",
-      "translation_origin": "manual",
-      "renderer": "static"
-    },
-    {
-      "id": "SLPM-000E5D46",
-      "offset": "000E5D46",
-      "max_bytes": 10,
-      "source": "吸電撃{72FF}",
-      "translation": "吸电击{72FF}",
-      "translation_origin": "manual",
-      "renderer": "static"
-    },
-    {
-      "id": "SLPM-000E5D50",
-      "offset": "000E5D50",
-      "max_bytes": 12,
-      "source": "魔性防具{72FF}",
-      "translation": "魔性防具{72FF}",
-      "translation_origin": "manual",
-      "renderer": "static"
-    },
-    {
-      "id": "SLPM-000E5D5C",
-      "offset": "000E5D5C",
-      "max_bytes": 12,
-      "source": "神聖防具{72FF}",
-      "translation": "神圣防具{72FF}",
-      "translation_origin": "manual",
-      "renderer": "static"
-    },
-    {
-      "id": "SLPM-000E5D68",
-      "offset": "000E5D68",
-      "max_bytes": 10,
-      "source": "全対応{72FF}",
-      "translation": "全抗性{72FF}",
-      "translation_origin": "manual",
-      "renderer": "static"
-    },
-    {
-      "id": "SLPM-000E5D72",
-      "offset": "000E5D72",
-      "max_bytes": 10,
-      "source": "？？？{72FF}",
-      "translation": "？？？{72FF}",
-      "translation_origin": "manual",
-      "renderer": "static"
-    },
-    {
-      "id": "SLPM-000E5D7C",
-      "offset": "000E5D7C",
-      "max_bytes": 20,
-      "source": "？？？？？？？？{72FF}",
-      "translation": "？？？？？？？？{72FF}",
-      "translation_origin": "manual",
-      "renderer": "static"
-    },
-    {
-      "id": "SLPM-000E5D90",
-      "offset": "000E5D90",
-      "max_bytes": 10,
-      "source": "合体剣{72FF}",
-      "translation": "合体剑{72FF}",
-      "translation_origin": "manual",
-      "renderer": "static"
-    },
-    {
-      "id": "SLPM-000E5D9A",
-      "offset": "000E5D9A",
-      "max_bytes": 10,
-      "source": "合体銃{72FF}",
-      "translation": "合体枪{72FF}",
-      "translation_origin": "manual",
-      "renderer": "static"
-    },
-    {
-      "id": "SLPM-000E5DA4",
-      "offset": "000E5DA4",
-      "max_bytes": 10,
-      "source": "頭防具{72FF}",
-      "translation": "头防具{72FF}",
-      "translation_origin": "manual",
-      "renderer": "static"
-    },
-    {
-      "id": "SLPM-000E5DAE",
-      "offset": "000E5DAE",
-      "max_bytes": 10,
-      "source": "体防具{72FF}",
-      "translation": "体防具{72FF}",
-      "translation_origin": "manual",
-      "renderer": "static"
-    },
-    {
-      "id": "SLPM-000E5DB8",
-      "offset": "000E5DB8",
-      "max_bytes": 10,
-      "source": "腕防具{72FF}",
-      "translation": "腕防具{72FF}",
-      "translation_origin": "manual",
-      "renderer": "static"
-    },
-    {
-      "id": "SLPM-000E5DC2",
-      "offset": "000E5DC2",
-      "max_bytes": 10,
-      "source": "脚防具{72FF}",
-      "translation": "脚防具{72FF}",
-      "translation_origin": "manual",
-      "renderer": "static"
-    },
-    {
-      "id": "SLPM-000E602C",
-      "offset": "000E602C",
-      "max_bytes": 20,
-      "source": "魔法を使用します{72FF}",
-      "translation": "使用魔法{72FF}",
-      "renderer": "dynamic",
-      "translation_origin": "existing_exact_match"
-    },
-    {
-      "id": "SLPM-000E6040",
-      "offset": "000E6040",
-      "max_bytes": 46,
-      "source": "アイテムを使用/整頓/並び替え/破棄します{72FF}",
-      "translation": "使用道具/整理/排序/丢弃{72FF}",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E606E",
-      "offset": "000E606E",
-      "max_bytes": 20,
-      "source": "装備を変更します{72FF}",
-      "translation": "变更装备{72FF}",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E6082",
-      "offset": "000E6082",
-      "max_bytes": 30,
-      "source": "詳細ステータスを表示します{72FF}",
-      "translation": "显示详细状态{72FF}",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E60A0",
-      "offset": "000E60A0",
-      "max_bytes": 20,
-      "source": "隊列を変更します{72FF}",
-      "translation": "调整队列{72FF}",
-      "renderer": "dynamic",
-      "translation_origin": "manual"
-    },
-    {
-      "id": "SLPM-000E60B4",
-      "offset": "000E60B4",
-      "max_bytes": 32,
-      "source": "ＣＯＭＰ内の仲魔を召喚します{72FF}",
-      "translation": "召唤ＣＯＭＰ里的仲魔{72FF}",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E60D4",
-      "offset": "000E60D4",
-      "max_bytes": 30,
-      "source": "仲魔をＣＯＭＰ内に戻します{72FF}",
-      "translation": "让仲魔回到ＣＯＭＰ{72FF}",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E60F2",
-      "offset": "000E60F2",
-      "max_bytes": 30,
-      "source": "仲魔をパーティから外します{72FF}",
-      "translation": "让仲魔离开队伍{72FF}",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E6110",
-      "offset": "000E6110",
-      "max_bytes": 40,
-      "source": "今まで行った場所のＭＡＰを表示します{72FF}",
-      "translation": "显示以往去过的地点的ＭＡＰ{72FF}",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E6138",
-      "offset": "000E6138",
-      "max_bytes": 40,
-      "source": "パーティ全員の回復を自動的に行います{72FF}",
-      "translation": "队伍全员自动进行回复{72FF}",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E6160",
-      "offset": "000E6160",
-      "max_bytes": 32,
-      "source": "今まで倒した悪魔を解析します{72FF}",
-      "translation": "解析以往打倒过的恶魔{72FF}",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E6180",
-      "offset": "000E6180",
-      "max_bytes": 26,
-      "source": "誰の魔法を使いますか？{72FF}",
-      "translation": "要使用谁的魔法？{72FF}",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E619A",
-      "offset": "000E619A",
-      "max_bytes": 26,
-      "source": "どの魔法を使いますか？{72FF}",
-      "translation": "要使用哪个魔法？{72FF}",
-      "renderer": "dynamic",
-      "translation_origin": "existing_exact_match"
-    },
-    {
-      "id": "SLPM-000E61B4",
-      "offset": "000E61B4",
-      "max_bytes": 24,
-      "source": "アイテムを使用します{72FF}",
-      "translation": "使用道具{72FF}",
-      "renderer": "dynamic",
-      "translation_origin": "existing_exact_match"
-    },
-    {
-      "id": "SLPM-000E61CC",
-      "offset": "000E61CC",
-      "max_bytes": 24,
-      "source": "アイテムを整頓します{72FF}",
-      "translation": "整理道具{72FF}",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E61E4",
-      "offset": "000E61E4",
-      "max_bytes": 26,
-      "source": "アイテムを並び替えます{72FF}",
-      "translation": "给道具排序{72FF}",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E61FE",
-      "offset": "000E61FE",
-      "max_bytes": 24,
-      "source": "アイテムを破棄します{72FF}",
-      "translation": "丢弃道具{72FF}",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E6216",
-      "offset": "000E6216",
-      "max_bytes": 30,
-      "source": "どのアイテムを使いますか？{72FF}",
-      "translation": "要使用哪个道具？{72FF}",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E6234",
-      "offset": "000E6234",
-      "max_bytes": 20,
-      "source": "誰に使いますか？{72FF}",
-      "translation": "要对谁使用？{72FF}",
-      "renderer": "dynamic",
-      "translation_origin": "existing_exact_match"
-    },
-    {
-      "id": "SLPM-000E6248",
-      "offset": "000E6248",
-      "max_bytes": 38,
-      "source": "移動元のアイテムを選択してください{72FF}",
-      "translation": "请选择要移动的道具{72FF}",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E626E",
-      "offset": "000E626E",
-      "max_bytes": 38,
-      "source": "移動先のアイテムを選択してください{72FF}",
-      "translation": "请选择要移动到的位置{72FF}",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E6294",
-      "offset": "000E6294",
-      "max_bytes": 30,
-      "source": "どのアイテムを捨てますか？{72FF}",
-      "translation": "要丢弃哪个道具？{72FF}",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E62B2",
-      "offset": "000E62B2",
-      "max_bytes": 30,
-      "source": "誰のステータスを見ますか？{72FF}",
-      "translation": "要查看谁的状态？{72FF}",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E62D0",
-      "offset": "000E62D0",
-      "max_bytes": 34,
-      "source": "移動元のアイテムを選んで下さい{72FF}",
-      "translation": "请选择要移动的道具{72FF}",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E62F2",
-      "offset": "000E62F2",
-      "max_bytes": 34,
-      "source": "移動先のアイテムを選んで下さい{72FF}",
-      "translation": "请选择要移动到的位置{72FF}",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E6314",
-      "offset": "000E6314",
-      "max_bytes": 26,
-      "source": "呼び出せる仲魔はいない{72FF}",
-      "translation": "没有能召唤出来的仲魔{72FF}",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E632E",
-      "offset": "000E632E",
-      "max_bytes": 22,
-      "source": "誰を召喚しますか？{72FF}",
-      "translation": "要召唤谁呢？{72FF}",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E6344",
-      "offset": "000E6344",
-      "max_bytes": 18,
-      "source": "{名字1}を呼び出した▽",
-      "translation": "将{名字1}召唤出来了▽",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E6356",
-      "offset": "000E6356",
-      "max_bytes": 24,
-      "source": "{名字1}をＣＯＭＰに戻した▽",
-      "translation": "让{名字1}返回ＣＯＭＰ了。▽",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E636E",
-      "offset": "000E636E",
-      "max_bytes": 18,
-      "source": "{主角}達は回復した▽",
-      "translation": "{主角}等人回复了。▽",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E6380",
-      "offset": "000E6380",
-      "max_bytes": 24,
-      "source": "しかし効果は無かった▽",
-      "translation": "但是没有效果。▽",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E6398",
-      "offset": "000E6398",
-      "max_bytes": 26,
-      "source": "種族別に並べて表示します",
-      "translation": "根据种族进行排序",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E63B2",
-      "offset": "000E63B2",
-      "max_bytes": 36,
-      "source": "悪魔名の５０音順に並べて表示します",
-      "translation": "根据恶魔名的５０音进行排序",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E63D6",
-      "offset": "000E63D6",
-      "max_bytes": 28,
-      "source": "レベル順に並べて表示します",
-      "translation": "根据等级大小进行排序",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E63F2",
-      "offset": "000E63F2",
-      "max_bytes": 26,
-      "source": "属性別に並べて表示します",
-      "translation": "根据属性进行排序",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E640C",
-      "offset": "000E640C",
-      "max_bytes": 16,
-      "source": "どうしますか？",
-      "translation": "要做什么呢？",
-      "renderer": "dynamic",
-      "translation_origin": "existing_exact_match"
-    },
-    {
-      "id": "SLPM-000E641C",
-      "offset": "000E641C",
-      "max_bytes": 32,
-      "source": "ＣＯＭＰを使える状態ではない▽",
-      "translation": "现在无法使用ＣＯＭＰ。▽",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E643C",
-      "offset": "000E643C",
-      "max_bytes": 30,
-      "source": "ここではＣＯＭＰを使えない▽",
-      "translation": "在这里无法使用ＣＯＭＰ。▽",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E645A",
-      "offset": "000E645A",
-      "max_bytes": 16,
-      "source": "誰を呼び出す？",
-      "translation": "要召唤出谁？",
-      "renderer": "dynamic",
-      "translation_origin": "existing_exact_match"
-    },
-    {
-      "id": "SLPM-000E646A",
-      "offset": "000E646A",
-      "max_bytes": 18,
-      "source": "どこに呼び出す？",
-      "translation": "要召唤到哪里？",
-      "renderer": "dynamic",
-      "translation_origin": "existing_exact_match"
-    },
-    {
-      "id": "SLPM-000E647C",
-      "offset": "000E647C",
-      "max_bytes": 22,
-      "source": "誰と換えて呼び出す？",
-      "translation": "要召唤谁来交换？",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E6492",
-      "offset": "000E6492",
-      "max_bytes": 14,
-      "source": "換えられない",
-      "translation": "无法交换",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E64A0",
-      "offset": "000E64A0",
-      "max_bytes": 16,
-      "source": "お金が足りない",
-      "translation": "金钱不够",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E64B0",
-      "offset": "000E64B0",
-      "max_bytes": 28,
-      "source": "属性が違いすぎる悪魔がいる",
-      "translation": "存在属性相差过大的恶魔",
-      "renderer": "dynamic",
-      "translation_origin": "existing_exact_match"
-    },
-    {
-      "id": "SLPM-000E64CC",
-      "offset": "000E64CC",
-      "max_bytes": 16,
-      "source": "ＮＯ　ＤＡＴＡ",
-      "translation": "ＮＯ　ＤＡＴＡ",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E64DC",
-      "offset": "000E64DC",
-      "max_bytes": 12,
-      "source": "誰を戻す？",
-      "translation": "让谁回去？",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E64E8",
-      "offset": "000E64E8",
-      "max_bytes": 20,
-      "source": "戻せる仲魔はいない",
-      "translation": "没有能返回的仲魔",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E64FC",
-      "offset": "000E64FC",
-      "max_bytes": 12,
-      "source": "誰を外す？",
-      "translation": "让谁离开？",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E6508",
-      "offset": "000E6508",
-      "max_bytes": 18,
-      "source": "{名字1}を外しますか？",
-      "translation": "要让{名字1}离开吗？",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E651A",
-      "offset": "000E651A",
-      "max_bytes": 10,
-      "source": "位置換え",
-      "translation": "交换位置",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E6524",
-      "offset": "000E6524",
-      "max_bytes": 22,
-      "source": "どのアイテムを見る？",
-      "translation": "要查看哪个道具？",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E653A",
-      "offset": "000E653A",
-      "max_bytes": 12,
-      "source": "誰の魔法？",
-      "translation": "谁的魔法？",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E6546",
-      "offset": "000E6546",
-      "max_bytes": 18,
-      "source": "どの魔法を使う？",
-      "translation": "要使用哪个魔法？",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E6558",
-      "offset": "000E6558",
-      "max_bytes": 12,
-      "source": "誰に使う？",
-      "translation": "让谁使用？",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E6564",
-      "offset": "000E6564",
-      "max_bytes": 24,
-      "source": "誰の魔法を並べ替える？",
-      "translation": "要排列谁的魔法？",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E657C",
-      "offset": "000E657C",
-      "max_bytes": 22,
-      "source": "どのアイテムを使う？",
-      "translation": "要使用哪个道具？",
-      "renderer": "dynamic",
-      "translation_origin": "existing_exact_match"
-    },
-    {
-      "id": "SLPM-000E6592",
-      "offset": "000E6592",
-      "max_bytes": 10,
-      "source": "並べ替え",
-      "translation": "排序",
-      "renderer": "dynamic",
-      "translation_origin": "existing_exact_match"
-    },
-    {
-      "id": "SLPM-000E659C",
-      "offset": "000E659C",
-      "max_bytes": 14,
-      "source": "整頓中．．．",
-      "translation": "整理中．．．",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E65AA",
-      "offset": "000E65AA",
-      "max_bytes": 10,
-      "source": "整頓終了",
-      "translation": "整理结束",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E65B4",
-      "offset": "000E65B4",
-      "max_bytes": 24,
-      "source": "どのアイテムを捨てる？",
-      "translation": "要丢弃哪个道具？",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E65CC",
-      "offset": "000E65CC",
-      "max_bytes": 18,
-      "source": "{道具}を捨てるのか？",
-      "translation": "要丢弃{道具}吗？",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E65DE",
-      "offset": "000E65DE",
-      "max_bytes": 12,
-      "source": "誰の装備？",
-      "translation": "谁的装备？",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E65EA",
-      "offset": "000E65EA",
-      "max_bytes": 24,
-      "source": "誰のステータスを見る？",
-      "translation": "要查看谁的状态？",
-      "renderer": "dynamic",
-      "translation_origin": "manual"
-    },
-    {
-      "id": "SLPM-000E6602",
-      "offset": "000E6602",
-      "max_bytes": 20,
-      "source": "しばし待たれよ！▽",
-      "translation": "稍等一会儿吧！▽",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E6616",
-      "offset": "000E6616",
-      "max_bytes": 26,
-      "source": "{名字1}は\n渋々去って行った▽",
-      "translation": "{名字1}\n不情不愿地离开了。▽",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E6630",
-      "offset": "000E6630",
-      "max_bytes": 14,
-      "source": "よろしいか？",
-      "translation": "可以吗？",
-      "renderer": "dynamic",
-      "translation_origin": "existing_exact_match"
-    },
-    {
-      "id": "SLPM-000E663E",
-      "offset": "000E663E",
-      "max_bytes": 22,
-      "source": "何処に転送しますか？",
-      "translation": "要传送到哪里？",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E6654",
-      "offset": "000E6654",
-      "max_bytes": 34,
-      "source": "アイテムが１種類しかありません▽",
-      "translation": "道具只有一个种类。▽",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E6676",
-      "offset": "000E6676",
-      "max_bytes": 20,
-      "source": "アイテムが一杯だ▽",
-      "translation": "道具已满。▽",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E668A",
-      "offset": "000E668A",
-      "max_bytes": 18,
-      "source": "アイテムが無い▽",
-      "translation": "没有道具。▽",
-      "renderer": "dynamic",
-      "translation_origin": "manual"
-    },
-    {
-      "id": "SLPM-000E669C",
-      "offset": "000E669C",
-      "max_bytes": 28,
-      "source": "装備できるアイテムが無い▽",
-      "translation": "没有可装备的道具。▽",
-      "renderer": "dynamic",
-      "translation_origin": "manual"
-    },
-    {
-      "id": "SLPM-000E66B8",
-      "offset": "000E66B8",
-      "max_bytes": 22,
-      "source": "何も装備していない▽",
-      "translation": "什么也没有装备。▽",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E66CE",
-      "offset": "000E66CE",
-      "max_bytes": 24,
-      "source": "{仲魔}は\n能力を回復した▽",
-      "translation": "{仲魔}\n恢复了能力。▽",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E66E6",
-      "offset": "000E66E6",
-      "max_bytes": 20,
-      "source": "階段を上りますか？",
-      "translation": "要上楼吗？",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E66FA",
-      "offset": "000E66FA",
-      "max_bytes": 20,
-      "source": "階段を下りますか？",
-      "translation": "要下楼吗？",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E670E",
-      "offset": "000E670E",
-      "max_bytes": 20,
-      "source": "使える魔法が無い▽",
-      "translation": "没有可用魔法。▽",
-      "renderer": "dynamic",
-      "translation_origin": "manual"
-    },
-    {
-      "id": "SLPM-000E6722",
-      "offset": "000E6722",
-      "max_bytes": 26,
-      "source": "ＣＯＭＰを持っていない▽",
-      "translation": "没有ＣＯＭＰ。▽",
-      "renderer": "dynamic",
-      "translation_origin": "manual"
-    },
-    {
-      "id": "SLPM-000E673C",
-      "offset": "000E673C",
-      "max_bytes": 28,
-      "source": "仲魔が一杯だ\n誰か外すか？",
-      "translation": "仲魔已经满了\n要让谁离开？",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E6758",
-      "offset": "000E6758",
-      "max_bytes": 24,
-      "source": "仲魔にするのを諦めた▽",
-      "translation": "放弃成为仲魔了。▽",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E6770",
-      "offset": "000E6770",
-      "max_bytes": 24,
-      "source": "話しが通じないようだ▽",
-      "translation": "看起来无法对话。▽",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E6788",
-      "offset": "000E6788",
-      "max_bytes": 26,
-      "source": "だめだ話しにならない！▽",
-      "translation": "不行，无法对话！▽",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E67A2",
-      "offset": "000E67A2",
-      "max_bytes": 24,
-      "source": "いきなり襲ってきた！▽",
-      "translation": "突然袭击了过来！▽",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E67BA",
-      "offset": "000E67BA",
-      "max_bytes": 26,
-      "source": "{主角}は話せる状態ではない▽",
-      "translation": "{主角}不在能对话的状态。▽",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E67D4",
-      "offset": "000E67D4",
-      "max_bytes": 16,
-      "source": "何をしますか？",
-      "translation": "要做什么呢？",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E67E4",
-      "offset": "000E67E4",
-      "max_bytes": 14,
-      "source": "ＣＯＭＰ作動",
-      "translation": "ＣＯＭＰ启动",
-      "renderer": "dynamic",
-      "translation_origin": "existing_exact_match"
-    },
-    {
-      "id": "SLPM-000E67F2",
-      "offset": "000E67F2",
-      "max_bytes": 32,
-      "source": "この場で使えるアイテムが無い▽",
-      "translation": "没有能在这里使用的道具。▽",
-      "renderer": "dynamic",
-      "translation_origin": "manual"
-    },
-    {
-      "id": "SLPM-000E6812",
-      "offset": "000E6812",
-      "max_bytes": 32,
-      "source": "どの悪魔をアナライズしますか？",
-      "translation": "要解析哪个恶魔呢？",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E6832",
-      "offset": "000E6832",
-      "max_bytes": 32,
-      "source": "アナライズできる悪魔がいない▽",
-      "translation": "没有能解析的恶魔。▽",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E6852",
-      "offset": "000E6852",
-      "max_bytes": 14,
-      "source": "魔法が無い▽",
-      "translation": "没有魔法。▽",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E6860",
-      "offset": "000E6860",
-      "max_bytes": 42,
-      "source": "{仲魔}は魔法を\n{数值0}個覚えられるようになった▽",
-      "translation": "{仲魔}似乎学会了を\n{数值0}个魔法。▽",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E688A",
-      "offset": "000E688A",
-      "max_bytes": 24,
-      "source": "ここでは使用できない▽",
-      "translation": "没法在这里使用。▽",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E68A2",
-      "offset": "000E68A2",
-      "max_bytes": 26,
-      "source": "オートリカバーしますか？",
-      "translation": "要自动回复吗？",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E68BC",
-      "offset": "000E68BC",
-      "max_bytes": 48,
-      "source": "その名前ではないですね▽ふざけないでください▽",
-      "translation": "并不是那个名字呢。▽请不要开玩笑。▽",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E68EC",
-      "offset": "000E68EC",
-      "max_bytes": 22,
-      "source": "この仲魔は外せない▽",
-      "translation": "该仲魔无法离开。▽",
-      "renderer": "dynamic",
-      "translation_origin": "existing_exact_match"
-    },
-    {
-      "id": "SLPM-000E6902",
-      "offset": "000E6902",
-      "max_bytes": 28,
-      "source": "アイテムが一杯で外せない▽",
-      "translation": "道具已满，无法卸除。",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E691E",
-      "offset": "000E691E",
-      "max_bytes": 16,
-      "source": "￡が足りない▽",
-      "translation": "￡不够。▽",
-      "renderer": "dynamic",
-      "translation_origin": "existing_exact_match"
-    },
-    {
-      "id": "SLPM-000E692E",
-      "offset": "000E692E",
-      "max_bytes": 22,
-      "source": "{名字1}の\n死体を捨てた▽",
-      "translation": "丢掉了{名字1}的尸体。▽",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E6944",
-      "offset": "000E6944",
-      "max_bytes": 28,
-      "source": "呪われているので外せない▽",
-      "translation": "由于被诅咒，无法卸除。▽",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E6960",
-      "offset": "000E6960",
-      "max_bytes": 10,
-      "source": "特になし",
-      "translation": "无",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E696A",
-      "offset": "000E696A",
-      "max_bytes": 18,
-      "source": "ＭＰが足りない▽",
-      "translation": "ＭＰ不够。▽",
-      "renderer": "dynamic",
-      "translation_origin": "existing_exact_match"
-    },
-    {
-      "id": "SLPM-000E697C",
-      "offset": "000E697C",
-      "max_bytes": 28,
-      "source": "魔法を使える状態ではない▽",
-      "translation": "现在无法使用魔法。▽",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E6998",
-      "offset": "000E6998",
-      "max_bytes": 18,
-      "source": "{道具}を捨てますか？",
-      "translation": "要丢弃{道具}吗？",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E69AA",
-      "offset": "000E69AA",
-      "max_bytes": 24,
-      "source": "どの弾を装備しますか？",
-      "translation": "要装备哪种子弹？",
-      "renderer": "dynamic",
-      "translation_origin": "existing_exact_match"
-    },
-    {
-      "id": "SLPM-000E69C2",
-      "offset": "000E69C2",
-      "max_bytes": 22,
-      "source": "装備する必要すらない",
-      "translation": "没有装备的必要",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E69D8",
-      "offset": "000E69D8",
-      "max_bytes": 32,
-      "source": "アイテムを使える状態ではない▽",
-      "translation": "现在无法使用道具。▽",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E69F8",
-      "offset": "000E69F8",
-      "max_bytes": 20,
-      "source": "外せる仲魔はいない",
-      "translation": "没有能离开的仲魔。",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E6A0C",
-      "offset": "000E6A0C",
-      "max_bytes": 26,
-      "source": "ここで魔法は　使えない▽",
-      "translation": "在这里无法使用魔法。▽",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E6A26",
-      "offset": "000E6A26",
-      "max_bytes": 20,
-      "source": "{仲魔}は\n{道具}を使った{大停顿}",
-      "translation": "{仲魔}\n使用了{道具}。{大停顿}",
-      "renderer": "dynamic",
-      "translation_origin": "existing_exact_match"
-    },
-    {
-      "id": "SLPM-000E6A3A",
-      "offset": "000E6A3A",
-      "max_bytes": 16,
-      "source": "誰も悪くない▽",
-      "translation": "谁都没有错。▽",
-      "renderer": "dynamic",
-      "translation_origin": "existing_exact_match"
-    },
-    {
-      "id": "SLPM-000E6A4A",
-      "offset": "000E6A4A",
-      "max_bytes": 26,
-      "source": "しかし　効果がなかった{大停顿}",
-      "translation": "但是没有效果。{大停顿}",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E6A64",
-      "offset": "000E6A64",
-      "max_bytes": 26,
-      "source": "失敗して　しまった！！{大停顿}",
-      "translation": "失败了！！{大停顿}",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E6A7E",
-      "offset": "000E6A7E",
-      "max_bytes": 20,
-      "source": "{仲魔}は\n{魔法}を唱えた{大停顿}",
-      "translation": "{仲魔}\n咏唱了{魔法}。{大停顿}",
-      "renderer": "dynamic",
-      "translation_origin": "existing_exact_match"
-    },
-    {
-      "id": "SLPM-000E6A92",
-      "offset": "000E6A92",
-      "max_bytes": 18,
-      "source": "{仲魔}は\n回復した{大停顿}",
-      "translation": "{仲魔}回复了。{大停顿}",
-      "renderer": "dynamic",
-      "translation_origin": "existing_exact_match"
-    },
-    {
-      "id": "SLPM-000E6AA4",
-      "offset": "000E6AA4",
-      "max_bytes": 20,
-      "source": "{仲魔}達は\n回復した{大停顿}",
-      "translation": "{仲魔}等回复了。{大停顿}",
-      "renderer": "dynamic",
-      "translation_origin": "existing_exact_match"
-    },
-    {
-      "id": "SLPM-000E6AB8",
-      "offset": "000E6AB8",
-      "max_bytes": 20,
-      "source": "{仲魔}は\n我に返った{大停顿}",
-      "translation": "{仲魔}恢复自我了。{大停顿}",
-      "renderer": "dynamic",
-      "translation_origin": "existing_exact_match"
-    },
-    {
-      "id": "SLPM-000E6ACC",
-      "offset": "000E6ACC",
-      "max_bytes": 20,
-      "source": "{主角等人}は\n我に返った{大停顿}",
-      "translation": "{主角等人}恢复自我了。{大停顿}",
-      "renderer": "dynamic",
-      "translation_origin": "existing_exact_match"
-    },
-    {
-      "id": "SLPM-000E6AE0",
-      "offset": "000E6AE0",
-      "max_bytes": 22,
-      "source": "{仲魔}達は\n我に返った{大停顿}",
-      "translation": "{仲魔}等恢复自我了。{大停顿}",
-      "renderer": "dynamic",
-      "translation_origin": "existing_exact_match"
-    },
-    {
-      "id": "SLPM-000E6AF6",
-      "offset": "000E6AF6",
-      "max_bytes": 22,
-      "source": "{仲魔}から\n毒が消えた{大停顿}",
-      "translation": "{仲魔}的毒素消失了。{大停顿}",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E6B0C",
-      "offset": "000E6B0C",
-      "max_bytes": 22,
-      "source": "{仲魔}の\n麻痺が治った{大停顿}",
-      "translation": "{仲魔}的麻痹痊愈了。{大停顿}",
-      "renderer": "dynamic",
-      "translation_origin": "existing_exact_match"
-    },
-    {
-      "id": "SLPM-000E6B22",
-      "offset": "000E6B22",
-      "max_bytes": 22,
-      "source": "{仲魔}の\n石化が解けた{大停顿}",
-      "translation": "{仲魔}的石化解除了。{大停顿}",
-      "renderer": "dynamic",
-      "translation_origin": "existing_exact_match"
-    },
-    {
-      "id": "SLPM-000E6B38",
-      "offset": "000E6B38",
-      "max_bytes": 22,
-      "source": "{仲魔}は\n正気になった{大停顿}",
-      "translation": "{仲魔}恢复正常了。{大停顿}",
-      "renderer": "dynamic",
-      "translation_origin": "existing_exact_match"
-    },
-    {
-      "id": "SLPM-000E6B4E",
-      "offset": "000E6B4E",
-      "max_bytes": 20,
-      "source": "{仲魔}は\n生き返った{大停顿}",
-      "translation": "{仲魔}复生了。{大停顿}",
-      "renderer": "dynamic",
-      "translation_origin": "existing_exact_match"
-    },
-    {
-      "id": "SLPM-000E6B62",
-      "offset": "000E6B62",
-      "max_bytes": 18,
-      "source": "{仲魔}は\n復活した{大停顿}",
-      "translation": "{仲魔}复活了。{大停顿}",
-      "renderer": "dynamic",
-      "translation_origin": "existing_exact_match"
-    },
-    {
-      "id": "SLPM-000E6B74",
-      "offset": "000E6B74",
-      "max_bytes": 24,
-      "source": "{仲魔}は\nその場に倒れた{大停顿}",
-      "translation": "{仲魔}当场倒下了。{大停顿}",
-      "renderer": "dynamic",
-      "translation_origin": "existing_exact_match"
-    },
-    {
-      "id": "SLPM-000E6B8C",
-      "offset": "000E6B8C",
-      "max_bytes": 18,
-      "source": "{仲魔}を\n召喚した{大停顿}",
-      "translation": "召唤了{仲魔}。{大停顿}",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E6B9E",
-      "offset": "000E6B9E",
-      "max_bytes": 22,
-      "source": "{仲魔}は\nよみがえった{大停顿}",
-      "translation": "{仲魔}苏醒了。{大停顿}",
-      "renderer": "dynamic",
-      "translation_origin": "existing_exact_match"
-    },
-    {
-      "id": "SLPM-000E6BB4",
-      "offset": "000E6BB4",
-      "max_bytes": 32,
-      "source": "{主角等人}の体は\nシールドに守られた{大停顿}",
-      "translation": "{主角等人}的身体\n被屏障守护着。{大停顿}",
-      "renderer": "dynamic",
-      "translation_origin": "existing_exact_match"
-    },
-    {
-      "id": "SLPM-000E6BD4",
-      "offset": "000E6BD4",
-      "max_bytes": 30,
-      "source": "{仲魔}の\nＨＰとＭＰは回復した{大停顿}",
-      "translation": "{仲魔}的\nＨＰ和ＭＰ回复了。{大停顿}",
-      "renderer": "dynamic",
-      "translation_origin": "existing_exact_match"
-    },
-    {
-      "id": "SLPM-000E6BF2",
-      "offset": "000E6BF2",
-      "max_bytes": 24,
-      "source": "{仲魔}は\n元気が出てきた{大停顿}",
-      "translation": "{仲魔}打起了精神。{大停顿}",
-      "renderer": "dynamic",
-      "translation_origin": "existing_exact_match"
-    },
-    {
-      "id": "SLPM-000E6C0A",
-      "offset": "000E6C0A",
-      "max_bytes": 22,
-      "source": "{仲魔}は毒におかされた{大停顿}",
-      "translation": "{仲魔}中毒了。{大停顿}",
-      "renderer": "dynamic",
-      "translation_origin": "existing_exact_match"
-    },
-    {
-      "id": "SLPM-000E6C20",
-      "offset": "000E6C20",
-      "max_bytes": 18,
-      "source": "{仲魔}は\n全快した{大停顿}",
-      "translation": "{仲魔}完全痊愈了。{大停顿}",
-      "renderer": "dynamic",
-      "translation_origin": "existing_exact_match"
-    },
-    {
-      "id": "SLPM-000E6C32",
-      "offset": "000E6C32",
-      "max_bytes": 22,
-      "source": "{仲魔}の\n運が上がった{大停顿}",
-      "translation": "{仲魔}的运气提升了。{大停顿}",
-      "renderer": "dynamic",
-      "translation_origin": "existing_exact_match"
-    },
-    {
-      "id": "SLPM-000E6C48",
-      "offset": "000E6C48",
-      "max_bytes": 24,
-      "source": "{仲魔}の\n体力が上がった{大停顿}",
-      "translation": "{仲魔}的体力提升了。{大停顿}",
-      "renderer": "dynamic",
-      "translation_origin": "existing_exact_match"
-    },
-    {
-      "id": "SLPM-000E6C60",
-      "offset": "000E6C60",
-      "max_bytes": 24,
-      "source": "{仲魔}の\n知恵が上がった{大停顿}",
-      "translation": "{仲魔}的智慧提升了。{大停顿}",
-      "renderer": "dynamic",
-      "translation_origin": "existing_exact_match"
-    },
-    {
-      "id": "SLPM-000E6C78",
-      "offset": "000E6C78",
-      "max_bytes": 22,
-      "source": "{仲魔}の\n力が上がった{大停顿}",
-      "translation": "{仲魔}的力量提升了。{大停顿}",
-      "renderer": "dynamic",
-      "translation_origin": "existing_exact_match"
-    },
-    {
-      "id": "SLPM-000E6C8E",
-      "offset": "000E6C8E",
-      "max_bytes": 24,
-      "source": "{仲魔}の\n速さが上がった{大停顿}",
-      "translation": "{仲魔}的速度提升了。{大停顿}",
-      "renderer": "dynamic",
-      "translation_origin": "existing_exact_match"
-    },
-    {
-      "id": "SLPM-000E6CA6",
-      "offset": "000E6CA6",
-      "max_bytes": 24,
-      "source": "{仲魔}の\n魔力が上がった{大停顿}",
-      "translation": "{仲魔}的魔力提升了。{大停顿}",
-      "renderer": "dynamic",
-      "translation_origin": "existing_exact_match"
-    },
-    {
-      "id": "SLPM-000E6CBE",
-      "offset": "000E6CBE",
-      "max_bytes": 32,
-      "source": "身代わりの玉に\n守られている{大停顿}",
-      "translation": "被替身珠守护了。{大停顿}",
-      "renderer": "dynamic",
-      "translation_origin": "existing_exact_match"
-    },
-    {
-      "id": "SLPM-000E6CDE",
-      "offset": "000E6CDE",
-      "max_bytes": 26,
-      "source": "{道具}が\nシールドを張った{大停顿}",
-      "translation": "{道具}张开了屏障。{大停顿}",
-      "renderer": "dynamic",
-      "translation_origin": "existing_exact_match"
-    },
-    {
-      "id": "SLPM-000E6CF8",
-      "offset": "000E6CF8",
-      "max_bytes": 20,
-      "source": "箱から\n{名字1}が出た{大停顿}",
-      "translation": "{名字1}从箱子里出来了{大停顿}",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E6D0C",
-      "offset": "000E6D0C",
-      "max_bytes": 24,
-      "source": "{仲魔}は\nＭＰを回復した{大停顿}",
-      "translation": "{仲魔}回复了ＭＰ。{大停顿}",
-      "renderer": "dynamic",
-      "translation_origin": "existing_exact_match"
-    },
-    {
-      "id": "SLPM-000E6D24",
-      "offset": "000E6D24",
-      "max_bytes": 26,
-      "source": "{主角等人}は\nパワーアップした{大停顿}",
-      "translation": "{主角等人}强化了。{大停顿}",
-      "renderer": "dynamic",
-      "translation_origin": "existing_exact_match"
-    },
-    {
-      "id": "SLPM-000E6D3E",
-      "offset": "000E6D3E",
-      "max_bytes": 26,
-      "source": "{道具}は\nボロボロになった{大停顿}",
-      "translation": "{道具}变得破破烂烂了。{大停顿}",
-      "renderer": "dynamic",
-      "translation_origin": "existing_exact_match"
-    },
-    {
-      "id": "SLPM-000E6E32",
-      "offset": "000E6E32",
-      "max_bytes": 24,
-      "source": "ＥＲＲＯＲ　ＤＡＴＡ{72FF}",
-      "translation": "ＥＲＲＯＲ　ＤＡＴＡ{72FF}",
-      "renderer": "static",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E6E4A",
-      "offset": "000E6E4A",
-      "max_bytes": 16,
-      "source": "クリアデータ{72FF}",
-      "translation": "通关存档{72FF}",
-      "renderer": "static",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E6E5A",
-      "offset": "000E6E5A",
-      "max_bytes": 54,
-      "source": "ロードするメモリーカードの差込口を\n選択して下さい{72FF}",
-      "translation": "请选择读取存档的\n记忆卡插口{72FF}",
-      "renderer": "static",
-      "translation_origin": "manual"
-    },
-    {
-      "id": "SLPM-000E6E90",
-      "offset": "000E6E90",
-      "max_bytes": 54,
-      "source": "セーブするメモリーカードの差込口を\n選択して下さい{72FF}",
-      "translation": "请选择保存存档的\n记忆卡插口{72FF}",
-      "renderer": "static",
-      "translation_origin": "manual"
-    },
-    {
-      "id": "SLPM-000E6EC6",
-      "offset": "000E6EC6",
-      "max_bytes": 88,
-      "source": "メモリーカードチェック中です\nメモリーカードとコントローラを\n抜き差ししないで下さい{72FF}",
-      "translation": "正在检测记忆卡。\n请勿拔出记忆卡和控制器。{72FF}",
-      "renderer": "static",
-      "translation_origin": "existing_exact_match"
-    },
-    {
-      "id": "SLPM-000E6F1E",
-      "offset": "000E6F1E",
-      "max_bytes": 70,
-      "source": "メモリーカードが差されていません\n差込口{数值0}に正しく接続してください{72FF}",
-      "translation": "未插入记忆卡。\n请正确连接插口{数值0}。{72FF}",
-      "renderer": "static",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E6F64",
-      "offset": "000E6F64",
-      "max_bytes": 104,
-      "source": "メモリーカードが正常に認識されません\n差込口にメモリーカードが\n正しく差し込まれているかご確認下さい{72FF}",
-      "translation": "未正常识别记忆卡。\n请确认记忆卡是否正确插入插口。{72FF}",
-      "renderer": "static",
-      "translation_origin": "existing_exact_match"
-    },
-    {
-      "id": "SLPM-000E6FCC",
-      "offset": "000E6FCC",
-      "max_bytes": 46,
-      "source": "メモリーカードがフォーマットされていません{72FF}",
-      "translation": "记忆卡未格式化。{72FF}",
-      "renderer": "static",
-      "translation_origin": "existing_exact_match"
-    },
-    {
-      "id": "SLPM-000E6FFA",
-      "offset": "000E6FFA",
-      "max_bytes": 34,
-      "source": "セーブされたデータがありません{72FF}",
-      "translation": "没有存档。{72FF}",
-      "renderer": "static",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E701C",
-      "offset": "000E701C",
-      "max_bytes": 38,
-      "source": "中断セーブされたデータがありません{72FF}",
-      "translation": "没有中断存档。{72FF}",
-      "renderer": "static",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E7042",
-      "offset": "000E7042",
-      "max_bytes": 54,
-      "source": "ＦＩＬＥ{数值0}のデータをロードします\nよろしいですか？{72FF}",
-      "translation": "将会读取ＦＩＬＥ{数值0}的存档。\n确定要这样做吗？{72FF}",
-      "renderer": "static",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E7078",
-      "offset": "000E7078",
-      "max_bytes": 72,
-      "source": "ロード中です　メモリーカードと\nコントローラを抜き差ししないで下さい{72FF}",
-      "translation": "正在读取。\n请勿拔出记忆卡和控制器。{72FF}",
-      "renderer": "static",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E70C0",
-      "offset": "000E70C0",
-      "max_bytes": 24,
-      "source": "ロードに失敗しました{72FF}",
-      "translation": "读取失败了。{72FF}",
-      "renderer": "static",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E70D8",
-      "offset": "000E70D8",
-      "max_bytes": 58,
-      "source": "このデータはクリアデータです\nゲームの再開はできません{72FF}",
-      "translation": "这个存档是通关存档。\n无法继续游戏。{72FF}",
-      "renderer": "static",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E7112",
-      "offset": "000E7112",
-      "max_bytes": 44,
-      "source": "ここではクリアデータ以外ロードできません{72FF}",
-      "translation": "在这里只能读取通关存档。{72FF}",
-      "renderer": "static",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E713E",
-      "offset": "000E713E",
-      "max_bytes": 70,
-      "source": "メモリーカードがフォーマットされていません\nフォーマットしますか？{72FF}",
-      "translation": "记忆卡尚未格式化。\n要格式化吗？{72FF}",
-      "renderer": "static",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E7184",
-      "offset": "000E7184",
-      "max_bytes": 78,
-      "source": "フォーマット中です　メモリーカードと\nコントローラを抜き差ししないで下さい{72FF}",
-      "translation": "正在格式化。\n请勿拔出记忆卡和控制器。{72FF}",
-      "renderer": "static",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E71D2",
-      "offset": "000E71D2",
-      "max_bytes": 30,
-      "source": "フォーマットに失敗しました{72FF}",
-      "translation": "格式化失败了。{72FF}",
-      "renderer": "static",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E71F0",
-      "offset": "000E71F0",
-      "max_bytes": 166,
-      "source": "メモリーカードの空きブロックが足りないため\nセーブできません。空きブロックがある\nメモリーカードに差し直すか、メモリーカード\n管理画面で不要なデータを消して下さい{72FF}",
-      "translation": "由于记忆卡的空位不够，无法存档。\n请重新插入有空位的记忆卡，\n或是在管理界面删除不需要的存档。{72FF}",
-      "renderer": "static",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E7296",
-      "offset": "000E7296",
-      "max_bytes": 126,
-      "source": "選択された箇所にはすでにセーブされた\nデータがあります\nここを選択すると以前のデータは消えて\nしまいますがよろしいですか？{72FF}",
-      "translation": "选择的位置已经有存档了。\n选择这里的话将会删除以前的存档，\n确定要这样做吗？{72FF}",
-      "renderer": "static",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E7314",
-      "offset": "000E7314",
-      "max_bytes": 72,
-      "source": "セーブ中です　メモリーカードと\nコントローラを抜き差ししないで下さい{72FF}",
-      "translation": "正在保存。\n请勿拔出记忆卡和控制器。{72FF}",
-      "renderer": "static",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E735C",
-      "offset": "000E735C",
-      "max_bytes": 24,
-      "source": "セーブに失敗しました{72FF}",
-      "translation": "保存失败了。{72FF}",
-      "renderer": "static",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E7374",
-      "offset": "000E7374",
-      "max_bytes": 24,
-      "source": "セーブが終了しました{72FF}",
-      "translation": "保存完毕。{72FF}",
-      "renderer": "static",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E738C",
-      "offset": "000E738C",
-      "max_bytes": 58,
-      "source": "メモリーカードを未初期化状態にします\nよろしいですか？{72FF}",
-      "translation": "将会使记忆卡变为未初始化状态。\n确定要这样做吗？{72FF}",
-      "renderer": "static",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E73C6",
-      "offset": "000E73C6",
-      "max_bytes": 42,
-      "source": "メモリーカードを未初期化状態にしました{72FF}",
-      "translation": "将记忆卡变为未初始化状态了。{72FF}",
-      "renderer": "static",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E73F0",
-      "offset": "000E73F0",
-      "max_bytes": 40,
-      "source": "メモリーカード未初期化に失敗しました{72FF}",
-      "translation": "记忆卡未初始化失败了。{72FF}",
-      "renderer": "static",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E7418",
-      "offset": "000E7418",
-      "max_bytes": 24,
-      "source": "データが壊れています{72FF}",
-      "translation": "数据损坏了。{72FF}",
-      "renderer": "static",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E7430",
-      "offset": "000E7430",
-      "max_bytes": 70,
-      "source": "差込口{数值0}のメモリーカードが\n抜き差しされたためロードに失敗しました{72FF}",
-      "translation": "由于插口{数值0}的记忆卡被拔出，\n读取失败了。{72FF}",
-      "renderer": "static",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E7476",
-      "offset": "000E7476",
-      "max_bytes": 70,
-      "source": "差込口{数值0}のメモリーカードが\n抜き差しされたためセーブに失敗しました{72FF}",
-      "translation": "由于插口{数值0}的记忆卡被拔出，\n保存失败了。{72FF}",
-      "renderer": "static",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E74BC",
-      "offset": "000E74BC",
-      "max_bytes": 76,
-      "source": "差込口{数值0}のメモリーカードが\n抜き差しされたためフォーマットに失敗しました{72FF}",
-      "translation": "由于插口{数值0}的记忆卡被拔出，\n格式化失败了。{72FF}",
-      "renderer": "static",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E7508",
-      "offset": "000E7508",
-      "max_bytes": 24,
-      "source": "データが壊れています{72FF}",
-      "translation": "存档损坏了。{72FF}",
-      "renderer": "static",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E7520",
-      "offset": "000E7520",
-      "max_bytes": 30,
-      "source": "フォーマットが終了しました{72FF}",
-      "translation": "格式化完毕。{72FF}",
-      "renderer": "static",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E753E",
-      "offset": "000E753E",
-      "max_bytes": 38,
-      "source": "メモリーカードが抜き差しされました{72FF}",
-      "translation": "记忆卡已拔出。{72FF}",
-      "renderer": "static",
-      "translation_origin": "existing_exact_match"
-    },
-    {
-      "id": "SLPM-000E7564",
-      "offset": "000E7564",
-      "max_bytes": 12,
-      "source": "差込口１{72FF}",
-      "translation": "插口１{72FF}",
-      "renderer": "static",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E7570",
-      "offset": "000E7570",
-      "max_bytes": 12,
-      "source": "差込口２{72FF}",
-      "translation": "插口２{72FF}",
-      "renderer": "static",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E757C",
-      "offset": "000E757C",
-      "max_bytes": 40,
-      "source": "ロードするファイルを選択してください{72FF}",
-      "translation": "请选择要读取的文件。{72FF}",
-      "renderer": "static",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E75A4",
-      "offset": "000E75A4",
-      "max_bytes": 80,
-      "source": "中断データでゲームを再開します\nキャンセルする場合はＸボタンを押してください{72FF}",
-      "translation": "将会以中断存档继续游戏。\n要取消的话请按下Ｘ键。{72FF}",
-      "renderer": "static",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E75F4",
-      "offset": "000E75F4",
-      "max_bytes": 40,
-      "source": "セーブするファイルを選択してください{72FF}",
-      "translation": "请选择要保存的文件。{72FF}",
-      "renderer": "static",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E761C",
-      "offset": "000E761C",
-      "max_bytes": 56,
-      "source": "再開すると中断データは消去されます\nよろしいですか？{72FF}",
-      "translation": "继续游戏的话将会删除中断存档。\n确定要这样做吗？{72FF}",
-      "renderer": "static",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E7654",
-      "offset": "000E7654",
-      "max_bytes": 70,
-      "source": "中断セーブを行います\nキャンセルする場合はＸボタンを押してください{72FF}",
-      "translation": "将会进行中断存档。\n要取消的话请按下Ｘ键。{72FF}",
-      "renderer": "static",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E769A",
-      "offset": "000E769A",
-      "max_bytes": 96,
-      "source": "既に中断データがあります\n上書きすると以前の中断データは\n消えてしまいます\nよろしいですか？{72FF}",
-      "translation": "已经有中断存档了。如果覆盖的话，\n以前的中断存档将会消失。\n确定要这样做吗？{72FF}",
-      "renderer": "static",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E76FA",
-      "offset": "000E76FA",
-      "max_bytes": 152,
-      "source": "メモリーカードの空きブロックが\n不足しています\nセーブを行うには最低１ブロック以上の\n空きブロックが必要です\nこのままゲームを進めてよろしいですか？{72FF}",
-      "translation": "记忆卡的空位不够。\n要进行保存的话，需要至少一个空位。\n要就这样继续游戏吗？{72FF}",
-      "renderer": "static",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E7792",
-      "offset": "000E7792",
-      "max_bytes": 46,
-      "source": "メモリーカードがフォーマットされていません{72FF}",
-      "translation": "记忆卡未格式化。{72FF}",
-      "renderer": "static",
-      "translation_origin": "existing_exact_match"
-    },
-    {
-      "id": "SLPM-000E77C0",
-      "offset": "000E77C0",
-      "max_bytes": 212,
-      "source": "メモリーカードに何らかの不具合があります\n差込口にメモリーカードが正しく差し込まれているか\nご確認下さい\nセーブを行うには最低１ブロック以上の\n空き容ブロックが必要です\nこのままゲームを進めてよろしいですか？{72FF}",
-      "translation": "记忆卡具有某种错误。\n请确认是否正确插入记忆卡。\n要进行保存的话，需要至少一个空位。\n要就这样继续游戏吗？{72FF}",
-      "renderer": "static",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E7894",
-      "offset": "000E7894",
-      "max_bytes": 116,
-      "source": "真・女神転生ｉｆ．．．のクリアデータがある場合\nゲーム内容が変わる場合があります\nクリアデータをロードしますか？{72FF}",
-      "translation": "当存在《真·女神转生if…》的通关存档时，\n游戏内容有可能发生变化。\n是否读取通关存档？{72FF}",
-      "renderer": "static",
-      "translation_origin": "existing_exact_match"
-    },
-    {
-      "id": "SLPM-000E7908",
-      "offset": "000E7908",
-      "max_bytes": 224,
-      "source": "真・女神転生ｉｆ．．．のクリアデータがある場合\n次回のプレイ時にゲーム内容が\n変わる場合があります\nクリアデータのセーブを行ったファイルでは\nゲームの再開が出来なくなるので注意してください\nクリアデータをセーブしますか？{72FF}",
-      "translation": "存在真・女神转生ｉｆ．．．的通关存档的情况下，\n下次游玩时的游戏内容有可能发生改变。\n请注意，存储为通关存档的文件不能继续游戏。\n要存储通关存档吗？{72FF}",
-      "renderer": "static",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E79E8",
-      "offset": "000E79E8",
-      "max_bytes": 66,
-      "source": "メモリーカードが差込口１または差込口２に\n差し込まれていません{72FF}",
-      "translation": "插口１和插口２没有插入记忆卡。{72FF}",
-      "renderer": "static",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E7A2A",
-      "offset": "000E7A2A",
-      "max_bytes": 98,
-      "source": "差込口{数值0}のメモリーカードチェック中です\nメモリーカードとコントローラを\n抜き差ししないで下さい{72FF}",
-      "translation": "正在检查插口{数值0}的记忆卡。\n请勿拔出记忆卡和控制器。{72FF}",
-      "renderer": "static",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E7A8C",
-      "offset": "000E7A8C",
-      "max_bytes": 76,
-      "source": "クリアセーブが行われていません\nこのままタイトルへ戻ってよろしいですか？{72FF}",
-      "translation": "没有保存通关存档。\n要直接返回标题吗？{72FF}",
-      "renderer": "static",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E7BFA",
-      "offset": "000E7BFA",
-      "max_bytes": 12,
-      "source": "火炎に強い",
-      "translation": "抵抗火焰",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E7C06",
-      "offset": "000E7C06",
-      "max_bytes": 12,
-      "source": "氷結に強い",
-      "translation": "抵抗冰冻",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E7C12",
-      "offset": "000E7C12",
-      "max_bytes": 12,
-      "source": "電撃に強い",
-      "translation": "抵抗电击",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E7C1E",
-      "offset": "000E7C1E",
-      "max_bytes": 12,
-      "source": "衝撃に強い",
-      "translation": "抵抗冲击",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E7C2A",
-      "offset": "000E7C2A",
-      "max_bytes": 26,
-      "source": "精神攻撃・呪いにやや強い",
-      "translation": "略微抵抗精神攻击、诅咒",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E7C44",
-      "offset": "000E7C44",
-      "max_bytes": 20,
-      "source": "物理攻撃にやや強い",
-      "translation": "略微抵抗物理攻击",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E7C58",
-      "offset": "000E7C58",
-      "max_bytes": 26,
-      "source": "物理攻撃・電撃にやや強い",
-      "translation": "略微抵抗物理攻击、电击",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E7C72",
-      "offset": "000E7C72",
-      "max_bytes": 22,
-      "source": "火炎・氷結にやや強い",
-      "translation": "略微抵抗火焰、冰冻",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E7C88",
-      "offset": "000E7C88",
-      "max_bytes": 20,
-      "source": "精神攻撃をはね返す",
-      "translation": "反弹精神攻击",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E7C9C",
-      "offset": "000E7C9C",
-      "max_bytes": 20,
-      "source": "物理攻撃をはね返す",
-      "translation": "反弹物理攻击",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E7CB0",
-      "offset": "000E7CB0",
-      "max_bytes": 24,
-      "source": "火炎を吸収・氷結に弱い",
-      "translation": "吸收火焰、弱冰冻",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E7CC8",
-      "offset": "000E7CC8",
-      "max_bytes": 12,
-      "source": "電撃を吸収",
-      "translation": "吸收电击",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E7CD4",
-      "offset": "000E7CD4",
-      "max_bytes": 22,
-      "source": "火炎・氷結をはね返す",
-      "translation": "反弹火焰、冰冻",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E7CEA",
-      "offset": "000E7CEA",
-      "max_bytes": 26,
-      "source": "破魔・呪いなどをはね返す",
-      "translation": "反弹破魔、诅咒等",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E7D04",
-      "offset": "000E7D04",
-      "max_bytes": 22,
-      "source": "どの攻撃にもやや強い",
-      "translation": "略微抵抗所有攻击",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E7D1A",
-      "offset": "000E7D1A",
-      "max_bytes": 26,
-      "source": "ガン以外の物理攻撃に強い",
-      "translation": "抵抗枪以外的物理攻击",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E7D34",
-      "offset": "000E7D34",
-      "max_bytes": 18,
-      "source": "火炎・氷結に弱い",
-      "translation": "弱火焰、冰冻",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E7D46",
-      "offset": "000E7D46",
-      "max_bytes": 26,
-      "source": "電撃吸収・衝撃をはね返す",
-      "translation": "吸收电击、反弹冲击",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E7D60",
-      "offset": "000E7D60",
-      "max_bytes": 24,
-      "source": "火炎・氷結・電撃に強い",
-      "translation": "抵抗火焰、冰冻、电击",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E7D78",
-      "offset": "000E7D78",
-      "max_bytes": 18,
-      "source": "破魔・火炎に弱い",
-      "translation": "弱破魔、火焰",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E7D8A",
-      "offset": "000E7D8A",
-      "max_bytes": 30,
-      "source": "ガンが効かないが\n破魔に弱い",
-      "translation": "枪无效，\n但弱破魔",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E7DA8",
-      "offset": "000E7DA8",
-      "max_bytes": 24,
-      "source": "剣・火炎・衝撃のみ効く",
-      "translation": "只有剑、火焰、冲击有效",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E7DC0",
-      "offset": "000E7DC0",
-      "max_bytes": 16,
-      "source": "物理攻撃に強い",
-      "translation": "抵抗物理攻击",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E7DD0",
-      "offset": "000E7DD0",
-      "max_bytes": 24,
-      "source": "火炎を吸収・氷結に弱い",
-      "translation": "吸收火焰、弱冰冻",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E7DE8",
-      "offset": "000E7DE8",
-      "max_bytes": 30,
-      "source": "火炎をはね返すが\n氷結に弱い",
-      "translation": "反弹火焰，\n但弱冰冻",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E7E06",
-      "offset": "000E7E06",
-      "max_bytes": 24,
-      "source": "火炎を吸収・氷結に弱い",
-      "translation": "吸收火焰、弱冰冻",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E7E1E",
-      "offset": "000E7E1E",
-      "max_bytes": 30,
-      "source": "氷結をはね返すが\n火炎に弱い",
-      "translation": "反弹冰冻，\n但弱火焰",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E7E3C",
-      "offset": "000E7E3C",
-      "max_bytes": 30,
-      "source": "電撃をはね返すが\n氷結に弱い",
-      "translation": "反弹电击，\n但弱冰冻",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E7E5A",
-      "offset": "000E7E5A",
-      "max_bytes": 32,
-      "source": "魔法にはやや強いが\n呪いに弱い",
-      "translation": "略微抵抗魔法，\n但弱诅咒",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E7E7A",
-      "offset": "000E7E7A",
-      "max_bytes": 36,
-      "source": "火炎・破魔以外の魔法は\n効きにくい",
-      "translation": "火焰、破魔以外的魔法\n难以生效",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E7E9E",
-      "offset": "000E7E9E",
-      "max_bytes": 32,
-      "source": "剣攻撃は効かないが\n呪いに弱い",
-      "translation": "剑攻击无效，\n但弱诅咒",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E7EBE",
-      "offset": "000E7EBE",
-      "max_bytes": 12,
-      "source": "電撃に弱い",
-      "translation": "弱电击",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E7ECA",
-      "offset": "000E7ECA",
-      "max_bytes": 12,
-      "source": "電撃を吸収",
-      "translation": "吸收电击",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E7ED6",
-      "offset": "000E7ED6",
-      "max_bytes": 12,
-      "source": "魔法に強い",
-      "translation": "抵抗魔法",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E7EE2",
-      "offset": "000E7EE2",
-      "max_bytes": 12,
-      "source": "魔法を吸収",
-      "translation": "吸收魔法",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E7EEE",
-      "offset": "000E7EEE",
-      "max_bytes": 14,
-      "source": "技を返される",
-      "translation": "反制技",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E7EFC",
-      "offset": "000E7EFC",
-      "max_bytes": 34,
-      "source": "悪魔の攻撃に強く\n破魔をはね返す",
-      "translation": "抵抗恶魔的攻击\n反弹破魔",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E7F1E",
-      "offset": "000E7F1E",
-      "max_bytes": 16,
-      "source": "魔法をはね返す",
-      "translation": "反弹魔法",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E7F2E",
-      "offset": "000E7F2E",
-      "max_bytes": 20,
-      "source": "呪いが一切効かない",
-      "translation": "诅咒完全无效",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E7F42",
-      "offset": "000E7F42",
-      "max_bytes": 30,
-      "source": "物理攻撃がほとんど\n効かない",
-      "translation": "物理攻击几乎无效",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E7F60",
-      "offset": "000E7F60",
-      "max_bytes": 16,
-      "source": "攻撃魔法に弱い",
-      "translation": "弱攻击魔法",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E7F70",
-      "offset": "000E7F70",
-      "max_bytes": 22,
-      "source": "氷結吸収・火炎に弱い",
-      "translation": "吸收冰冻、弱火焰",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E7F86",
-      "offset": "000E7F86",
-      "max_bytes": 26,
-      "source": "火炎吸収で、毒などに強い",
-      "translation": "吸收火焰、抵抗毒等",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E7FA0",
-      "offset": "000E7FA0",
-      "max_bytes": 30,
-      "source": "呪いをはね返し\n毒などに強い",
-      "translation": "反弹诅咒\n抵抗毒等",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E7FBE",
-      "offset": "000E7FBE",
-      "max_bytes": 22,
-      "source": "破魔・呪いをはね返す",
-      "translation": "反弹破魔、诅咒",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E7FD4",
-      "offset": "000E7FD4",
-      "max_bytes": 28,
-      "source": "精神に強く\n火炎をはね返す",
-      "translation": "抵抗精神\n反弹火焰",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E7FF0",
-      "offset": "000E7FF0",
-      "max_bytes": 26,
-      "source": "氷結・呪いなどをはね返す",
-      "translation": "反弹冰冻、诅咒等",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E800A",
-      "offset": "000E800A",
-      "max_bytes": 14,
-      "source": "氷結のみ効く",
-      "translation": "仅冰冻有效",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E8018",
-      "offset": "000E8018",
-      "max_bytes": 34,
-      "source": "ガン・火炎に弱く\n氷結をはね返す",
-      "translation": "弱枪、火焰\n反弹冰冻",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E803A",
-      "offset": "000E803A",
-      "max_bytes": 32,
-      "source": "温度差・衝撃・呪いを\nはね返す",
-      "translation": "反弹温度差、\n冲击、诅咒",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E805A",
-      "offset": "000E805A",
-      "max_bytes": 14,
-      "source": "剣をはね返す",
-      "translation": "反弹剑",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E8068",
-      "offset": "000E8068",
-      "max_bytes": 16,
-      "source": "ガンをはね返す",
-      "translation": "反弹枪",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E8078",
-      "offset": "000E8078",
-      "max_bytes": 22,
-      "source": "衝撃・火炎をはね返す",
-      "translation": "反弹冲击、火焰",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E808E",
-      "offset": "000E808E",
-      "max_bytes": 22,
-      "source": "剣・火炎・衝撃は効く",
-      "translation": "剑、火焰、冲击有效",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E80A4",
-      "offset": "000E80A4",
-      "max_bytes": 10,
-      "source": "解析不能",
-      "translation": "无法解析",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E80AE",
-      "offset": "000E80AE",
-      "max_bytes": 10,
-      "source": "解析不能",
-      "translation": "无法解析",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E80B8",
-      "offset": "000E80B8",
-      "max_bytes": 10,
-      "source": "解析不能",
-      "translation": "无法解析",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E80C2",
-      "offset": "000E80C2",
-      "max_bytes": 10,
-      "source": "解析不能",
-      "translation": "无法解析",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E80CC",
-      "offset": "000E80CC",
-      "max_bytes": 10,
-      "source": "解析不能",
-      "translation": "无法解析",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E80D6",
-      "offset": "000E80D6",
-      "max_bytes": 10,
-      "source": "解析不能",
-      "translation": "无法解析",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E80E0",
-      "offset": "000E80E0",
-      "max_bytes": 10,
-      "source": "解析不能",
-      "translation": "无法解析",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E80EA",
-      "offset": "000E80EA",
-      "max_bytes": 10,
-      "source": "解析不能",
-      "translation": "无法解析",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E80F4",
-      "offset": "000E80F4",
-      "max_bytes": 10,
-      "source": "解析不能",
-      "translation": "无法解析",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E80FE",
-      "offset": "000E80FE",
-      "max_bytes": 10,
-      "source": "解析不能",
-      "translation": "无法解析",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E8108",
-      "offset": "000E8108",
-      "max_bytes": 10,
-      "source": "解析不能",
-      "translation": "无法解析",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E8112",
-      "offset": "000E8112",
-      "max_bytes": 10,
-      "source": "解析不能",
-      "translation": "无法解析",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E811C",
-      "offset": "000E811C",
-      "max_bytes": 10,
-      "source": "解析不能",
-      "translation": "无法解析",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E8126",
-      "offset": "000E8126",
-      "max_bytes": 10,
-      "source": "解析不能",
-      "translation": "无法解析",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E8130",
-      "offset": "000E8130",
-      "max_bytes": 10,
-      "source": "解析不能",
-      "translation": "无法解析",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E819C",
-      "offset": "000E819C",
-      "max_bytes": 36,
-      "source": "メッセージを通常の速さで表示します",
-      "translation": "以通常速度显示消息",
-      "renderer": "static",
-      "translation_origin": "manual"
-    },
-    {
-      "id": "SLPM-000E81C0",
-      "offset": "000E81C0",
-      "max_bytes": 42,
-      "source": "メッセージを通常より速い速度で表示します",
-      "translation": "以更快速度显示消息",
-      "renderer": "static",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E81EA",
-      "offset": "000E81EA",
-      "max_bytes": 44,
-      "source": "戦闘時のメッセージを通常の速度で表示します",
-      "translation": "以通常速度显示战斗消息",
-      "renderer": "static",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E8216",
-      "offset": "000E8216",
-      "max_bytes": 52,
-      "source": "戦闘時のメッセージを\n通常より速い速度で表示します",
-      "translation": "以更快速度显示战斗消息",
-      "renderer": "static",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E824A",
-      "offset": "000E824A",
-      "max_bytes": 28,
-      "source": "攻撃エフェクトを表示します",
-      "translation": "显示攻击特效",
-      "renderer": "static",
-      "translation_origin": "existing_exact_match"
-    },
-    {
-      "id": "SLPM-000E8266",
-      "offset": "000E8266",
-      "max_bytes": 32,
-      "source": "攻撃エフェクトを非表示にします",
-      "translation": "不显示攻击特效",
-      "renderer": "static",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E8286",
-      "offset": "000E8286",
-      "max_bytes": 28,
-      "source": "剣・銃・通常攻撃を繰り返す",
-      "translation": "重复剑、枪和普通攻击",
-      "renderer": "static",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E82A2",
-      "offset": "000E82A2",
-      "max_bytes": 46,
-      "source": "前回行動を繰り返す　アイテム・ＭＰ切れで攻撃",
-      "translation": "重复上次行动　道具或ＭＰ用尽时攻击",
-      "renderer": "static",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E82D0",
-      "offset": "000E82D0",
-      "max_bytes": 46,
-      "source": "前回行動を繰り返す　アイテム・ＭＰ切れで防御",
-      "translation": "重复上次行动　道具或ＭＰ用尽时防御",
-      "renderer": "static",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E82FE",
-      "offset": "000E82FE",
-      "max_bytes": 24,
-      "source": "オートマップの向き固定",
-      "translation": "固定自动地图朝向",
-      "renderer": "static",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E8316",
-      "offset": "000E8316",
-      "max_bytes": 42,
-      "source": "オートマップの向きを自分の向きに合わせる",
-      "translation": "自动地图朝向与自身一致",
-      "renderer": "static",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E8340",
-      "offset": "000E8340",
-      "max_bytes": 36,
-      "source": "３Ｄマップを通常の速さで移動します",
-      "translation": "以通常速度在３Ｄ地图移动",
-      "renderer": "static",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E8364",
-      "offset": "000E8364",
-      "max_bytes": 42,
-      "source": "３Ｄマップを通常より速い速度で移動します",
-      "translation": "以更快速度在３Ｄ地图移动",
-      "renderer": "static",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E838E",
-      "offset": "000E838E",
-      "max_bytes": 34,
-      "source": "アイテムを使用して自動回復します",
-      "translation": "使用道具自动恢复",
-      "renderer": "static",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E83B0",
-      "offset": "000E83B0",
-      "max_bytes": 34,
-      "source": "魔法のみを使用して自動回復します",
-      "translation": "仅使用魔法自动恢复",
-      "renderer": "static",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E83D2",
-      "offset": "000E83D2",
-      "max_bytes": 32,
-      "source": "サウンドをモノラルで再生します",
-      "translation": "以单声道播放声音",
-      "renderer": "static",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E83F2",
-      "offset": "000E83F2",
-      "max_bytes": 32,
-      "source": "サウンドをステレオで再生します",
-      "translation": "以立体声播放声音",
-      "renderer": "static",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E8412",
-      "offset": "000E8412",
-      "max_bytes": 32,
-      "source": "攻撃エフェクトの設定を行います",
-      "translation": "设置攻击特效",
-      "renderer": "dynamic",
-      "translation_origin": "existing_exact_match"
-    },
-    {
-      "id": "SLPM-000E8432",
-      "offset": "000E8432",
-      "max_bytes": 38,
-      "source": "戦闘メッセージのスピードを設定します",
-      "translation": "设置战斗信息的速度",
-      "renderer": "dynamic",
-      "translation_origin": "existing_exact_match"
-    },
-    {
-      "id": "SLPM-000E8458",
-      "offset": "000E8458",
-      "max_bytes": 30,
-      "source": "オートバトルの設定を行います",
-      "translation": "设置自动战斗",
-      "renderer": "dynamic",
-      "translation_origin": "existing_exact_match"
-    },
-    {
-      "id": "SLPM-000E8476",
-      "offset": "000E8476",
-      "max_bytes": 20,
-      "source": "戦闘設定を行います",
-      "translation": "设置战斗",
-      "renderer": "dynamic",
-      "translation_origin": "existing_exact_match"
-    },
-    {
-      "id": "SLPM-000E848A",
-      "offset": "000E848A",
-      "max_bytes": 26,
-      "source": "エフェクト設定を行います",
-      "translation": "设置音效",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E84A4",
-      "offset": "000E84A4",
-      "max_bytes": 34,
-      "source": "メッセージスピード設定を行います",
-      "translation": "设置消息速度",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E84C6",
-      "offset": "000E84C6",
-      "max_bytes": 28,
-      "source": "オートバトル設定を行います",
-      "translation": "设置自动战斗",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E8506",
-      "offset": "000E8506",
-      "max_bytes": 28,
-      "source": "セーブデータをロードします",
-      "translation": "读取存档",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    },
-    {
-      "id": "SLPM-000E8522",
-      "offset": "000E8522",
-      "max_bytes": 26,
-      "source": "設定メニューを起動します",
-      "translation": "启动设置菜单",
-      "renderer": "dynamic",
-      "translation_origin": "untranslated"
-    }
-  ]
+ "text_slpm": [
+  {
+   "id": "SLPM-000E4768",
+   "offset": "000E4768",
+   "max_bytes": 6,
+   "source": "学校",
+   "translation": "学校",
+   "translation_origin": "manual",
+   "renderer": "dynamic"
+  },
+  {
+   "id": "SLPM-000E476E",
+   "offset": "000E476E",
+   "max_bytes": 10,
+   "source": "封印の間",
+   "translation": "封印之间",
+   "translation_origin": "manual",
+   "renderer": "dynamic"
+  },
+  {
+   "id": "SLPM-000E4778",
+   "offset": "000E4778",
+   "max_bytes": 8,
+   "source": "傲慢界",
+   "translation": "傲慢界",
+   "translation_origin": "manual",
+   "renderer": "dynamic"
+  },
+  {
+   "id": "SLPM-000E4780",
+   "offset": "000E4780",
+   "max_bytes": 12,
+   "source": "傲慢界・街",
+   "translation": "傲慢界・城",
+   "translation_origin": "manual",
+   "renderer": "dynamic"
+  },
+  {
+   "id": "SLPM-000E478C",
+   "offset": "000E478C",
+   "max_bytes": 8,
+   "source": "飽食界",
+   "translation": "饱食界",
+   "translation_origin": "manual",
+   "renderer": "dynamic"
+  },
+  {
+   "id": "SLPM-000E4794",
+   "offset": "000E4794",
+   "max_bytes": 12,
+   "source": "飽食界・街",
+   "translation": "饱食界・城",
+   "translation_origin": "manual",
+   "renderer": "dynamic"
+  },
+  {
+   "id": "SLPM-000E47A0",
+   "offset": "000E47A0",
+   "max_bytes": 16,
+   "source": "飽食界・カジノ",
+   "translation": "饱食界・赌场",
+   "translation_origin": "manual",
+   "renderer": "dynamic"
+  },
+  {
+   "id": "SLPM-000E47B0",
+   "offset": "000E47B0",
+   "max_bytes": 14,
+   "source": "オーカス体内",
+   "translation": "奥卡斯体内",
+   "translation_origin": "manual",
+   "renderer": "dynamic"
+  },
+  {
+   "id": "SLPM-000E47BE",
+   "offset": "000E47BE",
+   "max_bytes": 8,
+   "source": "怠惰界",
+   "translation": "怠惰界",
+   "translation_origin": "manual",
+   "renderer": "dynamic"
+  },
+  {
+   "id": "SLPM-000E47C6",
+   "offset": "000E47C6",
+   "max_bytes": 8,
+   "source": "嫉妬界",
+   "translation": "嫉妒界",
+   "translation_origin": "manual",
+   "renderer": "dynamic"
+  },
+  {
+   "id": "SLPM-000E47CE",
+   "offset": "000E47CE",
+   "max_bytes": 12,
+   "source": "嫉妬界・街",
+   "translation": "嫉妒界・城",
+   "translation_origin": "manual",
+   "renderer": "dynamic"
+  },
+  {
+   "id": "SLPM-000E47DA",
+   "offset": "000E47DA",
+   "max_bytes": 8,
+   "source": "貪欲界",
+   "translation": "贪欲界",
+   "translation_origin": "manual",
+   "renderer": "dynamic"
+  },
+  {
+   "id": "SLPM-000E47E2",
+   "offset": "000E47E2",
+   "max_bytes": 12,
+   "source": "貪欲界・街",
+   "translation": "贪欲界・城",
+   "translation_origin": "manual",
+   "renderer": "dynamic"
+  },
+  {
+   "id": "SLPM-000E47EE",
+   "offset": "000E47EE",
+   "max_bytes": 12,
+   "source": "地のノモス",
+   "translation": "地之法阶",
+   "translation_origin": "manual",
+   "renderer": "dynamic"
+  },
+  {
+   "id": "SLPM-000E47FA",
+   "offset": "000E47FA",
+   "max_bytes": 8,
+   "source": "憤怒界",
+   "translation": "愤怒界",
+   "translation_origin": "manual",
+   "renderer": "dynamic"
+  },
+  {
+   "id": "SLPM-000E4802",
+   "offset": "000E4802",
+   "max_bytes": 12,
+   "source": "憤怒界・街",
+   "translation": "愤怒界・城",
+   "translation_origin": "manual",
+   "renderer": "dynamic"
+  },
+  {
+   "id": "SLPM-000E480E",
+   "offset": "000E480E",
+   "max_bytes": 16,
+   "source": "貪欲界・カジノ",
+   "translation": "贪欲界・赌场",
+   "translation_origin": "manual",
+   "renderer": "dynamic"
+  },
+  {
+   "id": "SLPM-000E481E",
+   "offset": "000E481E",
+   "max_bytes": 6,
+   "source": "学校",
+   "translation": "学校",
+   "translation_origin": "manual",
+   "renderer": "dynamic"
+  },
+  {
+   "id": "SLPM-000E4824",
+   "offset": "000E4824",
+   "max_bytes": 10,
+   "source": "精神世界",
+   "translation": "精神世界",
+   "translation_origin": "manual",
+   "renderer": "dynamic"
+  },
+  {
+   "id": "SLPM-000E482E",
+   "offset": "000E482E",
+   "max_bytes": 12,
+   "source": "第１ノモス",
+   "translation": "第１法阶",
+   "translation_origin": "manual",
+   "renderer": "dynamic"
+  },
+  {
+   "id": "SLPM-000E483A",
+   "offset": "000E483A",
+   "max_bytes": 12,
+   "source": "第２ノモス",
+   "translation": "第２法阶",
+   "translation_origin": "manual",
+   "renderer": "dynamic"
+  },
+  {
+   "id": "SLPM-000E4846",
+   "offset": "000E4846",
+   "max_bytes": 12,
+   "source": "第３ノモス",
+   "translation": "第３法阶",
+   "translation_origin": "manual",
+   "renderer": "dynamic"
+  },
+  {
+   "id": "SLPM-000E4852",
+   "offset": "000E4852",
+   "max_bytes": 12,
+   "source": "第４ノモス",
+   "translation": "第４法阶",
+   "translation_origin": "manual",
+   "renderer": "dynamic"
+  },
+  {
+   "id": "SLPM-000E485E",
+   "offset": "000E485E",
+   "max_bytes": 12,
+   "source": "天のノモス",
+   "translation": "天之法阶",
+   "translation_origin": "manual",
+   "renderer": "dynamic"
+  },
+  {
+   "id": "SLPM-000E486A",
+   "offset": "000E486A",
+   "max_bytes": 20,
+   "source": "第１ノモス・カジノ",
+   "translation": "第１法阶・赌场",
+   "translation_origin": "manual",
+   "renderer": "dynamic"
+  },
+  {
+   "id": "SLPM-000E4A5C",
+   "offset": "E4A5C",
+   "max_bytes": 18,
+   "source": "おおっと！爆弾！",
+   "translation": "哎呀！是炸弹！",
+   "renderer": "dynamic"
+  },
+  {
+   "id": "SLPM-000E4A6E",
+   "offset": "E4A6E",
+   "max_bytes": 26,
+   "source": "{仲魔}は{数值0}ダメージを受けた▽",
+   "translation": "{仲魔}受到{数值0}点伤害▽",
+   "renderer": "dynamic"
+  },
+  {
+   "id": "SLPM-000E4A88",
+   "offset": "E4A88",
+   "max_bytes": 18,
+   "source": "おおっと！毒針▽",
+   "translation": "哎呀！毒针▽",
+   "renderer": "dynamic"
+  },
+  {
+   "id": "SLPM-000E4A9A",
+   "offset": "E4A9A",
+   "max_bytes": 22,
+   "source": "{仲魔}は毒におかされた▽",
+   "translation": "{仲魔}中毒了▽",
+   "renderer": "dynamic"
+  },
+  {
+   "id": "SLPM-000E4AB0",
+   "offset": "E4AB0",
+   "max_bytes": 20,
+   "source": "おおっと！麻痺針▽",
+   "translation": "哎呀！麻痹针▽",
+   "renderer": "dynamic"
+  },
+  {
+   "id": "SLPM-000E4AC4",
+   "offset": "E4AC4",
+   "max_bytes": 16,
+   "source": "{仲魔}は麻痺した▽",
+   "translation": "{仲魔}麻痹了▽",
+   "renderer": "dynamic"
+  },
+  {
+   "id": "SLPM-000E4AD4",
+   "offset": "E4AD4",
+   "max_bytes": 26,
+   "source": "エストマの効果が切れた！",
+   "translation": "清凉效果消失了！",
+   "renderer": "dynamic"
+  },
+  {
+   "id": "SLPM-000E4AEE",
+   "offset": "E4AEE",
+   "max_bytes": 26,
+   "source": "封魔の鈴の効果が切れた▽",
+   "translation": "封魔铃效果消失了▽",
+   "renderer": "dynamic"
+  },
+  {
+   "id": "SLPM-000E4B08",
+   "offset": "E4B08",
+   "max_bytes": 26,
+   "source": "リフトマの効果が切れた▽",
+   "translation": "浮游术效果消失了▽",
+   "renderer": "dynamic"
+  },
+  {
+   "id": "SLPM-000E4B22",
+   "offset": "E4B22",
+   "max_bytes": 30,
+   "source": "コアシールドの効果が切れた▽",
+   "translation": "核心护盾效果消失了▽",
+   "renderer": "dynamic"
+  },
+  {
+   "id": "SLPM-000E4B40",
+   "offset": "E4B40",
+   "max_bytes": 26,
+   "source": "マッパーの効果が切れた▽",
+   "translation": "自动地图效果消失了▽",
+   "renderer": "dynamic"
+  },
+  {
+   "id": "SLPM-000E4B5A",
+   "offset": "E4B5A",
+   "max_bytes": 30,
+   "source": "見晴らしの玉の効果が切れた▽",
+   "translation": "远望之玉效果消失了▽",
+   "renderer": "dynamic"
+  },
+  {
+   "id": "SLPM-000E4B78",
+   "offset": "E4B78",
+   "max_bytes": 16,
+   "source": "{仲魔}は力尽きた▽",
+   "translation": "{仲魔}力竭了▽",
+   "renderer": "dynamic"
+  },
+  {
+   "id": "SLPM-000E4B88",
+   "offset": "E4B88",
+   "max_bytes": 30,
+   "source": "{仲魔}は身代わりの玉に守られた▽",
+   "translation": "{仲魔}被替身玉保护了▽",
+   "renderer": "dynamic"
+  },
+  {
+   "id": "SLPM-000E5C44",
+   "offset": "000E5C44",
+   "max_bytes": 8,
+   "source": "攻撃{72FF}",
+   "translation": "攻击{72FF}",
+   "translation_origin": "manual",
+   "renderer": "static"
+  },
+  {
+   "id": "SLPM-000E5C4C",
+   "offset": "000E5C4C",
+   "max_bytes": 8,
+   "source": "命中{72FF}",
+   "translation": "命中{72FF}",
+   "translation_origin": "manual",
+   "renderer": "static"
+  },
+  {
+   "id": "SLPM-000E5C54",
+   "offset": "000E5C54",
+   "max_bytes": 8,
+   "source": "防御{72FF}",
+   "translation": "防御{72FF}",
+   "translation_origin": "manual",
+   "renderer": "static"
+  },
+  {
+   "id": "SLPM-000E5C5C",
+   "offset": "000E5C5C",
+   "max_bytes": 8,
+   "source": "回避{72FF}",
+   "translation": "回避{72FF}",
+   "translation_origin": "manual",
+   "renderer": "static"
+  },
+  {
+   "id": "SLPM-000E5C64",
+   "offset": "000E5C64",
+   "max_bytes": 12,
+   "source": "魔法威力{72FF}",
+   "translation": "魔法威力{72FF}",
+   "translation_origin": "manual",
+   "renderer": "static"
+  },
+  {
+   "id": "SLPM-000E5C70",
+   "offset": "000E5C70",
+   "max_bytes": 12,
+   "source": "魔法効果{72FF}",
+   "translation": "魔法效果{72FF}",
+   "translation_origin": "manual",
+   "renderer": "static"
+  },
+  {
+   "id": "SLPM-000E5C7C",
+   "offset": "000E5C7C",
+   "max_bytes": 12,
+   "source": "攻撃回数{72FF}",
+   "translation": "攻击次数{72FF}",
+   "translation_origin": "manual",
+   "renderer": "static"
+  },
+  {
+   "id": "SLPM-000E5C88",
+   "offset": "000E5C88",
+   "max_bytes": 12,
+   "source": "追加効果{72FF}",
+   "translation": "追加效果{72FF}",
+   "translation_origin": "manual",
+   "renderer": "static"
+  },
+  {
+   "id": "SLPM-000E5C94",
+   "offset": "000E5C94",
+   "max_bytes": 8,
+   "source": "性別{72FF}",
+   "translation": "性别{72FF}",
+   "translation_origin": "manual",
+   "renderer": "static"
+  },
+  {
+   "id": "SLPM-000E5C9C",
+   "offset": "000E5C9C",
+   "max_bytes": 20,
+   "source": "－－－－－－－－{72FF}",
+   "translation": "－－－－－－－－{72FF}",
+   "translation_origin": "manual",
+   "renderer": "static"
+  },
+  {
+   "id": "SLPM-000E5CB0",
+   "offset": "000E5CB0",
+   "max_bytes": 12,
+   "source": "追加効果{72FF}",
+   "translation": "追加效果{72FF}",
+   "translation_origin": "manual",
+   "renderer": "static"
+  },
+  {
+   "id": "SLPM-000E5CBC",
+   "offset": "000E5CBC",
+   "max_bytes": 8,
+   "source": "相性{72FF}",
+   "translation": "相性{72FF}",
+   "translation_origin": "manual",
+   "renderer": "static"
+  },
+  {
+   "id": "SLPM-000E5CC4",
+   "offset": "000E5CC4",
+   "max_bytes": 12,
+   "source": "ノーマル{72FF}",
+   "translation": "普通{72FF}",
+   "translation_origin": "manual",
+   "renderer": "static"
+  },
+  {
+   "id": "SLPM-000E5CD0",
+   "offset": "000E5CD0",
+   "max_bytes": 10,
+   "source": "対火炎{72FF}",
+   "translation": "抗火炎{72FF}",
+   "translation_origin": "manual",
+   "renderer": "static"
+  },
+  {
+   "id": "SLPM-000E5CDA",
+   "offset": "000E5CDA",
+   "max_bytes": 10,
+   "source": "対氷結{72FF}",
+   "translation": "抗冰结{72FF}",
+   "translation_origin": "manual",
+   "renderer": "static"
+  },
+  {
+   "id": "SLPM-000E5CE4",
+   "offset": "000E5CE4",
+   "max_bytes": 10,
+   "source": "対電撃{72FF}",
+   "translation": "抗电击{72FF}",
+   "translation_origin": "manual",
+   "renderer": "static"
+  },
+  {
+   "id": "SLPM-000E5CEE",
+   "offset": "000E5CEE",
+   "max_bytes": 10,
+   "source": "対衝撃{72FF}",
+   "translation": "抗冲击{72FF}",
+   "translation_origin": "manual",
+   "renderer": "static"
+  },
+  {
+   "id": "SLPM-000E5CF8",
+   "offset": "000E5CF8",
+   "max_bytes": 12,
+   "source": "対サイコ{72FF}",
+   "translation": "抗精神{72FF}",
+   "translation_origin": "manual",
+   "renderer": "static"
+  },
+  {
+   "id": "SLPM-000E5D04",
+   "offset": "000E5D04",
+   "max_bytes": 10,
+   "source": "対物理{72FF}",
+   "translation": "抗物理{72FF}",
+   "translation_origin": "manual",
+   "renderer": "static"
+  },
+  {
+   "id": "SLPM-000E5D0E",
+   "offset": "000E5D0E",
+   "max_bytes": 12,
+   "source": "対電/衝{72FF}",
+   "translation": "抗电/冲{72FF}",
+   "translation_origin": "manual",
+   "renderer": "static"
+  },
+  {
+   "id": "SLPM-000E5D1A",
+   "offset": "000E5D1A",
+   "max_bytes": 12,
+   "source": "対火/氷{72FF}",
+   "translation": "抗火/冰{72FF}",
+   "translation_origin": "manual",
+   "renderer": "static"
+  },
+  {
+   "id": "SLPM-000E5D26",
+   "offset": "000E5D26",
+   "max_bytes": 12,
+   "source": "反サイコ{72FF}",
+   "translation": "反精神{72FF}",
+   "translation_origin": "manual",
+   "renderer": "static"
+  },
+  {
+   "id": "SLPM-000E5D32",
+   "offset": "000E5D32",
+   "max_bytes": 10,
+   "source": "反物理{72FF}",
+   "translation": "反物理{72FF}",
+   "translation_origin": "manual",
+   "renderer": "static"
+  },
+  {
+   "id": "SLPM-000E5D3C",
+   "offset": "000E5D3C",
+   "max_bytes": 10,
+   "source": "吸火炎{72FF}",
+   "translation": "吸火炎{72FF}",
+   "translation_origin": "manual",
+   "renderer": "static"
+  },
+  {
+   "id": "SLPM-000E5D46",
+   "offset": "000E5D46",
+   "max_bytes": 10,
+   "source": "吸電撃{72FF}",
+   "translation": "吸电击{72FF}",
+   "translation_origin": "manual",
+   "renderer": "static"
+  },
+  {
+   "id": "SLPM-000E5D50",
+   "offset": "000E5D50",
+   "max_bytes": 12,
+   "source": "魔性防具{72FF}",
+   "translation": "魔性防具{72FF}",
+   "translation_origin": "manual",
+   "renderer": "static"
+  },
+  {
+   "id": "SLPM-000E5D5C",
+   "offset": "000E5D5C",
+   "max_bytes": 12,
+   "source": "神聖防具{72FF}",
+   "translation": "神圣防具{72FF}",
+   "translation_origin": "manual",
+   "renderer": "static"
+  },
+  {
+   "id": "SLPM-000E5D68",
+   "offset": "000E5D68",
+   "max_bytes": 10,
+   "source": "全対応{72FF}",
+   "translation": "全抗性{72FF}",
+   "translation_origin": "manual",
+   "renderer": "static"
+  },
+  {
+   "id": "SLPM-000E5D72",
+   "offset": "000E5D72",
+   "max_bytes": 10,
+   "source": "？？？{72FF}",
+   "translation": "？？？{72FF}",
+   "translation_origin": "manual",
+   "renderer": "static"
+  },
+  {
+   "id": "SLPM-000E5D7C",
+   "offset": "000E5D7C",
+   "max_bytes": 20,
+   "source": "？？？？？？？？{72FF}",
+   "translation": "？？？？？？？？{72FF}",
+   "translation_origin": "manual",
+   "renderer": "static"
+  },
+  {
+   "id": "SLPM-000E5D90",
+   "offset": "000E5D90",
+   "max_bytes": 10,
+   "source": "合体剣{72FF}",
+   "translation": "合体剑{72FF}",
+   "translation_origin": "manual",
+   "renderer": "static"
+  },
+  {
+   "id": "SLPM-000E5D9A",
+   "offset": "000E5D9A",
+   "max_bytes": 10,
+   "source": "合体銃{72FF}",
+   "translation": "合体枪{72FF}",
+   "translation_origin": "manual",
+   "renderer": "static"
+  },
+  {
+   "id": "SLPM-000E5DA4",
+   "offset": "000E5DA4",
+   "max_bytes": 10,
+   "source": "頭防具{72FF}",
+   "translation": "头防具{72FF}",
+   "translation_origin": "manual",
+   "renderer": "static"
+  },
+  {
+   "id": "SLPM-000E5DAE",
+   "offset": "000E5DAE",
+   "max_bytes": 10,
+   "source": "体防具{72FF}",
+   "translation": "体防具{72FF}",
+   "translation_origin": "manual",
+   "renderer": "static"
+  },
+  {
+   "id": "SLPM-000E5DB8",
+   "offset": "000E5DB8",
+   "max_bytes": 10,
+   "source": "腕防具{72FF}",
+   "translation": "腕防具{72FF}",
+   "translation_origin": "manual",
+   "renderer": "static"
+  },
+  {
+   "id": "SLPM-000E5DC2",
+   "offset": "000E5DC2",
+   "max_bytes": 10,
+   "source": "脚防具{72FF}",
+   "translation": "脚防具{72FF}",
+   "translation_origin": "manual",
+   "renderer": "static"
+  },
+  {
+   "id": "SLPM-000E602C",
+   "offset": "000E602C",
+   "max_bytes": 20,
+   "source": "魔法を使用します{72FF}",
+   "translation": "使用魔法{72FF}",
+   "renderer": "dynamic",
+   "translation_origin": "existing_exact_match"
+  },
+  {
+   "id": "SLPM-000E6040",
+   "offset": "000E6040",
+   "max_bytes": 46,
+   "source": "アイテムを使用/整頓/並び替え/破棄します{72FF}",
+   "translation": "使用道具/整理/排序/丢弃{72FF}",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E606E",
+   "offset": "000E606E",
+   "max_bytes": 20,
+   "source": "装備を変更します{72FF}",
+   "translation": "变更装备{72FF}",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E6082",
+   "offset": "000E6082",
+   "max_bytes": 30,
+   "source": "詳細ステータスを表示します{72FF}",
+   "translation": "显示详细状态{72FF}",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E60A0",
+   "offset": "000E60A0",
+   "max_bytes": 20,
+   "source": "隊列を変更します{72FF}",
+   "translation": "调整队列{72FF}",
+   "renderer": "dynamic",
+   "translation_origin": "manual"
+  },
+  {
+   "id": "SLPM-000E60B4",
+   "offset": "000E60B4",
+   "max_bytes": 32,
+   "source": "ＣＯＭＰ内の仲魔を召喚します{72FF}",
+   "translation": "召唤ＣＯＭＰ里的仲魔{72FF}",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E60D4",
+   "offset": "000E60D4",
+   "max_bytes": 30,
+   "source": "仲魔をＣＯＭＰ内に戻します{72FF}",
+   "translation": "让仲魔回到ＣＯＭＰ{72FF}",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E60F2",
+   "offset": "000E60F2",
+   "max_bytes": 30,
+   "source": "仲魔をパーティから外します{72FF}",
+   "translation": "让仲魔离开队伍{72FF}",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E6110",
+   "offset": "000E6110",
+   "max_bytes": 40,
+   "source": "今まで行った場所のＭＡＰを表示します{72FF}",
+   "translation": "显示以往去过的地点的ＭＡＰ{72FF}",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E6138",
+   "offset": "000E6138",
+   "max_bytes": 40,
+   "source": "パーティ全員の回復を自動的に行います{72FF}",
+   "translation": "队伍全员自动进行回复{72FF}",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E6160",
+   "offset": "000E6160",
+   "max_bytes": 32,
+   "source": "今まで倒した悪魔を解析します{72FF}",
+   "translation": "解析以往打倒过的恶魔{72FF}",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E6180",
+   "offset": "000E6180",
+   "max_bytes": 26,
+   "source": "誰の魔法を使いますか？{72FF}",
+   "translation": "要使用谁的魔法？{72FF}",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E619A",
+   "offset": "000E619A",
+   "max_bytes": 26,
+   "source": "どの魔法を使いますか？{72FF}",
+   "translation": "要使用哪个魔法？{72FF}",
+   "renderer": "dynamic",
+   "translation_origin": "existing_exact_match"
+  },
+  {
+   "id": "SLPM-000E61B4",
+   "offset": "000E61B4",
+   "max_bytes": 24,
+   "source": "アイテムを使用します{72FF}",
+   "translation": "使用道具{72FF}",
+   "renderer": "dynamic",
+   "translation_origin": "existing_exact_match"
+  },
+  {
+   "id": "SLPM-000E61CC",
+   "offset": "000E61CC",
+   "max_bytes": 24,
+   "source": "アイテムを整頓します{72FF}",
+   "translation": "整理道具{72FF}",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E61E4",
+   "offset": "000E61E4",
+   "max_bytes": 26,
+   "source": "アイテムを並び替えます{72FF}",
+   "translation": "给道具排序{72FF}",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E61FE",
+   "offset": "000E61FE",
+   "max_bytes": 24,
+   "source": "アイテムを破棄します{72FF}",
+   "translation": "丢弃道具{72FF}",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E6216",
+   "offset": "000E6216",
+   "max_bytes": 30,
+   "source": "どのアイテムを使いますか？{72FF}",
+   "translation": "要使用哪个道具？{72FF}",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E6234",
+   "offset": "000E6234",
+   "max_bytes": 20,
+   "source": "誰に使いますか？{72FF}",
+   "translation": "要对谁使用？{72FF}",
+   "renderer": "dynamic",
+   "translation_origin": "existing_exact_match"
+  },
+  {
+   "id": "SLPM-000E6248",
+   "offset": "000E6248",
+   "max_bytes": 38,
+   "source": "移動元のアイテムを選択してください{72FF}",
+   "translation": "请选择要移动的道具{72FF}",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E626E",
+   "offset": "000E626E",
+   "max_bytes": 38,
+   "source": "移動先のアイテムを選択してください{72FF}",
+   "translation": "请选择要移动到的位置{72FF}",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E6294",
+   "offset": "000E6294",
+   "max_bytes": 30,
+   "source": "どのアイテムを捨てますか？{72FF}",
+   "translation": "要丢弃哪个道具？{72FF}",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E62B2",
+   "offset": "000E62B2",
+   "max_bytes": 30,
+   "source": "誰のステータスを見ますか？{72FF}",
+   "translation": "要查看谁的状态？{72FF}",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E62D0",
+   "offset": "000E62D0",
+   "max_bytes": 34,
+   "source": "移動元のアイテムを選んで下さい{72FF}",
+   "translation": "请选择要移动的道具{72FF}",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E62F2",
+   "offset": "000E62F2",
+   "max_bytes": 34,
+   "source": "移動先のアイテムを選んで下さい{72FF}",
+   "translation": "请选择要移动到的位置{72FF}",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E6314",
+   "offset": "000E6314",
+   "max_bytes": 26,
+   "source": "呼び出せる仲魔はいない{72FF}",
+   "translation": "没有能召唤出来的仲魔{72FF}",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E632E",
+   "offset": "000E632E",
+   "max_bytes": 22,
+   "source": "誰を召喚しますか？{72FF}",
+   "translation": "要召唤谁呢？{72FF}",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E6344",
+   "offset": "000E6344",
+   "max_bytes": 18,
+   "source": "{名字1}を呼び出した▽",
+   "translation": "将{名字1}召唤出来了▽",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E6356",
+   "offset": "000E6356",
+   "max_bytes": 24,
+   "source": "{名字1}をＣＯＭＰに戻した▽",
+   "translation": "让{名字1}返回ＣＯＭＰ了。▽",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E636E",
+   "offset": "000E636E",
+   "max_bytes": 18,
+   "source": "{主角}達は回復した▽",
+   "translation": "{主角}等人回复了。▽",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E6380",
+   "offset": "000E6380",
+   "max_bytes": 24,
+   "source": "しかし効果は無かった▽",
+   "translation": "但是没有效果。▽",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E6398",
+   "offset": "000E6398",
+   "max_bytes": 26,
+   "source": "種族別に並べて表示します",
+   "translation": "根据种族进行排序",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E63B2",
+   "offset": "000E63B2",
+   "max_bytes": 36,
+   "source": "悪魔名の５０音順に並べて表示します",
+   "translation": "根据恶魔名的５０音进行排序",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E63D6",
+   "offset": "000E63D6",
+   "max_bytes": 28,
+   "source": "レベル順に並べて表示します",
+   "translation": "根据等级大小进行排序",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E63F2",
+   "offset": "000E63F2",
+   "max_bytes": 26,
+   "source": "属性別に並べて表示します",
+   "translation": "根据属性进行排序",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E640C",
+   "offset": "000E640C",
+   "max_bytes": 16,
+   "source": "どうしますか？",
+   "translation": "要做什么呢？",
+   "renderer": "dynamic",
+   "translation_origin": "existing_exact_match"
+  },
+  {
+   "id": "SLPM-000E641C",
+   "offset": "000E641C",
+   "max_bytes": 32,
+   "source": "ＣＯＭＰを使える状態ではない▽",
+   "translation": "现在无法使用ＣＯＭＰ。▽",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E643C",
+   "offset": "000E643C",
+   "max_bytes": 30,
+   "source": "ここではＣＯＭＰを使えない▽",
+   "translation": "在这里无法使用ＣＯＭＰ。▽",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E645A",
+   "offset": "000E645A",
+   "max_bytes": 16,
+   "source": "誰を呼び出す？",
+   "translation": "要召唤出谁？",
+   "renderer": "dynamic",
+   "translation_origin": "existing_exact_match"
+  },
+  {
+   "id": "SLPM-000E646A",
+   "offset": "000E646A",
+   "max_bytes": 18,
+   "source": "どこに呼び出す？",
+   "translation": "要召唤到哪里？",
+   "renderer": "dynamic",
+   "translation_origin": "existing_exact_match"
+  },
+  {
+   "id": "SLPM-000E647C",
+   "offset": "000E647C",
+   "max_bytes": 22,
+   "source": "誰と換えて呼び出す？",
+   "translation": "要召唤谁来交换？",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E6492",
+   "offset": "000E6492",
+   "max_bytes": 14,
+   "source": "換えられない",
+   "translation": "无法交换",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E64A0",
+   "offset": "000E64A0",
+   "max_bytes": 16,
+   "source": "お金が足りない",
+   "translation": "金钱不够",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E64B0",
+   "offset": "000E64B0",
+   "max_bytes": 28,
+   "source": "属性が違いすぎる悪魔がいる",
+   "translation": "存在属性相差过大的恶魔",
+   "renderer": "dynamic",
+   "translation_origin": "existing_exact_match"
+  },
+  {
+   "id": "SLPM-000E64CC",
+   "offset": "000E64CC",
+   "max_bytes": 16,
+   "source": "ＮＯ　ＤＡＴＡ",
+   "translation": "ＮＯ　ＤＡＴＡ",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E64DC",
+   "offset": "000E64DC",
+   "max_bytes": 12,
+   "source": "誰を戻す？",
+   "translation": "让谁回去？",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E64E8",
+   "offset": "000E64E8",
+   "max_bytes": 20,
+   "source": "戻せる仲魔はいない",
+   "translation": "没有能返回的仲魔",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E64FC",
+   "offset": "000E64FC",
+   "max_bytes": 12,
+   "source": "誰を外す？",
+   "translation": "让谁离开？",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E6508",
+   "offset": "000E6508",
+   "max_bytes": 18,
+   "source": "{名字1}を外しますか？",
+   "translation": "要让{名字1}离开吗？",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E651A",
+   "offset": "000E651A",
+   "max_bytes": 10,
+   "source": "位置換え",
+   "translation": "交换位置",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E6524",
+   "offset": "000E6524",
+   "max_bytes": 22,
+   "source": "どのアイテムを見る？",
+   "translation": "要查看哪个道具？",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E653A",
+   "offset": "000E653A",
+   "max_bytes": 12,
+   "source": "誰の魔法？",
+   "translation": "谁的魔法？",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E6546",
+   "offset": "000E6546",
+   "max_bytes": 18,
+   "source": "どの魔法を使う？",
+   "translation": "要使用哪个魔法？",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E6558",
+   "offset": "000E6558",
+   "max_bytes": 12,
+   "source": "誰に使う？",
+   "translation": "让谁使用？",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E6564",
+   "offset": "000E6564",
+   "max_bytes": 24,
+   "source": "誰の魔法を並べ替える？",
+   "translation": "要排列谁的魔法？",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E657C",
+   "offset": "000E657C",
+   "max_bytes": 22,
+   "source": "どのアイテムを使う？",
+   "translation": "要使用哪个道具？",
+   "renderer": "dynamic",
+   "translation_origin": "existing_exact_match"
+  },
+  {
+   "id": "SLPM-000E6592",
+   "offset": "000E6592",
+   "max_bytes": 10,
+   "source": "並べ替え",
+   "translation": "排序",
+   "renderer": "dynamic",
+   "translation_origin": "existing_exact_match"
+  },
+  {
+   "id": "SLPM-000E659C",
+   "offset": "000E659C",
+   "max_bytes": 14,
+   "source": "整頓中．．．",
+   "translation": "整理中．．．",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E65AA",
+   "offset": "000E65AA",
+   "max_bytes": 10,
+   "source": "整頓終了",
+   "translation": "整理结束",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E65B4",
+   "offset": "000E65B4",
+   "max_bytes": 24,
+   "source": "どのアイテムを捨てる？",
+   "translation": "要丢弃哪个道具？",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E65CC",
+   "offset": "000E65CC",
+   "max_bytes": 18,
+   "source": "{道具}を捨てるのか？",
+   "translation": "要丢弃{道具}吗？",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E65DE",
+   "offset": "000E65DE",
+   "max_bytes": 12,
+   "source": "誰の装備？",
+   "translation": "谁的装备？",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E65EA",
+   "offset": "000E65EA",
+   "max_bytes": 24,
+   "source": "誰のステータスを見る？",
+   "translation": "要查看谁的状态？",
+   "renderer": "dynamic",
+   "translation_origin": "manual"
+  },
+  {
+   "id": "SLPM-000E6602",
+   "offset": "000E6602",
+   "max_bytes": 20,
+   "source": "しばし待たれよ！▽",
+   "translation": "稍等一会儿吧！▽",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E6616",
+   "offset": "000E6616",
+   "max_bytes": 26,
+   "source": "{名字1}は\n渋々去って行った▽",
+   "translation": "{名字1}\n不情不愿地离开了。▽",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E6630",
+   "offset": "000E6630",
+   "max_bytes": 14,
+   "source": "よろしいか？",
+   "translation": "可以吗？",
+   "renderer": "dynamic",
+   "translation_origin": "existing_exact_match"
+  },
+  {
+   "id": "SLPM-000E663E",
+   "offset": "000E663E",
+   "max_bytes": 22,
+   "source": "何処に転送しますか？",
+   "translation": "要传送到哪里？",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E6654",
+   "offset": "000E6654",
+   "max_bytes": 34,
+   "source": "アイテムが１種類しかありません▽",
+   "translation": "道具只有一个种类。▽",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E6676",
+   "offset": "000E6676",
+   "max_bytes": 20,
+   "source": "アイテムが一杯だ▽",
+   "translation": "道具已满。▽",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E668A",
+   "offset": "000E668A",
+   "max_bytes": 18,
+   "source": "アイテムが無い▽",
+   "translation": "没有道具。▽",
+   "renderer": "dynamic",
+   "translation_origin": "manual"
+  },
+  {
+   "id": "SLPM-000E669C",
+   "offset": "000E669C",
+   "max_bytes": 28,
+   "source": "装備できるアイテムが無い▽",
+   "translation": "没有可装备的道具。▽",
+   "renderer": "dynamic",
+   "translation_origin": "manual"
+  },
+  {
+   "id": "SLPM-000E66B8",
+   "offset": "000E66B8",
+   "max_bytes": 22,
+   "source": "何も装備していない▽",
+   "translation": "什么也没有装备。▽",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E66CE",
+   "offset": "000E66CE",
+   "max_bytes": 24,
+   "source": "{仲魔}は\n能力を回復した▽",
+   "translation": "{仲魔}\n恢复了能力。▽",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E66E6",
+   "offset": "000E66E6",
+   "max_bytes": 20,
+   "source": "階段を上りますか？",
+   "translation": "要上楼吗？",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E66FA",
+   "offset": "000E66FA",
+   "max_bytes": 20,
+   "source": "階段を下りますか？",
+   "translation": "要下楼吗？",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E670E",
+   "offset": "000E670E",
+   "max_bytes": 20,
+   "source": "使える魔法が無い▽",
+   "translation": "没有可用魔法。▽",
+   "renderer": "dynamic",
+   "translation_origin": "manual"
+  },
+  {
+   "id": "SLPM-000E6722",
+   "offset": "000E6722",
+   "max_bytes": 26,
+   "source": "ＣＯＭＰを持っていない▽",
+   "translation": "没有ＣＯＭＰ。▽",
+   "renderer": "dynamic",
+   "translation_origin": "manual"
+  },
+  {
+   "id": "SLPM-000E673C",
+   "offset": "000E673C",
+   "max_bytes": 28,
+   "source": "仲魔が一杯だ\n誰か外すか？",
+   "translation": "仲魔已经满了\n要让谁离开？",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E6758",
+   "offset": "000E6758",
+   "max_bytes": 24,
+   "source": "仲魔にするのを諦めた▽",
+   "translation": "放弃成为仲魔了。▽",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E6770",
+   "offset": "000E6770",
+   "max_bytes": 24,
+   "source": "話しが通じないようだ▽",
+   "translation": "看起来无法对话。▽",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E6788",
+   "offset": "000E6788",
+   "max_bytes": 26,
+   "source": "だめだ話しにならない！▽",
+   "translation": "不行，无法对话！▽",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E67A2",
+   "offset": "000E67A2",
+   "max_bytes": 24,
+   "source": "いきなり襲ってきた！▽",
+   "translation": "突然袭击了过来！▽",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E67BA",
+   "offset": "000E67BA",
+   "max_bytes": 26,
+   "source": "{主角}は話せる状態ではない▽",
+   "translation": "{主角}不在能对话的状态。▽",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E67D4",
+   "offset": "000E67D4",
+   "max_bytes": 16,
+   "source": "何をしますか？",
+   "translation": "要做什么呢？",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E67E4",
+   "offset": "000E67E4",
+   "max_bytes": 14,
+   "source": "ＣＯＭＰ作動",
+   "translation": "ＣＯＭＰ启动",
+   "renderer": "dynamic",
+   "translation_origin": "existing_exact_match"
+  },
+  {
+   "id": "SLPM-000E67F2",
+   "offset": "000E67F2",
+   "max_bytes": 32,
+   "source": "この場で使えるアイテムが無い▽",
+   "translation": "没有能在这里使用的道具。▽",
+   "renderer": "dynamic",
+   "translation_origin": "manual"
+  },
+  {
+   "id": "SLPM-000E6812",
+   "offset": "000E6812",
+   "max_bytes": 32,
+   "source": "どの悪魔をアナライズしますか？",
+   "translation": "要解析哪个恶魔呢？",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E6832",
+   "offset": "000E6832",
+   "max_bytes": 32,
+   "source": "アナライズできる悪魔がいない▽",
+   "translation": "没有能解析的恶魔。▽",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E6852",
+   "offset": "000E6852",
+   "max_bytes": 14,
+   "source": "魔法が無い▽",
+   "translation": "没有魔法。▽",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E6860",
+   "offset": "000E6860",
+   "max_bytes": 42,
+   "source": "{仲魔}は魔法を\n{数值0}個覚えられるようになった▽",
+   "translation": "{仲魔}似乎学会了を\n{数值0}个魔法。▽",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E688A",
+   "offset": "000E688A",
+   "max_bytes": 24,
+   "source": "ここでは使用できない▽",
+   "translation": "没法在这里使用。▽",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E68A2",
+   "offset": "000E68A2",
+   "max_bytes": 26,
+   "source": "オートリカバーしますか？",
+   "translation": "要自动回复吗？",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E68BC",
+   "offset": "000E68BC",
+   "max_bytes": 48,
+   "source": "その名前ではないですね▽ふざけないでください▽",
+   "translation": "并不是那个名字呢。▽请不要开玩笑。▽",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E68EC",
+   "offset": "000E68EC",
+   "max_bytes": 22,
+   "source": "この仲魔は外せない▽",
+   "translation": "该仲魔无法离开。▽",
+   "renderer": "dynamic",
+   "translation_origin": "existing_exact_match"
+  },
+  {
+   "id": "SLPM-000E6902",
+   "offset": "000E6902",
+   "max_bytes": 28,
+   "source": "アイテムが一杯で外せない▽",
+   "translation": "道具已满，无法卸除。",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E691E",
+   "offset": "000E691E",
+   "max_bytes": 16,
+   "source": "￡が足りない▽",
+   "translation": "￡不够。▽",
+   "renderer": "dynamic",
+   "translation_origin": "existing_exact_match"
+  },
+  {
+   "id": "SLPM-000E692E",
+   "offset": "000E692E",
+   "max_bytes": 22,
+   "source": "{名字1}の\n死体を捨てた▽",
+   "translation": "丢掉了{名字1}的尸体。▽",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E6944",
+   "offset": "000E6944",
+   "max_bytes": 28,
+   "source": "呪われているので外せない▽",
+   "translation": "由于被诅咒，无法卸除。▽",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E6960",
+   "offset": "000E6960",
+   "max_bytes": 10,
+   "source": "特になし",
+   "translation": "无",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E696A",
+   "offset": "000E696A",
+   "max_bytes": 18,
+   "source": "ＭＰが足りない▽",
+   "translation": "ＭＰ不够。▽",
+   "renderer": "dynamic",
+   "translation_origin": "existing_exact_match"
+  },
+  {
+   "id": "SLPM-000E697C",
+   "offset": "000E697C",
+   "max_bytes": 28,
+   "source": "魔法を使える状態ではない▽",
+   "translation": "现在无法使用魔法。▽",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E6998",
+   "offset": "000E6998",
+   "max_bytes": 18,
+   "source": "{道具}を捨てますか？",
+   "translation": "要丢弃{道具}吗？",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E69AA",
+   "offset": "000E69AA",
+   "max_bytes": 24,
+   "source": "どの弾を装備しますか？",
+   "translation": "要装备哪种子弹？",
+   "renderer": "dynamic",
+   "translation_origin": "existing_exact_match"
+  },
+  {
+   "id": "SLPM-000E69C2",
+   "offset": "000E69C2",
+   "max_bytes": 22,
+   "source": "装備する必要すらない",
+   "translation": "没有装备的必要",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E69D8",
+   "offset": "000E69D8",
+   "max_bytes": 32,
+   "source": "アイテムを使える状態ではない▽",
+   "translation": "现在无法使用道具。▽",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E69F8",
+   "offset": "000E69F8",
+   "max_bytes": 20,
+   "source": "外せる仲魔はいない",
+   "translation": "没有能离开的仲魔。",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E6A0C",
+   "offset": "000E6A0C",
+   "max_bytes": 26,
+   "source": "ここで魔法は　使えない▽",
+   "translation": "在这里无法使用魔法。▽",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E6A26",
+   "offset": "000E6A26",
+   "max_bytes": 20,
+   "source": "{仲魔}は\n{道具}を使った{大停顿}",
+   "translation": "{仲魔}\n使用了{道具}。{大停顿}",
+   "renderer": "dynamic",
+   "translation_origin": "existing_exact_match"
+  },
+  {
+   "id": "SLPM-000E6A3A",
+   "offset": "000E6A3A",
+   "max_bytes": 16,
+   "source": "誰も悪くない▽",
+   "translation": "谁都没有错。▽",
+   "renderer": "dynamic",
+   "translation_origin": "existing_exact_match"
+  },
+  {
+   "id": "SLPM-000E6A4A",
+   "offset": "000E6A4A",
+   "max_bytes": 26,
+   "source": "しかし　効果がなかった{大停顿}",
+   "translation": "但是没有效果。{大停顿}",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E6A64",
+   "offset": "000E6A64",
+   "max_bytes": 26,
+   "source": "失敗して　しまった！！{大停顿}",
+   "translation": "失败了！！{大停顿}",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E6A7E",
+   "offset": "000E6A7E",
+   "max_bytes": 20,
+   "source": "{仲魔}は\n{魔法}を唱えた{大停顿}",
+   "translation": "{仲魔}\n咏唱了{魔法}。{大停顿}",
+   "renderer": "dynamic",
+   "translation_origin": "existing_exact_match"
+  },
+  {
+   "id": "SLPM-000E6A92",
+   "offset": "000E6A92",
+   "max_bytes": 18,
+   "source": "{仲魔}は\n回復した{大停顿}",
+   "translation": "{仲魔}回复了。{大停顿}",
+   "renderer": "dynamic",
+   "translation_origin": "existing_exact_match"
+  },
+  {
+   "id": "SLPM-000E6AA4",
+   "offset": "000E6AA4",
+   "max_bytes": 20,
+   "source": "{仲魔}達は\n回復した{大停顿}",
+   "translation": "{仲魔}等回复了。{大停顿}",
+   "renderer": "dynamic",
+   "translation_origin": "existing_exact_match"
+  },
+  {
+   "id": "SLPM-000E6AB8",
+   "offset": "000E6AB8",
+   "max_bytes": 20,
+   "source": "{仲魔}は\n我に返った{大停顿}",
+   "translation": "{仲魔}恢复自我了。{大停顿}",
+   "renderer": "dynamic",
+   "translation_origin": "existing_exact_match"
+  },
+  {
+   "id": "SLPM-000E6ACC",
+   "offset": "000E6ACC",
+   "max_bytes": 20,
+   "source": "{主角等人}は\n我に返った{大停顿}",
+   "translation": "{主角等人}恢复自我了。{大停顿}",
+   "renderer": "dynamic",
+   "translation_origin": "existing_exact_match"
+  },
+  {
+   "id": "SLPM-000E6AE0",
+   "offset": "000E6AE0",
+   "max_bytes": 22,
+   "source": "{仲魔}達は\n我に返った{大停顿}",
+   "translation": "{仲魔}等恢复自我了。{大停顿}",
+   "renderer": "dynamic",
+   "translation_origin": "existing_exact_match"
+  },
+  {
+   "id": "SLPM-000E6AF6",
+   "offset": "000E6AF6",
+   "max_bytes": 22,
+   "source": "{仲魔}から\n毒が消えた{大停顿}",
+   "translation": "{仲魔}的毒素消失了。{大停顿}",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E6B0C",
+   "offset": "000E6B0C",
+   "max_bytes": 22,
+   "source": "{仲魔}の\n麻痺が治った{大停顿}",
+   "translation": "{仲魔}的麻痹痊愈了。{大停顿}",
+   "renderer": "dynamic",
+   "translation_origin": "existing_exact_match"
+  },
+  {
+   "id": "SLPM-000E6B22",
+   "offset": "000E6B22",
+   "max_bytes": 22,
+   "source": "{仲魔}の\n石化が解けた{大停顿}",
+   "translation": "{仲魔}的石化解除了。{大停顿}",
+   "renderer": "dynamic",
+   "translation_origin": "existing_exact_match"
+  },
+  {
+   "id": "SLPM-000E6B38",
+   "offset": "000E6B38",
+   "max_bytes": 22,
+   "source": "{仲魔}は\n正気になった{大停顿}",
+   "translation": "{仲魔}恢复正常了。{大停顿}",
+   "renderer": "dynamic",
+   "translation_origin": "existing_exact_match"
+  },
+  {
+   "id": "SLPM-000E6B4E",
+   "offset": "000E6B4E",
+   "max_bytes": 20,
+   "source": "{仲魔}は\n生き返った{大停顿}",
+   "translation": "{仲魔}复生了。{大停顿}",
+   "renderer": "dynamic",
+   "translation_origin": "existing_exact_match"
+  },
+  {
+   "id": "SLPM-000E6B62",
+   "offset": "000E6B62",
+   "max_bytes": 18,
+   "source": "{仲魔}は\n復活した{大停顿}",
+   "translation": "{仲魔}复活了。{大停顿}",
+   "renderer": "dynamic",
+   "translation_origin": "existing_exact_match"
+  },
+  {
+   "id": "SLPM-000E6B74",
+   "offset": "000E6B74",
+   "max_bytes": 24,
+   "source": "{仲魔}は\nその場に倒れた{大停顿}",
+   "translation": "{仲魔}当场倒下了。{大停顿}",
+   "renderer": "dynamic",
+   "translation_origin": "existing_exact_match"
+  },
+  {
+   "id": "SLPM-000E6B8C",
+   "offset": "000E6B8C",
+   "max_bytes": 18,
+   "source": "{仲魔}を\n召喚した{大停顿}",
+   "translation": "召唤了{仲魔}。{大停顿}",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E6B9E",
+   "offset": "000E6B9E",
+   "max_bytes": 22,
+   "source": "{仲魔}は\nよみがえった{大停顿}",
+   "translation": "{仲魔}苏醒了。{大停顿}",
+   "renderer": "dynamic",
+   "translation_origin": "existing_exact_match"
+  },
+  {
+   "id": "SLPM-000E6BB4",
+   "offset": "000E6BB4",
+   "max_bytes": 32,
+   "source": "{主角等人}の体は\nシールドに守られた{大停顿}",
+   "translation": "{主角等人}的身体\n被屏障守护着。{大停顿}",
+   "renderer": "dynamic",
+   "translation_origin": "existing_exact_match"
+  },
+  {
+   "id": "SLPM-000E6BD4",
+   "offset": "000E6BD4",
+   "max_bytes": 30,
+   "source": "{仲魔}の\nＨＰとＭＰは回復した{大停顿}",
+   "translation": "{仲魔}的\nＨＰ和ＭＰ回复了。{大停顿}",
+   "renderer": "dynamic",
+   "translation_origin": "existing_exact_match"
+  },
+  {
+   "id": "SLPM-000E6BF2",
+   "offset": "000E6BF2",
+   "max_bytes": 24,
+   "source": "{仲魔}は\n元気が出てきた{大停顿}",
+   "translation": "{仲魔}打起了精神。{大停顿}",
+   "renderer": "dynamic",
+   "translation_origin": "existing_exact_match"
+  },
+  {
+   "id": "SLPM-000E6C0A",
+   "offset": "000E6C0A",
+   "max_bytes": 22,
+   "source": "{仲魔}は毒におかされた{大停顿}",
+   "translation": "{仲魔}中毒了。{大停顿}",
+   "renderer": "dynamic",
+   "translation_origin": "existing_exact_match"
+  },
+  {
+   "id": "SLPM-000E6C20",
+   "offset": "000E6C20",
+   "max_bytes": 18,
+   "source": "{仲魔}は\n全快した{大停顿}",
+   "translation": "{仲魔}完全痊愈了。{大停顿}",
+   "renderer": "dynamic",
+   "translation_origin": "existing_exact_match"
+  },
+  {
+   "id": "SLPM-000E6C32",
+   "offset": "000E6C32",
+   "max_bytes": 22,
+   "source": "{仲魔}の\n運が上がった{大停顿}",
+   "translation": "{仲魔}的运气提升了。{大停顿}",
+   "renderer": "dynamic",
+   "translation_origin": "existing_exact_match"
+  },
+  {
+   "id": "SLPM-000E6C48",
+   "offset": "000E6C48",
+   "max_bytes": 24,
+   "source": "{仲魔}の\n体力が上がった{大停顿}",
+   "translation": "{仲魔}的体力提升了。{大停顿}",
+   "renderer": "dynamic",
+   "translation_origin": "existing_exact_match"
+  },
+  {
+   "id": "SLPM-000E6C60",
+   "offset": "000E6C60",
+   "max_bytes": 24,
+   "source": "{仲魔}の\n知恵が上がった{大停顿}",
+   "translation": "{仲魔}的智慧提升了。{大停顿}",
+   "renderer": "dynamic",
+   "translation_origin": "existing_exact_match"
+  },
+  {
+   "id": "SLPM-000E6C78",
+   "offset": "000E6C78",
+   "max_bytes": 22,
+   "source": "{仲魔}の\n力が上がった{大停顿}",
+   "translation": "{仲魔}的力量提升了。{大停顿}",
+   "renderer": "dynamic",
+   "translation_origin": "existing_exact_match"
+  },
+  {
+   "id": "SLPM-000E6C8E",
+   "offset": "000E6C8E",
+   "max_bytes": 24,
+   "source": "{仲魔}の\n速さが上がった{大停顿}",
+   "translation": "{仲魔}的速度提升了。{大停顿}",
+   "renderer": "dynamic",
+   "translation_origin": "existing_exact_match"
+  },
+  {
+   "id": "SLPM-000E6CA6",
+   "offset": "000E6CA6",
+   "max_bytes": 24,
+   "source": "{仲魔}の\n魔力が上がった{大停顿}",
+   "translation": "{仲魔}的魔力提升了。{大停顿}",
+   "renderer": "dynamic",
+   "translation_origin": "existing_exact_match"
+  },
+  {
+   "id": "SLPM-000E6CBE",
+   "offset": "000E6CBE",
+   "max_bytes": 32,
+   "source": "身代わりの玉に\n守られている{大停顿}",
+   "translation": "被替身珠守护了。{大停顿}",
+   "renderer": "dynamic",
+   "translation_origin": "existing_exact_match"
+  },
+  {
+   "id": "SLPM-000E6CDE",
+   "offset": "000E6CDE",
+   "max_bytes": 26,
+   "source": "{道具}が\nシールドを張った{大停顿}",
+   "translation": "{道具}张开了屏障。{大停顿}",
+   "renderer": "dynamic",
+   "translation_origin": "existing_exact_match"
+  },
+  {
+   "id": "SLPM-000E6CF8",
+   "offset": "000E6CF8",
+   "max_bytes": 20,
+   "source": "箱から\n{名字1}が出た{大停顿}",
+   "translation": "{名字1}从箱子里出来了{大停顿}",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E6D0C",
+   "offset": "000E6D0C",
+   "max_bytes": 24,
+   "source": "{仲魔}は\nＭＰを回復した{大停顿}",
+   "translation": "{仲魔}回复了ＭＰ。{大停顿}",
+   "renderer": "dynamic",
+   "translation_origin": "existing_exact_match"
+  },
+  {
+   "id": "SLPM-000E6D24",
+   "offset": "000E6D24",
+   "max_bytes": 26,
+   "source": "{主角等人}は\nパワーアップした{大停顿}",
+   "translation": "{主角等人}强化了。{大停顿}",
+   "renderer": "dynamic",
+   "translation_origin": "existing_exact_match"
+  },
+  {
+   "id": "SLPM-000E6D3E",
+   "offset": "000E6D3E",
+   "max_bytes": 26,
+   "source": "{道具}は\nボロボロになった{大停顿}",
+   "translation": "{道具}变得破破烂烂了。{大停顿}",
+   "renderer": "dynamic",
+   "translation_origin": "existing_exact_match"
+  },
+  {
+   "id": "SLPM-000E6E32",
+   "offset": "000E6E32",
+   "max_bytes": 24,
+   "source": "ＥＲＲＯＲ　ＤＡＴＡ{72FF}",
+   "translation": "ＥＲＲＯＲ　ＤＡＴＡ{72FF}",
+   "renderer": "static",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E6E4A",
+   "offset": "000E6E4A",
+   "max_bytes": 16,
+   "source": "クリアデータ{72FF}",
+   "translation": "通关存档{72FF}",
+   "renderer": "static",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E6E5A",
+   "offset": "000E6E5A",
+   "max_bytes": 54,
+   "source": "ロードするメモリーカードの差込口を\n選択して下さい{72FF}",
+   "translation": "请选择读取存档的\n记忆卡插口{72FF}",
+   "renderer": "static",
+   "translation_origin": "manual"
+  },
+  {
+   "id": "SLPM-000E6E90",
+   "offset": "000E6E90",
+   "max_bytes": 54,
+   "source": "セーブするメモリーカードの差込口を\n選択して下さい{72FF}",
+   "translation": "请选择保存存档的\n记忆卡插口{72FF}",
+   "renderer": "static",
+   "translation_origin": "manual"
+  },
+  {
+   "id": "SLPM-000E6EC6",
+   "offset": "000E6EC6",
+   "max_bytes": 88,
+   "source": "メモリーカードチェック中です\nメモリーカードとコントローラを\n抜き差ししないで下さい{72FF}",
+   "translation": "正在检测记忆卡。\n请勿拔出记忆卡和控制器。{72FF}",
+   "renderer": "static",
+   "translation_origin": "existing_exact_match"
+  },
+  {
+   "id": "SLPM-000E6F1E",
+   "offset": "000E6F1E",
+   "max_bytes": 70,
+   "source": "メモリーカードが差されていません\n差込口{数值0}に正しく接続してください{72FF}",
+   "translation": "未插入记忆卡。\n请正确连接插口{数值0}。{72FF}",
+   "renderer": "static",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E6F64",
+   "offset": "000E6F64",
+   "max_bytes": 104,
+   "source": "メモリーカードが正常に認識されません\n差込口にメモリーカードが\n正しく差し込まれているかご確認下さい{72FF}",
+   "translation": "未正常识别记忆卡。\n请确认记忆卡是否正确插入插口。{72FF}",
+   "renderer": "static",
+   "translation_origin": "existing_exact_match"
+  },
+  {
+   "id": "SLPM-000E6FCC",
+   "offset": "000E6FCC",
+   "max_bytes": 46,
+   "source": "メモリーカードがフォーマットされていません{72FF}",
+   "translation": "记忆卡未格式化。{72FF}",
+   "renderer": "static",
+   "translation_origin": "existing_exact_match"
+  },
+  {
+   "id": "SLPM-000E6FFA",
+   "offset": "000E6FFA",
+   "max_bytes": 34,
+   "source": "セーブされたデータがありません{72FF}",
+   "translation": "没有存档。{72FF}",
+   "renderer": "static",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E701C",
+   "offset": "000E701C",
+   "max_bytes": 38,
+   "source": "中断セーブされたデータがありません{72FF}",
+   "translation": "没有中断存档。{72FF}",
+   "renderer": "static",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E7042",
+   "offset": "000E7042",
+   "max_bytes": 54,
+   "source": "ＦＩＬＥ{数值0}のデータをロードします\nよろしいですか？{72FF}",
+   "translation": "将会读取ＦＩＬＥ{数值0}的存档。\n确定要这样做吗？{72FF}",
+   "renderer": "static",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E7078",
+   "offset": "000E7078",
+   "max_bytes": 72,
+   "source": "ロード中です　メモリーカードと\nコントローラを抜き差ししないで下さい{72FF}",
+   "translation": "正在读取。\n请勿拔出记忆卡和控制器。{72FF}",
+   "renderer": "static",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E70C0",
+   "offset": "000E70C0",
+   "max_bytes": 24,
+   "source": "ロードに失敗しました{72FF}",
+   "translation": "读取失败了。{72FF}",
+   "renderer": "static",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E70D8",
+   "offset": "000E70D8",
+   "max_bytes": 58,
+   "source": "このデータはクリアデータです\nゲームの再開はできません{72FF}",
+   "translation": "这个存档是通关存档。\n无法继续游戏。{72FF}",
+   "renderer": "static",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E7112",
+   "offset": "000E7112",
+   "max_bytes": 44,
+   "source": "ここではクリアデータ以外ロードできません{72FF}",
+   "translation": "在这里只能读取通关存档。{72FF}",
+   "renderer": "static",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E713E",
+   "offset": "000E713E",
+   "max_bytes": 70,
+   "source": "メモリーカードがフォーマットされていません\nフォーマットしますか？{72FF}",
+   "translation": "记忆卡尚未格式化。\n要格式化吗？{72FF}",
+   "renderer": "static",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E7184",
+   "offset": "000E7184",
+   "max_bytes": 78,
+   "source": "フォーマット中です　メモリーカードと\nコントローラを抜き差ししないで下さい{72FF}",
+   "translation": "正在格式化。\n请勿拔出记忆卡和控制器。{72FF}",
+   "renderer": "static",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E71D2",
+   "offset": "000E71D2",
+   "max_bytes": 30,
+   "source": "フォーマットに失敗しました{72FF}",
+   "translation": "格式化失败了。{72FF}",
+   "renderer": "static",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E71F0",
+   "offset": "000E71F0",
+   "max_bytes": 166,
+   "source": "メモリーカードの空きブロックが足りないため\nセーブできません。空きブロックがある\nメモリーカードに差し直すか、メモリーカード\n管理画面で不要なデータを消して下さい{72FF}",
+   "translation": "由于记忆卡的空位不够，无法存档。\n请重新插入有空位的记忆卡，\n或是在管理界面删除不需要的存档。{72FF}",
+   "renderer": "static",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E7296",
+   "offset": "000E7296",
+   "max_bytes": 126,
+   "source": "選択された箇所にはすでにセーブされた\nデータがあります\nここを選択すると以前のデータは消えて\nしまいますがよろしいですか？{72FF}",
+   "translation": "选择的位置已经有存档了。\n选择这里的话将会删除以前的存档，\n确定要这样做吗？{72FF}",
+   "renderer": "static",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E7314",
+   "offset": "000E7314",
+   "max_bytes": 72,
+   "source": "セーブ中です　メモリーカードと\nコントローラを抜き差ししないで下さい{72FF}",
+   "translation": "正在保存。\n请勿拔出记忆卡和控制器。{72FF}",
+   "renderer": "static",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E735C",
+   "offset": "000E735C",
+   "max_bytes": 24,
+   "source": "セーブに失敗しました{72FF}",
+   "translation": "保存失败了。{72FF}",
+   "renderer": "static",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E7374",
+   "offset": "000E7374",
+   "max_bytes": 24,
+   "source": "セーブが終了しました{72FF}",
+   "translation": "保存完毕。{72FF}",
+   "renderer": "static",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E738C",
+   "offset": "000E738C",
+   "max_bytes": 58,
+   "source": "メモリーカードを未初期化状態にします\nよろしいですか？{72FF}",
+   "translation": "将会使记忆卡变为未初始化状态。\n确定要这样做吗？{72FF}",
+   "renderer": "static",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E73C6",
+   "offset": "000E73C6",
+   "max_bytes": 42,
+   "source": "メモリーカードを未初期化状態にしました{72FF}",
+   "translation": "将记忆卡变为未初始化状态了。{72FF}",
+   "renderer": "static",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E73F0",
+   "offset": "000E73F0",
+   "max_bytes": 40,
+   "source": "メモリーカード未初期化に失敗しました{72FF}",
+   "translation": "记忆卡未初始化失败了。{72FF}",
+   "renderer": "static",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E7418",
+   "offset": "000E7418",
+   "max_bytes": 24,
+   "source": "データが壊れています{72FF}",
+   "translation": "数据损坏了。{72FF}",
+   "renderer": "static",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E7430",
+   "offset": "000E7430",
+   "max_bytes": 70,
+   "source": "差込口{数值0}のメモリーカードが\n抜き差しされたためロードに失敗しました{72FF}",
+   "translation": "由于插口{数值0}的记忆卡被拔出，\n读取失败了。{72FF}",
+   "renderer": "static",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E7476",
+   "offset": "000E7476",
+   "max_bytes": 70,
+   "source": "差込口{数值0}のメモリーカードが\n抜き差しされたためセーブに失敗しました{72FF}",
+   "translation": "由于插口{数值0}的记忆卡被拔出，\n保存失败了。{72FF}",
+   "renderer": "static",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E74BC",
+   "offset": "000E74BC",
+   "max_bytes": 76,
+   "source": "差込口{数值0}のメモリーカードが\n抜き差しされたためフォーマットに失敗しました{72FF}",
+   "translation": "由于插口{数值0}的记忆卡被拔出，\n格式化失败了。{72FF}",
+   "renderer": "static",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E7508",
+   "offset": "000E7508",
+   "max_bytes": 24,
+   "source": "データが壊れています{72FF}",
+   "translation": "存档损坏了。{72FF}",
+   "renderer": "static",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E7520",
+   "offset": "000E7520",
+   "max_bytes": 30,
+   "source": "フォーマットが終了しました{72FF}",
+   "translation": "格式化完毕。{72FF}",
+   "renderer": "static",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E753E",
+   "offset": "000E753E",
+   "max_bytes": 38,
+   "source": "メモリーカードが抜き差しされました{72FF}",
+   "translation": "记忆卡已拔出。{72FF}",
+   "renderer": "static",
+   "translation_origin": "existing_exact_match"
+  },
+  {
+   "id": "SLPM-000E7564",
+   "offset": "000E7564",
+   "max_bytes": 12,
+   "source": "差込口１{72FF}",
+   "translation": "插口１{72FF}",
+   "renderer": "static",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E7570",
+   "offset": "000E7570",
+   "max_bytes": 12,
+   "source": "差込口２{72FF}",
+   "translation": "插口２{72FF}",
+   "renderer": "static",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E757C",
+   "offset": "000E757C",
+   "max_bytes": 40,
+   "source": "ロードするファイルを選択してください{72FF}",
+   "translation": "请选择要读取的文件。{72FF}",
+   "renderer": "static",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E75A4",
+   "offset": "000E75A4",
+   "max_bytes": 80,
+   "source": "中断データでゲームを再開します\nキャンセルする場合はＸボタンを押してください{72FF}",
+   "translation": "将会以中断存档继续游戏。\n要取消的话请按下Ｘ键。{72FF}",
+   "renderer": "static",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E75F4",
+   "offset": "000E75F4",
+   "max_bytes": 40,
+   "source": "セーブするファイルを選択してください{72FF}",
+   "translation": "请选择要保存的文件。{72FF}",
+   "renderer": "static",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E761C",
+   "offset": "000E761C",
+   "max_bytes": 56,
+   "source": "再開すると中断データは消去されます\nよろしいですか？{72FF}",
+   "translation": "继续游戏的话将会删除中断存档。\n确定要这样做吗？{72FF}",
+   "renderer": "static",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E7654",
+   "offset": "000E7654",
+   "max_bytes": 70,
+   "source": "中断セーブを行います\nキャンセルする場合はＸボタンを押してください{72FF}",
+   "translation": "将会进行中断存档。\n要取消的话请按下Ｘ键。{72FF}",
+   "renderer": "static",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E769A",
+   "offset": "000E769A",
+   "max_bytes": 96,
+   "source": "既に中断データがあります\n上書きすると以前の中断データは\n消えてしまいます\nよろしいですか？{72FF}",
+   "translation": "已经有中断存档了。如果覆盖的话，\n以前的中断存档将会消失。\n确定要这样做吗？{72FF}",
+   "renderer": "static",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E76FA",
+   "offset": "000E76FA",
+   "max_bytes": 152,
+   "source": "メモリーカードの空きブロックが\n不足しています\nセーブを行うには最低１ブロック以上の\n空きブロックが必要です\nこのままゲームを進めてよろしいですか？{72FF}",
+   "translation": "记忆卡的空位不够。\n要进行保存的话，需要至少一个空位。\n要就这样继续游戏吗？{72FF}",
+   "renderer": "static",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E7792",
+   "offset": "000E7792",
+   "max_bytes": 46,
+   "source": "メモリーカードがフォーマットされていません{72FF}",
+   "translation": "记忆卡未格式化。{72FF}",
+   "renderer": "static",
+   "translation_origin": "existing_exact_match"
+  },
+  {
+   "id": "SLPM-000E77C0",
+   "offset": "000E77C0",
+   "max_bytes": 212,
+   "source": "メモリーカードに何らかの不具合があります\n差込口にメモリーカードが正しく差し込まれているか\nご確認下さい\nセーブを行うには最低１ブロック以上の\n空き容ブロックが必要です\nこのままゲームを進めてよろしいですか？{72FF}",
+   "translation": "记忆卡具有某种错误。\n请确认是否正确插入记忆卡。\n要进行保存的话，需要至少一个空位。\n要就这样继续游戏吗？{72FF}",
+   "renderer": "static",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E7894",
+   "offset": "000E7894",
+   "max_bytes": 116,
+   "source": "真・女神転生ｉｆ．．．のクリアデータがある場合\nゲーム内容が変わる場合があります\nクリアデータをロードしますか？{72FF}",
+   "translation": "当存在《真·女神转生if…》的通关存档时，\n游戏内容有可能发生变化。\n是否读取通关存档？{72FF}",
+   "renderer": "static",
+   "translation_origin": "existing_exact_match"
+  },
+  {
+   "id": "SLPM-000E7908",
+   "offset": "000E7908",
+   "max_bytes": 224,
+   "source": "真・女神転生ｉｆ．．．のクリアデータがある場合\n次回のプレイ時にゲーム内容が\n変わる場合があります\nクリアデータのセーブを行ったファイルでは\nゲームの再開が出来なくなるので注意してください\nクリアデータをセーブしますか？{72FF}",
+   "translation": "存在真・女神转生ｉｆ．．．的通关存档的情况下，\n下次游玩时的游戏内容有可能发生改变。\n请注意，存储为通关存档的文件不能继续游戏。\n要存储通关存档吗？{72FF}",
+   "renderer": "static",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E79E8",
+   "offset": "000E79E8",
+   "max_bytes": 66,
+   "source": "メモリーカードが差込口１または差込口２に\n差し込まれていません{72FF}",
+   "translation": "插口１和插口２没有插入记忆卡。{72FF}",
+   "renderer": "static",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E7A2A",
+   "offset": "000E7A2A",
+   "max_bytes": 98,
+   "source": "差込口{数值0}のメモリーカードチェック中です\nメモリーカードとコントローラを\n抜き差ししないで下さい{72FF}",
+   "translation": "正在检查插口{数值0}的记忆卡。\n请勿拔出记忆卡和控制器。{72FF}",
+   "renderer": "static",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E7A8C",
+   "offset": "000E7A8C",
+   "max_bytes": 76,
+   "source": "クリアセーブが行われていません\nこのままタイトルへ戻ってよろしいですか？{72FF}",
+   "translation": "没有保存通关存档。\n要直接返回标题吗？{72FF}",
+   "renderer": "static",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E7BF0",
+   "offset": "E7BF0",
+   "max_bytes": 10,
+   "source": "特になし",
+   "translation": "无特别",
+   "renderer": "dynamic"
+  },
+  {
+   "id": "SLPM-000E7BFA",
+   "offset": "000E7BFA",
+   "max_bytes": 12,
+   "source": "火炎に強い",
+   "translation": "抵抗火焰",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E7C06",
+   "offset": "000E7C06",
+   "max_bytes": 12,
+   "source": "氷結に強い",
+   "translation": "抵抗冰冻",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E7C12",
+   "offset": "000E7C12",
+   "max_bytes": 12,
+   "source": "電撃に強い",
+   "translation": "抵抗电击",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E7C1E",
+   "offset": "000E7C1E",
+   "max_bytes": 12,
+   "source": "衝撃に強い",
+   "translation": "抵抗冲击",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E7C2A",
+   "offset": "000E7C2A",
+   "max_bytes": 26,
+   "source": "精神攻撃・呪いにやや強い",
+   "translation": "略微抵抗精神攻击、诅咒",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E7C44",
+   "offset": "000E7C44",
+   "max_bytes": 20,
+   "source": "物理攻撃にやや強い",
+   "translation": "略微抵抗物理攻击",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E7C58",
+   "offset": "000E7C58",
+   "max_bytes": 26,
+   "source": "物理攻撃・電撃にやや強い",
+   "translation": "略微抵抗物理攻击、电击",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E7C72",
+   "offset": "000E7C72",
+   "max_bytes": 22,
+   "source": "火炎・氷結にやや強い",
+   "translation": "略微抵抗火焰、冰冻",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E7C88",
+   "offset": "000E7C88",
+   "max_bytes": 20,
+   "source": "精神攻撃をはね返す",
+   "translation": "反弹精神攻击",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E7C9C",
+   "offset": "000E7C9C",
+   "max_bytes": 20,
+   "source": "物理攻撃をはね返す",
+   "translation": "反弹物理攻击",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E7CB0",
+   "offset": "000E7CB0",
+   "max_bytes": 24,
+   "source": "火炎を吸収・氷結に弱い",
+   "translation": "吸收火焰、弱冰冻",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E7CC8",
+   "offset": "000E7CC8",
+   "max_bytes": 12,
+   "source": "電撃を吸収",
+   "translation": "吸收电击",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E7CD4",
+   "offset": "000E7CD4",
+   "max_bytes": 22,
+   "source": "火炎・氷結をはね返す",
+   "translation": "反弹火焰、冰冻",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E7CEA",
+   "offset": "000E7CEA",
+   "max_bytes": 26,
+   "source": "破魔・呪いなどをはね返す",
+   "translation": "反弹破魔、诅咒等",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E7D04",
+   "offset": "000E7D04",
+   "max_bytes": 22,
+   "source": "どの攻撃にもやや強い",
+   "translation": "略微抵抗所有攻击",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E7D1A",
+   "offset": "000E7D1A",
+   "max_bytes": 26,
+   "source": "ガン以外の物理攻撃に強い",
+   "translation": "抵抗枪以外的物理攻击",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E7D34",
+   "offset": "000E7D34",
+   "max_bytes": 18,
+   "source": "火炎・氷結に弱い",
+   "translation": "弱火焰、冰冻",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E7D46",
+   "offset": "000E7D46",
+   "max_bytes": 26,
+   "source": "電撃吸収・衝撃をはね返す",
+   "translation": "吸收电击、反弹冲击",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E7D60",
+   "offset": "000E7D60",
+   "max_bytes": 24,
+   "source": "火炎・氷結・電撃に強い",
+   "translation": "抵抗火焰、冰冻、电击",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E7D78",
+   "offset": "000E7D78",
+   "max_bytes": 18,
+   "source": "破魔・火炎に弱い",
+   "translation": "弱破魔、火焰",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E7D8A",
+   "offset": "000E7D8A",
+   "max_bytes": 30,
+   "source": "ガンが効かないが\n破魔に弱い",
+   "translation": "枪无效，\n但弱破魔",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E7DA8",
+   "offset": "000E7DA8",
+   "max_bytes": 24,
+   "source": "剣・火炎・衝撃のみ効く",
+   "translation": "只有剑、火焰、冲击有效",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E7DC0",
+   "offset": "000E7DC0",
+   "max_bytes": 16,
+   "source": "物理攻撃に強い",
+   "translation": "抵抗物理攻击",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E7DD0",
+   "offset": "000E7DD0",
+   "max_bytes": 24,
+   "source": "火炎を吸収・氷結に弱い",
+   "translation": "吸收火焰、弱冰冻",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E7DE8",
+   "offset": "000E7DE8",
+   "max_bytes": 30,
+   "source": "火炎をはね返すが\n氷結に弱い",
+   "translation": "反弹火焰，\n但弱冰冻",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E7E06",
+   "offset": "000E7E06",
+   "max_bytes": 24,
+   "source": "火炎を吸収・氷結に弱い",
+   "translation": "吸收火焰、弱冰冻",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E7E1E",
+   "offset": "000E7E1E",
+   "max_bytes": 30,
+   "source": "氷結をはね返すが\n火炎に弱い",
+   "translation": "反弹冰冻，\n但弱火焰",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E7E3C",
+   "offset": "000E7E3C",
+   "max_bytes": 30,
+   "source": "電撃をはね返すが\n氷結に弱い",
+   "translation": "反弹电击，\n但弱冰冻",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E7E5A",
+   "offset": "000E7E5A",
+   "max_bytes": 32,
+   "source": "魔法にはやや強いが\n呪いに弱い",
+   "translation": "略微抵抗魔法，\n但弱诅咒",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E7E7A",
+   "offset": "000E7E7A",
+   "max_bytes": 36,
+   "source": "火炎・破魔以外の魔法は\n効きにくい",
+   "translation": "火焰、破魔以外的魔法\n难以生效",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E7E9E",
+   "offset": "000E7E9E",
+   "max_bytes": 32,
+   "source": "剣攻撃は効かないが\n呪いに弱い",
+   "translation": "剑攻击无效，\n但弱诅咒",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E7EBE",
+   "offset": "000E7EBE",
+   "max_bytes": 12,
+   "source": "電撃に弱い",
+   "translation": "弱电击",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E7ECA",
+   "offset": "000E7ECA",
+   "max_bytes": 12,
+   "source": "電撃を吸収",
+   "translation": "吸收电击",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E7ED6",
+   "offset": "000E7ED6",
+   "max_bytes": 12,
+   "source": "魔法に強い",
+   "translation": "抵抗魔法",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E7EE2",
+   "offset": "000E7EE2",
+   "max_bytes": 12,
+   "source": "魔法を吸収",
+   "translation": "吸收魔法",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E7EEE",
+   "offset": "000E7EEE",
+   "max_bytes": 14,
+   "source": "技を返される",
+   "translation": "反制技",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E7EFC",
+   "offset": "000E7EFC",
+   "max_bytes": 34,
+   "source": "悪魔の攻撃に強く\n破魔をはね返す",
+   "translation": "抵抗恶魔的攻击\n反弹破魔",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E7F1E",
+   "offset": "000E7F1E",
+   "max_bytes": 16,
+   "source": "魔法をはね返す",
+   "translation": "反弹魔法",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E7F2E",
+   "offset": "000E7F2E",
+   "max_bytes": 20,
+   "source": "呪いが一切効かない",
+   "translation": "诅咒完全无效",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E7F42",
+   "offset": "000E7F42",
+   "max_bytes": 30,
+   "source": "物理攻撃がほとんど\n効かない",
+   "translation": "物理攻击几乎无效",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E7F60",
+   "offset": "000E7F60",
+   "max_bytes": 16,
+   "source": "攻撃魔法に弱い",
+   "translation": "弱攻击魔法",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E7F70",
+   "offset": "000E7F70",
+   "max_bytes": 22,
+   "source": "氷結吸収・火炎に弱い",
+   "translation": "吸收冰冻、弱火焰",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E7F86",
+   "offset": "000E7F86",
+   "max_bytes": 26,
+   "source": "火炎吸収で、毒などに強い",
+   "translation": "吸收火焰、抵抗毒等",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E7FA0",
+   "offset": "000E7FA0",
+   "max_bytes": 30,
+   "source": "呪いをはね返し\n毒などに強い",
+   "translation": "反弹诅咒\n抵抗毒等",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E7FBE",
+   "offset": "000E7FBE",
+   "max_bytes": 22,
+   "source": "破魔・呪いをはね返す",
+   "translation": "反弹破魔、诅咒",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E7FD4",
+   "offset": "000E7FD4",
+   "max_bytes": 28,
+   "source": "精神に強く\n火炎をはね返す",
+   "translation": "抵抗精神\n反弹火焰",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E7FF0",
+   "offset": "000E7FF0",
+   "max_bytes": 26,
+   "source": "氷結・呪いなどをはね返す",
+   "translation": "反弹冰冻、诅咒等",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E800A",
+   "offset": "000E800A",
+   "max_bytes": 14,
+   "source": "氷結のみ効く",
+   "translation": "仅冰冻有效",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E8018",
+   "offset": "000E8018",
+   "max_bytes": 34,
+   "source": "ガン・火炎に弱く\n氷結をはね返す",
+   "translation": "弱枪、火焰\n反弹冰冻",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E803A",
+   "offset": "000E803A",
+   "max_bytes": 32,
+   "source": "温度差・衝撃・呪いを\nはね返す",
+   "translation": "反弹温度差、\n冲击、诅咒",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E805A",
+   "offset": "000E805A",
+   "max_bytes": 14,
+   "source": "剣をはね返す",
+   "translation": "反弹剑",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E8068",
+   "offset": "000E8068",
+   "max_bytes": 16,
+   "source": "ガンをはね返す",
+   "translation": "反弹枪",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E8078",
+   "offset": "000E8078",
+   "max_bytes": 22,
+   "source": "衝撃・火炎をはね返す",
+   "translation": "反弹冲击、火焰",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E808E",
+   "offset": "000E808E",
+   "max_bytes": 22,
+   "source": "剣・火炎・衝撃は効く",
+   "translation": "剑、火焰、冲击有效",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E80A4",
+   "offset": "000E80A4",
+   "max_bytes": 10,
+   "source": "解析不能",
+   "translation": "无法解析",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E80AE",
+   "offset": "000E80AE",
+   "max_bytes": 10,
+   "source": "解析不能",
+   "translation": "无法解析",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E80B8",
+   "offset": "000E80B8",
+   "max_bytes": 10,
+   "source": "解析不能",
+   "translation": "无法解析",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E80C2",
+   "offset": "000E80C2",
+   "max_bytes": 10,
+   "source": "解析不能",
+   "translation": "无法解析",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E80CC",
+   "offset": "000E80CC",
+   "max_bytes": 10,
+   "source": "解析不能",
+   "translation": "无法解析",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E80D6",
+   "offset": "000E80D6",
+   "max_bytes": 10,
+   "source": "解析不能",
+   "translation": "无法解析",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E80E0",
+   "offset": "000E80E0",
+   "max_bytes": 10,
+   "source": "解析不能",
+   "translation": "无法解析",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E80EA",
+   "offset": "000E80EA",
+   "max_bytes": 10,
+   "source": "解析不能",
+   "translation": "无法解析",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E80F4",
+   "offset": "000E80F4",
+   "max_bytes": 10,
+   "source": "解析不能",
+   "translation": "无法解析",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E80FE",
+   "offset": "000E80FE",
+   "max_bytes": 10,
+   "source": "解析不能",
+   "translation": "无法解析",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E8108",
+   "offset": "000E8108",
+   "max_bytes": 10,
+   "source": "解析不能",
+   "translation": "无法解析",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E8112",
+   "offset": "000E8112",
+   "max_bytes": 10,
+   "source": "解析不能",
+   "translation": "无法解析",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E811C",
+   "offset": "000E811C",
+   "max_bytes": 10,
+   "source": "解析不能",
+   "translation": "无法解析",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E8126",
+   "offset": "000E8126",
+   "max_bytes": 10,
+   "source": "解析不能",
+   "translation": "无法解析",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E8130",
+   "offset": "000E8130",
+   "max_bytes": 10,
+   "source": "解析不能",
+   "translation": "无法解析",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E819C",
+   "offset": "000E819C",
+   "max_bytes": 36,
+   "source": "メッセージを通常の速さで表示します",
+   "translation": "以通常速度显示消息",
+   "renderer": "static",
+   "translation_origin": "manual"
+  },
+  {
+   "id": "SLPM-000E81C0",
+   "offset": "000E81C0",
+   "max_bytes": 42,
+   "source": "メッセージを通常より速い速度で表示します",
+   "translation": "以更快速度显示消息",
+   "renderer": "static",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E81EA",
+   "offset": "000E81EA",
+   "max_bytes": 44,
+   "source": "戦闘時のメッセージを通常の速度で表示します",
+   "translation": "以通常速度显示战斗消息",
+   "renderer": "static",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E8216",
+   "offset": "000E8216",
+   "max_bytes": 52,
+   "source": "戦闘時のメッセージを\n通常より速い速度で表示します",
+   "translation": "以更快速度显示战斗消息",
+   "renderer": "static",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E824A",
+   "offset": "000E824A",
+   "max_bytes": 28,
+   "source": "攻撃エフェクトを表示します",
+   "translation": "显示攻击特效",
+   "renderer": "static",
+   "translation_origin": "existing_exact_match"
+  },
+  {
+   "id": "SLPM-000E8266",
+   "offset": "000E8266",
+   "max_bytes": 32,
+   "source": "攻撃エフェクトを非表示にします",
+   "translation": "不显示攻击特效",
+   "renderer": "static",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E8286",
+   "offset": "000E8286",
+   "max_bytes": 28,
+   "source": "剣・銃・通常攻撃を繰り返す",
+   "translation": "重复剑、枪和普通攻击",
+   "renderer": "static",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E82A2",
+   "offset": "000E82A2",
+   "max_bytes": 46,
+   "source": "前回行動を繰り返す　アイテム・ＭＰ切れで攻撃",
+   "translation": "重复上次行动　道具或ＭＰ用尽时攻击",
+   "renderer": "static",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E82D0",
+   "offset": "000E82D0",
+   "max_bytes": 46,
+   "source": "前回行動を繰り返す　アイテム・ＭＰ切れで防御",
+   "translation": "重复上次行动　道具或ＭＰ用尽时防御",
+   "renderer": "static",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E82FE",
+   "offset": "000E82FE",
+   "max_bytes": 24,
+   "source": "オートマップの向き固定",
+   "translation": "固定自动地图朝向",
+   "renderer": "static",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E8316",
+   "offset": "000E8316",
+   "max_bytes": 42,
+   "source": "オートマップの向きを自分の向きに合わせる",
+   "translation": "自动地图朝向与自身一致",
+   "renderer": "static",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E8340",
+   "offset": "000E8340",
+   "max_bytes": 36,
+   "source": "３Ｄマップを通常の速さで移動します",
+   "translation": "以通常速度在３Ｄ地图移动",
+   "renderer": "static",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E8364",
+   "offset": "000E8364",
+   "max_bytes": 42,
+   "source": "３Ｄマップを通常より速い速度で移動します",
+   "translation": "以更快速度在３Ｄ地图移动",
+   "renderer": "static",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E838E",
+   "offset": "000E838E",
+   "max_bytes": 34,
+   "source": "アイテムを使用して自動回復します",
+   "translation": "使用道具自动恢复",
+   "renderer": "static",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E83B0",
+   "offset": "000E83B0",
+   "max_bytes": 34,
+   "source": "魔法のみを使用して自動回復します",
+   "translation": "仅使用魔法自动恢复",
+   "renderer": "static",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E83D2",
+   "offset": "000E83D2",
+   "max_bytes": 32,
+   "source": "サウンドをモノラルで再生します",
+   "translation": "以单声道播放声音",
+   "renderer": "static",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E83F2",
+   "offset": "000E83F2",
+   "max_bytes": 32,
+   "source": "サウンドをステレオで再生します",
+   "translation": "以立体声播放声音",
+   "renderer": "static",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E8412",
+   "offset": "000E8412",
+   "max_bytes": 32,
+   "source": "攻撃エフェクトの設定を行います",
+   "translation": "设置攻击特效",
+   "renderer": "dynamic",
+   "translation_origin": "existing_exact_match"
+  },
+  {
+   "id": "SLPM-000E8432",
+   "offset": "000E8432",
+   "max_bytes": 38,
+   "source": "戦闘メッセージのスピードを設定します",
+   "translation": "设置战斗信息的速度",
+   "renderer": "dynamic",
+   "translation_origin": "existing_exact_match"
+  },
+  {
+   "id": "SLPM-000E8458",
+   "offset": "000E8458",
+   "max_bytes": 30,
+   "source": "オートバトルの設定を行います",
+   "translation": "设置自动战斗",
+   "renderer": "dynamic",
+   "translation_origin": "existing_exact_match"
+  },
+  {
+   "id": "SLPM-000E8476",
+   "offset": "000E8476",
+   "max_bytes": 20,
+   "source": "戦闘設定を行います",
+   "translation": "设置战斗",
+   "renderer": "dynamic",
+   "translation_origin": "existing_exact_match"
+  },
+  {
+   "id": "SLPM-000E848A",
+   "offset": "000E848A",
+   "max_bytes": 26,
+   "source": "エフェクト設定を行います",
+   "translation": "设置音效",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E84A4",
+   "offset": "000E84A4",
+   "max_bytes": 34,
+   "source": "メッセージスピード設定を行います",
+   "translation": "设置消息速度",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E84C6",
+   "offset": "000E84C6",
+   "max_bytes": 28,
+   "source": "オートバトル設定を行います",
+   "translation": "设置自动战斗",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E84F0",
+   "offset": "E84F0",
+   "max_bytes": 22,
+   "source": "中断セーブを行います",
+   "translation": "进行中断存档",
+   "renderer": "dynamic"
+  },
+  {
+   "id": "SLPM-000E8506",
+   "offset": "000E8506",
+   "max_bytes": 28,
+   "source": "セーブデータをロードします",
+   "translation": "读取存档",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000E8522",
+   "offset": "000E8522",
+   "max_bytes": 26,
+   "source": "設定メニューを起動します",
+   "translation": "启动设置菜单",
+   "renderer": "dynamic",
+   "translation_origin": "untranslated"
+  },
+  {
+   "id": "SLPM-000EE820",
+   "offset": "EE820",
+   "max_bytes": 30,
+   "source": "{队友}：死んだと思ったでしょ？！",
+   "translation": "{队友}：你以为我死掉了对吧？！",
+   "renderer": "dynamic"
+  },
+  {
+   "id": "SLPM-000EE83E",
+   "offset": "EE83E",
+   "max_bytes": 24,
+   "source": "{队友}：死ぬかと思ったわ！",
+   "translation": "{队友}：我还以为会死呢！",
+   "renderer": "dynamic"
+  },
+  {
+   "id": "SLPM-000EE856",
+   "offset": "EE856",
+   "max_bytes": 26,
+   "source": "{队友}：オレは不死身だぜ！！",
+   "translation": "{队友}：我是不死之身啊！！",
+   "renderer": "dynamic"
+  },
+  {
+   "id": "SLPM-000EE870",
+   "offset": "EE870",
+   "max_bytes": 26,
+   "source": "{队友}：死ぬかと思ったぜ！！",
+   "translation": "{队友}：我还以为要死了！！",
+   "renderer": "dynamic"
+  },
+  {
+   "id": "SLPM-000EE914",
+   "offset": "EE914",
+   "max_bytes": 10,
+   "source": "カロン",
+   "translation": "卡戎：",
+   "translation_origin": "manual",
+   "renderer": "dynamic"
+  },
+  {
+   "id": "SLPM-000EE91E",
+   "offset": "EE91E",
+   "max_bytes": 78,
+   "source": "この川を　わたってはならん\n御身の上には　未だ光があり\n汝を護らんとしておる",
+   "translation": "不可渡过此川。\n汝身仍有光芒，\n它正守护着你。",
+   "renderer": "dynamic"
+  },
+  {
+   "id": "SLPM-000EE96C",
+   "offset": "EE96C",
+   "max_bytes": 62,
+   "source": "汝の力と　ならんがため\nこの岸に　姿を現す\n見るが　よい……",
+   "translation": "为成为汝之力量，\n其将于此岸显现身姿。\n且看吧……",
+   "renderer": "dynamic"
+  },
+  {
+   "id": "SLPM-000EE9AA",
+   "offset": "EE9AA",
+   "max_bytes": 78,
+   "source": "さあ　陸へ戻られい\n再び立ち上がった時　汝は光の力もて\n生まれ変わるのだ……",
+   "translation": "好了，回到岸上去吧。\n待汝再次起身之时，\n汝将以光之力获得重生……",
+   "renderer": "dynamic"
+  },
+  {
+   "id": "SLPM-000EE9F8",
+   "offset": "EE9F8",
+   "max_bytes": 102,
+   "source": "カロン：戦いに倒れる者よ　案ずるな\n　　　　また新たな光が　汝を護らんがため\n　　　　やって来る……",
+   "translation": "卡戎：于战斗中倒下之人啊，不必担忧。\n　　　还会有新的光芒\n　　　为守护汝而到来……",
+   "renderer": "dynamic"
+  },
+  {
+   "id": "SLPM-000EF298",
+   "offset": "EF298",
+   "max_bytes": 24,
+   "source": "通常の用途に使用します",
+   "translation": "用于一般用途",
+   "renderer": "dynamic"
+  },
+  {
+   "id": "SLPM-000EF2B0",
+   "offset": "EF2B0",
+   "max_bytes": 40,
+   "source": "イベント発生ポイントなど{73FF}に使用します",
+   "translation": "用于事件发生点等{73FF}",
+   "renderer": "dynamic"
+  },
+  {
+   "id": "SLPM-000EF2D8",
+   "offset": "EF2D8",
+   "max_bytes": 38,
+   "source": "宝箱の設置ポイントなど{73FF}に使用します",
+   "translation": "用于宝箱放置点等{73FF}",
+   "renderer": "dynamic"
+  },
+  {
+   "id": "SLPM-000EF2FE",
+   "offset": "EF2FE",
+   "max_bytes": 28,
+   "source": "ボス部屋などに使用しま{73FF}す",
+   "translation": "用于首领房间等{73FF}",
+   "renderer": "dynamic"
+  },
+  {
+   "id": "SLPM-000EF31A",
+   "offset": "EF31A",
+   "max_bytes": 34,
+   "source": "その他の状況に応じて{73FF}使用します",
+   "translation": "根据其他状况{73FF}使用",
+   "renderer": "dynamic"
+  },
+  {
+   "id": "SLPM-000EF364",
+   "offset": "EF364",
+   "max_bytes": 34,
+   "source": "マーカーの種類を選択してください",
+   "translation": "请选择标记的种类",
+   "renderer": "dynamic"
+  },
+  {
+   "id": "SLPM-000EF386",
+   "offset": "EF386",
+   "max_bytes": 28,
+   "source": "このマーカーを消しますか？",
+   "translation": "要删除这个标记吗？",
+   "renderer": "dynamic"
+  },
+  {
+   "id": "SLPM-000EF3A2",
+   "offset": "EF3A2",
+   "max_bytes": 30,
+   "source": "このマーカーを移動しますか？",
+   "translation": "要移动这个标记吗？",
+   "renderer": "dynamic"
+  },
+  {
+   "id": "SLPM-000EF3C0",
+   "offset": "EF3C0",
+   "max_bytes": 40,
+   "source": "その場所にはマーカーをセットできません",
+   "translation": "没法在那里设置标记。",
+   "renderer": "dynamic"
+  }
+ ]
 }

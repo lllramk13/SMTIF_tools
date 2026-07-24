@@ -55,6 +55,67 @@ SPACE = '　'
 PINS = {0x53B: '力', 0x3CD: '知', 0x4D2: '魔', 0x3A8: '体', 0x39A: '速', 0x180: '运'}
 # Preset partner names shown in the party panel.
 PARTY_PRESET_NAMES = ('由美', '查理', '明')
+# Hardcoded single glyphs patched into the executable at build time
+# (executable_patch.py resolves their codes from the codetable): 智 replaces
+# the intelligence stat's 知, 等 is the name-plural suffix (達 -> 等).  Both
+# render via F14, so they must stay below 0x567.
+EXTRA_STATIC_UI_CHARS = ('智', '等')
+# Item names (weapons/armor/guns/bullets...) shown on equip and shop screens,
+# which render via the F14 static font: every character must stay < 0x567 or
+# it blanks out (e.g. armor rows showing only 头/肩/轮).
+ITEM_NAME_BLOCK_PREFIX = 'F0094-00001008'
+# Negotiation / action menus (「要做什么呢?」「什么技艺?」…).  These option lists
+# render through the F14 static font too, so an option whose code landed above
+# 0x567 draws as a blank -- and the out-of-range read paints stray coloured
+# tiles next to it.  Same failure mode as the equipment item names above.
+MENU_OPTION_BLOCK_PREFIXES = (
+    'F0076-00002C7C',
+    'F0084-00000800',
+    'F0084-0000E000',
+)
+# Skill names (the demon detail screen) render through F14 too.  This table was
+# never in the static set, which is why e.g. Pixie's ジオンガ -> 雷霆 lost 霆
+# (0x855) and painted a stray tile next to it.
+SKILL_NAME_BLOCK_PREFIXES = (
+    'F0094-00002630',
+)
+
+
+def skill_name_texts(text_data):
+    """Translations of the F0094 skill-name table (rendered via F14)."""
+    names = []
+    for record in text_data.get('texts', ()):
+        if not record.get('id', '').startswith(SKILL_NAME_BLOCK_PREFIXES):
+            continue
+        translation = record.get('translation')
+        if isinstance(translation, str) and translation:
+            names.append(translation)
+    return names
+
+
+def menu_option_texts(text_data):
+    """Translations of the negotiation/action option blocks (F14-rendered)."""
+    options = []
+    for record in text_data.get('texts', ()):
+        record_id = record.get('id', '')
+        if not record_id.startswith(MENU_OPTION_BLOCK_PREFIXES):
+            continue
+        translation = record.get('translation')
+        if isinstance(translation, str) and translation:
+            options.append(translation)
+    return options
+
+
+def item_name_texts(text_data):
+    """Translations of the F0094 item-name table (rendered via F14)."""
+    names = []
+    for record in text_data.get('texts', ()):
+        if not record.get('id', '').startswith(ITEM_NAME_BLOCK_PREFIX):
+            continue
+        translation = record.get('translation')
+        if isinstance(translation, str) and translation:
+            names.append(translation)
+    return names
 
 KATAKANA_NAME = re.compile(r'^[ァ-ヶー・]+$')
 
@@ -111,6 +172,13 @@ def main():
         translated_slpm_texts(slpm, 'static')
         + translated_f0098_texts(f98)
         + tuple(party_name_texts(text_data))
+        + tuple(item_name_texts(text_data))
+        # NOT included: menu_option_texts() / skill_name_texts().  Both really
+        # do render through F14, but F14 is full and cannot grow: any extra
+        # glyph makes the texture compress past F0014.BIN's 24576-byte slot,
+        # and the file cannot move because FILEPOS.DAT requires every file to
+        # stay contiguous and ascending by LBA.  See F14_CAPACITY_RE.md.
+        + EXTRA_STATIC_UI_CHARS
     ):
         chars = chars_of(text)
         used |= chars

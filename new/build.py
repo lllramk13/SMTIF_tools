@@ -4,6 +4,12 @@ import shutil
 from pathlib import Path
 
 from src.disc_injector import replace_files_in_image
+from src.disc_relocation import (
+    patch_filepos,
+    patch_iso_directory,
+    plan_relocations,
+    write_relocations,
+)
 from src.executable_patch import patch_executable
 from src.font_builder import load_codetable, render_font
 from src.font_resource import build_f13
@@ -22,6 +28,13 @@ from src.static_text_aliases import (
 from src.dynamic_low_code_relocation import (
     build_dynamic_low_code_relocation_plan,
 )
+from src.text_resource_builder import (
+    apply_inplace_resource_patches,
+    build_inplace_resource_patches,
+)
+from src.overlay_text import apply_overlay_text_patches
+from src.overlay_code_patch import apply_overlay_name_renderer_patches
+from src.text_codec import load_character_codes
 from src.unified_normal_text_plan import build_unified_normal_text_plan
 from src.slpm_text import (
     build_slpm_text_patches,
@@ -245,6 +258,47 @@ def build_assets(
     )
     replacements = create_disc_replacements(text_result)
 
+    inplace_patches = build_inplace_resource_patches(
+        text_result["text_blocks"],
+        EXTRAC_DIRECTORY / "D",
+    )
+    replacements = apply_inplace_resource_patches(
+        replacements,
+        inplace_patches,
+        EXTRAC_DIRECTORY / "D",
+    )
+    print(
+        "In-place event text: "
+        f"{len(inplace_patches)} resource(s) patched"
+    )
+
+    overlay_character_codes = load_character_codes(
+        NEW_DIRECTORY / "data" / "codetable.json"
+    )
+    if normal_text_plan:
+        overlay_character_codes.update(
+            normal_text_plan.global_character_overrides
+        )
+    overlay_files, overlay_strings = apply_overlay_text_patches(
+        replacements,
+        overlay_character_codes,
+        EXTRAC_DIRECTORY / "D",
+    )
+    print(
+        "Overlay event text: "
+        f"{overlay_strings} string(s) in {overlay_files} file(s) patched"
+    )
+
+    renderer_files, renderer_sites = apply_overlay_name_renderer_patches(
+        replacements,
+        EXTRAC_DIRECTORY / "D",
+    )
+    print(
+        "Overlay name renderer: "
+        f"{renderer_sites} call site(s) in {renderer_files} file(s) "
+        "switched to F14"
+    )
+
     if "D/F0013.BIN" in replacements:
         raise ValueError("文本替换列表不应包含F0013.BIN")
     if "D/F0014.BIN" in replacements:
@@ -255,6 +309,11 @@ def build_assets(
     replacements["D/F0013.BIN"] = f13_data
     replacements["D/F0014.BIN"] = f14_data
     replacements["SLPM_871.54"] = executable_data
+
+    # Nothing is relocated: F0014 was the only candidate and widening it is
+    # blocked (see F14_CAPACITY_RE.md).  src/disc_relocation.py is kept because
+    # it is correct and the FILEPOS/ISO/subheader knowledge in it is expensive.
+    relocations = {}
 
     if f0098_text_patches:
         f0098_key = "D/F0098.BIN"
@@ -278,6 +337,28 @@ def build_assets(
             raise ValueError(f"Subtitle videos overlap existing replacements: {sorted(overlap)}")
         replacements.update(subtitle_video_replacements)
 
+    disc_relocations = plan_relocations(
+        DEFAULT_MANIFEST,
+        relocations,
+        Path(DEFAULT_BASE_IMAGE).stat().st_size,
+    )
+    if disc_relocations:
+        filepos_key = "FILEPOS.DAT"
+        if filepos_key in replacements:
+            raise ValueError("FILEPOS.DAT is already being replaced")
+        replacements[filepos_key] = patch_filepos(
+            (EXTRAC_DIRECTORY / "FILEPOS.DAT").read_bytes(),
+            DEFAULT_MANIFEST,
+            disc_relocations,
+        )
+        for item in disc_relocations:
+            print(
+                f"Relocated {item['path']}: LBA {item['original_lba']} -> "
+                f"{item['lba']} ({item['original_size']} -> "
+                f"{len(item['payload'])} bytes, {item['sectors']} sectors, "
+                f"FILEPOS record {item['filepos_index']})"
+            )
+
     return {
         "alias_plan": alias_plan,
         "relocation_plan": relocation_plan,
@@ -287,6 +368,7 @@ def build_assets(
         "text_result": text_result,
         "subtitle_video_replacements": subtitle_video_replacements,
         "replacements": replacements,
+        "disc_relocations": disc_relocations,
     }
 
 
@@ -382,6 +464,12 @@ def build_disc(
             manifest_path,
             replacements,
         )
+
+        disc_relocations = assets.get("disc_relocations") or []
+        if disc_relocations:
+            print("Writing relocated files into the blank tail sectors")
+            write_relocations(temporary_image, disc_relocations)
+            patch_iso_directory(temporary_image, disc_relocations)
 
         if temporary_image.stat().st_size != base_image.stat().st_size:
             raise AssertionError("构建后镜像长度发生变化")

@@ -1,5 +1,11 @@
 from pathlib import Path
 
+from src.compression import (
+    compress_lz77,
+    decompress_resource,
+    expand_lz77_to_size,
+)
+
 
 RESOURCE_HEADERS = {
     b"\x01\x00",
@@ -8,6 +14,52 @@ RESOURCE_HEADERS = {
     b"\x02\x00",
     b"\x02\x01",
 }
+
+
+class _ExactSizeError(Exception):
+    """A resource cannot be repacked to a given exact byte size."""
+
+
+def _to_exact_size(resource_data, target_size):
+    """Return a resource of EXACTLY target_size bytes with identical content.
+
+    Keeps a resource at its original file offset *and* original declared size,
+    so neither fixed-offset reads (which use the offset) nor sequential reads
+    (which use the declared size to find the next resource) are disturbed.
+    Raises _ExactSizeError if the content cannot be squeezed into target_size.
+    """
+    if len(resource_data) == target_size:
+        return resource_data
+    if len(resource_data) > target_size:
+        raise _ExactSizeError(f"{len(resource_data)} > {target_size}")
+
+    resource_id = resource_data[2:4]
+    raw = decompress_resource(resource_data)
+    compressed = compress_lz77(raw)
+    if len(compressed) > target_size:
+        raise _ExactSizeError(f"compressed {len(compressed)} > {target_size}")
+
+    if len(compressed) < target_size:
+        try:
+            # Preferred: re-tokenise so the whole stream stays valid tokens
+            # (the same technique the in-game-verified INPLACE path uses).
+            padded = compressed + b"\x00" * (target_size - len(compressed))
+            compressed = expand_lz77_to_size(padded, target_size)
+        except (ValueError, AssertionError):
+            # Fallback: keep the minimal token stream and append filler bytes
+            # after it.  The decompressor stops once the declared output size
+            # is produced, so the trailing filler is never read.
+            grown = bytearray(compressed)
+            grown[4:8] = target_size.to_bytes(4, "little")
+            grown.extend(b"\x00" * (target_size - len(grown)))
+            compressed = bytes(grown)
+
+    result = bytearray(compressed)
+    result[2:4] = resource_id
+    result = bytes(result)
+    if len(result) != target_size or decompress_resource(result) != raw:
+        raise _ExactSizeError("exact-size repack verification failed")
+    return result
 
 
 def _align_to_4(value):
@@ -114,9 +166,41 @@ def _rebuild_resource_runs(file_name, file_data, replacements):
     output = bytearray(file_data)
     relocations = {}
 
+    # Two valid resource layouts:
+    #  (a) exact-size — every replaced resource keeps its ORIGINAL offset AND
+    #      original declared size (content re-padded via LZ77).  Nothing moves,
+    #      no gaps appear, so both fixed-offset reads (F0018/F0040-style events)
+    #      and sequential reads keep working.  Preferred whenever it fits.
+    #  (b) compact — repack the whole run back-to-back (resources may shift).
+    #      Only safe for files read sequentially, but needed when a translation
+    #      grew past its original resource size.  Used as a fallback per run.
     for run in affected_runs.values():
-        packed_run = bytearray()
+        exact_resources = {}
+        exact_feasible = True
+        for resource in run["resources"]:
+            original_offset = resource["offset"]
+            if original_offset not in replacements:
+                continue
+            try:
+                exact_resources[original_offset] = _to_exact_size(
+                    replacements[original_offset],
+                    resource["size"],
+                )
+            except _ExactSizeError:
+                exact_feasible = False
+                break
 
+        if exact_feasible:
+            for resource in run["resources"]:
+                original_offset = resource["offset"]
+                relocations[original_offset] = original_offset
+                if original_offset in exact_resources:
+                    output[
+                        original_offset:original_offset + resource["size"]
+                    ] = exact_resources[original_offset]
+            continue
+
+        packed_run = bytearray()
         for resource in run["resources"]:
             original_offset = resource["offset"]
             relocations[original_offset] = run["start"] + len(packed_run)
@@ -124,7 +208,6 @@ def _rebuild_resource_runs(file_name, file_data, replacements):
                 original_offset,
                 resource["data"],
             )
-
             packed_run.extend(resource_data)
             padding_size = (-len(resource_data)) % 4
             packed_run.extend(b"\x00" * padding_size)

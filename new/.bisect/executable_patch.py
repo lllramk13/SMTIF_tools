@@ -42,7 +42,7 @@ ORIGINAL_NAME_PLURAL_INSTRUCTION = bytes.fromhex('bb030524')  # addiu a1,zero,0x
 NAME_PLURAL_CHARACTER = '等'
 # Both hardcoded UI glyphs render through F14.  Capacity is 0x6E4 since F14 was
 # widened to 252x252 (441 glyphs/plane); see F14_CAPACITY_RE.md.
-STATIC_FONT_CAPACITY = 0x567
+STATIC_FONT_CAPACITY = 0x6E3
 
 
 def resolve_static_ui_glyph(character: str) -> int:
@@ -163,9 +163,9 @@ def patch_executable(
     armips_changed_bytes = sum(
         old != new for old, new in zip(base_data, patched_data)
     )
-    if armips_changed_bytes != 310:
+    if armips_changed_bytes != 321:
         raise AssertionError(
-            f'Expected CN.asm to change 310 bytes, got {armips_changed_bytes}'
+            f'Expected CN.asm to change 321 bytes, got {armips_changed_bytes}'
         )
 
     patched_data = bytearray(patched_data)

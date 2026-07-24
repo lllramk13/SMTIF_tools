@@ -88,15 +88,47 @@ def decompress_graphic_resource(resource):
     )
 
 
-def rebuild_graphic_resource(original_resource, raw_data):
+def rebuild_graphic_resource(
+    original_resource,
+    raw_data,
+    width_words=None,
+    height=None,
+):
+    """Rebuild a 0x02/0x01 graphic resource.
+
+    By default the result keeps the original geometry *and* the original
+    declared block size (the stream is padded back up), so the file can be
+    injected in place.
+
+    Passing ``width_words``/``height`` re-geometries the image instead.  The
+    declared size then follows the new payload, so the file grows and the
+    caller is responsible for placing it somewhere with room (see
+    ``src/disc_relocation.py``).
+    """
     original_resource = bytes(original_resource)
     original = decompress_graphic_resource(original_resource)
     raw_data = bytes(raw_data)
 
-    if len(raw_data) != original.expected_raw_size:
+    resized = width_words is not None or height is not None
+    if width_words is None:
+        width_words = original.width_words
+    if height is None:
+        height = original.height
+    expected_raw_size = width_words * height * 2
+
+    if len(raw_data) != expected_raw_size:
         raise ValueError(
-            f"图像原始数据应为 {original.expected_raw_size} 字节，"
+            f"图像原始数据应为 {expected_raw_size} 字节，"
             f"实际为 {len(raw_data)} 字节"
+        )
+
+    if resized:
+        return _rebuild_resized_graphic(
+            original_resource,
+            original,
+            raw_data,
+            width_words,
+            height,
         )
 
     # The 0x02/0x01 payload uses the exact same token stream as 0x01/0x01.
@@ -143,6 +175,57 @@ def rebuild_graphic_resource(original_resource, raw_data):
         raise AssertionError("Rebuilt graphic resource changed its file tail")
     if decompress_graphic_resource(rebuilt).raw_data != raw_data:
         raise AssertionError("图像资源RLE往返校验失败")
+
+    return rebuilt
+
+
+def _rebuild_resized_graphic(
+    original_resource,
+    original,
+    raw_data,
+    width_words,
+    height,
+):
+    """Rebuild a graphic resource with new dimensions (the file grows)."""
+    generic_rle = compress_rle(raw_data)
+    payload = generic_rle[12:]
+
+    declared_size = GRAPHIC_HEADER_SIZE + len(payload)
+
+    # F0014 carries a second resource (the CLUT) after the image, and the
+    # original starts it on a 4-byte boundary -- declared size 0x5BF5 plus three
+    # filler bytes lands it at 0x5BF8.  A resource scanner walks the file by
+    # 4-aligned declared sizes, so the follow-on resource has to stay aligned or
+    # it is simply not found (which costs the palette, i.e. a black screen).
+    # The filler cannot go inside the stream -- the decompressor rejects any
+    # unread bytes -- so it goes between the resource and the tail, exactly like
+    # the original, but sized for the new declared size.
+    filler = b"\x00" * (-declared_size % 4)
+    tail_start = original.declared_size + (-original.declared_size % 4)
+    header = b"".join((
+        original.resource_header,
+        declared_size.to_bytes(4, "little"),
+        original.reserved,
+        width_words.to_bytes(2, "little"),
+        height.to_bytes(2, "little"),
+    ))
+    rebuilt = b"".join((
+        header,
+        payload,
+        filler,
+        original_resource[tail_start:],
+    ))
+
+    check = decompress_graphic_resource(rebuilt)
+    if check.raw_data != raw_data:
+        raise AssertionError("重建的加宽图像RLE往返校验失败")
+    if (check.width_words, check.height) != (width_words, height):
+        raise AssertionError("重建的加宽图像尺寸不正确")
+    aligned_end = declared_size + len(filler)
+    if aligned_end % 4:
+        raise AssertionError("重建的加宽图像尾部未4字节对齐")
+    if rebuilt[aligned_end:] != original_resource[tail_start:]:
+        raise AssertionError("重建的加宽图像破坏了文件尾部")
 
     return rebuilt
 
