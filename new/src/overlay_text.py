@@ -48,18 +48,50 @@ def load_overlay_text_records(path=DEFAULT_OVERLAY_TEXT_PATH):
     return data
 
 
+def translated_overlay_texts(records=None):
+    """Every overlay translation that will actually be injected.
+
+    Untranslated rows carry the Japanese source in ``translation``; only rows
+    that differ from their source are injected, so only those contribute
+    characters.  The codetable layout and the unified plan both need this or a
+    character used *only* in overlay text looks unused to them and can be
+    parked on a reserved name-entry code, where the original-UI glyph override
+    then paints a kana over it.
+    """
+    if records is None:
+        records = load_overlay_text_records()
+    texts = []
+    for rows in records.values():
+        for row in rows:
+            translation = row.get("translation") or ""
+            if translation and translation != (row.get("source") or ""):
+                texts.append(translation)
+    return tuple(texts)
+
+
 def _encode_slot(character_codes, translation, byte_len, record_id):
+    # encode_text already appends the FFFF terminator, so `encoded` is the
+    # complete string.  Budgeting must not add a second one or every record
+    # silently loses two bytes of its slot.
     encoded = encode_text(character_codes, translation)
-    body = encoded + TERMINATOR
-    if len(body) > byte_len:
+    if not encoded.endswith(TERMINATOR):
+        raise AssertionError(f"{record_id}: 编码结果缺少结束符")
+    if len(encoded) > byte_len:
         raise ValueError(
-            f"{record_id}: 译文编码 {len(body)} 字节超出原槽 {byte_len} "
-            f"(超 {len(body) - byte_len})，需缩短"
+            f"{record_id}: 译文编码 {len(encoded)} 字节超出原槽 {byte_len} "
+            f"(超 {len(encoded) - byte_len})，需缩短"
         )
-    if (byte_len - len(body)) % 2:
+    remainder = byte_len - len(encoded)
+    if remainder % 2:
         raise ValueError(f"{record_id}: 槽位剩余空间不是2的倍数")
-    padding = PAD_CODE * ((byte_len - len(body)) // 2)
-    return encoded + padding + TERMINATOR
+    if not remainder:
+        return encoded
+
+    # Keep the terminator immediately after the text so nothing extra renders,
+    # and put a second one at the original slot end so the slot stays exactly
+    # as long as it was.  The 0x0000 filler in between is never read: the game
+    # stops at the first terminator.
+    return encoded + PAD_CODE * (remainder // 2 - 1) + TERMINATOR
 
 
 def apply_overlay_text_patches(

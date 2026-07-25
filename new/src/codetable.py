@@ -23,6 +23,14 @@ NEW_CODETABLE_ENTRIES = {
     'A209': '循',
     'A309': '框',
     'A409': '哑',
+    # Added 2026-07-25 for the F0049/F0092 overlay translation.
+    'A509': '鉴',
+    'A609': '例',
+    'A709': '旧',
+    'A809': '骇',
+    'A909': '幻',
+    'AA09': '骑',
+    'AB09': '贩',
 }
 
 CONTROL_MARKERS = [

@@ -43,6 +43,10 @@ from src.text_codec import load_character_codes
 from src.text_records import choose_text, load_text_data
 from src.slpm_text import load_slpm_text_records, translated_slpm_texts
 from src.f0098_text import load_f0098_text_records, translated_f0098_texts
+from src.overlay_text import (
+    load_overlay_text_records,
+    translated_overlay_texts,
+)
 from src.font_builder import load_codetable
 
 CODETABLE = NEW_DIR / 'data' / 'codetable.json'
@@ -79,6 +83,39 @@ MENU_OPTION_BLOCK_PREFIXES = (
 SKILL_NAME_BLOCK_PREFIXES = (
     'F0094-00002630',
 )
+
+
+# Shop/service menus live in the F0049 overlay and render through F14 too, so
+# their option characters must stay below 0x567 or they come out blank (「贩卖」
+# lost 贩 exactly this way).  Only the short, punctuation-free rows are options;
+# the shop's chatter goes through the dynamic font.
+#
+# F0092's short rows are excluded on purpose: they are internal scenario-flag
+# labels (「去往傲慢区」「傲慢区开门」…), and pulling their 24 extra characters in
+# would overflow F14's remaining slots.
+OVERLAY_MENU_FILES = ('F0049',)
+OVERLAY_MENU_MAX_CHARS = 6
+_OVERLAY_SENTENCE_MARKS = '。！？，、'
+_OVERLAY_STRIP = re.compile('\\{[^}]*\\}|[\\n\\u3000]')
+
+
+def overlay_menu_option_texts():
+    """Short F0049 overlay rows, i.e. the shop/service menu options."""
+    options = []
+    for file_name, rows in load_overlay_text_records().items():
+        if file_name not in OVERLAY_MENU_FILES:
+            continue
+        for row in rows:
+            translation = row.get('translation') or ''
+            if not translation or translation == (row.get('source') or ''):
+                continue
+            core = _OVERLAY_STRIP.sub('', translation)
+            if len(core) > OVERLAY_MENU_MAX_CHARS:
+                continue
+            if any(mark in core for mark in _OVERLAY_SENTENCE_MARKS):
+                continue
+            options.append(translation)
+    return options
 
 
 def skill_name_texts(text_data):
@@ -168,11 +205,17 @@ def main():
                 static |= chars
     for text in translated_slpm_texts(slpm, 'dynamic'):
         used |= chars_of(text)
+    # Overlay text is injected too, so its characters are used.  Without this a
+    # character that appears only there looks unused and can land on a reserved
+    # name-entry code, where original_ui_glyphs paints a kana over it.
+    for text in translated_overlay_texts():
+        used |= chars_of(text)
     for text in (
         translated_slpm_texts(slpm, 'static')
         + translated_f0098_texts(f98)
         + tuple(party_name_texts(text_data))
         + tuple(item_name_texts(text_data))
+        + tuple(overlay_menu_option_texts())
         # menu_option_texts() / skill_name_texts() are intentionally handled
         # by src/f14_context_aliases.py instead of consuming globally unique
         # low codes.  Their F14-only records reuse original name-entry cells;

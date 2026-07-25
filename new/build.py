@@ -18,7 +18,10 @@ from src.text_resource_builder import (
     apply_inplace_resource_patches,
     build_inplace_resource_patches,
 )
-from src.overlay_text import apply_overlay_text_patches
+from src.overlay_text import (
+    apply_overlay_text_patches,
+    translated_overlay_texts,
+)
 from src.overlay_code_patch import apply_overlay_name_renderer_patches
 from src.text_codec import load_character_codes
 from src.unified_normal_text_plan import build_unified_normal_text_plan
@@ -95,6 +98,7 @@ def build_assets(
             extra_used_texts=(
                 translated_slpm_texts(slpm_text_records, renderer="dynamic")
                 + translated_f0098_texts(f0098_text_records)
+                + translated_overlay_texts()
             ),
             extra_static_texts=translated_slpm_texts(
                 slpm_text_records,

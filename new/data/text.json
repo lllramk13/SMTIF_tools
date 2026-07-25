@@ -29748,7 +29748,7 @@
       "block_offset": "00000B84",
       "pointer_offset": "000006C0",
       "source": "ヴィローシャナ",
-      "translation": "毗户遮那"
+      "translation": "毗卢舍那"
     },
     {
       "id": "F0040-00000B84-000006D0",
@@ -79007,7 +79007,7 @@
       "block_offset": "0000003C",
       "pointer_offset": "0000063C",
       "source": "ヴィローシャナ",
-      "translation": "毗户遮那"
+      "translation": "毗卢舍那"
     },
     {
       "id": "F0094-0000003C-0000064C",
@@ -87754,7 +87754,7 @@
       "block_offset": "000042D4",
       "pointer_offset": "000045CE",
       "source": "差込口{数值0}",
-      "translation": "插口"
+      "translation": "插口{数值0}"
     }
   ]
 }
