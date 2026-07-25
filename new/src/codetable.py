@@ -4,7 +4,6 @@ from pathlib import Path
 
 # file locations
 current_dir = Path(__file__).resolve().parent
-JSON_PATH = current_dir.parent / 'data' / 'text.json'
 LEGACY_CODETABLE_PATH = (
     current_dir.parent.parent / 'PreWork' / 'if备案' / '导入码表.tbl'
 )
@@ -140,20 +139,4 @@ def remove_control_marker(text: str) -> str:
     return text
 
 
-def count_word(path):
-    raw_data = read_json(path)
-    all_translation = [
-        remove_control_marker(item.get('translation', ""))
-        for key in ('texts', 'text_17', 'text_88')
-        for item in raw_data.get(key, [])
-    ]
 
-    char_count = Counter("".join(all_translation))
-    print(len(char_count))
-
-    for char, count in char_count.most_common():
-        print(f'{char}: {count}')
-
-
-if __name__ == "__main__":
-    convert_legacy_table_to_json()

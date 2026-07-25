@@ -8,7 +8,6 @@ HERE = Path(__file__).resolve().parent
 NEW_DIRECTORY = HERE.parent
 DEFAULT_TEXT_PATH = NEW_DIRECTORY / "data" / "slpm_text.json"
 DEFAULT_CODETABLE_PATH = NEW_DIRECTORY / "data" / "codetable.json"
-STATIC_SECTION = "text_17"
 VALID_RENDERERS = frozenset(("dynamic", "static"))
 
 

@@ -33,11 +33,11 @@ HERE = Path(__file__).resolve().parent
 NEW_DIR = HERE.parent
 sys.path.insert(0, str(NEW_DIR))
 
-from src.dynamic_low_code_relocation import DYNAMIC_SPECIAL_LOW_INDICES
-from src.static_text_aliases import (
+from src.glyph_layout import (
+    DYNAMIC_SPECIAL_LOW_INDICES,
     ORIGINAL_MAX_GLYPH_INDEX,
     STATIC_TEXT_SECTIONS,
-    _glyph_indices,
+    glyph_indices,
 )
 from src.text_codec import load_character_codes
 from src.text_records import choose_text, load_text_data
@@ -155,7 +155,7 @@ def main():
     def chars_of(text):
         return {
             codetable[i]
-            for i in _glyph_indices(character_codes, text)
+            for i in glyph_indices(character_codes, text)
             if i in codetable
         }
 
@@ -173,11 +173,10 @@ def main():
         + translated_f0098_texts(f98)
         + tuple(party_name_texts(text_data))
         + tuple(item_name_texts(text_data))
-        # NOT included: menu_option_texts() / skill_name_texts().  Both really
-        # do render through F14, but F14 is full and cannot grow: any extra
-        # glyph makes the texture compress past F0014.BIN's 24576-byte slot,
-        # and the file cannot move because FILEPOS.DAT requires every file to
-        # stay contiguous and ascending by LBA.  See F14_CAPACITY_RE.md.
+        # menu_option_texts() / skill_name_texts() are intentionally handled
+        # by src/f14_context_aliases.py instead of consuming globally unique
+        # low codes.  Their F14-only records reuse original name-entry cells;
+        # keyboard-entered names are routed back to the original small font.
         + EXTRA_STATIC_UI_CHARS
     ):
         chars = chars_of(text)

@@ -197,15 +197,6 @@ def render_font(
     return bytes(font_data)
 
 
-def _show(glyph: bytes) -> None:
-    image = unpack_1bpp(glyph)
-    for y in range(GLYPH_H):
-        row = ''.join(
-            '█' if image.getpixel((x, y)) else '·'
-            for x in range(GLYPH_W)
-        )
-        print(f'  {row}')
-
 
 def _selftest() -> None:
     test_image = Image.new('L', (GLYPH_W, GLYPH_H), 0)

@@ -23,8 +23,10 @@ OUTPUT_F14_PATH = HERE.parent / "build" / "F0014.BIN"
 #   * the file cannot move, because FILEPOS.DAT -- the game's own file table --
 #     requires every file to stay contiguous and ascending by LBA, and a full
 #     disc re-layout cannot be shown to be safe against hardcoded LBAs.
-# So the capacity really is fixed at 1383, and text that renders through F14
-# must fit in that many distinct characters.
+# So the capacity really is fixed at 1383.  src/f14_context_aliases.py keeps
+# the texture at that size while reusing original name-entry cells in the
+# confirmed F14-only option/skill contexts; original names now use the hybrid
+# renderer's small-font path.
 ORIGINAL_PIXEL_WIDTH = 208
 GLYPHS_PER_PLANE = 346
 PLANE_COUNT = 4

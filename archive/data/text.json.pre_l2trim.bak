@@ -33129,7 +33129,7 @@
       "block_offset": "0000207C",
       "pointer_offset": "0000102A",
       "source": "カロン",
-      "translation": "卡戎"
+      "translation": ""
     },
     {
       "id": "F0040-0000207C-00001032",
@@ -33717,7 +33717,7 @@
       "block_offset": "00000000",
       "pointer_offset": "0000067E",
       "source": "{仲魔}の攻撃{大停顿}",
-      "translation": "{仲魔}的攻击"
+      "translation": "{仲魔}的攻击。{大停顿}"
     },
     {
       "id": "F0075-00000000-0000068A",
@@ -33801,7 +33801,7 @@
       "block_offset": "00000000",
       "pointer_offset": "000007A4",
       "source": "{仲魔}は力尽きた{大停顿}",
-      "translation": "{仲魔}力竭了"
+      "translation": "{仲魔}筋疲力尽了。{大停顿}"
     },
     {
       "id": "F0075-00000000-000007B4",
@@ -33843,7 +33843,7 @@
       "block_offset": "00000000",
       "pointer_offset": "00000814",
       "source": "{数值0}ＭＡＧを得た{大停顿}",
-      "translation": "获得{数值0}ＭＡＧ"
+      "translation": "获得了{数值0}ＭＡＧ。{大停顿}"
     },
     {
       "id": "F0075-00000000-00000826",
@@ -34095,7 +34095,7 @@
       "block_offset": "00000000",
       "pointer_offset": "00000B70",
       "source": "使っても意味がない▽",
-      "translation": "使用也没有意义"
+      "translation": "即使使用也没有意义。▽"
     },
     {
       "id": "F0075-00000000-00000B86",
@@ -34179,7 +34179,7 @@
       "block_offset": "00000000",
       "pointer_offset": "00000C86",
       "source": "{仲魔}は力尽きた▽",
-      "translation": "{仲魔}力竭了"
+      "translation": "{仲魔}筋疲力尽了。▽"
     },
     {
       "id": "F0075-00000000-00000C96",
@@ -34228,7 +34228,7 @@
       "block_offset": "00000000",
       "pointer_offset": "00000D30",
       "source": "{主角等人}は逃げのびた{大停顿}",
-      "translation": "{主角等人}成功逃脱了。{大停顿}"
+      "translation": "{主角等人}开始逃跑。{大停顿}"
     },
     {
       "id": "F0075-00000000-00000D42",
@@ -34326,14 +34326,14 @@
       "block_offset": "00000000",
       "pointer_offset": "00000E48",
       "source": "{仲魔}は石にされた{大停顿}",
-      "translation": "{仲魔}变成了石头"
+      "translation": "{仲魔}被变成了石头。{大停顿}"
     },
     {
       "id": "F0075-00000000-00000E5A",
       "block_offset": "00000000",
       "pointer_offset": "00000E5A",
       "source": "{仲魔}を石にした{大停顿}",
-      "translation": "把{仲魔}变成石头"
+      "translation": "把{仲魔}变成了石头。{大停顿}"
     },
     {
       "id": "F0075-00000000-00000E6A",
@@ -34914,7 +34914,7 @@
       "block_offset": "00000000",
       "pointer_offset": "00001402",
       "source": "{仲魔}から\n毒が消えた{大停顿}",
-      "translation": "从{仲魔}/消除了毒素"
+      "translation": "从{仲魔}体内\n消除了毒素。{大停顿}"
     },
     {
       "id": "F0075-00000000-00001418",
@@ -34963,7 +34963,7 @@
       "block_offset": "00000000",
       "pointer_offset": "00001498",
       "source": "{仲魔}を\n召喚した{大停顿}",
-      "translation": "{仲魔}被召唤了"
+      "translation": "将{仲魔}召唤了出来。{大停顿}"
     },
     {
       "id": "F0075-00000000-000014AA",
@@ -35467,7 +35467,7 @@
       "block_offset": "00000000",
       "pointer_offset": "00001B54",
       "source": "箱から\n{名字1}が出た{大停顿}",
-      "translation": "{名字1}从箱子里出现了"
+      "translation": "{名字1}从箱子里出现了。{大停顿}"
     },
     {
       "id": "F0075-00000000-00001B68",
@@ -37518,7 +37518,7 @@
       "block_offset": "00002C7C",
       "pointer_offset": "00000316",
       "source": "歌",
-      "translation": "唱"
+      "translation": "唱歌"
     },
     {
       "id": "F0076-00002C7C-0000031A",
@@ -37693,7 +37693,7 @@
       "block_offset": "00002C7C",
       "pointer_offset": "0000042C",
       "source": "毎日がバラ色",
-      "translation": "每天玫瑰色"
+      "translation": "每天都是玫瑰色"
     },
     {
       "id": "F0076-00002C7C-0000043A",
@@ -37749,7 +37749,7 @@
       "block_offset": "00002C7C",
       "pointer_offset": "00000490",
       "source": "笛",
-      "translation": "笛"
+      "translation": "笛子"
     },
     {
       "id": "F0076-00002C7C-00000494",
@@ -37812,7 +37812,7 @@
       "block_offset": "00002C7C",
       "pointer_offset": "000004D2",
       "source": "技",
-      "translation": "技"
+      "translation": "技巧"
     },
     {
       "id": "F0076-00002C7C-000004D6",
@@ -37833,7 +37833,7 @@
       "block_offset": "00002C7C",
       "pointer_offset": "000004EA",
       "source": "一気飲み",
-      "translation": "一口气喝"
+      "translation": "一口气喝掉"
     },
     {
       "id": "F0076-00002C7C-000004F4",
@@ -37980,7 +37980,7 @@
       "block_offset": "00002C7C",
       "pointer_offset": "000005C2",
       "source": "別に・・・",
-      "translation": "没什么…"
+      "translation": "并没有・・・"
     },
     {
       "id": "F0076-00002C7C-000005CE",
@@ -38358,7 +38358,7 @@
       "block_offset": "00002C7C",
       "pointer_offset": "000007E8",
       "source": "このブリブリ悪魔！",
-      "translation": "你这装模作样恶魔"
+      "translation": "你这装模作样的恶魔！"
     },
     {
       "id": "F0076-00002C7C-000007FC",
@@ -38477,7 +38477,7 @@
       "block_offset": "00002C7C",
       "pointer_offset": "0000089C",
       "source": "更に威嚇",
-      "translation": "再威吓"
+      "translation": "进一步威吓"
     },
     {
       "id": "F0076-00002C7C-000008A6",
@@ -38729,7 +38729,7 @@
       "block_offset": "00002C7C",
       "pointer_offset": "00000A2E",
       "source": "芸",
-      "translation": "艺"
+      "translation": "技艺"
     },
     {
       "id": "F0076-00002C7C-00000A32",
@@ -57566,7 +57566,7 @@
       "block_offset": "00000800",
       "pointer_offset": "000002D6",
       "source": "歌",
-      "translation": "唱"
+      "translation": "唱歌"
     },
     {
       "id": "F0084-00000800-000002DA",
@@ -57797,7 +57797,7 @@
       "block_offset": "00000800",
       "pointer_offset": "00000458",
       "source": "笛",
-      "translation": "笛"
+      "translation": "笛子"
     },
     {
       "id": "F0084-00000800-0000045C",
@@ -57860,7 +57860,7 @@
       "block_offset": "00000800",
       "pointer_offset": "00000498",
       "source": "技",
-      "translation": "技"
+      "translation": "技巧"
     },
     {
       "id": "F0084-00000800-0000049C",
@@ -57881,7 +57881,7 @@
       "block_offset": "00000800",
       "pointer_offset": "000004B0",
       "source": "一気飲み",
-      "translation": "一口气喝"
+      "translation": "一口气喝掉"
     },
     {
       "id": "F0084-00000800-000004BA",
@@ -58028,7 +58028,7 @@
       "block_offset": "00000800",
       "pointer_offset": "0000058A",
       "source": "別に・・・",
-      "translation": "没什么…"
+      "translation": "并没有・・・"
     },
     {
       "id": "F0084-00000800-00000596",
@@ -58399,7 +58399,7 @@
       "block_offset": "00000800",
       "pointer_offset": "000007AE",
       "source": "このブリブリ悪魔！",
-      "translation": "你这装模作样恶魔"
+      "translation": "你这装模作样的恶魔！"
     },
     {
       "id": "F0084-00000800-000007C2",
@@ -58532,7 +58532,7 @@
       "block_offset": "00000800",
       "pointer_offset": "0000087E",
       "source": "探して",
-      "translation": "找你"
+      "translation": "找你好久了"
     },
     {
       "id": "F0084-00000800-00000886",
@@ -58763,7 +58763,7 @@
       "block_offset": "00000800",
       "pointer_offset": "000009F4",
       "source": "芸",
-      "translation": "艺"
+      "translation": "技艺"
     },
     {
       "id": "F0084-00001800-00000DB0",
@@ -71195,7 +71195,7 @@
       "block_offset": "0000E000",
       "pointer_offset": "00000316",
       "source": "歌",
-      "translation": "唱"
+      "translation": "唱歌"
     },
     {
       "id": "F0084-0000E000-0000031A",
@@ -71370,7 +71370,7 @@
       "block_offset": "0000E000",
       "pointer_offset": "0000042C",
       "source": "毎日がバラ色",
-      "translation": "每天玫瑰色"
+      "translation": "每天都是玫瑰色"
     },
     {
       "id": "F0084-0000E000-0000043A",
@@ -71426,7 +71426,7 @@
       "block_offset": "0000E000",
       "pointer_offset": "00000490",
       "source": "笛",
-      "translation": "笛"
+      "translation": "笛子"
     },
     {
       "id": "F0084-0000E000-00000494",
@@ -71489,7 +71489,7 @@
       "block_offset": "0000E000",
       "pointer_offset": "000004D2",
       "source": "技",
-      "translation": "技"
+      "translation": "技巧"
     },
     {
       "id": "F0084-0000E000-000004D6",
@@ -71510,7 +71510,7 @@
       "block_offset": "0000E000",
       "pointer_offset": "000004EA",
       "source": "一気飲み",
-      "translation": "一口气喝"
+      "translation": "一口气喝掉"
     },
     {
       "id": "F0084-0000E000-000004F4",
@@ -71657,7 +71657,7 @@
       "block_offset": "0000E000",
       "pointer_offset": "000005C2",
       "source": "別に・・・",
-      "translation": "没什么…"
+      "translation": "并没有・・・"
     },
     {
       "id": "F0084-0000E000-000005CE",
@@ -72035,7 +72035,7 @@
       "block_offset": "0000E000",
       "pointer_offset": "000007E8",
       "source": "このブリブリ悪魔！",
-      "translation": "你这装模作样恶魔"
+      "translation": "你这装模作样的恶魔！"
     },
     {
       "id": "F0084-0000E000-000007FC",
@@ -72154,7 +72154,7 @@
       "block_offset": "0000E000",
       "pointer_offset": "0000089C",
       "source": "更に威嚇",
-      "translation": "再威吓"
+      "translation": "进一步威吓"
     },
     {
       "id": "F0084-0000E000-000008A6",
@@ -72406,7 +72406,7 @@
       "block_offset": "0000E000",
       "pointer_offset": "00000A2E",
       "source": "芸",
-      "translation": "艺"
+      "translation": "技艺"
     },
     {
       "id": "F0084-0000E000-00000A32",

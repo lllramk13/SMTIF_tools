@@ -1,7 +1,7 @@
 import json
 from pathlib import Path
 
-from src.dynamic_low_code_relocation import DYNAMIC_SPECIAL_LOW_INDICES
+from src.glyph_layout import DYNAMIC_SPECIAL_LOW_INDICES
 
 
 HERE = Path(__file__).resolve().parent

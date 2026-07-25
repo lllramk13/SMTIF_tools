@@ -1,0 +1,1887 @@
+{
+ "F0049": [
+  {
+   "id": "F0049-00007874-000004F8",
+   "resource_offset": "00007874",
+   "raw_offset": "000004F8",
+   "byte_len": 22,
+   "max_bytes": 22,
+   "source": "武器屋：いらっしゃい",
+   "translation": "武器店：欢迎光临"
+  },
+  {
+   "id": "F0049-00007874-0000050E",
+   "resource_offset": "00007874",
+   "raw_offset": "0000050E",
+   "byte_len": 20,
+   "max_bytes": 20,
+   "source": "何をお買い上げで？",
+   "translation": "想买什么？"
+  },
+  {
+   "id": "F0049-00007874-00000558",
+   "resource_offset": "00007874",
+   "raw_offset": "00000558",
+   "byte_len": 24,
+   "max_bytes": 24,
+   "source": "何か売って頂けるんで？",
+   "translation": "有东西要卖吗？"
+  },
+  {
+   "id": "F0049-00007874-00000570",
+   "resource_offset": "00007874",
+   "raw_offset": "00000570",
+   "byte_len": 24,
+   "max_bytes": 24,
+   "source": "＞どの品の説明を聞く？",
+   "translation": "＞想听哪件说明？"
+  },
+  {
+   "id": "F0049-00007874-000005B0",
+   "resource_offset": "00007874",
+   "raw_offset": "000005B0",
+   "byte_len": 22,
+   "max_bytes": 22,
+   "source": "お買い上げは以上で？",
+   "translation": "就买这些吗？"
+  },
+  {
+   "id": "F0049-00007874-000005C6",
+   "resource_offset": "00007874",
+   "raw_offset": "000005C6",
+   "byte_len": 26,
+   "max_bytes": 26,
+   "source": "売って下さるのは以上で？",
+   "translation": "就卖这些吗？"
+  },
+  {
+   "id": "F0049-00007874-00000614",
+   "resource_offset": "00007874",
+   "raw_offset": "00000614",
+   "byte_len": 30,
+   "max_bytes": 30,
+   "source": "防具屋：あーら、いらっしゃい",
+   "translation": "防具店：哎呀，欢迎光临"
+  },
+  {
+   "id": "F0049-00007874-00000632",
+   "resource_offset": "00007874",
+   "raw_offset": "00000632",
+   "byte_len": 26,
+   "max_bytes": 26,
+   "source": "何をお買い上げかしらぁ？",
+   "translation": "想买什么呀？"
+  },
+  {
+   "id": "F0049-00007874-0000067E",
+   "resource_offset": "00007874",
+   "raw_offset": "0000067E",
+   "byte_len": 30,
+   "max_bytes": 30,
+   "source": "何を売ってくれるのかしらぁ？",
+   "translation": "想卖什么呀？"
+  },
+  {
+   "id": "F0049-00007874-000006BA",
+   "resource_offset": "00007874",
+   "raw_offset": "000006BA",
+   "byte_len": 30,
+   "max_bytes": 30,
+   "source": "買ってくれるのはそれだけぇ？",
+   "translation": "就买这些呀？"
+  },
+  {
+   "id": "F0049-00007874-000006D8",
+   "resource_offset": "00007874",
+   "raw_offset": "000006D8",
+   "byte_len": 30,
+   "max_bytes": 30,
+   "source": "売ってくれるのはそれだけぇ？",
+   "translation": "就卖这些呀？"
+  },
+  {
+   "id": "F0049-00007874-0000072A",
+   "resource_offset": "00007874",
+   "raw_offset": "0000072A",
+   "byte_len": 24,
+   "max_bytes": 24,
+   "source": "よろず屋：あんた客かい",
+   "translation": "杂货店：你是客人？"
+  },
+  {
+   "id": "F0049-00007874-00000742",
+   "resource_offset": "00007874",
+   "raw_offset": "00000742",
+   "byte_len": 18,
+   "max_bytes": 18,
+   "source": "何を買うんだい？",
+   "translation": "想买什么？"
+  },
+  {
+   "id": "F0049-00007874-0000077C",
+   "resource_offset": "00007874",
+   "raw_offset": "0000077C",
+   "byte_len": 26,
+   "max_bytes": 26,
+   "source": "何を売ってくれるんだい？",
+   "translation": "要卖什么？"
+  },
+  {
+   "id": "F0049-00007874-000007A4",
+   "resource_offset": "00007874",
+   "raw_offset": "000007A4",
+   "byte_len": 26,
+   "max_bytes": 26,
+   "source": "買うのはそれでいいのか？",
+   "translation": "买这些，没错吧？"
+  },
+  {
+   "id": "F0049-00007874-000007BE",
+   "resource_offset": "00007874",
+   "raw_offset": "000007BE",
+   "byte_len": 26,
+   "max_bytes": 26,
+   "source": "売るのはそれでいいのか？",
+   "translation": "卖这些，没错吧？"
+  },
+  {
+   "id": "F0049-00007874-0000080C",
+   "resource_offset": "00007874",
+   "raw_offset": "0000080C",
+   "byte_len": 42,
+   "max_bytes": 42,
+   "source": "けんきゅう員：我々の開発品をごらん下さい",
+   "translation": "技术员：请看我们的开发品"
+  },
+  {
+   "id": "F0049-00007874-00000836",
+   "resource_offset": "00007874",
+   "raw_offset": "00000836",
+   "byte_len": 26,
+   "max_bytes": 26,
+   "source": "何をおゆずりしましょう？",
+   "translation": "要买什么？"
+  },
+  {
+   "id": "F0049-00007874-00000880",
+   "resource_offset": "00007874",
+   "raw_offset": "00000880",
+   "byte_len": 28,
+   "max_bytes": 28,
+   "source": "何を売っていただけますか？",
+   "translation": "有东西要卖吗？"
+  },
+  {
+   "id": "F0049-00007874-000008CE",
+   "resource_offset": "00007874",
+   "raw_offset": "000008CE",
+   "byte_len": 32,
+   "max_bytes": 32,
+   "source": "売るのはそれでよろしいですか？",
+   "translation": "卖这些可以吗？"
+  },
+  {
+   "id": "F0049-00007874-0000091E",
+   "resource_offset": "00007874",
+   "raw_offset": "0000091E",
+   "byte_len": 22,
+   "max_bytes": 22,
+   "source": "防具屋：いらっしゃい",
+   "translation": "防具店：欢迎光临"
+  },
+  {
+   "id": "F0049-00007874-00000934",
+   "resource_offset": "00007874",
+   "raw_offset": "00000934",
+   "byte_len": 14,
+   "max_bytes": 14,
+   "source": "どれを買う？",
+   "translation": "买哪个？"
+  },
+  {
+   "id": "F0049-00007874-00000968",
+   "resource_offset": "00007874",
+   "raw_offset": "00000968",
+   "byte_len": 12,
+   "max_bytes": 12,
+   "source": "何を売る？",
+   "translation": "卖什么？"
+  },
+  {
+   "id": "F0049-00007874-00000988",
+   "resource_offset": "00007874",
+   "raw_offset": "00000988",
+   "byte_len": 24,
+   "max_bytes": 24,
+   "source": "買うのはそれでよいか？",
+   "translation": "就买这个？"
+  },
+  {
+   "id": "F0049-00007874-000009A0",
+   "resource_offset": "00007874",
+   "raw_offset": "000009A0",
+   "byte_len": 24,
+   "max_bytes": 24,
+   "source": "売るのはそれでよいか？",
+   "translation": "就卖这个？"
+  },
+  {
+   "id": "F0049-00007874-00000A0C",
+   "resource_offset": "00007874",
+   "raw_offset": "00000A0C",
+   "byte_len": 28,
+   "max_bytes": 28,
+   "source": "な、何をお買い上げですか？",
+   "translation": "想，想买什么？"
+  },
+  {
+   "id": "F0049-00007874-00000A5A",
+   "resource_offset": "00007874",
+   "raw_offset": "00000A5A",
+   "byte_len": 32,
+   "max_bytes": 32,
+   "source": "な、何を売っていただけますか？",
+   "translation": "有，有什么要卖？"
+  },
+  {
+   "id": "F0049-00007874-00000A98",
+   "resource_offset": "00007874",
+   "raw_offset": "00000A98",
+   "byte_len": 32,
+   "max_bytes": 32,
+   "source": "か、買うのはこれで全部ですか？",
+   "translation": "就，就买这些吗？"
+  },
+  {
+   "id": "F0049-00007874-00000AB8",
+   "resource_offset": "00007874",
+   "raw_offset": "00000AB8",
+   "byte_len": 32,
+   "max_bytes": 32,
+   "source": "う、売るのはこれで全部ですか？",
+   "translation": "就，就卖这些吗？"
+  },
+  {
+   "id": "F0049-00007874-00000B10",
+   "resource_offset": "00007874",
+   "raw_offset": "00000B10",
+   "byte_len": 32,
+   "max_bytes": 32,
+   "source": "武器屋：ワザモノが揃ってますよ",
+   "translation": "武器店：好货齐全哦"
+  },
+  {
+   "id": "F0049-00007874-00000B30",
+   "resource_offset": "00007874",
+   "raw_offset": "00000B30",
+   "byte_len": 20,
+   "max_bytes": 20,
+   "source": "どれを買いますか？",
+   "translation": "想买哪个？"
+  },
+  {
+   "id": "F0049-00007874-00000B74",
+   "resource_offset": "00007874",
+   "raw_offset": "00000B74",
+   "byte_len": 30,
+   "max_bytes": 30,
+   "source": "どれを売ってくれるのですか？",
+   "translation": "想卖哪个？"
+  },
+  {
+   "id": "F0049-00007874-00000BB8",
+   "resource_offset": "00007874",
+   "raw_offset": "00000BB8",
+   "byte_len": 26,
+   "max_bytes": 26,
+   "source": "買うのはそれだけですか？",
+   "translation": "只买这个吗？"
+  },
+  {
+   "id": "F0049-00007874-00000BD2",
+   "resource_offset": "00007874",
+   "raw_offset": "00000BD2",
+   "byte_len": 26,
+   "max_bytes": 26,
+   "source": "売るのはそれだけですか？",
+   "translation": "只卖这个吗？"
+  },
+  {
+   "id": "F0049-00007874-00000C1C",
+   "resource_offset": "00007874",
+   "raw_offset": "00000C1C",
+   "byte_len": 34,
+   "max_bytes": 34,
+   "source": "防具屋：どんな攻撃も防ぎますです",
+   "translation": "防具店：任何攻击都能防住的说"
+  },
+  {
+   "id": "F0049-00007874-00000C3E",
+   "resource_offset": "00007874",
+   "raw_offset": "00000C3E",
+   "byte_len": 22,
+   "max_bytes": 22,
+   "source": "どれを買い上げです？",
+   "translation": "想买哪个？"
+  },
+  {
+   "id": "F0049-00007874-00000C88",
+   "resource_offset": "00007874",
+   "raw_offset": "00000C88",
+   "byte_len": 32,
+   "max_bytes": 32,
+   "source": "何を売っていただけますですか？",
+   "translation": "有什么要卖的说？"
+  },
+  {
+   "id": "F0049-00007874-00000CC4",
+   "resource_offset": "00007874",
+   "raw_offset": "00000CC4",
+   "byte_len": 24,
+   "max_bytes": 24,
+   "source": "以上でよろしいですか？",
+   "translation": "就这些可以吗？"
+  },
+  {
+   "id": "F0049-00007874-00000CDC",
+   "resource_offset": "00007874",
+   "raw_offset": "00000CDC",
+   "byte_len": 24,
+   "max_bytes": 24,
+   "source": "以上でよろしいですか？",
+   "translation": "就这些可以吗？"
+  },
+  {
+   "id": "F0049-00007874-00000D24",
+   "resource_offset": "00007874",
+   "raw_offset": "00000D24",
+   "byte_len": 24,
+   "max_bytes": 24,
+   "source": "武器屋：いい武器あるよ",
+   "translation": "武器店：有好武器哦"
+  },
+  {
+   "id": "F0049-00007874-00000D3C",
+   "resource_offset": "00007874",
+   "raw_offset": "00000D3C",
+   "byte_len": 20,
+   "max_bytes": 20,
+   "source": "どれもいい武器だよ",
+   "translation": "都是好武器哦"
+  },
+  {
+   "id": "F0049-00007874-00000D86",
+   "resource_offset": "00007874",
+   "raw_offset": "00000D86",
+   "byte_len": 26,
+   "max_bytes": 26,
+   "source": "何か売ってくれるのかい？",
+   "translation": "有东西要卖吗？"
+  },
+  {
+   "id": "F0049-00007874-00000DB8",
+   "resource_offset": "00007874",
+   "raw_offset": "00000DB8",
+   "byte_len": 26,
+   "max_bytes": 26,
+   "source": "買うのはそれでいいのか？",
+   "translation": "买这些，行吗？"
+  },
+  {
+   "id": "F0049-00007874-00000DD2",
+   "resource_offset": "00007874",
+   "raw_offset": "00000DD2",
+   "byte_len": 26,
+   "max_bytes": 26,
+   "source": "売るのはそれでいいのか？",
+   "translation": "卖这些，行吗？"
+  },
+  {
+   "id": "F0049-00007874-00000E20",
+   "resource_offset": "00007874",
+   "raw_offset": "00000E20",
+   "byte_len": 30,
+   "max_bytes": 30,
+   "source": "防具屋：丈夫な防具はいかが？",
+   "translation": "防具店：来件结实的防具？"
+  },
+  {
+   "id": "F0049-00007874-00000E3E",
+   "resource_offset": "00007874",
+   "raw_offset": "00000E3E",
+   "byte_len": 16,
+   "max_bytes": 16,
+   "source": "何を買うんか？",
+   "translation": "想买什么？"
+  },
+  {
+   "id": "F0049-00007874-00000E88",
+   "resource_offset": "00007874",
+   "raw_offset": "00000E88",
+   "byte_len": 16,
+   "max_bytes": 16,
+   "source": "何を売るんか？",
+   "translation": "想卖什么？"
+  },
+  {
+   "id": "F0049-00007874-00000EA4",
+   "resource_offset": "00007874",
+   "raw_offset": "00000EA4",
+   "byte_len": 26,
+   "max_bytes": 26,
+   "source": "で、買うのはよろしいか？",
+   "translation": "买这些，没错吧？"
+  },
+  {
+   "id": "F0049-00007874-00000EBE",
+   "resource_offset": "00007874",
+   "raw_offset": "00000EBE",
+   "byte_len": 26,
+   "max_bytes": 26,
+   "source": "で、売るのはよろしいか？",
+   "translation": "卖这些，没错吧？"
+  },
+  {
+   "id": "F0049-00007874-00000F1A",
+   "resource_offset": "00007874",
+   "raw_offset": "00000F1A",
+   "byte_len": 26,
+   "max_bytes": 26,
+   "source": "ささ、何をお買いでしょ？",
+   "translation": "来，想买什么？"
+  },
+  {
+   "id": "F0049-00007874-00000F5E",
+   "resource_offset": "00007874",
+   "raw_offset": "00000F5E",
+   "byte_len": 20,
+   "max_bytes": 20,
+   "source": "何をお売りでしょ？",
+   "translation": "想卖什么？"
+  },
+  {
+   "id": "F0049-00007874-00000F86",
+   "resource_offset": "00007874",
+   "raw_offset": "00000F86",
+   "byte_len": 18,
+   "max_bytes": 18,
+   "source": "買うのそんだけ？",
+   "translation": "只买这些？"
+  },
+  {
+   "id": "F0049-00007874-00000F98",
+   "resource_offset": "00007874",
+   "raw_offset": "00000F98",
+   "byte_len": 18,
+   "max_bytes": 18,
+   "source": "売るのそんだけ？",
+   "translation": "只卖这些？"
+  },
+  {
+   "id": "F0049-00007874-00000FDA",
+   "resource_offset": "00007874",
+   "raw_offset": "00000FDA",
+   "byte_len": 28,
+   "max_bytes": 28,
+   "source": "神の御力が得られる品々です",
+   "translation": "都是能获得神力的物品"
+  },
+  {
+   "id": "F0049-00007874-00001028",
+   "resource_offset": "00007874",
+   "raw_offset": "00001028",
+   "byte_len": 30,
+   "max_bytes": 30,
+   "source": "何を売って下さるのでしょう？",
+   "translation": "有什么要卖吗？"
+  },
+  {
+   "id": "F0049-00007874-00001068",
+   "resource_offset": "00007874",
+   "raw_offset": "00001068",
+   "byte_len": 26,
+   "max_bytes": 26,
+   "source": "買う物はそれだけですか？",
+   "translation": "只买这些吗？"
+  },
+  {
+   "id": "F0049-00007874-00001082",
+   "resource_offset": "00007874",
+   "raw_offset": "00001082",
+   "byte_len": 26,
+   "max_bytes": 26,
+   "source": "売る物はそれだけですか？",
+   "translation": "只卖这些吗？"
+  },
+  {
+   "id": "F0049-00007874-000010CC",
+   "resource_offset": "00007874",
+   "raw_offset": "000010CC",
+   "byte_len": 32,
+   "max_bytes": 32,
+   "source": "カオス・パワーが込められた物だ",
+   "translation": "此物注入了混沌之力"
+  },
+  {
+   "id": "F0049-00007874-00001120",
+   "resource_offset": "00007874",
+   "raw_offset": "00001120",
+   "byte_len": 16,
+   "max_bytes": 16,
+   "source": "何を売るのだ？",
+   "translation": "要卖什么？"
+  },
+  {
+   "id": "F0049-00007874-00001150",
+   "resource_offset": "00007874",
+   "raw_offset": "00001150",
+   "byte_len": 22,
+   "max_bytes": 22,
+   "source": "買うのはそれだけか？",
+   "translation": "只买这些吗？"
+  },
+  {
+   "id": "F0049-00007874-00001166",
+   "resource_offset": "00007874",
+   "raw_offset": "00001166",
+   "byte_len": 22,
+   "max_bytes": 22,
+   "source": "売るのはそれだけか？",
+   "translation": "只卖这些吗？"
+  },
+  {
+   "id": "F0049-00007874-000011A0",
+   "resource_offset": "00007874",
+   "raw_offset": "000011A0",
+   "byte_len": 32,
+   "max_bytes": 32,
+   "source": "いろんなアイテム売ってるよーん",
+   "translation": "这里各种道具都有哦"
+  },
+  {
+   "id": "F0049-00007874-000011EE",
+   "resource_offset": "00007874",
+   "raw_offset": "000011EE",
+   "byte_len": 28,
+   "max_bytes": 28,
+   "source": "何を売ってくれるのかなー？",
+   "translation": "要卖什么呢？"
+  },
+  {
+   "id": "F0049-00007874-00001228",
+   "resource_offset": "00007874",
+   "raw_offset": "00001228",
+   "byte_len": 22,
+   "max_bytes": 22,
+   "source": "買う物はそれでＯＫ？",
+   "translation": "买这些可以吗？"
+  },
+  {
+   "id": "F0049-00007874-0000123E",
+   "resource_offset": "00007874",
+   "raw_offset": "0000123E",
+   "byte_len": 22,
+   "max_bytes": 22,
+   "source": "売る物はそれでＯＫ？",
+   "translation": "卖这些可以吗？"
+  },
+  {
+   "id": "F0049-00007874-0000127C",
+   "resource_offset": "00007874",
+   "raw_offset": "0000127C",
+   "byte_len": 24,
+   "max_bytes": 24,
+   "source": "アイテムも売ってまーす",
+   "translation": "这里也卖道具哦"
+  },
+  {
+   "id": "F0049-00007874-000012A8",
+   "resource_offset": "00007874",
+   "raw_offset": "000012A8",
+   "byte_len": 30,
+   "max_bytes": 30,
+   "source": "買うのはそれでいいですかー？",
+   "translation": "就买这些吗？"
+  },
+  {
+   "id": "F0049-00007874-000012C6",
+   "resource_offset": "00007874",
+   "raw_offset": "000012C6",
+   "byte_len": 26,
+   "max_bytes": 26,
+   "source": "買えるものがありませーん",
+   "translation": "没有东西可买哦"
+  },
+  {
+   "id": "F0049-00007874-00001302",
+   "resource_offset": "00007874",
+   "raw_offset": "00001302",
+   "byte_len": 26,
+   "max_bytes": 26,
+   "source": "何を売ってくれますかー？",
+   "translation": "要卖什么呀？"
+  },
+  {
+   "id": "F0049-00007874-0000131C",
+   "resource_offset": "00007874",
+   "raw_offset": "0000131C",
+   "byte_len": 30,
+   "max_bytes": 30,
+   "source": "売るのはそれでいいですかー？",
+   "translation": "就卖这些吗？"
+  },
+  {
+   "id": "F0049-00007874-000013D4",
+   "resource_offset": "00007874",
+   "raw_offset": "000013D4",
+   "byte_len": 30,
+   "max_bytes": 30,
+   "source": "いかほど交換いたしましょう？",
+   "translation": "要交换多少？"
+  },
+  {
+   "id": "F0049-00007874-000015A0",
+   "resource_offset": "00007874",
+   "raw_offset": "000015A0",
+   "byte_len": 34,
+   "max_bytes": 34,
+   "source": "ラグ：いらっしゃい、よく来たねぇ",
+   "translation": "拉格：欢迎，你来啦"
+  },
+  {
+   "id": "F0049-00007874-000015C2",
+   "resource_offset": "00007874",
+   "raw_offset": "000015C2",
+   "byte_len": 14,
+   "max_bytes": 14,
+   "source": "用は何かな？",
+   "translation": "有何贵干？"
+  },
+  {
+   "id": "F0049-00007874-000015EA",
+   "resource_offset": "00007874",
+   "raw_offset": "000015EA",
+   "byte_len": 38,
+   "max_bytes": 38,
+   "source": "アァそう、じゃ、どの宝石と換えるの？",
+   "translation": "啊，是吗？要换哪种宝石？"
+  },
+  {
+   "id": "F0049-00007874-00001644",
+   "resource_offset": "00007874",
+   "raw_offset": "00001644",
+   "byte_len": 18,
+   "max_bytes": 18,
+   "source": "換えるよ、いい？",
+   "translation": "要换了，确定？"
+  },
+  {
+   "id": "F0049-00007874-00001660",
+   "resource_offset": "00007874",
+   "raw_offset": "00001660",
+   "byte_len": 26,
+   "max_bytes": 26,
+   "source": "２つ目の宝石を出してよ？",
+   "translation": "拿出第二块宝石吧？"
+  },
+  {
+   "id": "F0049-00007874-0000168A",
+   "resource_offset": "00007874",
+   "raw_offset": "0000168A",
+   "byte_len": 18,
+   "max_bytes": 18,
+   "source": "換えるね、いい？",
+   "translation": "这就换，确定？"
+  },
+  {
+   "id": "F0049-00007874-00001708",
+   "resource_offset": "00007874",
+   "raw_offset": "00001708",
+   "byte_len": 16,
+   "max_bytes": 16,
+   "source": "何を鑑定する？",
+   "translation": "估价什么？"
+  },
+  {
+   "id": "F0049-00007874-0000180E",
+   "resource_offset": "00007874",
+   "raw_offset": "0000180E",
+   "byte_len": 10,
+   "max_bytes": 10,
+   "source": "事くらいか",
+   "translation": "事くらいか"
+  }
+ ],
+ "F0092": [
+  {
+   "id": "F0092-00006F40-00000F58",
+   "resource_offset": "00006F40",
+   "raw_offset": "00000F58",
+   "byte_len": 24,
+   "max_bytes": 24,
+   "source": "シナリオ１に決定された",
+   "translation": "シナリオ１に決定された"
+  },
+  {
+   "id": "F0092-00006F40-00000F70",
+   "resource_offset": "00006F40",
+   "raw_offset": "00000F70",
+   "byte_len": 24,
+   "max_bytes": 24,
+   "source": "シナリオ２に決定された",
+   "translation": "シナリオ２に決定された"
+  },
+  {
+   "id": "F0092-00006F40-00000F88",
+   "resource_offset": "00006F40",
+   "raw_offset": "00000F88",
+   "byte_len": 24,
+   "max_bytes": 24,
+   "source": "シナリオ３に決定された",
+   "translation": "シナリオ３に決定された"
+  },
+  {
+   "id": "F0092-00006F40-00000FA0",
+   "resource_offset": "00006F40",
+   "raw_offset": "00000FA0",
+   "byte_len": 24,
+   "max_bytes": 24,
+   "source": "シナリオ４に決定された",
+   "translation": "シナリオ４に決定された"
+  },
+  {
+   "id": "F0092-00006F40-00000FB8",
+   "resource_offset": "00006F40",
+   "raw_offset": "00000FB8",
+   "byte_len": 22,
+   "max_bytes": 22,
+   "source": "パートナー１に会った",
+   "translation": "パートナー１に会った"
+  },
+  {
+   "id": "F0092-00006F40-00000FCE",
+   "resource_offset": "00006F40",
+   "raw_offset": "00000FCE",
+   "byte_len": 22,
+   "max_bytes": 22,
+   "source": "パートナー３に会った",
+   "translation": "パートナー３に会った"
+  },
+  {
+   "id": "F0092-00006F40-00000FE4",
+   "resource_offset": "00006F40",
+   "raw_offset": "00000FE4",
+   "byte_len": 22,
+   "max_bytes": 22,
+   "source": "パートナー４に会った",
+   "translation": "パートナー４に会った"
+  },
+  {
+   "id": "F0092-00006F40-00000FFA",
+   "resource_offset": "00006F40",
+   "raw_offset": "00000FFA",
+   "byte_len": 26,
+   "max_bytes": 26,
+   "source": "召喚プログラムを入手した",
+   "translation": "召喚プログラムを入手した"
+  },
+  {
+   "id": "F0092-00006F40-00001014",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001014",
+   "byte_len": 24,
+   "max_bytes": 24,
+   "source": "ノートパソコン入手した",
+   "translation": "ノートパソコン入手した"
+  },
+  {
+   "id": "F0092-00006F40-0000102C",
+   "resource_offset": "00006F40",
+   "raw_offset": "0000102C",
+   "byte_len": 24,
+   "max_bytes": 24,
+   "source": "ＩＱ２５６の影と会った",
+   "translation": "ＩＱ２５６の影と会った"
+  },
+  {
+   "id": "F0092-00006F40-00001044",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001044",
+   "byte_len": 26,
+   "max_bytes": 26,
+   "source": "封印アイテム１を入手した",
+   "translation": "封印アイテム１を入手した"
+  },
+  {
+   "id": "F0092-00006F40-0000105E",
+   "resource_offset": "00006F40",
+   "raw_offset": "0000105E",
+   "byte_len": 18,
+   "max_bytes": 18,
+   "source": "大月先生に勝った",
+   "translation": "大月先生に勝った"
+  },
+  {
+   "id": "F0092-00006F40-00001070",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001070",
+   "byte_len": 22,
+   "max_bytes": 22,
+   "source": "最初に保健室に行った",
+   "translation": "最初に保健室に行った"
+  },
+  {
+   "id": "F0092-00006F40-00001086",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001086",
+   "byte_len": 26,
+   "max_bytes": 26,
+   "source": "部室アイテム１を入手した",
+   "translation": "部室アイテム１を入手した"
+  },
+  {
+   "id": "F0092-00006F40-000010A0",
+   "resource_offset": "00006F40",
+   "raw_offset": "000010A0",
+   "byte_len": 26,
+   "max_bytes": 26,
+   "source": "部室アイテム２を入手した",
+   "translation": "部室アイテム２を入手した"
+  },
+  {
+   "id": "F0092-00006F40-000010BA",
+   "resource_offset": "00006F40",
+   "raw_offset": "000010BA",
+   "byte_len": 26,
+   "max_bytes": 26,
+   "source": "部室アイテム３を入手した",
+   "translation": "部室アイテム３を入手した"
+  },
+  {
+   "id": "F0092-00006F40-000010D4",
+   "resource_offset": "00006F40",
+   "raw_offset": "000010D4",
+   "byte_len": 26,
+   "max_bytes": 26,
+   "source": "部室アイテム４を入手した",
+   "translation": "部室アイテム４を入手した"
+  },
+  {
+   "id": "F0092-00006F40-000010EE",
+   "resource_offset": "00006F40",
+   "raw_offset": "000010EE",
+   "byte_len": 26,
+   "max_bytes": 26,
+   "source": "物置のアイテムを入手した",
+   "translation": "物置のアイテムを入手した"
+  },
+  {
+   "id": "F0092-00006F40-00001108",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001108",
+   "byte_len": 28,
+   "max_bytes": 28,
+   "source": "ケルベロスＤＩＳＫを拾った",
+   "translation": "ケルベロスＤＩＳＫを拾った"
+  },
+  {
+   "id": "F0092-00006F40-00001124",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001124",
+   "byte_len": 24,
+   "max_bytes": 24,
+   "source": "ケルベロディスク預けた",
+   "translation": "ケルベロディスク預けた"
+  },
+  {
+   "id": "F0092-00006F40-0000113C",
+   "resource_offset": "00006F40",
+   "raw_offset": "0000113C",
+   "byte_len": 24,
+   "max_bytes": 24,
+   "source": "ケルベロス仲魔になった",
+   "translation": "ケルベロス仲魔になった"
+  },
+  {
+   "id": "F0092-00006F40-00001154",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001154",
+   "byte_len": 24,
+   "max_bytes": 24,
+   "source": "ケルベロス情報を聞いた",
+   "translation": "ケルベロス情報を聞いた"
+  },
+  {
+   "id": "F0092-00006F40-0000116C",
+   "resource_offset": "00006F40",
+   "raw_offset": "0000116C",
+   "byte_len": 22,
+   "max_bytes": 22,
+   "source": "ケルベロス物置で待つ",
+   "translation": "ケルベロス物置で待つ"
+  },
+  {
+   "id": "F0092-00006F40-00001182",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001182",
+   "byte_len": 20,
+   "max_bytes": 20,
+   "source": "傲慢エリアへ行った",
+   "translation": "傲慢エリアへ行った"
+  },
+  {
+   "id": "F0092-00006F40-00001196",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001196",
+   "byte_len": 24,
+   "max_bytes": 24,
+   "source": "傲慢ボスヴィネを倒した",
+   "translation": "傲慢ボスヴィネを倒した"
+  },
+  {
+   "id": "F0092-00006F40-000011AE",
+   "resource_offset": "00006F40",
+   "raw_offset": "000011AE",
+   "byte_len": 20,
+   "max_bytes": 20,
+   "source": "飽食エリアへ行った",
+   "translation": "飽食エリアへ行った"
+  },
+  {
+   "id": "F0092-00006F40-000011C2",
+   "resource_offset": "00006F40",
+   "raw_offset": "000011C2",
+   "byte_len": 26,
+   "max_bytes": 26,
+   "source": "体内入り必要アイテム入手",
+   "translation": "体内入り必要アイテム入手"
+  },
+  {
+   "id": "F0092-00006F40-000011DC",
+   "resource_offset": "00006F40",
+   "raw_offset": "000011DC",
+   "byte_len": 32,
+   "max_bytes": 32,
+   "source": "オーカス体内イベントクリアした",
+   "translation": "オーカス体内イベントクリアした"
+  },
+  {
+   "id": "F0092-00006F40-000011FC",
+   "resource_offset": "00006F40",
+   "raw_offset": "000011FC",
+   "byte_len": 26,
+   "max_bytes": 26,
+   "source": "強制労働イベント起こった",
+   "translation": "強制労働イベント起こった"
+  },
+  {
+   "id": "F0092-00006F40-00001216",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001216",
+   "byte_len": 28,
+   "max_bytes": 28,
+   "source": "封印アイテム４のみ入手した",
+   "translation": "封印アイテム４のみ入手した"
+  },
+  {
+   "id": "F0092-00006F40-00001232",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001232",
+   "byte_len": 44,
+   "max_bytes": 44,
+   "source": "？嫉妬？エリア・イベントでパートナー離脱中",
+   "translation": "？嫉妬？エリア・イベントでパートナー離脱中"
+  },
+  {
+   "id": "F0092-00006F40-0000125E",
+   "resource_offset": "00006F40",
+   "raw_offset": "0000125E",
+   "byte_len": 20,
+   "max_bytes": 20,
+   "source": "封印第１段階解いた",
+   "translation": "封印第１段階解いた"
+  },
+  {
+   "id": "F0092-00006F40-00001272",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001272",
+   "byte_len": 22,
+   "max_bytes": 22,
+   "source": "傲慢エリアの扉開いた",
+   "translation": "傲慢エリアの扉開いた"
+  },
+  {
+   "id": "F0092-00006F40-00001288",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001288",
+   "byte_len": 20,
+   "max_bytes": 20,
+   "source": "封印第２段階解いた",
+   "translation": "封印第２段階解いた"
+  },
+  {
+   "id": "F0092-00006F40-0000129C",
+   "resource_offset": "00006F40",
+   "raw_offset": "0000129C",
+   "byte_len": 22,
+   "max_bytes": 22,
+   "source": "飽食エリアの扉開いた",
+   "translation": "飽食エリアの扉開いた"
+  },
+  {
+   "id": "F0092-00006F40-000012B2",
+   "resource_offset": "00006F40",
+   "raw_offset": "000012B2",
+   "byte_len": 20,
+   "max_bytes": 20,
+   "source": "封印第３段階解いた",
+   "translation": "封印第３段階解いた"
+  },
+  {
+   "id": "F0092-00006F40-000012C6",
+   "resource_offset": "00006F40",
+   "raw_offset": "000012C6",
+   "byte_len": 22,
+   "max_bytes": 22,
+   "source": "怠惰エリアの扉開いた",
+   "translation": "怠惰エリアの扉開いた"
+  },
+  {
+   "id": "F0092-00006F40-000012DC",
+   "resource_offset": "00006F40",
+   "raw_offset": "000012DC",
+   "byte_len": 20,
+   "max_bytes": 20,
+   "source": "封印第４段階解いた",
+   "translation": "封印第４段階解いた"
+  },
+  {
+   "id": "F0092-00006F40-000012F0",
+   "resource_offset": "00006F40",
+   "raw_offset": "000012F0",
+   "byte_len": 22,
+   "max_bytes": 22,
+   "source": "嫉妬エリアの扉開いた",
+   "translation": "嫉妬エリアの扉開いた"
+  },
+  {
+   "id": "F0092-00006F40-00001306",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001306",
+   "byte_len": 24,
+   "max_bytes": 24,
+   "source": "嫉妬エリアをクリアした",
+   "translation": "嫉妬エリアをクリアした"
+  },
+  {
+   "id": "F0092-00006F40-0000131E",
+   "resource_offset": "00006F40",
+   "raw_offset": "0000131E",
+   "byte_len": 20,
+   "max_bytes": 20,
+   "source": "封印第５段階解いた",
+   "translation": "封印第５段階解いた"
+  },
+  {
+   "id": "F0092-00006F40-00001332",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001332",
+   "byte_len": 22,
+   "max_bytes": 22,
+   "source": "貪欲エリアの扉開いた",
+   "translation": "貪欲エリアの扉開いた"
+  },
+  {
+   "id": "F0092-00006F40-00001348",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001348",
+   "byte_len": 24,
+   "max_bytes": 24,
+   "source": "貪欲エリアをクリアした",
+   "translation": "貪欲エリアをクリアした"
+  },
+  {
+   "id": "F0092-00006F40-00001360",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001360",
+   "byte_len": 20,
+   "max_bytes": 20,
+   "source": "封印第６段階解いた",
+   "translation": "封印第６段階解いた"
+  },
+  {
+   "id": "F0092-00006F40-00001374",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001374",
+   "byte_len": 24,
+   "max_bytes": 24,
+   "source": "憤怒エリアをクリアした",
+   "translation": "憤怒エリアをクリアした"
+  },
+  {
+   "id": "F0092-00006F40-0000138C",
+   "resource_offset": "00006F40",
+   "raw_offset": "0000138C",
+   "byte_len": 24,
+   "max_bytes": 24,
+   "source": "チャーリーの話を聞いた",
+   "translation": "チャーリーの話を聞いた"
+  },
+  {
+   "id": "F0092-00006F40-000013A4",
+   "resource_offset": "00006F40",
+   "raw_offset": "000013A4",
+   "byte_len": 26,
+   "max_bytes": 26,
+   "source": "傲慢界の２５６像に会った",
+   "translation": "傲慢界の２５６像に会った"
+  },
+  {
+   "id": "F0092-00006F40-000013BE",
+   "resource_offset": "00006F40",
+   "raw_offset": "000013BE",
+   "byte_len": 26,
+   "max_bytes": 26,
+   "source": "嫉妬界の２５６像に会った",
+   "translation": "嫉妬界の２５６像に会った"
+  },
+  {
+   "id": "F0092-00006F40-000013D8",
+   "resource_offset": "00006F40",
+   "raw_offset": "000013D8",
+   "byte_len": 26,
+   "max_bytes": 26,
+   "source": "貪欲界の２５６像に会った",
+   "translation": "貪欲界の２５６像に会った"
+  },
+  {
+   "id": "F0092-00006F40-000013F2",
+   "resource_offset": "00006F40",
+   "raw_offset": "000013F2",
+   "byte_len": 22,
+   "max_bytes": 22,
+   "source": "ケルベロス一？逃げた",
+   "translation": "ケルベロス一？逃げた"
+  },
+  {
+   "id": "F0092-00006F40-00001408",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001408",
+   "byte_len": 28,
+   "max_bytes": 28,
+   "source": "ジャックフロスト仲魔にした",
+   "translation": "ジャックフロスト仲魔にした"
+  },
+  {
+   "id": "F0092-00006F40-00001424",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001424",
+   "byte_len": 18,
+   "max_bytes": 18,
+   "source": "怠惰界ボス倒した",
+   "translation": "怠惰界ボス倒した"
+  },
+  {
+   "id": "F0092-00006F40-0000144A",
+   "resource_offset": "00006F40",
+   "raw_offset": "0000144A",
+   "byte_len": 22,
+   "max_bytes": 22,
+   "source": "対大月第三戦に勝った",
+   "translation": "対大月第三戦に勝った"
+  },
+  {
+   "id": "F0092-00006F40-00001460",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001460",
+   "byte_len": 18,
+   "max_bytes": 18,
+   "source": "八幡先生に会った",
+   "translation": "八幡先生に会った"
+  },
+  {
+   "id": "F0092-00006F40-00001472",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001472",
+   "byte_len": 44,
+   "max_bytes": 44,
+   "source": "？憤怒？エリア・イベントでパートナー離脱中",
+   "translation": "？憤怒？エリア・イベントでパートナー離脱中"
+  },
+  {
+   "id": "F0092-00006F40-0000149E",
+   "resource_offset": "00006F40",
+   "raw_offset": "0000149E",
+   "byte_len": 28,
+   "max_bytes": 28,
+   "source": "ロシアンルーレット出現禁止",
+   "translation": "ロシアンルーレット出現禁止"
+  },
+  {
+   "id": "F0092-00006F40-000014BA",
+   "resource_offset": "00006F40",
+   "raw_offset": "000014BA",
+   "byte_len": 26,
+   "max_bytes": 26,
+   "source": "憤怒エリアで魔神皇に会う",
+   "translation": "憤怒エリアで魔神皇に会う"
+  },
+  {
+   "id": "F0092-00006F40-000014D4",
+   "resource_offset": "00006F40",
+   "raw_offset": "000014D4",
+   "byte_len": 22,
+   "max_bytes": 22,
+   "source": "憤怒界の封印を開いた",
+   "translation": "憤怒界の封印を開いた"
+  },
+  {
+   "id": "F0092-00006F40-000015A2",
+   "resource_offset": "00006F40",
+   "raw_offset": "000015A2",
+   "byte_len": 20,
+   "max_bytes": 20,
+   "source": "校長の？道掘った５",
+   "translation": "校長の？道掘った５"
+  },
+  {
+   "id": "F0092-00006F40-000015B6",
+   "resource_offset": "00006F40",
+   "raw_offset": "000015B6",
+   "byte_len": 20,
+   "max_bytes": 20,
+   "source": "校長の？道掘った６",
+   "translation": "校長の？道掘った６"
+  },
+  {
+   "id": "F0092-00006F40-000015CA",
+   "resource_offset": "00006F40",
+   "raw_offset": "000015CA",
+   "byte_len": 20,
+   "max_bytes": 20,
+   "source": "校長の？道掘った７",
+   "translation": "校長の？道掘った７"
+  },
+  {
+   "id": "F0092-00006F40-00001668",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001668",
+   "byte_len": 20,
+   "max_bytes": 20,
+   "source": "岡本の？道掘った４",
+   "translation": "岡本の？道掘った４"
+  },
+  {
+   "id": "F0092-00006F40-0000167C",
+   "resource_offset": "00006F40",
+   "raw_offset": "0000167C",
+   "byte_len": 20,
+   "max_bytes": 20,
+   "source": "岡本の？道掘った５",
+   "translation": "岡本の？道掘った５"
+  },
+  {
+   "id": "F0092-00006F40-00001690",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001690",
+   "byte_len": 20,
+   "max_bytes": 20,
+   "source": "岡本の？道掘った６",
+   "translation": "岡本の？道掘った６"
+  },
+  {
+   "id": "F0092-00006F40-000016A4",
+   "resource_offset": "00006F40",
+   "raw_offset": "000016A4",
+   "byte_len": 20,
+   "max_bytes": 20,
+   "source": "岡本の？道掘った７",
+   "translation": "岡本の？道掘った７"
+  },
+  {
+   "id": "F0092-00006F40-0000175A",
+   "resource_offset": "00006F40",
+   "raw_offset": "0000175A",
+   "byte_len": 24,
+   "max_bytes": 24,
+   "source": "風紀委員の？道掘った４",
+   "translation": "風紀委員の？道掘った４"
+  },
+  {
+   "id": "F0092-00006F40-00001772",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001772",
+   "byte_len": 24,
+   "max_bytes": 24,
+   "source": "風紀委員の？道掘った５",
+   "translation": "風紀委員の？道掘った５"
+  },
+  {
+   "id": "F0092-00006F40-0000178A",
+   "resource_offset": "00006F40",
+   "raw_offset": "0000178A",
+   "byte_len": 24,
+   "max_bytes": 24,
+   "source": "風紀委員の？道掘った６",
+   "translation": "風紀委員の？道掘った６"
+  },
+  {
+   "id": "F0092-00006F40-000017A2",
+   "resource_offset": "00006F40",
+   "raw_offset": "000017A2",
+   "byte_len": 24,
+   "max_bytes": 24,
+   "source": "風紀委員の？道掘った７",
+   "translation": "風紀委員の？道掘った７"
+  },
+  {
+   "id": "F0092-00006F40-0000184A",
+   "resource_offset": "00006F40",
+   "raw_offset": "0000184A",
+   "byte_len": 22,
+   "max_bytes": 22,
+   "source": "生徒１の？道掘った４",
+   "translation": "生徒１の？道掘った４"
+  },
+  {
+   "id": "F0092-00006F40-00001860",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001860",
+   "byte_len": 22,
+   "max_bytes": 22,
+   "source": "生徒１の？道掘った５",
+   "translation": "生徒１の？道掘った５"
+  },
+  {
+   "id": "F0092-00006F40-00001876",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001876",
+   "byte_len": 22,
+   "max_bytes": 22,
+   "source": "生徒１の？道掘った６",
+   "translation": "生徒１の？道掘った６"
+  },
+  {
+   "id": "F0092-00006F40-0000188C",
+   "resource_offset": "00006F40",
+   "raw_offset": "0000188C",
+   "byte_len": 22,
+   "max_bytes": 22,
+   "source": "生徒１の？道掘った７",
+   "translation": "生徒１の？道掘った７"
+  },
+  {
+   "id": "F0092-00006F40-00001962",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001962",
+   "byte_len": 22,
+   "max_bytes": 22,
+   "source": "生徒２の？道掘った５",
+   "translation": "生徒２の？道掘った５"
+  },
+  {
+   "id": "F0092-00006F40-00001978",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001978",
+   "byte_len": 22,
+   "max_bytes": 22,
+   "source": "生徒２の？道掘った６",
+   "translation": "生徒２の？道掘った６"
+  },
+  {
+   "id": "F0092-00006F40-000019F6",
+   "resource_offset": "00006F40",
+   "raw_offset": "000019F6",
+   "byte_len": 22,
+   "max_bytes": 22,
+   "source": "生徒３の？道掘った３",
+   "translation": "生徒３の？道掘った３"
+  },
+  {
+   "id": "F0092-00006F40-00001A0C",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001A0C",
+   "byte_len": 22,
+   "max_bytes": 22,
+   "source": "生徒３の？道掘った４",
+   "translation": "生徒３の？道掘った４"
+  },
+  {
+   "id": "F0092-00006F40-00001A22",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001A22",
+   "byte_len": 22,
+   "max_bytes": 22,
+   "source": "生徒３の？道掘った５",
+   "translation": "生徒３の？道掘った５"
+  },
+  {
+   "id": "F0092-00006F40-00001A38",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001A38",
+   "byte_len": 22,
+   "max_bytes": 22,
+   "source": "生徒３の？道掘った６",
+   "translation": "生徒３の？道掘った６"
+  },
+  {
+   "id": "F0092-00006F40-00001A4E",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001A4E",
+   "byte_len": 22,
+   "max_bytes": 22,
+   "source": "生徒３の？道掘った７",
+   "translation": "生徒３の？道掘った７"
+  },
+  {
+   "id": "F0092-00006F40-00001A9E",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001A9E",
+   "byte_len": 22,
+   "max_bytes": 22,
+   "source": "生徒４の？道掘った２",
+   "translation": "生徒４の？道掘った２"
+  },
+  {
+   "id": "F0092-00006F40-00001AB4",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001AB4",
+   "byte_len": 22,
+   "max_bytes": 22,
+   "source": "生徒４の？道掘った３",
+   "translation": "生徒４の？道掘った３"
+  },
+  {
+   "id": "F0092-00006F40-00001ACA",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001ACA",
+   "byte_len": 22,
+   "max_bytes": 22,
+   "source": "生徒４の？道掘った４",
+   "translation": "生徒４の？道掘った４"
+  },
+  {
+   "id": "F0092-00006F40-00001AE0",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001AE0",
+   "byte_len": 22,
+   "max_bytes": 22,
+   "source": "生徒４の？道掘った５",
+   "translation": "生徒４の？道掘った５"
+  },
+  {
+   "id": "F0092-00006F40-00001AF6",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001AF6",
+   "byte_len": 22,
+   "max_bytes": 22,
+   "source": "生徒４の？道掘った６",
+   "translation": "生徒４の？道掘った６"
+  },
+  {
+   "id": "F0092-00006F40-00001B0C",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001B0C",
+   "byte_len": 22,
+   "max_bytes": 22,
+   "source": "生徒４の？道掘った７",
+   "translation": "生徒４の？道掘った７"
+  },
+  {
+   "id": "F0092-00006F40-00001B22",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001B22",
+   "byte_len": 22,
+   "max_bytes": 22,
+   "source": "生徒５の？道掘った１",
+   "translation": "生徒５の？道掘った１"
+  },
+  {
+   "id": "F0092-00006F40-00001B38",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001B38",
+   "byte_len": 22,
+   "max_bytes": 22,
+   "source": "生徒５の？道掘った２",
+   "translation": "生徒５の？道掘った２"
+  },
+  {
+   "id": "F0092-00006F40-00001B4E",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001B4E",
+   "byte_len": 22,
+   "max_bytes": 22,
+   "source": "生徒５の？道掘った３",
+   "translation": "生徒５の？道掘った３"
+  },
+  {
+   "id": "F0092-00006F40-00001B64",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001B64",
+   "byte_len": 22,
+   "max_bytes": 22,
+   "source": "生徒５の？道掘った４",
+   "translation": "生徒５の？道掘った４"
+  },
+  {
+   "id": "F0092-00006F40-00001B7A",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001B7A",
+   "byte_len": 22,
+   "max_bytes": 22,
+   "source": "生徒５の？道掘った５",
+   "translation": "生徒５の？道掘った５"
+  },
+  {
+   "id": "F0092-00006F40-00001B90",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001B90",
+   "byte_len": 22,
+   "max_bytes": 22,
+   "source": "生徒５の？道掘った６",
+   "translation": "生徒５の？道掘った６"
+  },
+  {
+   "id": "F0092-00006F40-00001BA6",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001BA6",
+   "byte_len": 22,
+   "max_bytes": 22,
+   "source": "生徒５の？道掘った７",
+   "translation": "生徒５の？道掘った７"
+  },
+  {
+   "id": "F0092-00006F40-00001BBC",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001BBC",
+   "byte_len": 22,
+   "max_bytes": 22,
+   "source": "生徒６の？道掘った１",
+   "translation": "生徒６の？道掘った１"
+  },
+  {
+   "id": "F0092-00006F40-00001BD2",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001BD2",
+   "byte_len": 22,
+   "max_bytes": 22,
+   "source": "生徒６の？道掘った２",
+   "translation": "生徒６の？道掘った２"
+  },
+  {
+   "id": "F0092-00006F40-00001BE8",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001BE8",
+   "byte_len": 22,
+   "max_bytes": 22,
+   "source": "生徒６の？道掘った３",
+   "translation": "生徒６の？道掘った３"
+  },
+  {
+   "id": "F0092-00006F40-00001BFE",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001BFE",
+   "byte_len": 22,
+   "max_bytes": 22,
+   "source": "生徒６の？道掘った４",
+   "translation": "生徒６の？道掘った４"
+  },
+  {
+   "id": "F0092-00006F40-00001C14",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001C14",
+   "byte_len": 22,
+   "max_bytes": 22,
+   "source": "生徒６の？道掘った５",
+   "translation": "生徒６の？道掘った５"
+  },
+  {
+   "id": "F0092-00006F40-00001C2A",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001C2A",
+   "byte_len": 22,
+   "max_bytes": 22,
+   "source": "生徒６の？道掘った６",
+   "translation": "生徒６の？道掘った６"
+  },
+  {
+   "id": "F0092-00006F40-00001C40",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001C40",
+   "byte_len": 22,
+   "max_bytes": 22,
+   "source": "生徒７の？道掘った１",
+   "translation": "生徒７の？道掘った１"
+  },
+  {
+   "id": "F0092-00006F40-00001C56",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001C56",
+   "byte_len": 22,
+   "max_bytes": 22,
+   "source": "生徒７の？道掘った２",
+   "translation": "生徒７の？道掘った２"
+  },
+  {
+   "id": "F0092-00006F40-00001C6C",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001C6C",
+   "byte_len": 22,
+   "max_bytes": 22,
+   "source": "生徒７の？道掘った３",
+   "translation": "生徒７の？道掘った３"
+  },
+  {
+   "id": "F0092-00006F40-00001C82",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001C82",
+   "byte_len": 22,
+   "max_bytes": 22,
+   "source": "生徒７の？道掘った４",
+   "translation": "生徒７の？道掘った４"
+  },
+  {
+   "id": "F0092-00006F40-00001C98",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001C98",
+   "byte_len": 22,
+   "max_bytes": 22,
+   "source": "生徒７の？道掘った５",
+   "translation": "生徒７の？道掘った５"
+  },
+  {
+   "id": "F0092-00006F40-00001CAE",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001CAE",
+   "byte_len": 22,
+   "max_bytes": 22,
+   "source": "生徒７の？道掘った６",
+   "translation": "生徒７の？道掘った６"
+  },
+  {
+   "id": "F0092-00006F40-00001CC4",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001CC4",
+   "byte_len": 22,
+   "max_bytes": 22,
+   "source": "生徒７の？道掘った７",
+   "translation": "生徒７の？道掘った７"
+  },
+  {
+   "id": "F0092-00006F40-00001CDA",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001CDA",
+   "byte_len": 22,
+   "max_bytes": 22,
+   "source": "生徒８の？道掘った１",
+   "translation": "生徒８の？道掘った１"
+  },
+  {
+   "id": "F0092-00006F40-00001CF0",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001CF0",
+   "byte_len": 22,
+   "max_bytes": 22,
+   "source": "生徒８の？道掘った２",
+   "translation": "生徒８の？道掘った２"
+  },
+  {
+   "id": "F0092-00006F40-00001D06",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001D06",
+   "byte_len": 22,
+   "max_bytes": 22,
+   "source": "生徒８の？道掘った３",
+   "translation": "生徒８の？道掘った３"
+  },
+  {
+   "id": "F0092-00006F40-00001D1C",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001D1C",
+   "byte_len": 22,
+   "max_bytes": 22,
+   "source": "生徒８の？道掘った４",
+   "translation": "生徒８の？道掘った４"
+  },
+  {
+   "id": "F0092-00006F40-00001D32",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001D32",
+   "byte_len": 22,
+   "max_bytes": 22,
+   "source": "生徒８の？道掘った５",
+   "translation": "生徒８の？道掘った５"
+  },
+  {
+   "id": "F0092-00006F40-00001D48",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001D48",
+   "byte_len": 22,
+   "max_bytes": 22,
+   "source": "生徒８の？道掘った６",
+   "translation": "生徒８の？道掘った６"
+  },
+  {
+   "id": "F0092-00006F40-00001D5E",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001D5E",
+   "byte_len": 22,
+   "max_bytes": 22,
+   "source": "生徒９の？道掘った１",
+   "translation": "生徒９の？道掘った１"
+  },
+  {
+   "id": "F0092-00006F40-00001D74",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001D74",
+   "byte_len": 22,
+   "max_bytes": 22,
+   "source": "生徒９の？道掘った２",
+   "translation": "生徒９の？道掘った２"
+  },
+  {
+   "id": "F0092-00006F40-00001D8A",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001D8A",
+   "byte_len": 22,
+   "max_bytes": 22,
+   "source": "生徒９の？道掘った３",
+   "translation": "生徒９の？道掘った３"
+  },
+  {
+   "id": "F0092-00006F40-00001DA0",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001DA0",
+   "byte_len": 22,
+   "max_bytes": 22,
+   "source": "生徒９の？道掘った４",
+   "translation": "生徒９の？道掘った４"
+  },
+  {
+   "id": "F0092-00006F40-00001DB6",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001DB6",
+   "byte_len": 22,
+   "max_bytes": 22,
+   "source": "生徒９の？道掘った５",
+   "translation": "生徒９の？道掘った５"
+  },
+  {
+   "id": "F0092-00006F40-00001DCC",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001DCC",
+   "byte_len": 22,
+   "max_bytes": 22,
+   "source": "生徒９の？道掘った６",
+   "translation": "生徒９の？道掘った６"
+  },
+  {
+   "id": "F0092-00006F40-00001DE2",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001DE2",
+   "byte_len": 22,
+   "max_bytes": 22,
+   "source": "生徒９の？道掘った７",
+   "translation": "生徒９の？道掘った７"
+  },
+  {
+   "id": "F0092-00006F40-00001DF8",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001DF8",
+   "byte_len": 46,
+   "max_bytes": 46,
+   "source": "ちゃっきりアイテム１取った（頭防具）（共用）",
+   "translation": "ちゃっきりアイテム１取った（頭防具）（共用）"
+  },
+  {
+   "id": "F0092-00006F40-00001E26",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001E26",
+   "byte_len": 46,
+   "max_bytes": 46,
+   "source": "ちゃっきりアイテム２取った（体防具）（共用）",
+   "translation": "ちゃっきりアイテム２取った（体防具）（共用）"
+  },
+  {
+   "id": "F0092-00006F40-00001E54",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001E54",
+   "byte_len": 46,
+   "max_bytes": 46,
+   "source": "ちゃっきりアイテム３取った（手防具）（共用）",
+   "translation": "ちゃっきりアイテム３取った（手防具）（共用）"
+  },
+  {
+   "id": "F0092-00006F40-00001E82",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001E82",
+   "byte_len": 46,
+   "max_bytes": 46,
+   "source": "ちゃっきりアイテム４取った（足防具）（共用）",
+   "translation": "ちゃっきりアイテム４取った（足防具）（共用）"
+  },
+  {
+   "id": "F0092-00006F40-00001EB0",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001EB0",
+   "byte_len": 46,
+   "max_bytes": 46,
+   "source": "ちゃっきりアイテム５取った（剣防具）（共用）",
+   "translation": "ちゃっきりアイテム５取った（剣防具）（共用）"
+  },
+  {
+   "id": "F0092-00006F40-00001EDE",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001EDE",
+   "byte_len": 30,
+   "max_bytes": 30,
+   "source": "魔神皇２人をさらってどこかへ",
+   "translation": "魔神皇２人をさらってどこかへ"
+  },
+  {
+   "id": "F0092-00006F40-00001EFC",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001EFC",
+   "byte_len": 26,
+   "max_bytes": 26,
+   "source": "魔神皇無理難題１アイテム",
+   "translation": "魔神皇無理難題１アイテム"
+  },
+  {
+   "id": "F0092-00006F40-00001F4A",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001F4A",
+   "byte_len": 24,
+   "max_bytes": 24,
+   "source": "憤怒界アイテム入手した",
+   "translation": "憤怒界アイテム入手した"
+  },
+  {
+   "id": "F0092-00006F40-00001F62",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001F62",
+   "byte_len": 26,
+   "max_bytes": 26,
+   "source": "魔神皇像に礼拝させられた",
+   "translation": "魔神皇像に礼拝させられた"
+  },
+  {
+   "id": "F0092-00006F40-00001FDC",
+   "resource_offset": "00006F40",
+   "raw_offset": "00001FDC",
+   "byte_len": 36,
+   "max_bytes": 36,
+   "source": "アモン合体した（以下シナリオ４用）",
+   "translation": "アモン合体した（以下シナリオ４用）"
+  },
+  {
+   "id": "F0092-00006F40-00002000",
+   "resource_offset": "00006F40",
+   "raw_offset": "00002000",
+   "byte_len": 24,
+   "max_bytes": 24,
+   "source": "アモン幽閉部屋扉通った",
+   "translation": "アモン幽閉部屋扉通った"
+  }
+ ]
+}

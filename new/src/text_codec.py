@@ -3,7 +3,6 @@ from pathlib import Path
 from src.codetable import read_json, write_json
 
 current_dir = Path(__file__).resolve().parent
-CODE_PATH = current_dir.parent / 'data' / 'codetable.json'
 
 CONTROL_CODES = {
     "{00FF}": "00FF",

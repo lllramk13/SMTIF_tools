@@ -1,11 +1,11 @@
 from dataclasses import dataclass
 
-from src.dynamic_low_code_relocation import DYNAMIC_SPECIAL_LOW_INDICES
 from src.font_builder import load_codetable
-from src.static_text_aliases import (
+from src.glyph_layout import (
+    DYNAMIC_SPECIAL_LOW_INDICES,
     ORIGINAL_MAX_GLYPH_INDEX,
     STATIC_TEXT_SECTIONS,
-    _glyph_indices,
+    glyph_indices,
 )
 from src.text_codec import load_character_codes
 from src.text_records import choose_text, load_text_data
@@ -39,7 +39,7 @@ def build_unified_normal_text_plan(
     static_indices = set()
     for section, records in text_data.items():
         for record in records:
-            indices = _glyph_indices(character_codes, choose_text(record))
+            indices = glyph_indices(character_codes, choose_text(record))
             used_indices.update(indices)
             if section in STATIC_TEXT_SECTIONS:
                 static_indices.update(indices)
@@ -47,12 +47,12 @@ def build_unified_normal_text_plan(
     for text in extra_used_texts:
         if not isinstance(text, str) or not text:
             raise ValueError("extra used text must be a non-empty string")
-        used_indices.update(_glyph_indices(character_codes, text))
+        used_indices.update(glyph_indices(character_codes, text))
 
     for text in extra_static_texts:
         if not isinstance(text, str) or not text:
             raise ValueError("extra static text must be a non-empty string")
-        indices = _glyph_indices(character_codes, text)
+        indices = glyph_indices(character_codes, text)
         used_indices.update(indices)
         static_indices.update(indices)
 

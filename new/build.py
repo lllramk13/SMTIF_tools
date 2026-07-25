@@ -4,12 +4,6 @@ import shutil
 from pathlib import Path
 
 from src.disc_injector import replace_files_in_image
-from src.disc_relocation import (
-    patch_filepos,
-    patch_iso_directory,
-    plan_relocations,
-    write_relocations,
-)
 from src.executable_patch import patch_executable
 from src.font_builder import load_codetable, render_font
 from src.font_resource import build_f13
@@ -19,15 +13,7 @@ from src.text_pipeline import (
     create_disc_replacements,
     summarize_text_build,
 )
-from src.static_text_aliases import (
-    STATIC_TEXT_SECTIONS,
-    build_static_text_alias_plan,
-    build_static_width_overrides,
-    write_alias_manifest,
-)
-from src.dynamic_low_code_relocation import (
-    build_dynamic_low_code_relocation_plan,
-)
+from src.glyph_layout import build_static_width_overrides
 from src.text_resource_builder import (
     apply_inplace_resource_patches,
     build_inplace_resource_patches,
@@ -47,6 +33,8 @@ from src.f0098_text import (
     load_f0098_text_records,
     translated_f0098_texts,
 )
+from src.f14_context_aliases import build_f14_context_alias_plan
+from src.shift_jis_ui import build_shift_jis_ui_plan
 from src.video_replacement import (
     DEFAULT_JPSXDEC_JAR,
     DEFAULT_VIDEO_DIRECTORY,
@@ -91,8 +79,6 @@ def sha256_file(path):
 
 
 def build_assets(
-    use_static_aliases=False,
-    relocate_dynamic_low_codes=False,
     use_unified_normal_text=False,
     subtitle_video_directory=None,
     jpsxdec_jar=DEFAULT_JPSXDEC_JAR,
@@ -101,14 +87,6 @@ def build_assets(
     BUILD_DIRECTORY.mkdir(parents=True, exist_ok=True)
     slpm_text_records = load_slpm_text_records()
     f0098_text_records = load_f0098_text_records()
-    if use_unified_normal_text and (
-        use_static_aliases or relocate_dynamic_low_codes
-    ):
-        raise ValueError(
-            "--unified-normal-text cannot be combined with the older "
-            "alias/relocation plans"
-        )
-
     normal_text_plan = None
     if use_unified_normal_text:
         normal_text_plan = build_unified_normal_text_plan(
@@ -124,27 +102,27 @@ def build_assets(
             ),
         )
 
-    alias_plan = None
-    if use_static_aliases:
-        alias_plan = build_static_text_alias_plan()
-        write_alias_manifest(alias_plan)
+    f14_context_alias_plan = None
+    if normal_text_plan:
+        f14_context_alias_plan = build_f14_context_alias_plan(
+            text_path=NEW_DIRECTORY / "data" / "text.json",
+            codetable_path=NEW_DIRECTORY / "data" / "codetable.json",
+            global_character_overrides=(
+                normal_text_plan.global_character_overrides
+            ),
+            existing_font_overrides=normal_text_plan.font_overrides,
+        )
+        print(
+            "F14 context aliases: "
+            f"{len(f14_context_alias_plan.aliases)} aliases for "
+            f"{len(f14_context_alias_plan.context_characters)} characters"
+        )
 
-    relocation_plan = None
-    if relocate_dynamic_low_codes:
-        first_free_index = (
-            alias_plan.highest_index + 1
-            if alias_plan
-            else max(load_codetable()) + 1
-        )
-        relocation_plan = build_dynamic_low_code_relocation_plan(
-            first_free_index
-        )
 
     width_table_overrides = build_static_width_overrides()
-    if alias_plan:
-        width_table_overrides.update(alias_plan.width_table_overrides)
 
     slpm_text_patches = ()
+    shift_jis_ui_plan = None
     if normal_text_plan:
         slpm_text_patches = build_slpm_text_patches(
             slpm_text_records,
@@ -158,6 +136,20 @@ def build_assets(
         print(
             "Embedded SLPM text: "
             f"{len(slpm_text_patches)}/{len(slpm_text_records)} translated"
+        )
+        shift_ui_character_overrides = dict(
+            normal_text_plan.global_character_overrides
+        )
+        shift_ui_character_overrides.update(
+            f14_context_alias_plan.character_overrides
+        )
+        shift_jis_ui_plan = build_shift_jis_ui_plan(
+            character_overrides=shift_ui_character_overrides,
+        )
+        print(
+            "Direct UI -> F14: "
+            f"{len(shift_jis_ui_plan.text_patches)} fixed-size strings "
+            "and renderer calls patched"
         )
 
     f0098_text_patches = ()
@@ -177,10 +169,6 @@ def build_assets(
     glyph_overrides = {}
     if normal_text_plan:
         glyph_overrides.update(normal_text_plan.font_overrides)
-    if alias_plan:
-        glyph_overrides.update(alias_plan.font_overrides)
-    if relocation_plan:
-        glyph_overrides.update(relocation_plan.font_overrides)
     f13_font_path = BUILD_DIRECTORY / "font_f13_1bpp.bin"
     f14_font_path = BUILD_DIRECTORY / "font_f14_1bpp.bin"
     f13_glyph_overrides = dict(glyph_overrides)
@@ -198,6 +186,12 @@ def build_assets(
     # reserved indices.
     f14_glyph_overrides = dict(glyph_overrides)
     f14_glyph_overrides.update(load_original_ui_glyph_overrides())
+    if f14_context_alias_plan:
+        # Context aliases deliberately replace selected original-name cells.
+        # Keyboard-entered names now use the hybrid renderer's small-font leg.
+        f14_glyph_overrides.update(
+            f14_context_alias_plan.font_overrides
+        )
     render_font(
         output_path=f14_font_path,
         preview_path=BUILD_DIRECTORY / "font_f14_preview.png",
@@ -213,7 +207,19 @@ def build_assets(
     print("[4/5] Applying executable patch")
     executable_data = patch_executable(
         width_table_overrides=width_table_overrides,
-        embedded_text_patches=slpm_text_patches,
+        embedded_text_patches=(
+            slpm_text_patches
+            + (
+                shift_jis_ui_plan.text_patches
+                if shift_jis_ui_plan
+                else ()
+            )
+        ),
+        instruction_patches=(
+            shift_jis_ui_plan.instruction_patches
+            if shift_jis_ui_plan
+            else ()
+        ),
     )
 
     print("[5/5] Building translated text files")
@@ -228,32 +234,17 @@ def build_assets(
         }
     else:
         character_code_overrides = {}
-        if alias_plan:
-            character_code_overrides.update(
-                alias_plan.global_character_overrides
-            )
-        if relocation_plan:
-            character_code_overrides.update(
-                relocation_plan.character_code_overrides
-            )
-
         section_character_code_overrides = {}
-        if alias_plan:
-            for section, overrides in alias_plan.section_character_overrides.items():
-                section_character_code_overrides[section] = dict(overrides)
-        if relocation_plan:
-            for section in STATIC_TEXT_SECTIONS:
-                section_overrides = section_character_code_overrides.setdefault(
-                    section, {}
-                )
-                section_overrides.update(
-                    relocation_plan.static_character_code_overrides
-                )
 
     text_result = build_text_files(
         character_code_overrides=(character_code_overrides or None),
         section_character_code_overrides=(
             section_character_code_overrides or None
+        ),
+        record_character_code_overrides=(
+            f14_context_alias_plan.record_character_overrides
+            if f14_context_alias_plan
+            else None
         ),
     )
     replacements = create_disc_replacements(text_result)
@@ -296,7 +287,7 @@ def build_assets(
     print(
         "Overlay name renderer: "
         f"{renderer_sites} call site(s) in {renderer_files} file(s) "
-        "switched to F14"
+        "switched to the hybrid renderer"
     )
 
     if "D/F0013.BIN" in replacements:
@@ -309,11 +300,6 @@ def build_assets(
     replacements["D/F0013.BIN"] = f13_data
     replacements["D/F0014.BIN"] = f14_data
     replacements["SLPM_871.54"] = executable_data
-
-    # Nothing is relocated: F0014 was the only candidate and widening it is
-    # blocked (see F14_CAPACITY_RE.md).  src/disc_relocation.py is kept because
-    # it is correct and the FILEPOS/ISO/subheader knowledge in it is expensive.
-    relocations = {}
 
     if f0098_text_patches:
         f0098_key = "D/F0098.BIN"
@@ -334,41 +320,21 @@ def build_assets(
         )
         overlap = set(replacements) & set(subtitle_video_replacements)
         if overlap:
-            raise ValueError(f"Subtitle videos overlap existing replacements: {sorted(overlap)}")
+            raise ValueError(
+                f"Subtitle videos overlap existing replacements: "
+                f"{sorted(overlap)}"
+            )
         replacements.update(subtitle_video_replacements)
 
-    disc_relocations = plan_relocations(
-        DEFAULT_MANIFEST,
-        relocations,
-        Path(DEFAULT_BASE_IMAGE).stat().st_size,
-    )
-    if disc_relocations:
-        filepos_key = "FILEPOS.DAT"
-        if filepos_key in replacements:
-            raise ValueError("FILEPOS.DAT is already being replaced")
-        replacements[filepos_key] = patch_filepos(
-            (EXTRAC_DIRECTORY / "FILEPOS.DAT").read_bytes(),
-            DEFAULT_MANIFEST,
-            disc_relocations,
-        )
-        for item in disc_relocations:
-            print(
-                f"Relocated {item['path']}: LBA {item['original_lba']} -> "
-                f"{item['lba']} ({item['original_size']} -> "
-                f"{len(item['payload'])} bytes, {item['sectors']} sectors, "
-                f"FILEPOS record {item['filepos_index']})"
-            )
-
     return {
-        "alias_plan": alias_plan,
-        "relocation_plan": relocation_plan,
         "normal_text_plan": normal_text_plan,
+        "f14_context_alias_plan": f14_context_alias_plan,
         "slpm_text_records": slpm_text_records,
         "slpm_text_patches": slpm_text_patches,
+        "shift_jis_ui_plan": shift_jis_ui_plan,
         "text_result": text_result,
         "subtitle_video_replacements": subtitle_video_replacements,
         "replacements": replacements,
-        "disc_relocations": disc_relocations,
     }
 
 
@@ -391,8 +357,6 @@ def build_disc(
     force=False,
     verify_base_hash=True,
     dry_run=False,
-    use_static_aliases=False,
-    relocate_dynamic_low_codes=False,
     use_unified_normal_text=False,
     subtitle_video_directory=None,
     jpsxdec_jar=DEFAULT_JPSXDEC_JAR,
@@ -422,8 +386,6 @@ def build_disc(
         )
 
     assets = build_assets(
-        use_static_aliases=use_static_aliases,
-        relocate_dynamic_low_codes=relocate_dynamic_low_codes,
         use_unified_normal_text=use_unified_normal_text,
         subtitle_video_directory=subtitle_video_directory,
         jpsxdec_jar=jpsxdec_jar,
@@ -465,12 +427,6 @@ def build_disc(
             replacements,
         )
 
-        disc_relocations = assets.get("disc_relocations") or []
-        if disc_relocations:
-            print("Writing relocated files into the blank tail sectors")
-            write_relocations(temporary_image, disc_relocations)
-            patch_iso_directory(temporary_image, disc_relocations)
-
         if temporary_image.stat().st_size != base_image.stat().st_size:
             raise AssertionError("构建后镜像长度发生变化")
 
@@ -511,19 +467,6 @@ def parse_arguments():
     parser.add_argument("--skip-base-hash", action="store_true")
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument(
-        "--static-aliases",
-        action="store_true",
-        help="Enable the experimental low-code static-text alias plan.",
-    )
-    parser.add_argument(
-        "--relocate-dynamic-low-codes",
-        action="store_true",
-        help=(
-            "Move original UI/name-range codes to high F13 copies for "
-            "normal dialogue while preserving their low F14 glyphs."
-        ),
-    )
-    parser.add_argument(
         "--unified-normal-text",
         action="store_true",
         help=(
@@ -560,8 +503,6 @@ if __name__ == "__main__":
         force=arguments.force,
         verify_base_hash=not arguments.skip_base_hash,
         dry_run=arguments.dry_run,
-        use_static_aliases=arguments.static_aliases,
-        relocate_dynamic_low_codes=arguments.relocate_dynamic_low_codes,
         use_unified_normal_text=arguments.unified_normal_text,
         subtitle_video_directory=arguments.subtitle_videos,
         jpsxdec_jar=arguments.jpsxdec_jar,

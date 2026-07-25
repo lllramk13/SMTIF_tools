@@ -27,18 +27,14 @@ addiu   a3,$zero,0xC;宽度固定为12
 addiu   a3,$zero,0xC
 
 
-; Party-panel and STATUS names are stored as 16-bit internal glyph indices.
-; The original calls at 0x8006C27C and 0x8006D9E4 used 0x80046FEC, which first converts those
-; indices back to the small Shift-JIS system-font table.  That converter only
-; recognizes the original punctuation/kana range (< 0x0109), so translated
-; preset names such as 由美 collapse to the shared fallback tile.
-; 0x800475FC has the same calling convention, but renders the 16-bit
-; indices directly through the 0x0567-entry F14 font.
+; Party-panel and STATUS names use the hybrid wrapper installed in the dead
+; tail of the rewritten 0x8004ACB8 routine.  Original name-entry codes go back
+; to the small Shift-JIS font; translated names go to F14.
 .org    0x8006C27C
-jal     0x800475FC
+jal     hybrid_name_renderer
 
 .org    0x8006D9E4
-jal     0x800475FC
+jal     hybrid_name_renderer
 
 
 .org    0x8005C1D0
@@ -168,6 +164,64 @@ bne     v0,zero,legacy_f13_1bpp_loop
 nop
 
 jr      ra
+nop
+
+
+; The replacement decoder above returns at 0x8004AD64.  Its original tail
+; (0x8004AD6C..0x8004ADF7) is unreachable and has no branch targets, giving us
+; exactly 140 bytes for this wrapper.
+;
+; A keyboard-entered original name consists exclusively of the exact code set
+; restored by original_ui_codetable.json.  Any other code marks translated
+; content and selects F14.  a0-a3 and the caller's ra remain untouched.
+.org    0x8004AD6C
+hybrid_name_renderer:
+addu    t0,a0,zero
+hybrid_name_loop:
+lhu     t1,0(t0)
+ori     t2,zero,0xFFFF
+beq     t1,t2,hybrid_name_small
+addiu   t0,t0,0x2
+
+; 0x068..0x108
+addiu   t2,t1,-0x68
+sltiu   t2,t2,0xA1
+bne     t2,zero,hybrid_name_loop
+nop
+
+; 0x02A..0x04D
+addiu   t2,t1,-0x2A
+sltiu   t2,t2,0x24
+bne     t2,zero,hybrid_name_loop
+nop
+
+; 0x004..0x007
+addiu   t2,t1,-0x4
+sltiu   t2,t2,0x4
+bne     t2,zero,hybrid_name_loop
+nop
+
+addiu   t2,zero,0x0D
+beq     t1,t2,hybrid_name_loop
+nop
+addiu   t2,zero,0x10
+beq     t1,t2,hybrid_name_loop
+nop
+addiu   t2,zero,0x15
+beq     t1,t2,hybrid_name_loop
+nop
+
+; Name-entry blank and the original converter's special double-tilde code.
+beq     t1,zero,hybrid_name_loop
+nop
+ori     t2,zero,0xFFFE
+beq     t1,t2,hybrid_name_loop
+nop
+
+j       0x800475FC
+nop
+hybrid_name_small:
+j       0x80046FEC
 nop
 
 

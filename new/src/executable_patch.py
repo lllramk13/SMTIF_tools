@@ -93,6 +93,7 @@ def patch_executable(
     output_path=OUTPUT_SLPM_PATH,
     width_table_overrides=None,
     embedded_text_patches=None,
+    instruction_patches=None,
 ):
     base_slpm_path = Path(base_slpm_path)
     source_asm_path = Path(source_asm_path)
@@ -147,8 +148,12 @@ def patch_executable(
         0x80049578: bytes.fromhex('CE0A0224'),
         0x8005B2E4: bytes.fromhex('0C000724'),
         0x8004A064: bytes.fromhex('0C000724'),
-        0x8006C27C: bytes.fromhex('7F1D010C'),
-        0x8006D9E4: bytes.fromhex('7F1D010C'),
+        0x8006C27C: bytes.fromhex('5B2B010C'),
+        0x8006D9E4: bytes.fromhex('5B2B010C'),
+        0x8004AD6C: bytes.fromhex('21408000'),
+        0x8004ADD4: bytes.fromhex('E6FF2011'),
+        0x8004ADE8: bytes.fromhex('7F1D0108'),
+        0x8004ADF0: bytes.fromhex('FB1B0108'),
         0x8005C1D0: bytes.fromhex('C0100200'),
     }
     for address, expected in expected_opcodes.items():
@@ -163,12 +168,47 @@ def patch_executable(
     armips_changed_bytes = sum(
         old != new for old, new in zip(base_data, patched_data)
     )
-    if armips_changed_bytes != 310:
+    if armips_changed_bytes != 432:
         raise AssertionError(
-            f'Expected CN.asm to change 310 bytes, got {armips_changed_bytes}'
+            f'Expected CN.asm to change 432 bytes, got {armips_changed_bytes}'
         )
 
     patched_data = bytearray(patched_data)
+
+    previous_instruction_end = -1
+    for patch in sorted(
+        instruction_patches or (),
+        key=lambda item: item["offset"],
+    ):
+        patch_id = patch.get("id", "<unknown>")
+        offset = patch.get("offset")
+        expected = patch.get("expected")
+        data = patch.get("data")
+        if not isinstance(offset, int) or offset < 0:
+            raise ValueError(f"{patch_id}: invalid instruction offset")
+        if (
+            not isinstance(expected, bytes)
+            or not isinstance(data, bytes)
+            or not expected
+            or len(data) != len(expected)
+        ):
+            raise ValueError(
+                f"{patch_id}: instruction patch needs equal non-empty bytes"
+            )
+        end = offset + len(data)
+        if end > len(patched_data):
+            raise ValueError(f"{patch_id}: instruction patch exceeds SLPM")
+        if offset < previous_instruction_end:
+            raise ValueError(f"{patch_id}: instruction patches overlap")
+        previous_instruction_end = end
+
+        actual = bytes(patched_data[offset:end])
+        if actual != expected:
+            raise AssertionError(
+                f"{patch_id}: expected {expected.hex()} at {offset:#x}, "
+                f"got {actual.hex()}"
+            )
+        patched_data[offset:end] = data
 
     # The status screen stores six glyph indices directly in the executable.
     # Replace the original Japanese/traditional 運 entry with the simplified
@@ -287,6 +327,14 @@ def patch_executable(
         if patched_data[offset:end] != patch["data"]:
             raise AssertionError(
                 f"{patch['id']}: embedded-text patch verification failed"
+            )
+
+    for patch in instruction_patches or ():
+        offset = patch["offset"]
+        end = offset + len(patch["data"])
+        if patched_data[offset:end] != patch["data"]:
+            raise AssertionError(
+                f"{patch['id']}: instruction patch verification failed"
             )
 
     changed_bytes = sum(

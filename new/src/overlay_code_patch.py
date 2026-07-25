@@ -7,13 +7,10 @@ lives in ``F0012.BIN``.  That conversion only knows the original
 punctuation/kana range, so every translated Chinese index collapses to the
 shared fallback tile and the name shows up as "....".
 
-``0x800475FC`` has the *same calling convention* but renders the 16-bit indices
-directly through the F14 static font, which is why ``CN.asm`` already swaps the
-two SLPM call sites (``0x8006C27C`` / ``0x8006D9E4``, the party panel and the
-STATUS screen).  The remaining call sites live in code overlays, which CN.asm
-cannot reach, so they were left on the small-font path -- that is why demon
-names render correctly on the party panel and STATUS but as dots everywhere
-else.
+The hybrid wrapper at ``0x8004AD6C`` preserves original keyboard-entered names
+on the small-font path and sends translated names to ``0x800475FC``.  The two
+SLPM call sites are patched by ``CN.asm``; the remaining sites live in code
+overlays and are handled here.
 
 Swapping a ``jal`` target is a 4-byte, equal-length edit, so the overlays keep
 their exact size and the in-place overlay injection stays valid.
@@ -21,7 +18,7 @@ their exact size and the in-place overlay injection stays valid.
 from pathlib import Path
 
 SMALL_FONT_NAME_RENDERER = 0x80046FEC
-F14_NAME_RENDERER = 0x800475FC
+HYBRID_NAME_RENDERER = 0x8004AD6C
 
 # Expected call sites, discovered by scanning the clean overlays for
 # ``jal 0x80046FEC``.  Kept explicit so an unexpected layout change fails the
@@ -50,7 +47,7 @@ def _find_calls(data, target):
 
 
 def apply_overlay_name_renderer_patches(replacements, source_directory):
-    """Point overlay name rendering at the F14 renderer.
+    """Point overlay name rendering at the hybrid name renderer.
 
     ``replacements`` is the build's disc-replacement map and is updated in
     place, reusing any earlier overlay text injection as the base so the two
@@ -78,7 +75,7 @@ def apply_overlay_name_renderer_patches(replacements, source_directory):
             )
 
         for offset in found:
-            data[offset:offset + 4] = _jal(F14_NAME_RENDERER)
+            data[offset:offset + 4] = _jal(HYBRID_NAME_RENDERER)
             patched_sites += 1
 
         patched = bytes(data)
@@ -86,8 +83,10 @@ def apply_overlay_name_renderer_patches(replacements, source_directory):
             raise AssertionError(f"{key}: overlay size changed")
         if _find_calls(patched, SMALL_FONT_NAME_RENDERER):
             raise AssertionError(f"{key}: small-font name call survived")
-        if len(_find_calls(patched, F14_NAME_RENDERER)) < len(found):
-            raise AssertionError(f"{key}: F14 name call verification failed")
+        if len(_find_calls(patched, HYBRID_NAME_RENDERER)) < len(found):
+            raise AssertionError(
+                f"{key}: hybrid name call verification failed"
+            )
 
         replacements[key] = patched
         patched_files += 1

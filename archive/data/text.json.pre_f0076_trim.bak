@@ -34228,7 +34228,7 @@
       "block_offset": "00000000",
       "pointer_offset": "00000D30",
       "source": "{主角等人}は逃げのびた{大停顿}",
-      "translation": "{主角等人}成功逃脱了。{大停顿}"
+      "translation": "{主角等人}开始逃跑。{大停顿}"
     },
     {
       "id": "F0075-00000000-00000D42",
@@ -37693,7 +37693,7 @@
       "block_offset": "00002C7C",
       "pointer_offset": "0000042C",
       "source": "毎日がバラ色",
-      "translation": "每天玫瑰色"
+      "translation": "每天都是玫瑰色"
     },
     {
       "id": "F0076-00002C7C-0000043A",
@@ -37749,7 +37749,7 @@
       "block_offset": "00002C7C",
       "pointer_offset": "00000490",
       "source": "笛",
-      "translation": "笛"
+      "translation": "笛子"
     },
     {
       "id": "F0076-00002C7C-00000494",
@@ -37812,7 +37812,7 @@
       "block_offset": "00002C7C",
       "pointer_offset": "000004D2",
       "source": "技",
-      "translation": "技"
+      "translation": "技巧"
     },
     {
       "id": "F0076-00002C7C-000004D6",
@@ -37833,7 +37833,7 @@
       "block_offset": "00002C7C",
       "pointer_offset": "000004EA",
       "source": "一気飲み",
-      "translation": "一口气喝"
+      "translation": "一口气喝掉"
     },
     {
       "id": "F0076-00002C7C-000004F4",
@@ -37980,7 +37980,7 @@
       "block_offset": "00002C7C",
       "pointer_offset": "000005C2",
       "source": "別に・・・",
-      "translation": "没什么…"
+      "translation": "并没有・・・"
     },
     {
       "id": "F0076-00002C7C-000005CE",
@@ -38358,7 +38358,7 @@
       "block_offset": "00002C7C",
       "pointer_offset": "000007E8",
       "source": "このブリブリ悪魔！",
-      "translation": "你这装模作样恶魔"
+      "translation": "你这装模作样的恶魔！"
     },
     {
       "id": "F0076-00002C7C-000007FC",
@@ -38477,7 +38477,7 @@
       "block_offset": "00002C7C",
       "pointer_offset": "0000089C",
       "source": "更に威嚇",
-      "translation": "再威吓"
+      "translation": "进一步威吓"
     },
     {
       "id": "F0076-00002C7C-000008A6",
@@ -38729,7 +38729,7 @@
       "block_offset": "00002C7C",
       "pointer_offset": "00000A2E",
       "source": "芸",
-      "translation": "艺"
+      "translation": "技艺"
     },
     {
       "id": "F0076-00002C7C-00000A32",
