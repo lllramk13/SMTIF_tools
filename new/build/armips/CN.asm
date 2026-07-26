@@ -37,6 +37,39 @@ jal     hybrid_name_renderer
 jal     hybrid_name_renderer
 
 
+; MARKER's type-6 F14 list needs at least 0x100 bytes per row: two passes of
+; 6 * 0x14-byte sprites plus two 8-byte state packets.  Its runtime descriptor
+; proves the common constructor settled on only 0xD0, so every row overflowed
+; by 0x30 and the fourth row overwrote descriptor+0x18 with GPU word
+; 0x7811B424.  The final title draw at 0x8006DC70 then used that word as a
+; string pointer and ran away.
+;
+; The earlier test63 patched one guessed caller at 0x80084E94, but the real
+; object has different constructor fields and that call is not its source.
+; Apply the floor in the common constructor after either automatic or explicit
+; sizing and immediately before allocation.  Only type 6 is affected.
+.org    0x8006F0A8
+j       type6_f14_stride_floor
+sll     v0,fp,0x10
+
+
+; Restore the raw SJIS renderer instructions changed by the test62 diagnostic
+; guard.  The bad pointer was a consequence of the descriptor overwrite, not
+; the original cause.
+.org    0x80046B28
+nop
+bne     v1,zero,0x800469A0
+
+
+.org    0x80046980
+lbu     v1,0(s4)
+
+
+.org    0x8004AE70
+nop
+bne     v0,zero,0x8004AE18
+
+
 .org    0x8005C1D0
 sll     r2,0x3
 
@@ -44,59 +77,53 @@ sll     r2,0x3
 lbu     a0,0(t0);读取一字节
 addiu   a2,0x1  ;
 andi    v1,a0,0x1;取第一位
-beq     v1,0,tz1
 sll     v1,0x2
-tz1:
 andi    v0,a0,0x2;取第二位
-beq     v0,0,tz2
-sll     v0,0x2
-tz2:
-sll     v0,0x3
+sll     v0,0x5
 or      v1,v0
 andi    v0,a0,0x4;三位
-beq     v0,0,tz3
-sll     v0,0x2
-tz3:
-sll     v0,0x6
+sll     v0,0x8
 or      v1,v0
 andi    v0,a0,0x8;四位
-beq     v0,0,tz4
-sll     v0,0x2
-tz4:
-sll     v0,0x9
+sll     v0,0xB
 or      v1,v0
 andi    v0,a0,0x10;五位
-beq     v0,0,tz5
-sll     v0,0x2
-tz5:
-sll     v0,0xC
+sll     v0,0xE
 or      v1,v0
 andi    v0,a0,0x20;六位
-beq     v0,0,tz6
-sll     v0,0x2
-tz6:
-sll     v0,0xF
+sll     v0,0x11
 or      v1,v0
 andi    v0,a0,0x40;七位
-beq     v0,0,tz7
-sll     v0,0x2
-tz7:
-sll     v0,0x12
+sll     v0,0x14
 or      v1,v0
 andi    v0,a0,0x80;八位
-beq     v0,0,tz8
-sll     v0,0x2
-tz8:
-sll     v0,0x15
+sll     v0,0x17
 or      v1,v0
 sw      v1,0(a1)
 addiu   t0,0x1
 slti    v0,a2,0x18
 bne     v0,0,0x8005C218
 addiu   a1,0x4
-b       0x8005C2E4
-nop
+jr      ra
 
+; 0x8005C294 is the decoder's jr delay slot; keep it harmless and enter the
+; constructor helper at the following word.
+nop
+type6_f14_stride_floor:
+sra     v0,v0,0x10
+addiu   t0,v0,-6
+bne     t0,zero,type6_f14_stride_done
+nop
+lw      t0,0x800(s1)
+sltiu   t1,t0,0x100
+beq     t1,zero,type6_f14_stride_done
+nop
+ori     t0,zero,0x100
+sw      t0,0x800(s1)
+
+type6_f14_stride_done:
+j       0x8006F0B0
+nop
 
 ; Some menu/system windows create glyph textures through 0x8004ACB8
 ; instead of the dialogue decoder above.  The original routine indexes F13
@@ -113,14 +140,11 @@ addu    v0,v0,a0
 sll     v0,v0,0x3
 lui     t0,0x8011
 lw      t0,-0x4B30(t0)
-nop
-addu    t0,t0,v0
 addu    a2,zero,zero
+addu    t0,t0,v0
 
 legacy_f13_1bpp_loop:
 lbu     a0,0(t0)
-nop
-
 lui     v1,0x2222
 ori     v1,v1,0x2222
 
@@ -157,26 +181,33 @@ or      v1,v1,v0
 
 sw      v1,0(a1)
 addiu   t0,t0,0x1
-addiu   a1,a1,0x4
 addiu   a2,a2,0x1
 slti    v0,a2,0x18
 bne     v0,zero,legacy_f13_1bpp_loop
-nop
+addiu   a1,a1,0x4
 
 jr      ra
 nop
 
+nop
+nop
+nop
 
-; The replacement decoder above returns at 0x8004AD64.  Its original tail
-; (0x8004AD6C..0x8004ADF7) is unreachable and has no branch targets, giving us
-; exactly 140 bytes for this wrapper.
+
+; The replacement decoder above returns at 0x8004AD58.  Its old tail
+; (0x8004AD60..0x8004ADF7) is unreachable and has no branch targets.  The
+; first three words are unused and the remaining 140 bytes hold this wrapper.
 ;
 ; A keyboard-entered original name consists exclusively of the exact code set
 ; restored by original_ui_codetable.json.  Any other code marks translated
 ; content and selects F14.  a0-a3 and the caller's ra remain untouched.
+;
+; Both known name call sites use this wrapper so translated role/demon names
+; remain visible while original keyboard-entered names retain the small font.
 .org    0x8004AD6C
 hybrid_name_renderer:
 addu    t0,a0,zero
+
 hybrid_name_loop:
 lhu     t1,0(t0)
 ori     t2,zero,0xFFFF

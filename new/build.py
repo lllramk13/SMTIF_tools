@@ -470,12 +470,24 @@ def parse_arguments():
     parser.add_argument("--force", action="store_true")
     parser.add_argument("--skip-base-hash", action="store_true")
     parser.add_argument("--dry-run", action="store_true")
+    # The unified layout is the only supported build path: without it every
+    # embedded-text injection (all 382 SLPM slots, the F0098 name tables, the
+    # direct Shift-JIS UI strings, the F14 context aliases) is silently skipped
+    # and the image still builds -- it just ships untranslated slots whose
+    # original glyph codes now point at Chinese characters.  Default it on.
     parser.add_argument(
         "--unified-normal-text",
         action="store_true",
+        default=True,
+        help="Kept for compatibility; the unified layout is always used.",
+    )
+    parser.add_argument(
+        "--no-unified-normal-text",
+        dest="unified_normal_text",
+        action="store_false",
         help=(
-            "Use the unified safe code layout for normal/static translated "
-            "text without replacing low name/UI glyphs."
+            "Diagnostic only: skip every embedded-text injection.  Never use "
+            "this for a release image."
         ),
     )
     parser.add_argument(

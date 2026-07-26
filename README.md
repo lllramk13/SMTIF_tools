@@ -8,14 +8,40 @@ Set-Location 'P:\ROMHacking\SMT IF\new'
 $env:PYTHONPATH = '.;vendor'
 
 # 只构建并验证资产，不生成 256 MB 镜像（改任何东西后先跑这个）
-python build.py --dry-run --unified-normal-text
+python build.py --dry-run
 
 # 生成完整镜像
-python build.py --unified-normal-text `
-  --output '..\Game\modified\SMT_IF_CN_xxx.bin' --force
+python build.py --output '..\Game\modified\SMT_IF_CN_xxx.bin' --force
 ```
 
-依赖：Python 3 + Pillow。`--unified-normal-text` 是**唯一**支持的构建路径。
+依赖：Python 3 + Pillow。
+
+统一码位布局（原 `--unified-normal-text`）现在**默认开启**，是唯一支持的构建路径；
+`--no-unified-normal-text` 只作诊断用，绝不能用来出发布镜像。
+
+**每次构建都要确认这三行出现**，缺任何一行说明嵌入文本没注入：
+
+```
+F14 context aliases: 132 aliases for 493 characters
+Embedded SLPM text: 383/383 translated
+Direct UI -> F14: 2 fixed-size strings and renderer calls patched
+Changed bytes: 8695
+```
+
+> **MARKER 根因与 test64 修复（2026-07-26）**：test62 将错误地址
+> `0x7806DC78` 解码为 `$ra=0x8006DC78`，确认最终坏指针读取来自
+> `0x8006DC70`。离线图元证明更早的类型 6 F14 绘制才是破坏者：
+> 六字符 `NODATA` 的前景+阴影实际需要每行 `0x100` 字节，MARKER 构造器
+> 却只分配 `0xD0`，第四行溢出并把对象 `+0x18` 标题指针覆盖成
+> `0x7811B424`。test63 误补了未触发的同型调用 `0x80084E94`；真实对象
+> 字段证明它走公共构造器的另一条自动估算路径。test64 改在分配前的公共点
+> `0x8006F0A8`：仅当类型为 6 且行跨度小于 `0x100` 时提升容量。
+> 诊断护栏和 test61 的堆内日志均已移除。
+> test65 另将此前漏掉的 SLPM 静态字符串 `0xE487E`（`ＮＯＤＡＴＡ`）
+> 注入为“无数据”，消除 MARKER 空槽位的乱码。
+
+漏掉注入的槽位不会报错——它们保留原版日文码，而那些码在重排后的字库里指向别的汉字，
+于是屏幕上出现「差込口 → 乐禁两」这类乱码。
 
 ---
 
@@ -79,7 +105,11 @@ F14 对应物理格改画中文字：
 - 普通对话仍用正常 F13 字码；
 - 这些记录在自己的上下文里用低码别名；
 - 名字则由 `0x8004AD6C` 的**混合渲染器**分流——全部字码属于原命名字符集就走小字路径
-  （保住日文键盘输入的名字），出现任意非命名码就走 F14。
+  （保住日文键盘输入的名字），出现任意非命名码就走 F14。只有确认属于姓名的入口才可
+  改到该 wrapper。此前推断共享的类型 6 列表调用 `0x8006D9E4` 必须保留原版小字
+  渲染器，但 test60 已证伪“它是唯一破坏者”：恢复后 MARKER 仍以同类地址越界卡死。
+  test60 已证明它不是唯一破坏者；test62 随后定位到真正问题是 MARKER
+  类型 6 F14 行跨度不足。test64 保留 hybrid 路由，并在公共构造器修正容量。
 
 实现见 `src/f14_context_aliases.py`，当前 132 个别名覆盖 493 个上下文字符。
 
@@ -113,7 +143,7 @@ F14 对应物理格改画中文字：
 | 文件 | 内容 | 注入通道 |
 |---|---|---|
 | `text.json` | 12,261 条正文（`id = 文件-块偏移-指针偏移`） | 文本管线 |
-| `slpm_text.json` | 382 条 SLPM 内嵌固定槽（`renderer` 决定用哪套码，**别丢**） | `executable_patch` |
+| `slpm_text.json` | 383 条 SLPM 内嵌固定槽（`renderer` 决定用哪套码，**别丢**） | `executable_patch` |
 | `f0098_text.json` | 85 条种族/物品类别裸表 | `f0098_text.py` |
 | `overlay_text.json` | F0049(233) + F0092(788) 事件 overlay 内嵌文本 | `overlay_text.py` 原地等长 |
 | `codetable.json` | 字码 → 字（**必须连续无空洞**） | 全局 |
@@ -157,7 +187,9 @@ F14 对应物理格改画中文字：
 | `0x8004ACB8` | 重写 | legacy 菜单解码器同上（**同一逻辑编译器内联了两份**） |
 | `0x8005B2E4`、`0x8004A064` | lbu → li 12 | 两条路径的字宽都固定 12（漏改一处＝白条叠字） |
 | `0x8004AD6C` | 新增 wrapper | 名字混合渲染器（小字 / F14 分流） |
-| `0x8006C27C`、`0x8006D9E4` | jal → wrapper | SLPM 的两处名字调用 |
+| `0x8006C27C` | jal → wrapper | 已确认的 SLPM 姓名专用调用 |
+| `0x8006D9E4` | `jal` → wrapper | 保持中文姓名和原版输入姓名的混合分流 |
+| `0x8006F0A8` | `j` → 类型 6 容量检查 | F14 行跨度最小 `0x100`，覆盖实际 MARKER 构造路径 |
 | `0xE5C20` 表 | 運→运、知→智 | 六维缩写直接存字码 |
 | `0x1D6B0` 立即数 | 達 → 等 | 名字复数后缀「由美等」 |
 
@@ -180,7 +212,7 @@ raw BIN 2352 字节/扇区，Mode2 Form1，用户数据偏移 24、长 2048。`s
 
 ## 8. 当前状态
 
-**已完成**：主线对话、SLPM 内嵌文本 382/382、F0098 85/85、恶魔名/技能名/物品名、
+**已完成**：主线对话、SLPM 内嵌文本 383/383、F0098 85/85、恶魔名/技能名/物品名、
 六维与硬编码字、各类卡死（exact-size + 固定布局）、名字显示、交涉选项、升级界面两句。
 
 **剩余工作**：

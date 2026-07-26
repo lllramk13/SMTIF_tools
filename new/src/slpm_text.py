@@ -149,7 +149,21 @@ def build_slpm_text_patches(
                 f"but the original slot has {max_bytes}"
             )
 
-        padded = encoded + (b"\xFF" * (max_bytes - len(encoded)))
+        # Every original slot ends with exactly one terminator.  Filling the
+        # tail with 0xFF instead turns the leftover into a run of extra FFFF
+        # terminators, which a menu that walks a run of adjacent slots reads
+        # as phantom empty entries (the map-marker list has five such slots
+        # in a row).  Pad ahead of a single terminator instead; glyph 0 is
+        # forced fully transparent, so the filler never shows.
+        if (max_bytes - len(encoded)) % 2:
+            raise ValueError(
+                f"{record['id']}: slot remainder is not a multiple of 2"
+            )
+        padded = (
+            encoded[:-2]
+            + bytes(2) * ((max_bytes - len(encoded)) // 2)
+            + bytes((0xFF, 0xFF))
+        )
         patches.append({
             "id": record["id"],
             "offset": record["offset"],

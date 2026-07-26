@@ -87,11 +87,19 @@ def _encode_slot(character_codes, translation, byte_len, record_id):
     if not remainder:
         return encoded
 
-    # Keep the terminator immediately after the text so nothing extra renders,
-    # and put a second one at the original slot end so the slot stays exactly
-    # as long as it was.  The 0x0000 filler in between is never read: the game
-    # stops at the first terminator.
-    return encoded + PAD_CODE * (remainder // 2 - 1) + TERMINATOR
+    # Every original slot holds exactly one terminator, at its very end, and
+    # menus that walk a run of slots rely on that: a slot laid out as
+    # `text FFFF 0000... FFFF` reads as the option *plus* a trailing empty one,
+    # which inflates the entry count of e.g. the healing-elf menu (six of its
+    # options are padded) and runs the selection index off the end.
+    #
+    # So pad ahead of a single terminator instead.  Glyph 0 is forced fully
+    # transparent by font_builder, so the filler is invisible.
+    return (
+        encoded[:-len(TERMINATOR)]
+        + PAD_CODE * (remainder // 2)
+        + TERMINATOR
+    )
 
 
 def apply_overlay_text_patches(

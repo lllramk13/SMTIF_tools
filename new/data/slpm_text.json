@@ -226,6 +226,15 @@
    "renderer": "dynamic"
   },
   {
+   "id": "SLPM-000E487E",
+   "offset": "000E487E",
+   "max_bytes": 14,
+   "source": "ＮＯＤＡＴＡ",
+   "translation": "无数据",
+   "translation_origin": "manual",
+   "renderer": "static"
+  },
+  {
    "id": "SLPM-000E4A5C",
    "offset": "E4A5C",
    "max_bytes": 18,
@@ -3338,7 +3347,7 @@
    "offset": "EF298",
    "max_bytes": 24,
    "source": "通常の用途に使用します",
-   "translation": "用于一般用途",
+   "translation": "一般用途",
    "renderer": "dynamic"
   },
   {
@@ -3346,7 +3355,7 @@
    "offset": "EF2B0",
    "max_bytes": 40,
    "source": "イベント発生ポイントなど{73FF}に使用します",
-   "translation": "用于事件发生点等{73FF}",
+   "translation": "事件{73FF}地点",
    "renderer": "dynamic"
   },
   {
@@ -3354,7 +3363,7 @@
    "offset": "EF2D8",
    "max_bytes": 38,
    "source": "宝箱の設置ポイントなど{73FF}に使用します",
-   "translation": "用于宝箱放置点等{73FF}",
+   "translation": "宝箱{73FF}地点",
    "renderer": "dynamic"
   },
   {
@@ -3362,7 +3371,7 @@
    "offset": "EF2FE",
    "max_bytes": 28,
    "source": "ボス部屋などに使用しま{73FF}す",
-   "translation": "用于首领房间等{73FF}",
+   "translation": "首领{73FF}房间",
    "renderer": "dynamic"
   },
   {
@@ -3370,7 +3379,7 @@
    "offset": "EF31A",
    "max_bytes": 34,
    "source": "その他の状況に応じて{73FF}使用します",
-   "translation": "根据其他状况{73FF}使用",
+   "translation": "其他{73FF}用途",
    "renderer": "dynamic"
   },
   {

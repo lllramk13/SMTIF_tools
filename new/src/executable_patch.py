@@ -144,17 +144,50 @@ def patch_executable(
 
     expected_opcodes = {
         0x8004ACB8: bytes.fromhex('FFFF8430'),
-        0x8004AD58: bytes.fromhex('1800C228'),
+        0x8004AD4C: bytes.fromhex('1800C228'),
+        0x8004AD58: bytes.fromhex('0800E003'),
+        0x8004AD60: bytes.fromhex('00000000'),
+        0x8004AD64: bytes.fromhex('00000000'),
+        0x8004AD68: bytes.fromhex('00000000'),
         0x80049578: bytes.fromhex('CE0A0224'),
         0x8005B2E4: bytes.fromhex('0C000724'),
         0x8004A064: bytes.fromhex('0C000724'),
         0x8006C27C: bytes.fromhex('5B2B010C'),
+        # Keep both known name sites on the hybrid route; the MARKER overflow
+        # is fixed at its allocation-size estimator instead.
         0x8006D9E4: bytes.fromhex('5B2B010C'),
         0x8004AD6C: bytes.fromhex('21408000'),
         0x8004ADD4: bytes.fromhex('E6FF2011'),
         0x8004ADE8: bytes.fromhex('7F1D0108'),
         0x8004ADF0: bytes.fromhex('FB1B0108'),
         0x8005C1D0: bytes.fromhex('C0100200'),
+        # Renderer entries remain byte-for-byte original.
+        0x80046864: bytes.fromhex('A8FFBD27'),
+        0x80046868: bytes.fromhex('4000B4AF'),
+        0x80046FEC: bytes.fromhex('90FFBD27'),
+        0x80046FF0: bytes.fromhex('6000B2AF'),
+        0x800475FC: bytes.fromhex('C8FFBD27'),
+        0x80047600: bytes.fromhex('1180023C'),
+        0x80046980: bytes.fromhex('00008392'),  # original initial lbu
+        0x80046984: bytes.fromhex('6C00B18F'),
+        0x80046B28: bytes.fromhex('00000000'),
+        0x80046B2C: bytes.fromhex('9CFF6014'),
+        0x8004AE70: bytes.fromhex('00000000'),  # original load-delay nop
+        0x8004AE74: bytes.fromhex('E8FF4014'),  # original converter back-edge
+        # Common type-6 F14 row-stride floor.  Six NODATA glyphs with shadow
+        # require 0x100 bytes, while the live descriptor contained 0xD0.
+        0x80084E94: bytes.fromhex('631D010C'),  # guessed test63 hook removed
+        0x8006F0A8: bytes.fromhex('A6700108'),  # j 0x8005C298
+        0x8006F0AC: bytes.fromhex('00141E00'),  # original type shift, delay
+        0x8005C294: bytes.fromhex('00000000'),  # decoder jr delay slot
+        0x8005C298: bytes.fromhex('03140200'),  # sra v0,v0,16
+        0x8005C2A8: bytes.fromhex('0008288E'),  # lw t0,0x800(s1)
+        0x8005C2AC: bytes.fromhex('0001092D'),  # sltiu t1,t0,0x100
+        0x8005C2B8: bytes.fromhex('00010834'),  # ori t0,zero,0x100
+        0x8005C2BC: bytes.fromhex('000828AE'),  # sw t0,0x800(s1)
+        0x8005C2C0: bytes.fromhex('2CBC0108'),  # j 0x8006F0B0
+        0x800874D4: bytes.fromhex('191A010C'),  # original renderer call restored
+        0x8005C2EC: bytes.fromhex('D8FFBD27'),  # next function is untouched
     }
     for address, expected in expected_opcodes.items():
         offset = virtual_address_to_file_offset(address)
@@ -168,9 +201,9 @@ def patch_executable(
     armips_changed_bytes = sum(
         old != new for old, new in zip(base_data, patched_data)
     )
-    if armips_changed_bytes != 432:
+    if armips_changed_bytes != 448:
         raise AssertionError(
-            f'Expected CN.asm to change 432 bytes, got {armips_changed_bytes}'
+            f'Expected CN.asm to change 448 bytes, got {armips_changed_bytes}'
         )
 
     patched_data = bytearray(patched_data)
