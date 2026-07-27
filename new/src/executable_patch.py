@@ -156,9 +156,11 @@ def patch_executable(
         # Keep both known name sites on the hybrid route; the MARKER overflow
         # is fixed at its allocation-size estimator instead.
         0x8006D9E4: bytes.fromhex('5B2B010C'),
+        0x80074F70: bytes.fromhex('5B2B010C'),  # SAVE/LOAD list -> hybrid
         0x8004AD6C: bytes.fromhex('21408000'),
         0x8004ADD4: bytes.fromhex('E6FF2011'),
         0x8004ADE8: bytes.fromhex('7F1D0108'),
+        0x8004ADEC: bytes.fromhex('0100E734'),  # ori a3,a3,1: no F14 shadow
         0x8004ADF0: bytes.fromhex('FB1B0108'),
         0x8005C1D0: bytes.fromhex('C0100200'),
         # Renderer entries remain byte-for-byte original.
@@ -172,20 +174,33 @@ def patch_executable(
         0x80046984: bytes.fromhex('6C00B18F'),
         0x80046B28: bytes.fromhex('00000000'),
         0x80046B2C: bytes.fromhex('9CFF6014'),
+        0x80047C94: bytes.fromhex('8F514314'),  # bne -> 0x8005C2D4
+        0x80047C98: bytes.fromhex('00000000'),  # original delay-slot nop
         0x8004AE70: bytes.fromhex('00000000'),  # original load-delay nop
         0x8004AE74: bytes.fromhex('E8FF4014'),  # original converter back-edge
-        # Common type-6 F14 row-stride floor.  Six NODATA glyphs with shadow
-        # require 0x100 bytes, while the live descriptor contained 0xD0.
+        # MARKER's type-6 F14 object needs 0x100 bytes for six NODATA glyphs
+        # with shadow, while its live descriptor contained 0xD0.  Match that
+        # exact stride so other valid type-6 objects (notably EQUIP) are not
+        # enlarged and corrupted.
         0x80084E94: bytes.fromhex('631D010C'),  # guessed test63 hook removed
         0x8006F0A8: bytes.fromhex('A6700108'),  # j 0x8005C298
         0x8006F0AC: bytes.fromhex('00141E00'),  # original type shift, delay
         0x8005C294: bytes.fromhex('00000000'),  # decoder jr delay slot
         0x8005C298: bytes.fromhex('03140200'),  # sra v0,v0,16
         0x8005C2A8: bytes.fromhex('0008288E'),  # lw t0,0x800(s1)
-        0x8005C2AC: bytes.fromhex('0001092D'),  # sltiu t1,t0,0x100
+        0x8005C2AC: bytes.fromhex('30FF0925'),  # addiu t1,t0,-0xD0
+        0x8005C2B0: bytes.fromhex('03002015'),  # bne t1,zero,done
         0x8005C2B8: bytes.fromhex('00010834'),  # ori t0,zero,0x100
         0x8005C2BC: bytes.fromhex('000828AE'),  # sw t0,0x800(s1)
         0x8005C2C0: bytes.fromhex('2CBC0108'),  # j 0x8006F0B0
+        0x8005C2C8: bytes.fromhex('0100E734'),  # ori a3,a3,1
+        0x8005C2CC: bytes.fromhex('7F1D0108'),  # j 0x800475FC
+        0x8005C2D0: bytes.fromhex('00000000'),
+        0x8005C2D4: bytes.fromhex('9AFF4124'),  # addiu at,v0,-0x66
+        0x8005C2D8: bytes.fromhex('92AE2014'),  # bne -> original state path
+        0x8005C2DC: bytes.fromhex('00000000'),
+        0x8005C2E0: bytes.fromhex('5A1F0108'),  # j source-packet advance
+        0x8005C2E4: bytes.fromhex('00000000'),
         0x800874D4: bytes.fromhex('191A010C'),  # original renderer call restored
         0x8005C2EC: bytes.fromhex('D8FFBD27'),  # next function is untouched
     }
@@ -201,9 +216,9 @@ def patch_executable(
     armips_changed_bytes = sum(
         old != new for old, new in zip(base_data, patched_data)
     )
-    if armips_changed_bytes != 448:
+    if armips_changed_bytes != 483:
         raise AssertionError(
-            f'Expected CN.asm to change 448 bytes, got {armips_changed_bytes}'
+            f'Expected CN.asm to change 483 bytes, got {armips_changed_bytes}'
         )
 
     patched_data = bytearray(patched_data)

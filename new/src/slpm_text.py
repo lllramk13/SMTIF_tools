@@ -9,6 +9,9 @@ NEW_DIRECTORY = HERE.parent
 DEFAULT_TEXT_PATH = NEW_DIRECTORY / "data" / "slpm_text.json"
 DEFAULT_CODETABLE_PATH = NEW_DIRECTORY / "data" / "codetable.json"
 VALID_RENDERERS = frozenset(("dynamic", "static"))
+ACTION_RESULT_START = 0xE6A26
+ACTION_RESULT_END = 0xE6D58
+LONG_PAUSE_AND_TERMINATOR = bytes.fromhex("92FFFFFF")
 
 
 def _parse_offset(value, record_id):
@@ -117,11 +120,16 @@ def build_slpm_text_patches(
     codetable_path=DEFAULT_CODETABLE_PATH,
     global_character_overrides=None,
     static_character_overrides=None,
+    action_result_character_overrides=None,
 ):
     dynamic_character_codes = load_character_codes(codetable_path)
     dynamic_character_codes.update(global_character_overrides or {})
     static_character_codes = dict(dynamic_character_codes)
     static_character_codes.update(static_character_overrides or {})
+    action_result_character_codes = dict(dynamic_character_codes)
+    action_result_character_codes.update(
+        action_result_character_overrides or {}
+    )
 
     patches = []
     for record in records:
@@ -129,10 +137,17 @@ def build_slpm_text_patches(
         if not translation:
             continue
 
+        in_action_result_block = (
+            ACTION_RESULT_START <= record["offset"] < ACTION_RESULT_END
+        )
         character_codes = (
-            dynamic_character_codes
-            if record["renderer"] == "dynamic"
-            else static_character_codes
+            action_result_character_codes
+            if in_action_result_block
+            else (
+                dynamic_character_codes
+                if record["renderer"] == "dynamic"
+                else static_character_codes
+            )
         )
 
         try:
@@ -149,21 +164,47 @@ def build_slpm_text_patches(
                 f"but the original slot has {max_bytes}"
             )
 
-        # Every original slot ends with exactly one terminator.  Filling the
-        # tail with 0xFF instead turns the leftover into a run of extra FFFF
-        # terminators, which a menu that walks a run of adjacent slots reads
-        # as phantom empty entries (the map-marker list has five such slots
-        # in a row).  Pad ahead of a single terminator instead; glyph 0 is
-        # forced fully transparent, so the filler never shows.
+        # Most fixed-slot lists must keep exactly one terminator at the end of
+        # the slot.  A run of early/extra FFFF values is interpreted by those
+        # list walkers as phantom empty entries, so their transparent padding
+        # belongs before the final terminator.
+        #
+        # The battle/action-result messages at E6A26-E6D58 are different:
+        # an offset table addresses every string separately, and the message
+        # state machine expects the final long-pause control (FF92) to be
+        # immediately followed by FFFF.  Pre-terminator padding changed
+        #
+        #   FF92 FFFF  ->  FF92 0000 ... FFFF
+        #
+        # so the state machine resumed after the pause and processed blank
+        # glyphs while the green target frames remained active.  Keep the
+        # semantic terminator adjacent there and place unused bytes after it.
         if (max_bytes - len(encoded)) % 2:
             raise ValueError(
                 f"{record['id']}: slot remainder is not a multiple of 2"
             )
-        padded = (
-            encoded[:-2]
-            + bytes(2) * ((max_bytes - len(encoded)) // 2)
-            + bytes((0xFF, 0xFF))
+        action_result = (
+            in_action_result_block
+            and record["source"].endswith("{大停顿}")
         )
+        if action_result:
+            if not record["translation"].endswith("{大停顿}"):
+                raise ValueError(
+                    f"{record['id']}: action-result translation must end in "
+                    "{大停顿}"
+                )
+            if not encoded.endswith(LONG_PAUSE_AND_TERMINATOR):
+                raise AssertionError(
+                    f"{record['id']}: action-result encoding lost "
+                    "FF92/FFFF adjacency"
+                )
+            padded = encoded + bytes(max_bytes - len(encoded))
+        else:
+            padded = (
+                encoded[:-2]
+                + bytes(2) * ((max_bytes - len(encoded)) // 2)
+                + bytes((0xFF, 0xFF))
+            )
         patches.append({
             "id": record["id"],
             "offset": record["offset"],

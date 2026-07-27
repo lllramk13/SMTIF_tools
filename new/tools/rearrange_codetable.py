@@ -205,6 +205,12 @@ def main():
                 static |= chars
     for text in translated_slpm_texts(slpm, 'dynamic'):
         used |= chars_of(text)
+    # F0098 action-name strings marked static are encoded through the same
+    # context aliases as the F14 action-result box.  They still need global
+    # codes as alias-plan inputs, but must not consume globally unique low
+    # cells merely because that one insertion context is F14.
+    for text in translated_f0098_texts(f98, 'static'):
+        used |= chars_of(text)
     # Overlay text is injected too, so its characters are used.  Without this a
     # character that appears only there looks unused and can land on a reserved
     # name-entry code, where original_ui_glyphs paints a kana over it.
@@ -212,7 +218,7 @@ def main():
         used |= chars_of(text)
     for text in (
         translated_slpm_texts(slpm, 'static')
-        + translated_f0098_texts(f98)
+        + translated_f0098_texts(f98, 'dynamic')
         + tuple(party_name_texts(text_data))
         + tuple(item_name_texts(text_data))
         + tuple(overlay_menu_option_texts())

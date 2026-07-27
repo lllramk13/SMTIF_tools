@@ -108,6 +108,18 @@ def build_assets(
 
     f14_context_alias_plan = None
     if normal_text_plan:
+        action_result_texts = tuple(
+            record["translation"]
+            for record in slpm_text_records
+            if (
+                0xE6A26 <= record["offset"] < 0xE6D58
+                and record["translation"]
+            )
+        )
+        f0098_static_texts = translated_f0098_texts(
+            f0098_text_records,
+            renderer="static",
+        )
         f14_context_alias_plan = build_f14_context_alias_plan(
             text_path=NEW_DIRECTORY / "data" / "text.json",
             codetable_path=NEW_DIRECTORY / "data" / "codetable.json",
@@ -115,6 +127,9 @@ def build_assets(
                 normal_text_plan.global_character_overrides
             ),
             existing_font_overrides=normal_text_plan.font_overrides,
+            extra_context_texts=(
+                action_result_texts + f0098_static_texts
+            ),
         )
         print(
             "F14 context aliases: "
@@ -135,6 +150,9 @@ def build_assets(
             ),
             static_character_overrides=(
                 normal_text_plan.section_character_overrides["text_17"]
+            ),
+            action_result_character_overrides=(
+                f14_context_alias_plan.character_overrides
             ),
         )
         print(
@@ -162,6 +180,9 @@ def build_assets(
             f0098_text_records,
             global_character_overrides=(
                 normal_text_plan.global_character_overrides
+            ),
+            static_character_overrides=(
+                f14_context_alias_plan.character_overrides
             ),
         )
         print(

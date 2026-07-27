@@ -33,6 +33,10 @@ ORIGINAL_NAME_GLYPH_INDICES = frozenset(
 # These blocks were confirmed in-game to draw through 0x800475FC.
 F14_CONTEXT_RECORD_PREFIXES = (
     "F0094-00000000",
+    # Item/common-magic descriptions shown in the green help panel.
+    "F0094-00002070",
+    # Character/demon skill descriptions shown in the same F14 panel.
+    "F0094-00002D98",
     "F0076-00002C7C",
     "F0084-00000800",
     "F0084-0000E000",
@@ -54,7 +58,12 @@ class F14ContextAliasPlan:
     context_characters: frozenset[str]
 
 
-def _selected_characters(text_data, character_codes, codetable):
+def _selected_characters(
+    text_data,
+    character_codes,
+    codetable,
+    extra_context_texts=(),
+):
     characters = set()
     matched_records = 0
 
@@ -74,6 +83,15 @@ def _selected_characters(text_data, character_codes, codetable):
 
     if not matched_records:
         raise ValueError("No F14 context-alias records were found")
+
+    for text in extra_context_texts:
+        if not isinstance(text, str) or not text:
+            raise ValueError("extra F14 context text must be non-empty")
+        for index in glyph_indices(character_codes, text):
+            character = codetable.get(index)
+            if character is not None:
+                characters.add(character)
+
     return characters
 
 
@@ -112,6 +130,7 @@ def build_f14_context_alias_plan(
     codetable_path=DEFAULT_CODETABLE_PATH,
     global_character_overrides=None,
     existing_font_overrides=None,
+    extra_context_texts=(),
 ):
     """Build low-code aliases for the confirmed F14-only record blocks."""
     text_path = Path(text_path)
@@ -125,6 +144,7 @@ def build_f14_context_alias_plan(
             text_data,
             base_character_codes,
             codetable,
+            extra_context_texts,
         )
         | F14_EMBEDDED_UI_CHARACTERS
     )

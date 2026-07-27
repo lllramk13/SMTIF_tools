@@ -11,14 +11,15 @@ DEFAULT_CODETABLE_PATH = NEW_DIRECTORY / "data" / "codetable.json"
 
 # F0098 is not a compressed resource with a pointer table: it is a flat run
 # of fixed-position FFFF-terminated strings inside the file (races, item
-# categories, equipment slots).  Each record's "offset" is a raw byte offset
-# into F0098.BIN itself (not a RAM address), and "max_bytes" is the original
-# Japanese string's byte length including its trailing FFFF.  A translation
-# must fit in that same slot; the tail is padded with FF like the SLPM
-# embedded-text slots.
+# categories, equipment slots and action-name insertions).  Each record's
+# "offset" is a raw byte offset into F0098.BIN itself (not a RAM address), and
+# "max_bytes" is the original Japanese string's byte length including its
+# trailing FFFF.
 DEFAULT_ORIGINAL_PATH = (
     NEW_DIRECTORY.parent / "extrac" / "D" / "F0098.BIN"
 )
+F14_ACTION_NAME_START = 0x0906
+F14_ACTION_NAME_END = 0x0C06
 
 
 def _parse_offset(value, record_id):
@@ -41,21 +42,38 @@ def load_f0098_text_records(path=DEFAULT_TEXT_PATH):
     with path.open("r", encoding="utf-8") as file:
         data = json.load(file)
 
-    if not isinstance(data, dict) or set(data) != {"text_f0098"}:
+    valid_sections = {"text_f0098", "text_f0098_static"}
+    if (
+        not isinstance(data, dict)
+        or "text_f0098" not in data
+        or not set(data) <= valid_sections
+    ):
         raise ValueError(
-            f"F0098 text JSON must contain only the text_f0098 section: {path}"
+            "F0098 text JSON must contain text_f0098 and may contain "
+            f"text_f0098_static: {path}"
         )
 
-    raw_records = data["text_f0098"]
-    if not isinstance(raw_records, list):
-        raise ValueError("text_f0098 must be a list")
+    section_records = []
+    for section, raw_records in data.items():
+        if not isinstance(raw_records, list):
+            raise ValueError(f"{section} must be a list")
+        default_renderer = (
+            "static" if section == "text_f0098_static" else "dynamic"
+        )
+        section_records.extend(
+            (raw_record, default_renderer)
+            for raw_record in raw_records
+        )
 
     records = []
     seen_ids = set()
     seen_offsets = set()
     previous_end = -1
-    for raw_record in sorted(
-        raw_records, key=lambda item: _parse_offset(item.get("offset"), item.get("id"))
+    for raw_record, default_renderer in sorted(
+        section_records,
+        key=lambda item: _parse_offset(
+            item[0].get("offset"), item[0].get("id")
+        ),
     ):
         if not isinstance(raw_record, dict):
             raise ValueError("text_f0098 contains a non-object record")
@@ -85,10 +103,21 @@ def load_f0098_text_records(path=DEFAULT_TEXT_PATH):
 
         source = raw_record.get("source")
         translation = raw_record.get("translation")
+        renderer = raw_record.get("renderer", default_renderer)
+        # This flat table is inserted by control codes inside the same F14
+        # action-result box as the surrounding SLPM sentence.  Old records
+        # predate renderer metadata and were labelled dynamic, so identify the
+        # complete contiguous table by its verified file range.
+        if F14_ACTION_NAME_START <= offset < F14_ACTION_NAME_END:
+            renderer = "static"
         if not isinstance(source, str) or not source:
             raise ValueError(f"{record_id}: source must be a non-empty string")
         if not isinstance(translation, str):
             raise ValueError(f"{record_id}: translation must be a string")
+        if renderer not in {"dynamic", "static"}:
+            raise ValueError(
+                f"{record_id}: renderer must be dynamic or static"
+            )
 
         if offset < previous_end:
             raise ValueError(f"{record_id}: F0098 text slots overlap")
@@ -100,14 +129,22 @@ def load_f0098_text_records(path=DEFAULT_TEXT_PATH):
             "max_bytes": max_bytes,
             "source": source,
             "translation": translation,
+            "renderer": renderer,
         })
 
     return tuple(records)
 
 
-def translated_f0098_texts(records):
+def translated_f0098_texts(records, renderer=None):
+    if renderer is not None and renderer not in {"dynamic", "static"}:
+        raise ValueError(f"Unknown F0098 renderer: {renderer!r}")
     return tuple(
-        record["translation"] for record in records if record["translation"]
+        record["translation"]
+        for record in records
+        if (
+            record["translation"]
+            and (renderer is None or record["renderer"] == renderer)
+        )
     )
 
 
@@ -115,9 +152,12 @@ def build_f0098_text_patches(
     records,
     codetable_path=DEFAULT_CODETABLE_PATH,
     global_character_overrides=None,
+    static_character_overrides=None,
 ):
-    character_codes = load_character_codes(codetable_path)
-    character_codes.update(global_character_overrides or {})
+    dynamic_character_codes = load_character_codes(codetable_path)
+    dynamic_character_codes.update(global_character_overrides or {})
+    static_character_codes = dict(dynamic_character_codes)
+    static_character_codes.update(static_character_overrides or {})
 
     patches = []
     for record in records:
@@ -126,6 +166,11 @@ def build_f0098_text_patches(
             continue
 
         try:
+            character_codes = (
+                static_character_codes
+                if record["renderer"] == "static"
+                else dynamic_character_codes
+            )
             encoded = encode_text(character_codes, translation)
         except (TypeError, ValueError) as error:
             raise ValueError(

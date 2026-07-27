@@ -235,6 +235,15 @@
    "renderer": "static"
   },
   {
+   "id": "SLPM-000E48A0",
+   "offset": "000E48A0",
+   "max_bytes": 8,
+   "source": "玄関前",
+   "translation": "玄关前",
+   "translation_origin": "manual",
+   "renderer": "dynamic"
+  },
+  {
    "id": "SLPM-000E4A5C",
    "offset": "E4A5C",
    "max_bytes": 18,
@@ -669,6 +678,15 @@
    "translation": "脚防具{72FF}",
    "translation_origin": "manual",
    "renderer": "static"
+  },
+  {
+   "id": "SLPM-000E6014",
+   "offset": "000E6014",
+   "max_bytes": 24,
+   "source": "ＣＯＭＰを使用します{72FF}",
+   "translation": "使用ＣＯＭＰ{72FF}",
+   "translation_origin": "manual",
+   "renderer": "dynamic"
   },
   {
    "id": "SLPM-000E602C",

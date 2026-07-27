@@ -37,6 +37,16 @@ jal     hybrid_name_renderer
 jal     hybrid_name_renderer
 
 
+; SAVE/LOAD owns a separate list widget.  Its constructor at 0x8007541C
+; installs the private draw callback 0x80074CAC, whose type-6 leg used F14
+; directly.  Once F14 context aliases reuse the reserved name-entry cells,
+; that makes both keyboard names and "NODATA" display as unrelated Chinese
+; glyphs.  Route this one save-list leg through the same hybrid classifier:
+; original name-entry strings use the small font; translated names keep F14.
+.org    0x80074F70
+jal     hybrid_name_renderer
+
+
 ; MARKER's type-6 F14 list needs at least 0x100 bytes per row: two passes of
 ; 6 * 0x14-byte sprites plus two 8-byte state packets.  Its runtime descriptor
 ; proves the common constructor settled on only 0xD0, so every row overflowed
@@ -46,8 +56,11 @@ jal     hybrid_name_renderer
 ;
 ; The earlier test63 patched one guessed caller at 0x80084E94, but the real
 ; object has different constructor fields and that call is not its source.
-; Apply the floor in the common constructor after either automatic or explicit
-; sizing and immediately before allocation.  Only type 6 is affected.
+; Apply the correction in the common constructor after either automatic or
+; explicit sizing and immediately before allocation.  Type 6 alone is not a
+; sufficient signature: EQUIP also creates type-6 objects whose smaller
+; natural stride is valid.  Restrict the correction to the observed MARKER
+; failure signature, type 6 with an exact 0xD0 stride.
 .org    0x8006F0A8
 j       type6_f14_stride_floor
 sll     v0,fp,0x10
@@ -63,6 +76,17 @@ bne     v1,zero,0x800469A0
 
 .org    0x80046980
 lbu     v1,0(s4)
+
+
+; The second pass at 0x80047C6C darkens opaque 0x64 sprites.  A native F14
+; skill-list context can also contain semi-transparent 0x66 sprites.  The
+; original loop sends every non-0x64 packet down its 8-byte DR_TPAGE copy
+; path, even though 0x66 still has a four-word SPRT tag.  That emits malformed
+; DMA packets and eventually self-links both frame buffers.  Divert nonopaque
+; packets through a classifier: 0x66 advances over the source packet without
+; emitting a redundant shadow; genuine state packets retain the original path.
+.org    0x80047C94
+bne     v0,v1,f14_shadow_classify_nonopaque
 
 
 .org    0x8004AE70
@@ -115,14 +139,30 @@ addiu   t0,v0,-6
 bne     t0,zero,type6_f14_stride_done
 nop
 lw      t0,0x800(s1)
-sltiu   t1,t0,0x100
-beq     t1,zero,type6_f14_stride_done
+addiu   t1,t0,-0xD0
+bne     t1,zero,type6_f14_stride_done
 nop
 ori     t0,zero,0x100
 sw      t0,0x800(s1)
 
 type6_f14_stride_done:
 j       0x8006F0B0
+nop
+
+; Adapter for the two executable UI strings whose original callers allocated
+; a single-pass small-font packet buffer.  F14 normally adds a second shadow
+; pass and can overrun those fixed buffers even when the translated string is
+; shorter.  Preserve every other style bit but request F14's single-pass mode.
+direct_ui_f14_single_pass:
+ori     a3,a3,0x1
+j       0x800475FC
+nop
+
+f14_shadow_classify_nonopaque:
+addiu   at,v0,-0x66
+bne     at,zero,0x80047D24
+nop
+j       0x80047D68
 nop
 
 ; Some menu/system windows create glyph textures through 0x8004ACB8
@@ -204,6 +244,10 @@ nop
 ;
 ; Both known name call sites use this wrapper so translated role/demon names
 ; remain visible while original keyboard-entered names retain the small font.
+; The old small-font renderer emits only one sprite pass.  Set F14 mode bit 0
+; on the translated leg so it does the same; otherwise a semi-transparent
+; 0x66 sprite can enter F14's 0x64-only shadow-copy loop and poison the GPU
+; DMA list.  This is intentionally local to calls redirected by this wrapper.
 .org    0x8004AD6C
 hybrid_name_renderer:
 addu    t0,a0,zero
@@ -250,7 +294,7 @@ beq     t1,t2,hybrid_name_loop
 nop
 
 j       0x800475FC
-nop
+ori     a3,a3,0x1
 hybrid_name_small:
 j       0x80046FEC
 nop

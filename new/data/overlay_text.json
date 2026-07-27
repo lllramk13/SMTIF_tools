@@ -8170,5 +8170,137 @@
       "source": "倒したＢＩＴ{FFFE}{FFFE}{FFFE}{FFFE}{FFFE}{FFFE}{FFFE}？ブランク？",
       "translation": "倒したＢＩＴ{FFFE}{FFFE}{FFFE}{FFFE}{FFFE}{FFFE}{FFFE}？ブランク？"
     }
+  ],
+  "F0051": [
+    {
+      "id": "F0051-00000E20",
+      "file_offset": "00000E20",
+      "byte_len": 18,
+      "max_bytes": 18,
+      "source": "{FF71}枚かえるのね？",
+      "translation": "要兑换{数值0}枚吗？"
+    },
+    {
+      "id": "F0051-00000E32",
+      "file_offset": "00000E32",
+      "byte_len": 26,
+      "max_bytes": 26,
+      "source": "あらマッカが足りないわ{FF01}",
+      "translation": "玛卡不够。▽"
+    },
+    {
+      "id": "F0051-00000E4C",
+      "file_offset": "00000E4C",
+      "byte_len": 32,
+      "max_bytes": 32,
+      "source": "交換は１回５００００枚までよ{FF01}",
+      "translation": "每次最多换５００００枚。▽"
+    },
+    {
+      "id": "F0051-00000E6C",
+      "file_offset": "00000E6C",
+      "byte_len": 14,
+      "max_bytes": 14,
+      "source": "どれにする？",
+      "translation": "选哪个？"
+    },
+    {
+      "id": "F0051-00000E7A",
+      "file_offset": "00000E7A",
+      "byte_len": 36,
+      "max_bytes": 36,
+      "source": "あなたアイテムを持ちきれないわよ{FF01}",
+      "translation": "你已拿不下更多道具。▽"
+    },
+    {
+      "id": "F0051-00000E9E",
+      "file_offset": "00000E9E",
+      "byte_len": 26,
+      "max_bytes": 26,
+      "source": "あらコインが足りないわ{FF01}",
+      "translation": "代币不够。▽"
+    },
+    {
+      "id": "F0051-00000EB8",
+      "file_offset": "00000EB8",
+      "byte_len": 56,
+      "max_bytes": 56,
+      "source": "そんなに持てないわよ{FF01}{FF02}コインは９９９９９９枚までよ{FF01}",
+      "translation": "拿不了那么多。▽※※※※※※※代币最多９９９９９９枚。▽"
+    },
+    {
+      "id": "F0051-00000EF0",
+      "file_offset": "00000EF0",
+      "byte_len": 48,
+      "max_bytes": 48,
+      "source": "{FF1B}と交換ね{FF03}コイン{FFFE}{FF71}になるけど{FF03}いいかしら？",
+      "translation": "{道具}，确定交换吗？\n需要{数值0}枚代币。\n可以吗？"
+    }
+  ],
+  "F0052": [
+    {
+      "id": "F0052-00000818",
+      "file_offset": "00000818",
+      "byte_len": 18,
+      "max_bytes": 18,
+      "source": "{FF71}枚かえるのね？",
+      "translation": "要兑换{数值0}枚吗？"
+    },
+    {
+      "id": "F0052-0000082A",
+      "file_offset": "0000082A",
+      "byte_len": 26,
+      "max_bytes": 26,
+      "source": "あらマッカが足りないわ{FF01}",
+      "translation": "玛卡不够。▽"
+    },
+    {
+      "id": "F0052-00000844",
+      "file_offset": "00000844",
+      "byte_len": 32,
+      "max_bytes": 32,
+      "source": "交換は１回５００００枚までよ{FF01}",
+      "translation": "每次最多换５００００枚。▽"
+    },
+    {
+      "id": "F0052-00000864",
+      "file_offset": "00000864",
+      "byte_len": 14,
+      "max_bytes": 14,
+      "source": "どれにする？",
+      "translation": "选哪个？"
+    },
+    {
+      "id": "F0052-00000872",
+      "file_offset": "00000872",
+      "byte_len": 36,
+      "max_bytes": 36,
+      "source": "あなたアイテムを持ちきれないわよ{FF01}",
+      "translation": "你已拿不下更多道具。▽"
+    },
+    {
+      "id": "F0052-00000896",
+      "file_offset": "00000896",
+      "byte_len": 26,
+      "max_bytes": 26,
+      "source": "あらコインが足りないわ{FF01}",
+      "translation": "代币不够。▽"
+    },
+    {
+      "id": "F0052-000008B0",
+      "file_offset": "000008B0",
+      "byte_len": 56,
+      "max_bytes": 56,
+      "source": "そんなに持てないわよ{FF01}{FF02}コインは９９９９９９枚までよ{FF01}",
+      "translation": "拿不了那么多。▽※※※※※※※代币最多９９９９９９枚。▽"
+    },
+    {
+      "id": "F0052-000008E8",
+      "file_offset": "000008E8",
+      "byte_len": 48,
+      "max_bytes": 48,
+      "source": "{FF1B}と交換ね{FF03}コイン{FFFE}{FF71}になるけど{FF03}いいかしら？",
+      "translation": "{道具}，确定交换吗？\n需要{数值0}枚代币。\n可以吗？"
+    }
   ]
 }

@@ -6,7 +6,7 @@ encoding Chinese as Shift-JIS makes it draw each unsupported byte as a kana
 glyph.  For the two upgrade-screen strings we instead:
 
 * store the translation as the game's 16-bit internal codes in the same slot;
-* replace that string's ``jal 0x80046D08`` with ``jal 0x800475FC``.
+* replace that string's ``jal 0x80046D08`` with a single-pass F14 adapter.
 
 Both renderers accept the same register arguments, so coordinates and colour
 stay untouched.  Their drawing-buffer stack argument differs: the direct
@@ -28,7 +28,11 @@ DEFAULT_CODETABLE_PATH = HERE.parent / "data" / "codetable.json"
 
 F14_CAPACITY = 0x0567
 DIRECT_UI_RENDERER = 0x80046D08
-F14_UI_RENDERER = 0x800475FC
+# The original direct renderer emits a single packet pass and its callers size
+# fixed buffers accordingly.  0x8005C2C8 sets F14 mode bit 0 before tail-
+# jumping to 0x800475FC, preventing F14's extra shadow pass from overflowing
+# those buffers.
+F14_UI_RENDERER = 0x8005C2C8
 DIRECT_BUFFER_STORE = bytes.fromhex("1400A2AF")  # sw v0,0x14(sp)
 F14_BUFFER_STORE = bytes.fromhex("1000A2AF")  # sw v0,0x10(sp)
 
