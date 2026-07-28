@@ -18,6 +18,7 @@ their exact size and the in-place overlay injection stays valid.
 from pathlib import Path
 
 SMALL_FONT_NAME_RENDERER = 0x80046FEC
+STATIC_FONT_RENDERER = 0x800475FC
 HYBRID_NAME_RENDERER = 0x8004AD6C
 
 # Expected call sites, discovered by scanning the clean overlays for
@@ -29,6 +30,35 @@ EXPECTED_NAME_RENDERER_SITES = {
     "F0061": (0x670, 0x6DC),
     "F0091": (0x374, 0xA7C),
 }
+
+# The opposite mistake: SAVE/LOAD draws its slot strings straight through F14.
+# F14's low cells now hold the context aliases, so an original keyboard-entered
+# name -- and the built-in ＮＯＤＡＴＡ placeholder, stored as
+# ``Ｎ Ｏ {FFFE} Ｄ Ａ Ｔ Ａ`` -- comes out as unrelated Chinese glyphs
+# (Ｎ→獠, Ｏ→冥, Ｔ→奢).  Route these through the same hybrid wrapper so
+# original codes go back to the small font while translated names stay on F14.
+#
+# All three sites live in the slot-drawing routine at F0088 0x2CB4:
+#   0x2D3C  s0+0x20, a3|=0xF4  fixed label string
+#   0x2D84  s0+0x1C, a3|=0xE1  slot name / ＮＯＤＡＴＡ
+#   0x2E0C  s0+0x1C, a3|=0xE1  same field, no-extra-label branch
+# The wrapper's F14 leg ORs in a3 bit 0 (single-pass); 0xE1 already has it, so
+# the two name draws keep byte-identical F14 behaviour.  Only the fixed label
+# at 0x2D3C loses F14's second shadow pass.
+#
+# Both renderers take the drawing buffer from the caller's sp+0x10
+# (0x80046FEC: -112 frame, reads 128(sp); 0x800475FC: -56 frame, reads 72(sp)),
+# so swapping either way at a call site needs no stack fixup.
+# Disabled 2026-07-28.  Redirecting these three had no observable effect on
+# the ＮＯＤＡＴＡ garbling it was meant to fix (that turned out to be a
+# missing slpm_text record at 0x0E6E20), but it does change how the save
+# slot strings are rendered -- 0x2D3C's a3 lacks bit 0, so the wrapper
+# forced F14 single-pass on it.  A tester's card then showed the FILE
+# label and ＮＯ　ＤＡＴＡ collapsing onto one line; the previously shipped
+# build and a different card are both fine.  Left here documented rather
+# than deleted: if a save-slot name ever needs the hybrid route, this is
+# the table, but it must be validated on the failing card first.
+EXPECTED_STATIC_NAME_RENDERER_SITES = {}
 
 
 def _jal(address):
@@ -57,38 +87,45 @@ def apply_overlay_name_renderer_patches(replacements, source_directory):
     patched_files = 0
     patched_sites = 0
 
-    for file_name, expected_offsets in EXPECTED_NAME_RENDERER_SITES.items():
-        key = f"D/{file_name}.BIN"
-        base = replacements.get(key)
-        if base is None:
-            base = (source_directory / f"{file_name}.BIN").read_bytes()
-        if not isinstance(base, (bytes, bytearray)):
-            raise TypeError(f"{key}: overlay data must be bytes")
+    tables = (
+        (SMALL_FONT_NAME_RENDERER, EXPECTED_NAME_RENDERER_SITES),
+        (STATIC_FONT_RENDERER, EXPECTED_STATIC_NAME_RENDERER_SITES),
+    )
+    for original_renderer, sites in tables:
+        for file_name, expected_offsets in sites.items():
+            key = f"D/{file_name}.BIN"
+            base = replacements.get(key)
+            if base is None:
+                base = (source_directory / f"{file_name}.BIN").read_bytes()
+            if not isinstance(base, (bytes, bytearray)):
+                raise TypeError(f"{key}: overlay data must be bytes")
 
-        data = bytearray(base)
-        found = _find_calls(data, SMALL_FONT_NAME_RENDERER)
-        if found != tuple(expected_offsets):
-            raise AssertionError(
-                f"{key}: expected jal {SMALL_FONT_NAME_RENDERER:#x} at "
-                f"{[hex(o) for o in expected_offsets]}, found "
-                f"{[hex(o) for o in found]}"
-            )
+            data = bytearray(base)
+            found = _find_calls(data, original_renderer)
+            if found != tuple(expected_offsets):
+                raise AssertionError(
+                    f"{key}: expected jal {original_renderer:#x} at "
+                    f"{[hex(o) for o in expected_offsets]}, found "
+                    f"{[hex(o) for o in found]}"
+                )
 
-        for offset in found:
-            data[offset:offset + 4] = _jal(HYBRID_NAME_RENDERER)
-            patched_sites += 1
+            for offset in found:
+                data[offset:offset + 4] = _jal(HYBRID_NAME_RENDERER)
+                patched_sites += 1
 
-        patched = bytes(data)
-        if len(patched) != len(base):
-            raise AssertionError(f"{key}: overlay size changed")
-        if _find_calls(patched, SMALL_FONT_NAME_RENDERER):
-            raise AssertionError(f"{key}: small-font name call survived")
-        if len(_find_calls(patched, HYBRID_NAME_RENDERER)) < len(found):
-            raise AssertionError(
-                f"{key}: hybrid name call verification failed"
-            )
+            patched = bytes(data)
+            if len(patched) != len(base):
+                raise AssertionError(f"{key}: overlay size changed")
+            if _find_calls(patched, original_renderer):
+                raise AssertionError(
+                    f"{key}: jal {original_renderer:#x} survived"
+                )
+            if len(_find_calls(patched, HYBRID_NAME_RENDERER)) < len(found):
+                raise AssertionError(
+                    f"{key}: hybrid name call verification failed"
+                )
 
-        replacements[key] = patched
-        patched_files += 1
+            replacements[key] = patched
+            patched_files += 1
 
     return patched_files, patched_sites

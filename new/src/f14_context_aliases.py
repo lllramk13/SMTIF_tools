@@ -30,6 +30,13 @@ ORIGINAL_NAME_GLYPH_INDICES = frozenset(
     set(DYNAMIC_SPECIAL_LOW_INDICES) | {0}
 )
 
+# Reserved cells the executable addresses by hardcoded glyph index, which an
+# alias would silently repaint.  The map header builds "<area><floor>Ｆ" from
+# `addiu ...,zero,0x39` (0x800BA2A0 / 0x800BA658) and that cell holds Ｆ, so
+# aliasing it turned 学校1Ｆ into 学校1＋.  Keeping one cell out of the pool is
+# free: 182 of the 204 reserved cells are in use.
+HARDCODED_GLYPH_INDICES = frozenset({0x0039})  # Ｆ
+
 # These blocks were confirmed in-game to draw through 0x800475FC.
 F14_CONTEXT_RECORD_PREFIXES = (
     "F0094-00000000",
@@ -180,7 +187,11 @@ def build_f14_context_alias_plan(
 
     # Use the highest reserved cells.  This deterministic placement preserved
     # the original 23,541-byte F14 graphic budget in the capacity experiment.
-    available_indices = sorted(DYNAMIC_SPECIAL_LOW_INDICES)
+    available_indices = sorted(
+        index
+        for index in DYNAMIC_SPECIAL_LOW_INDICES
+        if index not in HARDCODED_GLYPH_INDICES
+    )
     if len(alias_characters) > len(available_indices):
         raise ValueError(
             f"F14 contexts need {len(alias_characters)} aliases, but only "

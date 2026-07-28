@@ -11,6 +11,26 @@ DEFAULT_CODETABLE_PATH = NEW_DIRECTORY / "data" / "codetable.json"
 VALID_RENDERERS = frozenset(("dynamic", "static"))
 ACTION_RESULT_START = 0xE6A26
 ACTION_RESULT_END = 0xE6D58
+MARKER_HELP_START = 0xEF298
+MARKER_HELP_END = 0xEF33C
+# The map-header area names.  Flagged `dynamic` in the data file, but the map
+# header actually draws them through F14, whose capacity is 0x567 -- and 20 of
+# the 27 translations contain a higher code (嫉=0x797, 妒=0x798, 贪=0x6CE,
+# 傲=0x726 ...).  The widget's bounds check is the spin at 0x8004844C, so
+# 嫉妒界 / 贪欲界 used to freeze the SAVE screen outright; after that was
+# changed to skip the glyph, the neighbouring packet still came out with
+# garbage metrics (clut 0) and self-linked the display list, which is why the
+# screen stayed playable but crawled.  Give them F14 context aliases, exactly
+# like the MARKER help block above.
+AREA_NAME_START = 0xE4768
+AREA_NAME_END = 0xE48A8
+# The equipment / demon resistance descriptions shown in the green panel on the
+# STATUS screen.  Same story again: flagged `dynamic`, drawn by F14, and 41 of
+# the 70 translations use a code above 0x567 (抵=0x783, 收=0x657, 略, 弱, 冻,
+# 技, 乎), which is why lines came out as "微　抗精神攻击" with holes where
+# 略 / 抵 should be.
+EQUIP_HELP_START = 0xE7BF0
+EQUIP_HELP_END = 0xE813A
 LONG_PAUSE_AND_TERMINATOR = bytes.fromhex("92FFFFFF")
 
 
@@ -121,6 +141,9 @@ def build_slpm_text_patches(
     global_character_overrides=None,
     static_character_overrides=None,
     action_result_character_overrides=None,
+    marker_help_character_overrides=None,
+    area_name_character_overrides=None,
+    equip_help_character_overrides=None,
 ):
     dynamic_character_codes = load_character_codes(codetable_path)
     dynamic_character_codes.update(global_character_overrides or {})
@@ -130,6 +153,14 @@ def build_slpm_text_patches(
     action_result_character_codes.update(
         action_result_character_overrides or {}
     )
+    marker_help_character_codes = dict(dynamic_character_codes)
+    marker_help_character_codes.update(
+        marker_help_character_overrides or {}
+    )
+    area_name_character_codes = dict(dynamic_character_codes)
+    area_name_character_codes.update(area_name_character_overrides or {})
+    equip_help_character_codes = dict(dynamic_character_codes)
+    equip_help_character_codes.update(equip_help_character_overrides or {})
 
     patches = []
     for record in records:
@@ -140,13 +171,34 @@ def build_slpm_text_patches(
         in_action_result_block = (
             ACTION_RESULT_START <= record["offset"] < ACTION_RESULT_END
         )
+        in_marker_help_block = (
+            MARKER_HELP_START <= record["offset"] < MARKER_HELP_END
+        )
+        in_area_name_block = (
+            AREA_NAME_START <= record["offset"] < AREA_NAME_END
+        )
+        in_equip_help_block = (
+            EQUIP_HELP_START <= record["offset"] < EQUIP_HELP_END
+        )
         character_codes = (
             action_result_character_codes
             if in_action_result_block
             else (
-                dynamic_character_codes
-                if record["renderer"] == "dynamic"
-                else static_character_codes
+                marker_help_character_codes
+                if in_marker_help_block
+                else (
+                    area_name_character_codes
+                    if in_area_name_block
+                    else (
+                        equip_help_character_codes
+                        if in_equip_help_block
+                        else (
+                    dynamic_character_codes
+                            if record["renderer"] == "dynamic"
+                            else static_character_codes
+                        )
+                    )
+                )
             )
         )
 

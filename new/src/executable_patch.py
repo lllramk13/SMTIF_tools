@@ -156,7 +156,23 @@ def patch_executable(
         # Keep both known name sites on the hybrid route; the MARKER overflow
         # is fixed at its allocation-size estimator instead.
         0x8006D9E4: bytes.fromhex('5B2B010C'),
-        0x80074F70: bytes.fromhex('5B2B010C'),  # SAVE/LOAD list -> hybrid
+        # SAVE/LOAD and map list draws routed away from raw F14 (alias leak).
+        0x80072C34: bytes.fromhex('5B2B010C'),
+        # Shared big-font renderer gated so original-code names leave F14.
+        # SAVE/LOAD slot widget: out-of-range glyph skips instead of hanging.
+        0x8006F0A8: bytes.fromhex('A6700108'),  # j 0x8005C298
+        0x8006F0AC: bytes.fromhex('00141E00'),  # original type shift, delay
+        0x80047688: bytes.fromhex('6F1F0108'),  # j 0x80047DBC
+        0x8004768C: bytes.fromhex('B8FFBD27'),  # displaced addiu sp,sp,-72
+        0x80047DBC: bytes.fromhex('4800BD27'),  # addiu sp,sp,72
+        0x8004844C: bytes.fromhex('5D220108'),  # j 0x80048974
+        # F14 shadow pass: never let the darkened copy link to itself.
+        0x80047CFC: bytes.fromhex('9C1F0108'),  # j 0x80047E70
+        0x80047E70: bytes.fromhex('0000628D'),  # lw v0,0(t3)
+        # AddPrim guard: never let a node link to itself (GPU DMA self-loop).
+        0x80048514: bytes.fromhex('8F1F0108'),  # j 0x80047E3C
+        0x80047E3C: bytes.fromhex('0000828E'),  # lw v0,0(s4)
+        0x800B85C8: bytes.fromhex('5B2B010C'),
         0x8004AD6C: bytes.fromhex('21408000'),
         0x8004ADD4: bytes.fromhex('E6FF2011'),
         0x8004ADE8: bytes.fromhex('7F1D0108'),
@@ -183,8 +199,6 @@ def patch_executable(
         # exact stride so other valid type-6 objects (notably EQUIP) are not
         # enlarged and corrupted.
         0x80084E94: bytes.fromhex('631D010C'),  # guessed test63 hook removed
-        0x8006F0A8: bytes.fromhex('A6700108'),  # j 0x8005C298
-        0x8006F0AC: bytes.fromhex('00141E00'),  # original type shift, delay
         0x8005C294: bytes.fromhex('00000000'),  # decoder jr delay slot
         0x8005C298: bytes.fromhex('03140200'),  # sra v0,v0,16
         0x8005C2A8: bytes.fromhex('0008288E'),  # lw t0,0x800(s1)
@@ -216,9 +230,9 @@ def patch_executable(
     armips_changed_bytes = sum(
         old != new for old, new in zip(base_data, patched_data)
     )
-    if armips_changed_bytes != 483:
+    if armips_changed_bytes != 702:
         raise AssertionError(
-            f'Expected CN.asm to change 483 bytes, got {armips_changed_bytes}'
+            f'Expected CN.asm to change 702 bytes, got {armips_changed_bytes}'
         )
 
     patched_data = bytearray(patched_data)

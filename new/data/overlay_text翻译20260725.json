@@ -1,70 +1,4 @@
 {
- "F0048": [
-  {
-   "id": "F0048-00009240",
-   "file_offset": "00009240",
-   "byte_len": 14,
-   "max_bytes": 14,
-   "source": "：　通常悪魔",
-   "translation": "：　普通恶魔"
-  },
-  {
-   "id": "F0048-0000924E",
-   "file_offset": "0000924E",
-   "byte_len": 20,
-   "max_bytes": 20,
-   "source": "：　１ランクアップ",
-   "translation": "：　上升一级"
-  },
-  {
-   "id": "F0048-00009262",
-   "file_offset": "00009262",
-   "byte_len": 20,
-   "max_bytes": 20,
-   "source": "：　２ランクアップ",
-   "translation": "：　上升两级"
-  },
-  {
-   "id": "F0048-00009276",
-   "file_offset": "00009276",
-   "byte_len": 20,
-   "max_bytes": 20,
-   "source": "：　１ランクダウン",
-   "translation": "：　下降一级"
-  },
-  {
-   "id": "F0048-0000928A",
-   "file_offset": "0000928A",
-   "byte_len": 10,
-   "max_bytes": 10,
-   "source": "：　精霊",
-   "translation": "：　精灵"
-  },
-  {
-   "id": "F0048-00009294",
-   "file_offset": "00009294",
-   "byte_len": 16,
-   "max_bytes": 16,
-   "source": "：　ダーク悪魔",
-   "translation": "：　暗黑恶魔"
-  },
-  {
-   "id": "F0048-000092A4",
-   "file_offset": "000092A4",
-   "byte_len": 10,
-   "max_bytes": 10,
-   "source": "：　不明",
-   "translation": "：　未知"
-  },
-  {
-   "id": "F0048-000092AE",
-   "file_offset": "000092AE",
-   "byte_len": 14,
-   "max_bytes": 14,
-   "source": "：　合体不能",
-   "translation": "：　无法合体"
-  }
- ],
  "F0049": [
   {
    "id": "F0049-00007D38",
@@ -104,7 +38,7 @@
    "byte_len": 54,
    "max_bytes": 54,
    "source": "買取れる物がないねえ{FF03}何か品物を持って来て下さいよ！",
-   "translation": "没有可以收购的东西。\n带点东西过来啊！"
+   "translation": "没有可以收购的东西。{FF03}带点东西过来啊！"
   },
   {
    "id": "F0049-00007DD4",
@@ -128,7 +62,7 @@
    "byte_len": 16,
    "max_bytes": 16,
    "source": "これは…{FFFE}{FF57}！",
-   "translation": "这是…{57FF}！"
+   "translation": "这是…{FF57}！"
   },
   {
    "id": "F0049-00007E14",
@@ -192,7 +126,7 @@
    "byte_len": 50,
    "max_bytes": 50,
    "source": "買取れる品物がないわねぇ{FF03}品物を持ってきてねぇ！",
-   "translation": "没有能收购的东西呢。\n带点东西来吧！"
+   "translation": "没有能收购的东西呢。{FF03}带点东西来吧！"
   },
   {
    "id": "F0049-00007EFA",
@@ -264,7 +198,7 @@
    "byte_len": 40,
    "max_bytes": 40,
    "source": "買取れる品物がない{FF03}品物を持ってこい！",
-   "translation": "没有能收购的东西。\n带点货过来吧！"
+   "translation": "没有能收购的东西。{FF03}带点货过来吧！"
   },
   {
    "id": "F0049-00007FF8",
@@ -336,7 +270,7 @@
    "byte_len": 48,
    "max_bytes": 48,
    "source": "買取れる品物がありません{FF03}品物をお持ち下さい！",
-   "translation": "没有能收购的物品。\n请带点东西过来！"
+   "translation": "没有能收购的物品。{FF03}请带点东西过来！"
   },
   {
    "id": "F0049-000080FC",
@@ -408,7 +342,7 @@
    "byte_len": 38,
    "max_bytes": 38,
    "source": "買取れる物がない{FF03}品物を持って来い！",
-   "translation": "没有能收购的东西。\n带点东西来吧！"
+   "translation": "没有能收购的东西。{FF03}带点东西来吧！"
   },
   {
    "id": "F0049-000081E4",
@@ -480,7 +414,7 @@
    "byte_len": 50,
    "max_bytes": 50,
    "source": "買取れる品物がないです{FF03}品物を持って来て下さい！",
-   "translation": "没有能收购的货品。\n请带些货过来！"
+   "translation": "没有能收购的货品。{FF03}请带些货过来！"
   },
   {
    "id": "F0049-000082D6",
@@ -552,7 +486,7 @@
    "byte_len": 48,
    "max_bytes": 48,
    "source": "買取れる品物がありません{FF03}品物をお持ち下さい！",
-   "translation": "没有能收购的货品。\n请带些货过来！"
+   "translation": "没有能收购的货品。{FF03}请带些货过来！"
   },
   {
    "id": "F0049-000083F0",
@@ -624,7 +558,7 @@
    "byte_len": 52,
    "max_bytes": 52,
    "source": "買取れる品物がありませんです{FF03}品物をお持ち下さい！",
-   "translation": "没有能收购的物品的说。\n请拿些货过来！"
+   "translation": "没有能收购的物品的说。{FF03}请拿些货过来！"
   },
   {
    "id": "F0049-00008504",
@@ -696,7 +630,7 @@
    "byte_len": 54,
    "max_bytes": 54,
    "source": "こっちで買取れる物は無いな{FF03}いい物持って来てくれよ！",
-   "translation": "没有我能收购的东西啊。\n带点好东西过来吧！"
+   "translation": "没有我能收购的东西啊。{FF03}带点好东西过来吧！"
   },
   {
    "id": "F0049-00008602",
@@ -768,7 +702,7 @@
    "byte_len": 58,
    "max_bytes": 58,
    "source": "お前さんの持ち物は買取れん{FF03}もっとまともな物持ってこい！",
-   "translation": "我不能买你的东西。\n带点更正经的东西来！"
+   "translation": "我不能买你的东西。{FF03}带点更正经的东西来！"
   },
   {
    "id": "F0049-00008704",
@@ -840,7 +774,7 @@
    "byte_len": 42,
    "max_bytes": 42,
    "source": "買える物をお持ちでないねぇ{FF03}すまねぇな！",
-   "translation": "你没带能收购的东西呢。\n抱歉啦！"
+   "translation": "你没带能收购的东西呢。{FF03}抱歉啦！"
   },
   {
    "id": "F0049-000087DA",
@@ -1184,7 +1118,7 @@
    "byte_len": 80,
    "max_bytes": 80,
    "source": "ＭＡＧディーラー：明るい悪魔計画を{FF03}サポートする皆様のＭＡＧ屋で{FF03}ございます！",
-   "translation": "ＭＡＧ交易商：这里是为明亮恶魔计划\n提供支持的，大家的ＭＡＧ店！"
+   "translation": "ＭＡＧ交易商：这里是为明亮恶魔计划{FF03}提供支持的，大家的ＭＡＧ店！"
   },
   {
    "id": "F0049-00008C32",
@@ -1192,7 +1126,7 @@
    "byte_len": 28,
    "max_bytes": 28,
    "source": "{FF02}いかがいたしましょうか？",
-   "translation": "※※※※※※※您要做什么呢？"
+   "translation": "{FF02}您要做什么呢？"
   },
   {
    "id": "F0049-00008C4E",
@@ -1200,7 +1134,7 @@
    "byte_len": 32,
    "max_bytes": 32,
    "source": "{FF02}いかほど交換いたしましょう？",
-   "translation": "※※※※※※※要交换多少呢？"
+   "translation": "{FF02}要交换多少呢？"
   },
   {
    "id": "F0049-00008C6E",
@@ -1208,7 +1142,7 @@
    "byte_len": 40,
    "max_bytes": 40,
    "source": "{FF02}￡１０００００を１００００ＭＡＧに{FF03}",
-   "translation": "※※※※※※※￡１０００００换１００００ＭＡＧ\n"
+   "translation": "{FF02}￡１０００００换１００００ＭＡＧ{FF03}"
   },
   {
    "id": "F0049-00008C96",
@@ -1216,7 +1150,7 @@
    "byte_len": 36,
    "max_bytes": 36,
    "source": "{FF02}￡１００００を１０００ＭＡＧに{FF03}",
-   "translation": "※※※※※※※￡１００００换１０００ＭＡＧ\n"
+   "translation": "{FF02}￡１００００换１０００ＭＡＧ{FF03}"
   },
   {
    "id": "F0049-00008CBA",
@@ -1224,7 +1158,7 @@
    "byte_len": 32,
    "max_bytes": 32,
    "source": "{FF02}￡１０００を１００ＭＡＧに{FF03}",
-   "translation": "※※※※※※※￡１０００换１００ＭＡＧ\n"
+   "translation": "{FF02}￡１０００换１００ＭＡＧ{FF03}"
   },
   {
    "id": "F0049-00008CDA",
@@ -1232,7 +1166,7 @@
    "byte_len": 28,
    "max_bytes": 28,
    "source": "致します{FF03}よろしいですか？",
-   "translation": "好的。\n确定要这个吗？"
+   "translation": "好的。{FF03}确定要这个吗？"
   },
   {
    "id": "F0049-00008CF6",
@@ -1248,7 +1182,7 @@
    "byte_len": 240,
    "max_bytes": 240,
    "source": "{FF02}皆様にＭＡＧをお分けするのが{FF03}私の商いでございます{FF03}￡とＭＡＧを交換致します！{FF02}交換レートの方ですが{FF03}１ＭＡＧあたり￡１０となっております！{FF02}交換の方は￡１０００００コース・{FF03}￡１００００コース・￡１０００コース{FF03}３コースがございます！",
-   "translation": "※※※※※※※为各位提供ＭＡＧ，\n正是我的生意所在。\n这里可以用￡兑换ＭＡＧ！※※※※※※※兑换比例方面，\n１ＭＡＧ等于￡１０！※※※※※※※兑换分为￡１０００００、\n￡１００００、￡１０００，\n一共三个档位！"
+   "translation": "{FF02}为各位提供ＭＡＧ，{FF03}正是我的生意所在。{FF03}这里可以用￡兑换ＭＡＧ！{FF02}兑换比例方面，{FF03}１ＭＡＧ等于￡１０！{FF02}兑换分为￡１０００００、{FF03}￡１００００、￡１０００，{FF03}一共三个档位！"
   },
   {
    "id": "F0049-00008DFA",
@@ -1304,7 +1238,7 @@
    "byte_len": 34,
    "max_bytes": 34,
    "source": "じゃぁ”{道具}”と{FF03}換えるよ、いい？",
-   "translation": "那就和“{道具}”\n交换了，确定吗？"
+   "translation": "那就和“{道具}”{FF03}交换了，确定吗？"
   },
   {
    "id": "F0049-00008ED2",
@@ -1328,7 +1262,7 @@
    "byte_len": 34,
    "max_bytes": 34,
    "source": "じゃぁ”{名字1}”と{FF03}換えるね、いい？",
-   "translation": "那就和“{名字1}”\n交换了，确定吗？"
+   "translation": "那就和“{名字1}”{FF03}交换了，确定吗？"
   },
   {
    "id": "F0049-00008F18",
@@ -1384,7 +1318,7 @@
    "byte_len": 418,
    "max_bytes": 418,
    "source": "ここではアイテムの鑑定ではなく{FF03}メモリーカードの鑑定、すなわち{FF03}セーブデータの鑑定をやるんだ！{FF02}何のセーブデータかは詳しくは言えないが{FF03}ま、しいて言うならＡＴＬＵＳってところが出した{FF03}一部のゲームのセーブデータを鑑定するって{FF03}事くらいかな！{FF02}鑑定したセーブデータによって、おまえらに{FF03}いろんなプレゼントをくれてやるよ！{FF02}ちなみにこのゲームのデータはいらないぞ{FF03}珍しくも何ともないからな{FF03}ま、頑張って探してきてくれよ！",
-   "translation": "这里不是鉴定道具，\n而是鉴定记忆卡，也就是鉴定存档！※※※※※※※虽然不能细说是什么存档，\n不过嘛，硬要说的话，\n就是鉴定ＡＴＬＵＳ某些游戏的存档吧！※※※※※※※根据鉴定出的存档，\n会给你们各种各样的礼物！※※※※※※※顺便说下，不要这个游戏的存档啊。\n毕竟一点也不稀奇。\n总之嘛，努力去搜集过来吧！"
+   "translation": "这里不是鉴定道具，{FF03}而是鉴定记忆卡，也就是鉴定存档！{FF02}虽然不能细说是什么存档，{FF03}不过嘛，硬要说的话，{FF03}就是鉴定ＡＴＬＵＳ某些游戏的存档吧！{FF02}根据鉴定出的存档，{FF03}会给你们各种各样的礼物！{FF02}顺便说下，不要这个游戏的存档啊。{FF03}毕竟一点也不稀奇。{FF03}总之嘛，努力去搜集过来吧！"
   },
   {
    "id": "F0049-0000914A",
@@ -1408,7 +1342,7 @@
    "byte_len": 50,
    "max_bytes": 50,
    "source": "どっちのメモリーカード差込口を{FF03}鑑定しますか？{FF72}",
-   "translation": "要鉴定哪个记忆卡插口？{72FF}"
+   "translation": "要鉴定哪个记忆卡插口？{FF72}"
   },
   {
    "id": "F0049-000091BA",
@@ -1416,7 +1350,7 @@
    "byte_len": 98,
    "max_bytes": 98,
    "source": "差込口{FF71}のメモリーカードチェック中です{FF03}メモリーカードとコントローラを{FF03}抜き差ししないで下さい{FF72}",
-   "translation": "正在检查插口{数值0}的记忆卡。\n请勿拔出记忆卡和控制器。{72FF}"
+   "translation": "正在检查插口里的记忆卡。{FF03}请勿拔出记忆卡和控制器。{FF72}"
   },
   {
    "id": "F0049-0000921C",
@@ -1424,7 +1358,7 @@
    "byte_len": 70,
    "max_bytes": 70,
    "source": "メモリーカードが差されていません{FF03}差込口{FF71}に正しく接続してください！",
-   "translation": "未插入记忆卡。\n请正确连接插口{数值0}！"
+   "translation": "未插入记忆卡。{FF03}请正确连接插口！"
   },
   {
    "id": "F0049-00009262",
@@ -1432,7 +1366,7 @@
    "byte_len": 106,
    "max_bytes": 106,
    "source": "メモリーカードが正常に認識されません{FF03}差込口{FF71}にメモリーカードが{FF03}正しく差し込まれているかご確認下さい！",
-   "translation": "无法正常识别记忆卡。\n请检查插口{数值0}内是否正确插入记忆卡！"
+   "translation": "无法正常识别记忆卡。{FF03}请检查插口内是否正确插入记忆卡！"
   },
   {
    "id": "F0049-000092CC",
@@ -1496,7 +1430,7 @@
    "byte_len": 110,
    "max_bytes": 110,
    "source": "まだ、あるかな．．．．．．．．．．．．．．．{FF03}．．．．．．．．．．．．．．．．．．．．．．{FF03}．．．．．．．！",
-   "translation": "还有吗．．．．．．．．．．．．．．．\n．．．．．．．．．．．．．．．．．．．．．．\n．．．．．．．！"
+   "translation": "还有吗．．．．．．．．．．．．．．．{FF03}．．．．．．．．．．．．．．．．．．．．．．{FF03}．．．．．．．！"
   },
   {
    "id": "F0049-00009408",
@@ -1504,7 +1438,7 @@
    "byte_len": 64,
    "max_bytes": 64,
    "source": "真・女神転生が有るな{FF03}{FF04}と{FF05}の{FF03}全アビリティを＋２してやるよ！",
-   "translation": "你有真・女神转生啊。\n让{主角}和{队友}的\n所有能力＋２！"
+   "translation": "你有真・女神转生啊。{FF03}让{FF04}和{FF05}的{FF03}所有能力＋２！"
   },
   {
    "id": "F0049-00009448",
@@ -1512,7 +1446,7 @@
    "byte_len": 64,
    "max_bytes": 64,
    "source": "真・女神転生２が有るな{FF03}全仲魔の全アビリティを＋１してやるよ！",
-   "translation": "你有真・女神转生２啊。\n让所有仲魔的所有能力＋１！"
+   "translation": "你有真・女神转生２啊。{FF03}让所有仲魔的所有能力＋１！"
   },
   {
    "id": "F0049-00009488",
@@ -1520,7 +1454,7 @@
    "byte_len": 96,
    "max_bytes": 96,
    "source": "レブスを持っているのか！{FF03}なかなか目のつけ所は悪くない{FF03}パーティー全員の知力を＋５してやるよ！",
-   "translation": "你有ＲＥＢＵＳ啊！\n着眼点很不赖嘛。\n让你队伍全员的智力＋５！"
+   "translation": "你有ＲＥＢＵＳ啊！{FF03}着眼点很不赖嘛。{FF03}让你队伍全员的智力＋５！"
   },
   {
    "id": "F0049-000094E8",
@@ -1528,7 +1462,7 @@
    "byte_len": 42,
    "max_bytes": 42,
    "source": "峠ＭＡＸか？{FF03}{FF04}の速さを＋５してやるよ！",
-   "translation": "峠ＭＡＸ吗？\n让{主角}的速度＋５！"
+   "translation": "峠ＭＡＸ吗？{FF03}让{FF04}的速度＋５！"
   },
   {
    "id": "F0049-00009512",
@@ -1536,7 +1470,7 @@
    "byte_len": 44,
    "max_bytes": 44,
    "source": "峠ＭＡＸ２か？{FF03}{FF05}の速さを＋５してやるよ！",
-   "translation": "峠ＭＡＸ２吗？\n让{队友}的速度＋５！"
+   "translation": "峠ＭＡＸ２吗？{FF03}让{FF05}的速度＋５！"
   },
   {
    "id": "F0049-0000953E",
@@ -1544,7 +1478,7 @@
    "byte_len": 114,
    "max_bytes": 114,
    "source": "ソウルハッカーズか、なるほどこりゃいい{FF03}{FF04}と{FF05}の{FF03}体力アビリティを＋３と{FF03}全仲魔のＨＰを２５％アップしてやるよ！",
-   "translation": "灵魂骇客吗，原来如此，这个真不错。\n让{主角}和{队友}的\n体力＋３，\n所有仲魔的ＨＰ提升２５％！"
+   "translation": "灵魂骇客吗，原来如此，这个真不错。{FF03}让{FF04}和{FF05}的{FF03}体力＋３，{FF03}所有仲魔的ＨＰ提升２５％！"
   },
   {
    "id": "F0049-000095B0",
@@ -1552,7 +1486,7 @@
    "byte_len": 56,
    "max_bytes": 56,
    "source": "なるほど、ペルソナか{FF03}{FF05}にサバトマを習得させてやるよ！",
-   "translation": "原来如此，ＰＥＲＳＯＮＡ啊。\n让{队友}学会召唤术！"
+   "translation": "原来如此，ＰＥＲＳＯＮＡ啊。{FF03}让{FF05}学会召唤术！"
   },
   {
    "id": "F0049-000095E8",
@@ -1560,7 +1494,7 @@
    "byte_len": 58,
    "max_bytes": 58,
    "source": "ほほう、ペルソナ２罪か{FF03}{FF05}にネクロマを習得させてやるよ！",
-   "translation": "嚯嚯，ＰＥＲＳＯＮＡ２罪啊。\n让{队友}学会亡灵术！"
+   "translation": "嚯嚯，ＰＥＲＳＯＮＡ２罪啊。{FF03}让{FF05}学会亡灵术！"
   },
   {
    "id": "F0049-00009622",
@@ -1568,7 +1502,7 @@
    "byte_len": 76,
    "max_bytes": 76,
    "source": "おおっ、ペルソナ２罰を持っているのか{FF03}{FF05}にリカームドラを習得させてやるよ！",
-   "translation": "哦哦，你有ＰＥＲＳＯＮＡ２罚啊。\n让{队友}学会舍命复活术！"
+   "translation": "哦哦，你有ＰＥＲＳＯＮＡ２罚啊。{FF03}让{FF05}学会舍命复活术！"
   },
   {
    "id": "F0049-0000966E",
@@ -1576,7 +1510,7 @@
    "byte_len": 62,
    "max_bytes": 62,
    "source": "サウザンドアームズねえ…{FF03}{FF05}にタルカジャを習得させてやるよ！",
-   "translation": "千剑物语呀……\n让{队友}学会攻击上升！"
+   "translation": "千剑物语呀……{FF03}让{FF05}学会攻击上升！"
   },
   {
    "id": "F0049-000096AC",
@@ -1584,7 +1518,7 @@
    "byte_len": 64,
    "max_bytes": 64,
    "source": "グローランサー？{FFFE}まあいい{FF03}{FF05}にマカカジャを習得させてやるよ！",
-   "translation": "梦幻骑士？行吧。\n让{队友}学会魔攻上升！"
+   "translation": "梦幻骑士？行吧。{FF03}让{FF05}学会魔攻上升！"
   },
   {
    "id": "F0049-000096EC",
@@ -1592,7 +1526,7 @@
    "byte_len": 58,
    "max_bytes": 58,
    "source": "ア、アイシアだって？{FF03}{FF05}にスクカジャを習得させてやるよ！",
-   "translation": "居、居然是艾西雅？\n让{队友}学会命中上升！"
+   "translation": "居、居然是艾西雅？{FF03}让{FF05}学会命中上升！"
   },
   {
    "id": "F0049-00009726",
@@ -1600,7 +1534,7 @@
    "byte_len": 148,
    "max_bytes": 148,
    "source": "おいおい、スノポケラーだって？{FF03}こいつはスゲえや！{FF03}これを持っているヤツは初めてだ！{FF03}大事にするこった！{FF02}特別だ、あんたにはソーマを１０個やるよ！",
-   "translation": "喂喂，居然是雪ＰＯＣＫＥＬＥＲ？\n这下厉害了！\n我还是第一次见带有这个的人！\n我会好好珍惜的！※※※※※※※破例给你１０个苏摩！"
+   "translation": "喂喂，居然是雪ＰＯＣＫＥＬＥＲ？{FF03}这下厉害了！{FF03}我还是第一次见带有这个的人！{FF03}我会好好珍惜的！{FF02}破例给你１０个苏摩！"
   },
   {
    "id": "F0049-000097BA",
@@ -1608,7 +1542,7 @@
    "byte_len": 110,
    "max_bytes": 110,
    "source": "デビルチルドレンか、悪くないねえ{FF03}あんたにはドクロの弾丸を１０個やるよ{FF03}危険な代物だ、よく考えて使うこった！",
-   "translation": "恶魔之子啊，不错呢。\n给你１０个骷髅弹丸。\n这东西很危险，使用前要想好啊！"
+   "translation": "恶魔之子啊，不错呢。{FF03}给你１０个骷髅弹丸。{FF03}这东西很危险，使用前要想好啊！"
   },
   {
    "id": "F0049-00009828",
@@ -1616,7 +1550,7 @@
    "byte_len": 34,
    "max_bytes": 34,
    "source": "{FF02}どなたも回復しないのですねー！",
-   "translation": "※※※※※※※不用给任何人回复对吧～！"
+   "translation": "{FF02}不用给任何人回复对吧～！"
   },
   {
    "id": "F0049-0000984A",
@@ -1624,7 +1558,7 @@
    "byte_len": 28,
    "max_bytes": 28,
    "source": "{FF02}だれも回復しないのだな！",
-   "translation": "※※※※※※※不用给任何人回复对吧！"
+   "translation": "{FF02}不用给任何人回复对吧！"
   },
   {
    "id": "F0049-00009866",
@@ -1632,7 +1566,7 @@
    "byte_len": 36,
    "max_bytes": 36,
    "source": "{FF02}回復エルフ：こちら回復の泉でーす",
-   "translation": "※※※※※※※回复艾尔夫：这里是回复之泉～"
+   "translation": "{FF02}回复艾尔夫：这里是回复之泉～"
   },
   {
    "id": "F0049-0000988A",
@@ -1640,7 +1574,7 @@
    "byte_len": 20,
    "max_bytes": 20,
    "source": "{FF02}何をお望みかな？",
-   "translation": "※※※※※※※你想要什么呢？"
+   "translation": "{FF02}你想要什么呢？"
   },
   {
    "id": "F0049-0000989E",
@@ -1664,7 +1598,7 @@
    "byte_len": 20,
    "max_bytes": 20,
    "source": "{FF02}何をしますかー？",
-   "translation": "※※※※※※※要做什么呢～？"
+   "translation": "{FF02}要做什么呢～？"
   },
   {
    "id": "F0049-000098F8",
@@ -1672,7 +1606,7 @@
    "byte_len": 20,
    "max_bytes": 20,
    "source": "{FF02}何をお望みかな？",
-   "translation": "※※※※※※※你想做什么呢？"
+   "translation": "{FF02}你想做什么呢？"
   },
   {
    "id": "F0049-0000990C",
@@ -1680,7 +1614,7 @@
    "byte_len": 22,
    "max_bytes": 22,
    "source": "{FF02}皆さん元気でーす！",
-   "translation": "※※※※※※※大家恢复健康了～！"
+   "translation": "{FF02}大家恢复健康了～！"
   },
   {
    "id": "F0049-00009922",
@@ -1688,7 +1622,7 @@
    "byte_len": 24,
    "max_bytes": 24,
    "source": "{FF02}みんな元気じゃぞい！",
-   "translation": "※※※※※※※大家都恢复健康了！"
+   "translation": "{FF02}大家都恢复健康了！"
   },
   {
    "id": "F0049-0000993A",
@@ -1696,7 +1630,7 @@
    "byte_len": 24,
    "max_bytes": 24,
    "source": "{FF02}皆さん生きてまーす！",
-   "translation": "※※※※※※※大家都活过来了～！"
+   "translation": "{FF02}大家都活过来了～！"
   },
   {
    "id": "F0049-00009952",
@@ -1704,7 +1638,7 @@
    "byte_len": 24,
    "max_bytes": 24,
    "source": "{FF02}みんな生きとるぞい！",
-   "translation": "※※※※※※※大家都活过来了！"
+   "translation": "{FF02}大家都活过来了！"
   },
   {
    "id": "F0049-0000996A",
@@ -1712,7 +1646,7 @@
    "byte_len": 30,
    "max_bytes": 30,
    "source": "{FF02}またいらしてくださいねー！",
-   "translation": "※※※※※※※欢迎下次再来哦～！"
+   "translation": "{FF02}欢迎下次再来哦～！"
   },
   {
    "id": "F0049-00009988",
@@ -1720,7 +1654,7 @@
    "byte_len": 32,
    "max_bytes": 32,
    "source": "{FF02}せいぜい、がんばってくれや！",
-   "translation": "※※※※※※※好好加油吧！"
+   "translation": "{FF02}好好加油吧！"
   },
   {
    "id": "F0049-000099A8",
@@ -1728,7 +1662,7 @@
    "byte_len": 32,
    "max_bytes": 32,
    "source": "{FF02}どなたも呪われていませーん！",
-   "translation": "※※※※※※※谁也没被诅咒～！"
+   "translation": "{FF02}谁也没被诅咒～！"
   },
   {
    "id": "F0049-000099C8",
@@ -1736,7 +1670,7 @@
    "byte_len": 26,
    "max_bytes": 26,
    "source": "{FF02}誰も呪われとらんぞい！",
-   "translation": "※※※※※※※谁也没被诅咒啊！"
+   "translation": "{FF02}谁也没被诅咒啊！"
   },
   {
    "id": "F0049-000099E2",
@@ -1856,7 +1790,7 @@
    "byte_len": 12,
    "max_bytes": 12,
    "source": "交換品{FF00}{FFFE}",
-   "translation": "兑换物{00FF}　"
+   "translation": "兑换物{FF00}{FFFE}"
   },
   {
    "id": "F0049-00009AA2",
@@ -1864,7 +1798,7 @@
    "byte_len": 14,
    "max_bytes": 14,
    "source": "交換精霊{FF00}{FFFE}",
-   "translation": "兑换精灵{00FF}　"
+   "translation": "兑换精灵{FF00}{FFFE}"
   },
   {
    "id": "F0049-00009AB0",
@@ -1872,7 +1806,7 @@
    "byte_len": 12,
    "max_bytes": 12,
    "source": "治療費{FF00}{FFFE}",
-   "translation": "治疗费{00FF}　"
+   "translation": "治疗费{FF00}{FFFE}"
   },
   {
    "id": "F0049-00009ABC",
@@ -1880,7 +1814,7 @@
    "byte_len": 10,
    "max_bytes": 10,
    "source": "鑑定{FF00}{FFFE}",
-   "translation": "鉴定{00FF}　"
+   "translation": "鉴定{FF00}{FFFE}"
   },
   {
    "id": "F0049-00009AC6",
@@ -1888,7 +1822,7 @@
    "byte_len": 10,
    "max_bytes": 10,
    "source": "説明{FF00}{FFFE}",
-   "translation": "说明{00FF}　"
+   "translation": "说明{FF00}{FFFE}"
   },
   {
    "id": "F0049-00009AD0",
@@ -1904,7 +1838,7 @@
    "byte_len": 34,
    "max_bytes": 34,
    "source": "{道具}は{FF03}￡{FF71}になるけど{FF03}いいかね？",
-   "translation": "{道具}需要\n￡{数值0}，\n确定吗？"
+   "translation": "{道具}需要{FF03}￡{FF71}，{FF03}确定吗？"
   },
   {
    "id": "F0049-00009B0E",
@@ -1928,7 +1862,7 @@
    "byte_len": 54,
    "max_bytes": 54,
    "source": "鑑定屋：もう\nはたたんじまったよ{FF03}帰ってくれないか！",
-   "translation": "鉴定店：\n已经关门了啊。\n赶快回去吧！"
+   "translation": "鉴定店：\n已经关门了啊。{FF03}赶快回去吧！"
   }
  ],
  "F0092": [
@@ -2410,7 +2344,7 @@
    "byte_len": 46,
    "max_bytes": 46,
    "source": "校長の？道掘った１{FFFE}シナリオ４・セベクツボ１",
-   "translation": "校长？挖路１　剧情４・索贝克之壶１"
+   "translation": "校长？挖路１{FFFE}剧情４・索贝克之壶１"
   },
   {
    "id": "F0092-00008460",
@@ -2418,7 +2352,7 @@
    "byte_len": 46,
    "max_bytes": 46,
    "source": "校長の？道掘った２{FFFE}シナリオ４・セベクツボ２",
-   "translation": "校长？挖路２　剧情４・索贝克之壶２"
+   "translation": "校长？挖路２{FFFE}剧情４・索贝克之壶２"
   },
   {
    "id": "F0092-0000848E",
@@ -2426,7 +2360,7 @@
    "byte_len": 46,
    "max_bytes": 46,
    "source": "校長の？道掘った３{FFFE}シナリオ４・セベクツボ３",
-   "translation": "校长？挖路３　剧情４・索贝克之壶３"
+   "translation": "校长？挖路３{FFFE}剧情４・索贝克之壶３"
   },
   {
    "id": "F0092-000084BC",
@@ -2434,7 +2368,7 @@
    "byte_len": 46,
    "max_bytes": 46,
    "source": "校長の？道掘った４{FFFE}シナリオ４・セベクツボ４",
-   "translation": "校长？挖路４　剧情４・索贝克之壶４"
+   "translation": "校长？挖路４{FFFE}剧情４・索贝克之壶４"
   },
   {
    "id": "F0092-000084EA",
@@ -3874,7 +3808,7 @@
    "byte_len": 32,
    "max_bytes": 32,
    "source": "真女神転生{FFFE}ボーナスもらったよ",
-   "translation": "真女神转生　奖励得到了哦"
+   "translation": "真女神转生{FFFE}奖励得到了哦"
   },
   {
    "id": "F0092-00009788",
@@ -3882,7 +3816,7 @@
    "byte_len": 34,
    "max_bytes": 34,
    "source": "真女神転生２{FFFE}ボーナスもらったよ",
-   "translation": "真女神转生２　奖励得到了哦"
+   "translation": "真女神转生２{FFFE}奖励得到了哦"
   },
   {
    "id": "F0092-000097AA",
@@ -3898,7 +3832,7 @@
    "byte_len": 30,
    "max_bytes": 30,
    "source": "峠ＭＡＸ{FFFE}ボーナスもらったよ",
-   "translation": "峠ＭＡＸ　奖励得到了哦"
+   "translation": "峠ＭＡＸ{FFFE}奖励得到了哦"
   },
   {
    "id": "F0092-000097E4",
@@ -3906,7 +3840,7 @@
    "byte_len": 32,
    "max_bytes": 32,
    "source": "峠ＭＡＸ２{FFFE}ボーナスもらったよ",
-   "translation": "峠ＭＡＸ２　奖励得到了哦"
+   "translation": "峠ＭＡＸ２{FFFE}奖励得到了哦"
   },
   {
    "id": "F0092-00009804",
@@ -4146,7 +4080,7 @@
    "byte_len": 20,
    "max_bytes": 20,
    "source": "大天使{FFFE}{FFFE}ミカエル",
-   "translation": "大天使　　米迦勒"
+   "translation": "大天使{FFFE}{FFFE}米迦勒"
   },
   {
    "id": "F0092-00009AA2",
@@ -4154,7 +4088,7 @@
    "byte_len": 22,
    "max_bytes": 22,
    "source": "大天使{FFFE}{FFFE}ガブリエル",
-   "translation": "大天使　　加百列"
+   "translation": "大天使{FFFE}{FFFE}加百列"
   },
   {
    "id": "F0092-00009AB8",
@@ -4162,7 +4096,7 @@
    "byte_len": 22,
    "max_bytes": 22,
    "source": "大天使{FFFE}{FFFE}ラファエル",
-   "translation": "大天使　　拉斐尔"
+   "translation": "大天使{FFFE}{FFFE}拉斐尔"
   },
   {
    "id": "F0092-00009ACE",
@@ -4170,7 +4104,7 @@
    "byte_len": 20,
    "max_bytes": 20,
    "source": "大天使{FFFE}{FFFE}ウリエル",
-   "translation": "大天使　　乌列尔"
+   "translation": "大天使{FFFE}{FFFE}乌列尔"
   },
   {
    "id": "F0092-00009AE2",
@@ -4178,7 +4112,7 @@
    "byte_len": 22,
    "max_bytes": 22,
    "source": "大天使{FFFE}{FFFE}オファニム",
-   "translation": "大天使　　座天使"
+   "translation": "大天使{FFFE}{FFFE}座天使"
   },
   {
    "id": "F0092-00009AF8",
@@ -4186,7 +4120,7 @@
    "byte_len": 20,
    "max_bytes": 20,
    "source": "大天使{FFFE}{FFFE}ラグエル",
-   "translation": "大天使　　拉贵尔"
+   "translation": "大天使{FFFE}{FFFE}拉贵尔"
   },
   {
    "id": "F0092-00009B0C",
@@ -4194,7 +4128,7 @@
    "byte_len": 20,
    "max_bytes": 20,
    "source": "大天使{FFFE}{FFFE}ハニエル",
-   "translation": "大天使　　汉尼尔"
+   "translation": "大天使{FFFE}{FFFE}汉尼尔"
   },
   {
    "id": "F0092-00009B20",
@@ -4202,7 +4136,7 @@
    "byte_len": 22,
    "max_bytes": 22,
    "source": "大天使{FFFE}{FFFE}ザフキエル",
-   "translation": "大天使　　亚夫结"
+   "translation": "大天使{FFFE}{FFFE}亚夫结"
   },
   {
    "id": "F0092-00009B36",
@@ -4210,7 +4144,7 @@
    "byte_len": 20,
    "max_bytes": 20,
    "source": "大天使{FFFE}{FFFE}ラミエル",
-   "translation": "大天使　　雷米尔"
+   "translation": "大天使{FFFE}{FFFE}雷米尔"
   },
   {
    "id": "F0092-00009B4A",
@@ -4218,7 +4152,7 @@
    "byte_len": 22,
    "max_bytes": 22,
    "source": "天津神{FFFE}{FFFE}アマテラス",
-   "translation": "天津神　　天照"
+   "translation": "天津神{FFFE}{FFFE}天照"
   },
   {
    "id": "F0092-00009B60",
@@ -4226,7 +4160,7 @@
    "byte_len": 20,
    "max_bytes": 20,
    "source": "天津神{FFFE}{FFFE}ツクヨミ",
-   "translation": "天津神　　月读"
+   "translation": "天津神{FFFE}{FFFE}月读"
   },
   {
    "id": "F0092-00009B74",
@@ -4234,7 +4168,7 @@
    "byte_len": 24,
    "max_bytes": 24,
    "source": "天津神{FFFE}{FFFE}タケミカヅチ",
-   "translation": "天津神　　建御雷"
+   "translation": "天津神{FFFE}{FFFE}建御雷"
   },
   {
    "id": "F0092-00009B8C",
@@ -4242,7 +4176,7 @@
    "byte_len": 24,
    "max_bytes": 24,
    "source": "天津神{FFFE}{FFFE}ヒノカグツチ",
-   "translation": "天津神　　火之迦具土"
+   "translation": "天津神{FFFE}{FFFE}火之迦具土"
   },
   {
    "id": "F0092-00009BA4",
@@ -4250,7 +4184,7 @@
    "byte_len": 22,
    "max_bytes": 22,
    "source": "天津神{FFFE}{FFFE}オモイカネ",
-   "translation": "天津神　　思兼"
+   "translation": "天津神{FFFE}{FFFE}思兼"
   },
   {
    "id": "F0092-00009BBA",
@@ -4258,7 +4192,7 @@
    "byte_len": 22,
    "max_bytes": 22,
    "source": "天津神{FFFE}{FFFE}タヂカラオ",
-   "translation": "天津神　　手力男"
+   "translation": "天津神{FFFE}{FFFE}手力男"
   },
   {
    "id": "F0092-00009BD0",
@@ -4266,7 +4200,7 @@
    "byte_len": 26,
    "max_bytes": 26,
    "source": "天津神{FFFE}{FFFE}アメノトリフネ",
-   "translation": "天津神　　天鸟船"
+   "translation": "天津神{FFFE}{FFFE}天鸟船"
   },
   {
    "id": "F0092-00009BEA",
@@ -4274,7 +4208,7 @@
    "byte_len": 22,
    "max_bytes": 22,
    "source": "霊鳥{FFFE}{FFFE}{FFFE}{FFFE}ガルーダ",
-   "translation": "灵鸟　　　　迦楼罗"
+   "translation": "灵鸟{FFFE}{FFFE}{FFFE}{FFFE}迦楼罗"
   },
   {
    "id": "F0092-00009C00",
@@ -4282,7 +4216,7 @@
    "byte_len": 20,
    "max_bytes": 20,
    "source": "霊鳥{FFFE}{FFFE}{FFFE}{FFFE}スザク",
-   "translation": "灵鸟　　　　朱雀"
+   "translation": "灵鸟{FFFE}{FFFE}{FFFE}{FFFE}朱雀"
   },
   {
    "id": "F0092-00009C14",
@@ -4290,7 +4224,7 @@
    "byte_len": 24,
    "max_bytes": 24,
    "source": "霊鳥{FFFE}{FFFE}{FFFE}{FFFE}ヤタガラス",
-   "translation": "灵鸟　　　　八咫乌"
+   "translation": "灵鸟{FFFE}{FFFE}{FFFE}{FFFE}八咫乌"
   },
   {
    "id": "F0092-00009C2C",
@@ -4298,7 +4232,7 @@
    "byte_len": 26,
    "max_bytes": 26,
    "source": "霊鳥{FFFE}{FFFE}{FFFE}{FFFE}フェニックス",
-   "translation": "灵鸟　　　　不死鸟"
+   "translation": "灵鸟{FFFE}{FFFE}{FFFE}{FFFE}不死鸟"
   },
   {
    "id": "F0092-00009C46",
@@ -4306,7 +4240,7 @@
    "byte_len": 24,
    "max_bytes": 24,
    "source": "霊鳥{FFFE}{FFFE}{FFFE}{FFFE}ジャターユ",
-   "translation": "灵鸟　　　　佳塔由"
+   "translation": "灵鸟{FFFE}{FFFE}{FFFE}{FFFE}佳塔由"
   },
   {
    "id": "F0092-00009C5E",
@@ -4314,7 +4248,7 @@
    "byte_len": 22,
    "max_bytes": 22,
    "source": "霊鳥{FFFE}{FFFE}{FFFE}{FFFE}ホウオウ",
-   "translation": "灵鸟　　　　凤凰"
+   "translation": "灵鸟{FFFE}{FFFE}{FFFE}{FFFE}凤凰"
   },
   {
    "id": "F0092-00009C74",
@@ -4322,7 +4256,7 @@
    "byte_len": 22,
    "max_bytes": 22,
    "source": "霊鳥{FFFE}{FFFE}{FFFE}{FFFE}スパルナ",
-   "translation": "灵鸟　　　　苏钵剌尼"
+   "translation": "灵鸟{FFFE}{FFFE}{FFFE}{FFFE}苏钵剌尼"
   },
   {
    "id": "F0092-00009C8A",
@@ -4330,7 +4264,7 @@
    "byte_len": 20,
    "max_bytes": 20,
    "source": "女神{FFFE}{FFFE}{FFFE}{FFFE}ノルン",
-   "translation": "女神　　　　诺伦"
+   "translation": "女神{FFFE}{FFFE}{FFFE}{FFFE}诺伦"
   },
   {
    "id": "F0092-00009C9E",
@@ -4338,7 +4272,7 @@
    "byte_len": 24,
    "max_bytes": 24,
    "source": "女神{FFFE}{FFFE}{FFFE}{FFFE}ラクシュミ",
-   "translation": "女神　　　　拉克希米"
+   "translation": "女神{FFFE}{FFFE}{FFFE}{FFFE}拉克希米"
   },
   {
    "id": "F0092-00009CB6",
@@ -4346,7 +4280,7 @@
    "byte_len": 28,
    "max_bytes": 28,
    "source": "女神{FFFE}{FFFE}{FFFE}{FFFE}パールヴァティ",
-   "translation": "女神　　　　帕尔瓦蒂"
+   "translation": "女神{FFFE}{FFFE}{FFFE}{FFFE}帕尔瓦蒂"
   },
   {
    "id": "F0092-00009CD2",
@@ -4354,7 +4288,7 @@
    "byte_len": 22,
    "max_bytes": 22,
    "source": "女神{FFFE}{FFFE}{FFFE}{FFFE}フレイア",
-   "translation": "女神　　　　芙蕾雅"
+   "translation": "女神{FFFE}{FFFE}{FFFE}{FFFE}芙蕾雅"
   },
   {
    "id": "F0092-00009CE8",
@@ -4362,7 +4296,7 @@
    "byte_len": 22,
    "max_bytes": 22,
    "source": "女神{FFFE}{FFFE}{FFFE}{FFFE}ハトホル",
-   "translation": "女神　　　　哈索尔"
+   "translation": "女神{FFFE}{FFFE}{FFFE}{FFFE}哈索尔"
   },
   {
    "id": "F0092-00009CFE",
@@ -4370,7 +4304,7 @@
    "byte_len": 28,
    "max_bytes": 28,
    "source": "女神{FFFE}{FFFE}{FFFE}{FFFE}アリアンロッド",
-   "translation": "女神　　　　阿丽安罗德"
+   "translation": "女神{FFFE}{FFFE}{FFFE}{FFFE}阿丽安罗德"
   },
   {
    "id": "F0092-00009D1A",
@@ -4378,7 +4312,7 @@
    "byte_len": 26,
    "max_bytes": 26,
    "source": "女神{FFFE}{FFFE}{FFFE}{FFFE}アメノウズメ",
-   "translation": "女神　　　　天宇受卖"
+   "translation": "女神{FFFE}{FFFE}{FFFE}{FFFE}天宇受卖"
   },
   {
    "id": "F0092-00009D34",
@@ -4386,7 +4320,7 @@
    "byte_len": 22,
    "max_bytes": 22,
    "source": "魔神{FFFE}{FFFE}{FFFE}{FFFE}アルダー",
-   "translation": "魔神　　　　阿尔达"
+   "translation": "魔神{FFFE}{FFFE}{FFFE}{FFFE}阿尔达"
   },
   {
    "id": "F0092-00009D4A",
@@ -4394,7 +4328,7 @@
    "byte_len": 28,
    "max_bytes": 28,
    "source": "魔神{FFFE}{FFFE}{FFFE}{FFFE}ヴィローシャナ",
-   "translation": "魔神　　　　毗户遮那"
+   "translation": "魔神{FFFE}{FFFE}{FFFE}{FFFE}毗户遮那"
   },
   {
    "id": "F0092-00009D66",
@@ -4402,7 +4336,7 @@
    "byte_len": 20,
    "max_bytes": 20,
    "source": "魔神{FFFE}{FFFE}{FFFE}{FFFE}カルキ",
-   "translation": "魔神　　　　迦尔吉"
+   "translation": "魔神{FFFE}{FFFE}{FFFE}{FFFE}迦尔吉"
   },
   {
    "id": "F0092-00009D7A",
@@ -4410,7 +4344,7 @@
    "byte_len": 20,
    "max_bytes": 20,
    "source": "魔神{FFFE}{FFFE}{FFFE}{FFFE}バール",
-   "translation": "魔神　　　　巴力"
+   "translation": "魔神{FFFE}{FFFE}{FFFE}{FFFE}巴力"
   },
   {
    "id": "F0092-00009D8E",
@@ -4418,7 +4352,7 @@
    "byte_len": 24,
    "max_bytes": 24,
    "source": "魔神{FFFE}{FFFE}{FFFE}{FFFE}オーディン",
-   "translation": "魔神　　　　奥丁"
+   "translation": "魔神{FFFE}{FFFE}{FFFE}{FFFE}奥丁"
   },
   {
    "id": "F0092-00009DA6",
@@ -4426,7 +4360,7 @@
    "byte_len": 20,
    "max_bytes": 20,
    "source": "魔神{FFFE}{FFFE}{FFFE}{FFFE}ホルス",
-   "translation": "魔神　　　　荷鲁斯"
+   "translation": "魔神{FFFE}{FFFE}{FFFE}{FFFE}荷鲁斯"
   },
   {
    "id": "F0092-00009DBA",
@@ -4434,7 +4368,7 @@
    "byte_len": 20,
    "max_bytes": 20,
    "source": "魔神{FFFE}{FFFE}{FFFE}{FFFE}トール",
-   "translation": "魔神　　　　托尔"
+   "translation": "魔神{FFFE}{FFFE}{FFFE}{FFFE}托尔"
   },
   {
    "id": "F0092-00009DCE",
@@ -4442,7 +4376,7 @@
    "byte_len": 22,
    "max_bytes": 22,
    "source": "魔神{FFFE}{FFFE}{FFFE}{FFFE}インドラ",
-   "translation": "魔神　　　　因陀罗"
+   "translation": "魔神{FFFE}{FFFE}{FFFE}{FFFE}因陀罗"
   },
   {
    "id": "F0092-00009DE4",
@@ -4450,7 +4384,7 @@
    "byte_len": 24,
    "max_bytes": 24,
    "source": "魔神{FFFE}{FFFE}{FFFE}{FFFE}ベロボーグ",
-   "translation": "魔神　　　　贝洛伯格"
+   "translation": "魔神{FFFE}{FFFE}{FFFE}{FFFE}贝洛伯格"
   },
   {
    "id": "F0092-00009DFC",
@@ -4458,7 +4392,7 @@
    "byte_len": 20,
    "max_bytes": 20,
    "source": "魔神{FFFE}{FFFE}{FFFE}{FFFE}トート",
-   "translation": "魔神　　　　图特"
+   "translation": "魔神{FFFE}{FFFE}{FFFE}{FFFE}图特"
   },
   {
    "id": "F0092-00009E10",
@@ -4466,7 +4400,7 @@
    "byte_len": 20,
    "max_bytes": 20,
    "source": "神獣{FFFE}{FFFE}{FFFE}{FFFE}バロン",
-   "translation": "神兽　　　　巴隆"
+   "translation": "神兽{FFFE}{FFFE}{FFFE}{FFFE}巴隆"
   },
   {
    "id": "F0092-00009E24",
@@ -4474,7 +4408,7 @@
    "byte_len": 20,
    "max_bytes": 20,
    "source": "神獣{FFFE}{FFFE}{FFFE}{FFFE}ゲンブ",
-   "translation": "神兽　　　　玄武"
+   "translation": "神兽{FFFE}{FFFE}{FFFE}{FFFE}玄武"
   },
   {
    "id": "F0092-00009E38",
@@ -4482,7 +4416,7 @@
    "byte_len": 22,
    "max_bytes": 22,
    "source": "神獣{FFFE}{FFFE}{FFFE}{FFFE}アヌビス",
-   "translation": "神兽　　　　阿努比斯"
+   "translation": "神兽{FFFE}{FFFE}{FFFE}{FFFE}阿努比斯"
   },
   {
    "id": "F0092-00009E4E",
@@ -4490,7 +4424,7 @@
    "byte_len": 24,
    "max_bytes": 24,
    "source": "神獣{FFFE}{FFFE}{FFFE}{FFFE}ナラシンハ",
-   "translation": "神兽　　　　那罗辛哈"
+   "translation": "神兽{FFFE}{FFFE}{FFFE}{FFFE}那罗辛哈"
   },
   {
    "id": "F0092-00009E66",
@@ -4498,7 +4432,7 @@
    "byte_len": 26,
    "max_bytes": 26,
    "source": "神獣{FFFE}{FFFE}{FFFE}{FFFE}スフィンクス",
-   "translation": "神兽　　　　斯芬克斯"
+   "translation": "神兽{FFFE}{FFFE}{FFFE}{FFFE}斯芬克斯"
   },
   {
    "id": "F0092-00009E80",
@@ -4506,7 +4440,7 @@
    "byte_len": 20,
    "max_bytes": 20,
    "source": "神獣{FFFE}{FFFE}{FFFE}{FFFE}セベク",
-   "translation": "神兽　　　　索贝克"
+   "translation": "神兽{FFFE}{FFFE}{FFFE}{FFFE}索贝克"
   },
   {
    "id": "F0092-00009E94",
@@ -4514,7 +4448,7 @@
    "byte_len": 22,
    "max_bytes": 22,
    "source": "聖獣{FFFE}{FFFE}{FFFE}{FFFE}ビャッコ",
-   "translation": "圣兽　　　　白虎"
+   "translation": "圣兽{FFFE}{FFFE}{FFFE}{FFFE}白虎"
   },
   {
    "id": "F0092-00009EAA",
@@ -4522,7 +4456,7 @@
    "byte_len": 24,
    "max_bytes": 24,
    "source": "聖獣{FFFE}{FFFE}{FFFE}{FFFE}パピルサグ",
-   "translation": "圣兽　　　　帕比尔萨格"
+   "translation": "圣兽{FFFE}{FFFE}{FFFE}{FFFE}帕比尔萨格"
   },
   {
    "id": "F0092-00009EC2",
@@ -4530,7 +4464,7 @@
    "byte_len": 22,
    "max_bytes": 22,
    "source": "聖獣{FFFE}{FFFE}{FFFE}{FFFE}バステト",
-   "translation": "圣兽　　　　芭斯特"
+   "translation": "圣兽{FFFE}{FFFE}{FFFE}{FFFE}芭斯特"
   },
   {
    "id": "F0092-00009ED8",
@@ -4538,7 +4472,7 @@
    "byte_len": 20,
    "max_bytes": 20,
    "source": "聖獣{FFFE}{FFFE}{FFFE}{FFFE}アピス",
-   "translation": "圣兽　　　　阿庇斯"
+   "translation": "圣兽{FFFE}{FFFE}{FFFE}{FFFE}阿庇斯"
   },
   {
    "id": "F0092-00009EEC",
@@ -4546,7 +4480,7 @@
    "byte_len": 24,
    "max_bytes": 24,
    "source": "聖獣{FFFE}{FFFE}{FFFE}{FFFE}ユニコーン",
-   "translation": "圣兽　　　　独角兽"
+   "translation": "圣兽{FFFE}{FFFE}{FFFE}{FFFE}独角兽"
   },
   {
    "id": "F0092-00009F04",
@@ -4554,7 +4488,7 @@
    "byte_len": 20,
    "max_bytes": 20,
    "source": "聖獣{FFFE}{FFFE}{FFFE}{FFFE}ヘケト",
-   "translation": "圣兽　　　　海奎特"
+   "translation": "圣兽{FFFE}{FFFE}{FFFE}{FFFE}海奎特"
   },
   {
    "id": "F0092-00009F18",
@@ -4562,7 +4496,7 @@
    "byte_len": 26,
    "max_bytes": 26,
    "source": "精霊{FFFE}{FFFE}{FFFE}{FFFE}サラマンダー",
-   "translation": "精灵　　　　萨拉曼达"
+   "translation": "精灵{FFFE}{FFFE}{FFFE}{FFFE}萨拉曼达"
   },
   {
    "id": "F0092-00009F32",
@@ -4570,7 +4504,7 @@
    "byte_len": 26,
    "max_bytes": 26,
    "source": "精霊{FFFE}{FFFE}{FFFE}{FFFE}ウンディーネ",
-   "translation": "精灵　　　　温蒂妮"
+   "translation": "精灵{FFFE}{FFFE}{FFFE}{FFFE}温蒂妮"
   },
   {
    "id": "F0092-00009F4C",
@@ -4578,7 +4512,7 @@
    "byte_len": 20,
    "max_bytes": 20,
    "source": "精霊{FFFE}{FFFE}{FFFE}{FFFE}シルフ",
-   "translation": "精灵　　　　西尔芙"
+   "translation": "精灵{FFFE}{FFFE}{FFFE}{FFFE}西尔芙"
   },
   {
    "id": "F0092-00009F60",
@@ -4586,7 +4520,7 @@
    "byte_len": 20,
    "max_bytes": 20,
    "source": "精霊{FFFE}{FFFE}{FFFE}{FFFE}ノーム",
-   "translation": "精灵　　　　诺姆"
+   "translation": "精灵{FFFE}{FFFE}{FFFE}{FFFE}诺姆"
   },
   {
    "id": "F0092-00009F74",
@@ -4594,7 +4528,7 @@
    "byte_len": 26,
    "max_bytes": 26,
    "source": "精霊{FFFE}{FFFE}{FFFE}{FFFE}フレイミーズ",
-   "translation": "精灵　　　　火精灵"
+   "translation": "精灵{FFFE}{FFFE}{FFFE}{FFFE}火精灵"
   },
   {
    "id": "F0092-00009F8E",
@@ -4602,7 +4536,7 @@
    "byte_len": 24,
    "max_bytes": 24,
    "source": "精霊{FFFE}{FFFE}{FFFE}{FFFE}アクアンズ",
-   "translation": "精灵　　　　水精灵"
+   "translation": "精灵{FFFE}{FFFE}{FFFE}{FFFE}水精灵"
   },
   {
    "id": "F0092-00009FA6",
@@ -4610,7 +4544,7 @@
    "byte_len": 22,
    "max_bytes": 22,
    "source": "精霊{FFFE}{FFFE}{FFFE}{FFFE}エアロス",
-   "translation": "精灵　　　　风精灵"
+   "translation": "精灵{FFFE}{FFFE}{FFFE}{FFFE}风精灵"
   },
   {
    "id": "F0092-00009FBC",
@@ -4618,7 +4552,7 @@
    "byte_len": 24,
    "max_bytes": 24,
    "source": "精霊{FFFE}{FFFE}{FFFE}{FFFE}アーシーズ",
-   "translation": "精灵　　　　磐石精灵"
+   "translation": "精灵{FFFE}{FFFE}{FFFE}{FFFE}磐石精灵"
   },
   {
    "id": "F0092-00009FD4",
@@ -4626,7 +4560,7 @@
    "byte_len": 18,
    "max_bytes": 18,
    "source": "破壊神{FFFE}{FFFE}シヴァ",
-   "translation": "破坏神　　湿婆"
+   "translation": "破坏神{FFFE}{FFFE}湿婆"
   },
   {
    "id": "F0092-00009FE6",
@@ -4634,7 +4568,7 @@
    "byte_len": 20,
    "max_bytes": 20,
    "source": "破壊神{FFFE}{FFFE}スサノオ",
-   "translation": "破坏神　　须佐之男"
+   "translation": "破坏神{FFFE}{FFFE}须佐之男"
   },
   {
    "id": "F0092-00009FFA",
@@ -4642,7 +4576,7 @@
    "byte_len": 26,
    "max_bytes": 26,
    "source": "破壊神{FFFE}{FFFE}インドラジット",
-   "translation": "破坏神　　因陀罗耆特"
+   "translation": "破坏神{FFFE}{FFFE}因陀罗耆特"
   },
   {
    "id": "F0092-0000A014",
@@ -4650,7 +4584,7 @@
    "byte_len": 28,
    "max_bytes": 28,
    "source": "破壊神{FFFE}{FFFE}セイテンタイセイ",
-   "translation": "破坏神　　齐天大圣"
+   "translation": "破坏神{FFFE}{FFFE}齐天大圣"
   },
   {
    "id": "F0092-0000A030",
@@ -4658,7 +4592,7 @@
    "byte_len": 24,
    "max_bytes": 24,
    "source": "破壊神{FFFE}{FFFE}チェルノボグ",
-   "translation": "破坏神　　切尔诺伯格"
+   "translation": "破坏神{FFFE}{FFFE}切尔诺伯格"
   },
   {
    "id": "F0092-0000A048",
@@ -4666,7 +4600,7 @@
    "byte_len": 18,
    "max_bytes": 18,
    "source": "破壊神{FFFE}{FFFE}アレス",
-   "translation": "破坏神　　阿瑞斯"
+   "translation": "破坏神{FFFE}{FFFE}阿瑞斯"
   },
   {
    "id": "F0092-0000A05A",
@@ -4674,7 +4608,7 @@
    "byte_len": 22,
    "max_bytes": 22,
    "source": "龍神{FFFE}{FFFE}{FFFE}{FFFE}アナンタ",
-   "translation": "龙神　　　　阿难陀"
+   "translation": "龙神{FFFE}{FFFE}{FFFE}{FFFE}阿难陀"
   },
   {
    "id": "F0092-0000A070",
@@ -4682,7 +4616,7 @@
    "byte_len": 20,
    "max_bytes": 20,
    "source": "龍神{FFFE}{FFFE}{FFFE}{FFFE}ラハブ",
-   "translation": "龙神　　　　拉哈伯"
+   "translation": "龙神{FFFE}{FFFE}{FFFE}{FFFE}拉哈伯"
   },
   {
    "id": "F0092-0000A084",
@@ -4690,7 +4624,7 @@
    "byte_len": 28,
    "max_bytes": 28,
    "source": "龍神{FFFE}{FFFE}{FFFE}{FFFE}イツァム・ナー",
-   "translation": "龙神　　　　伊察姆纳"
+   "translation": "龙神{FFFE}{FFFE}{FFFE}{FFFE}伊察姆纳"
   },
   {
    "id": "F0092-0000A0A0",
@@ -4698,7 +4632,7 @@
    "byte_len": 24,
    "max_bytes": 24,
    "source": "龍神{FFFE}{FFFE}{FFFE}{FFFE}セイリュウ",
-   "translation": "龙神　　　　青龙"
+   "translation": "龙神{FFFE}{FFFE}{FFFE}{FFFE}青龙"
   },
   {
    "id": "F0092-0000A0B8",
@@ -4706,7 +4640,7 @@
    "byte_len": 28,
    "max_bytes": 28,
    "source": "龍神{FFFE}{FFFE}{FFFE}{FFFE}ケツアルカトル",
-   "translation": "龙神　　　　魁札尔科亚特尔"
+   "translation": "龙神{FFFE}{FFFE}{FFFE}{FFFE}魁札尔科亚特尔"
   },
   {
    "id": "F0092-0000A0D4",
@@ -4714,7 +4648,7 @@
    "byte_len": 22,
    "max_bytes": 22,
    "source": "龍神{FFFE}{FFFE}{FFFE}{FFFE}ペクヨン",
-   "translation": "龙神　　　　白龙"
+   "translation": "龙神{FFFE}{FFFE}{FFFE}{FFFE}白龙"
   },
   {
    "id": "F0092-0000A0EA",
@@ -4722,7 +4656,7 @@
    "byte_len": 18,
    "max_bytes": 18,
    "source": "龍神{FFFE}{FFFE}{FFFE}{FFFE}マヤ",
-   "translation": "龙神　　　　玛雅"
+   "translation": "龙神{FFFE}{FFFE}{FFFE}{FFFE}玛雅"
   },
   {
    "id": "F0092-0000A0FC",
@@ -4730,7 +4664,7 @@
    "byte_len": 20,
    "max_bytes": 20,
    "source": "地母神{FFFE}{FFFE}カーリー",
-   "translation": "地母神　　迦梨"
+   "translation": "地母神{FFFE}{FFFE}迦梨"
   },
   {
    "id": "F0092-0000A110",
@@ -4738,7 +4672,7 @@
    "byte_len": 22,
    "max_bytes": 22,
    "source": "地母神{FFFE}{FFFE}イシュタル",
-   "translation": "地母神　　伊丝塔"
+   "translation": "地母神{FFFE}{FFFE}伊丝塔"
   },
   {
    "id": "F0092-0000A126",
@@ -4746,7 +4680,7 @@
    "byte_len": 20,
    "max_bytes": 20,
    "source": "地母神{FFFE}{FFFE}ドルガー",
-   "translation": "地母神　　杜尔迦"
+   "translation": "地母神{FFFE}{FFFE}杜尔迦"
   },
   {
    "id": "F0092-0000A13A",
@@ -4754,7 +4688,7 @@
    "byte_len": 22,
    "max_bytes": 22,
    "source": "地母神{FFFE}{FFFE}キクリヒメ",
-   "translation": "地母神　　菊理姬"
+   "translation": "地母神{FFFE}{FFFE}菊理姬"
   },
   {
    "id": "F0092-0000A150",
@@ -4762,7 +4696,7 @@
    "byte_len": 22,
    "max_bytes": 22,
    "source": "地母神{FFFE}{FFFE}ハリティー",
-   "translation": "地母神　　诃梨帝母"
+   "translation": "地母神{FFFE}{FFFE}诃梨帝母"
   },
   {
    "id": "F0092-0000A166",
@@ -4770,7 +4704,7 @@
    "byte_len": 22,
    "max_bytes": 22,
    "source": "地母神{FFFE}{FFFE}タウエレト",
-   "translation": "地母神　　塔沃里特"
+   "translation": "地母神{FFFE}{FFFE}塔沃里特"
   },
   {
    "id": "F0092-0000A17C",
@@ -4778,7 +4712,7 @@
    "byte_len": 20,
    "max_bytes": 20,
    "source": "地母神{FFFE}{FFFE}ヴェスタ",
-   "translation": "地母神　　维斯塔"
+   "translation": "地母神{FFFE}{FFFE}维斯塔"
   },
   {
    "id": "F0092-0000A190",
@@ -4786,7 +4720,7 @@
    "byte_len": 22,
    "max_bytes": 22,
    "source": "国津神{FFFE}{FFFE}アラハバキ",
-   "translation": "国津神　　荒波吐"
+   "translation": "国津神{FFFE}{FFFE}荒波吐"
   },
   {
    "id": "F0092-0000A1A6",
@@ -4794,7 +4728,7 @@
    "byte_len": 24,
    "max_bytes": 24,
    "source": "国津神{FFFE}{FFFE}タケミナカタ",
-   "translation": "国津神　　建御名方"
+   "translation": "国津神{FFFE}{FFFE}建御名方"
   },
   {
    "id": "F0092-0000A1BE",
@@ -4802,7 +4736,7 @@
    "byte_len": 22,
    "max_bytes": 22,
    "source": "国津神{FFFE}{FFFE}オオナムチ",
-   "translation": "国津神　　大己贵"
+   "translation": "国津神{FFFE}{FFFE}大己贵"
   },
   {
    "id": "F0092-0000A1D4",
@@ -4810,7 +4744,7 @@
    "byte_len": 24,
    "max_bytes": 24,
    "source": "国津神{FFFE}{FFFE}コトシロヌシ",
-   "translation": "国津神　　事代主"
+   "translation": "国津神{FFFE}{FFFE}事代主"
   },
   {
    "id": "F0092-0000A1EC",
@@ -4818,7 +4752,7 @@
    "byte_len": 22,
    "max_bytes": 22,
    "source": "国津神{FFFE}{FFFE}サルタヒコ",
-   "translation": "国津神　　猿田彦"
+   "translation": "国津神{FFFE}{FFFE}猿田彦"
   },
   {
    "id": "F0092-0000A202",
@@ -4826,7 +4760,7 @@
    "byte_len": 24,
    "max_bytes": 24,
    "source": "国津神{FFFE}{FFFE}ヒトコトヌシ",
-   "translation": "国津神　　一言主"
+   "translation": "国津神{FFFE}{FFFE}一言主"
   },
   {
    "id": "F0092-0000A21A",
@@ -4834,7 +4768,7 @@
    "byte_len": 24,
    "max_bytes": 24,
    "source": "国津神{FFFE}{FFFE}スクナヒコナ",
-   "translation": "国津神　　少彦名"
+   "translation": "国津神{FFFE}{FFFE}少彦名"
   },
   {
    "id": "F0092-0000A232",
@@ -4842,7 +4776,7 @@
    "byte_len": 24,
    "max_bytes": 24,
    "source": "国津神{FFFE}{FFFE}オオヤマツミ",
-   "translation": "国津神　　大山津见"
+   "translation": "国津神{FFFE}{FFFE}大山津见"
   },
   {
    "id": "F0092-0000A24A",
@@ -4850,7 +4784,7 @@
    "byte_len": 24,
    "max_bytes": 24,
    "source": "天使{FFFE}{FFFE}{FFFE}{FFFE}ドミニオン",
-   "translation": "天使　　　　主天使"
+   "translation": "天使{FFFE}{FFFE}{FFFE}{FFFE}主天使"
   },
   {
    "id": "F0092-0000A262",
@@ -4858,7 +4792,7 @@
    "byte_len": 26,
    "max_bytes": 26,
    "source": "天使{FFFE}{FFFE}{FFFE}{FFFE}ヴァーチャー",
-   "translation": "天使　　　　力天使"
+   "translation": "天使{FFFE}{FFFE}{FFFE}{FFFE}力天使"
   },
   {
    "id": "F0092-0000A27C",
@@ -4866,7 +4800,7 @@
    "byte_len": 20,
    "max_bytes": 20,
    "source": "天使{FFFE}{FFFE}{FFFE}{FFFE}パワー",
-   "translation": "天使　　　　能天使"
+   "translation": "天使{FFFE}{FFFE}{FFFE}{FFFE}能天使"
   },
   {
    "id": "F0092-0000A290",
@@ -4874,7 +4808,7 @@
    "byte_len": 30,
    "max_bytes": 30,
    "source": "天使{FFFE}{FFFE}{FFFE}{FFFE}プリンシパリティ",
-   "translation": "天使　　　　权天使"
+   "translation": "天使{FFFE}{FFFE}{FFFE}{FFFE}权天使"
   },
   {
    "id": "F0092-0000A2AE",
@@ -4882,7 +4816,7 @@
    "byte_len": 30,
    "max_bytes": 30,
    "source": "天使{FFFE}{FFFE}{FFFE}{FFFE}アークエンジェル",
-   "translation": "天使　　　　大天使"
+   "translation": "天使{FFFE}{FFFE}{FFFE}{FFFE}大天使"
   },
   {
    "id": "F0092-0000A2CC",
@@ -4890,7 +4824,7 @@
    "byte_len": 24,
    "max_bytes": 24,
    "source": "天使{FFFE}{FFFE}{FFFE}{FFFE}エンジェル",
-   "translation": "天使　　　　天使"
+   "translation": "天使{FFFE}{FFFE}{FFFE}{FFFE}天使"
   },
   {
    "id": "F0092-0000A2E4",
@@ -4898,7 +4832,7 @@
    "byte_len": 30,
    "max_bytes": 30,
    "source": "天使{FFFE}{FFFE}{FFFE}{FFFE}ホーリーゴースト",
-   "translation": "天使　　　　圣幽灵"
+   "translation": "天使{FFFE}{FFFE}{FFFE}{FFFE}圣幽灵"
   },
   {
    "id": "F0092-0000A302",
@@ -4906,7 +4840,7 @@
    "byte_len": 24,
    "max_bytes": 24,
    "source": "妖鳥{FFFE}{FFFE}{FFFE}{FFFE}モリーアン",
-   "translation": "妖鸟　　　　摩莉甘"
+   "translation": "妖鸟{FFFE}{FFFE}{FFFE}{FFFE}摩莉甘"
   },
   {
    "id": "F0092-0000A31A",
@@ -4914,7 +4848,7 @@
    "byte_len": 20,
    "max_bytes": 20,
    "source": "妖鳥{FFFE}{FFFE}{FFFE}{FFFE}マッハ",
-   "translation": "妖鸟　　　　玛查"
+   "translation": "妖鸟{FFFE}{FFFE}{FFFE}{FFFE}玛查"
   },
   {
    "id": "F0092-0000A32E",
@@ -4922,7 +4856,7 @@
    "byte_len": 22,
    "max_bytes": 22,
    "source": "妖鳥{FFFE}{FFFE}{FFFE}{FFFE}ネヴァン",
-   "translation": "妖鸟　　　　尼曼"
+   "translation": "妖鸟{FFFE}{FFFE}{FFFE}{FFFE}尼曼"
   },
   {
    "id": "F0092-0000A344",
@@ -4930,7 +4864,7 @@
    "byte_len": 22,
    "max_bytes": 22,
    "source": "妖鳥{FFFE}{FFFE}{FFFE}{FFFE}アエロー",
-   "translation": "妖鸟　　　　阿伊洛"
+   "translation": "妖鸟{FFFE}{FFFE}{FFFE}{FFFE}阿伊洛"
   },
   {
    "id": "F0092-0000A35A",
@@ -4938,7 +4872,7 @@
    "byte_len": 24,
    "max_bytes": 24,
    "source": "妖鳥{FFFE}{FFFE}{FFFE}{FFFE}ケライノー",
-   "translation": "妖鸟　　　　刻莱诺"
+   "translation": "妖鸟{FFFE}{FFFE}{FFFE}{FFFE}刻莱诺"
   },
   {
    "id": "F0092-0000A372",
@@ -4946,7 +4880,7 @@
    "byte_len": 26,
    "max_bytes": 26,
    "source": "妖鳥{FFFE}{FFFE}{FFFE}{FFFE}オキュペテー",
-   "translation": "妖鸟　　　　俄库珀忒"
+   "translation": "妖鸟{FFFE}{FFFE}{FFFE}{FFFE}俄库珀忒"
   },
   {
    "id": "F0092-0000A38C",
@@ -4954,7 +4888,7 @@
    "byte_len": 20,
    "max_bytes": 20,
    "source": "妖鳥{FFFE}{FFFE}{FFFE}{FFFE}ベンヌ",
-   "translation": "妖鸟　　　　贝努"
+   "translation": "妖鸟{FFFE}{FFFE}{FFFE}{FFFE}贝努"
   },
   {
    "id": "F0092-0000A3A0",
@@ -4962,7 +4896,7 @@
    "byte_len": 28,
    "max_bytes": 28,
    "source": "龍王{FFFE}{FFFE}{FFFE}{FFFE}ヤマタノオロチ",
-   "translation": "龙王　　　　八岐大蛇"
+   "translation": "龙王{FFFE}{FFFE}{FFFE}{FFFE}八岐大蛇"
   },
   {
    "id": "F0092-0000A3BC",
@@ -4970,7 +4904,7 @@
    "byte_len": 22,
    "max_bytes": 22,
    "source": "龍王{FFFE}{FFFE}{FFFE}{FFFE}ヴリトラ",
-   "translation": "龙王　　　　弗栗多"
+   "translation": "龙王{FFFE}{FFFE}{FFFE}{FFFE}弗栗多"
   },
   {
    "id": "F0092-0000A3D2",
@@ -4978,7 +4912,7 @@
    "byte_len": 26,
    "max_bytes": 26,
    "source": "龍王{FFFE}{FFFE}{FFFE}{FFFE}ナーガラジャ",
-   "translation": "龙王　　　　那伽之王"
+   "translation": "龙王{FFFE}{FFFE}{FFFE}{FFFE}那伽之王"
   },
   {
    "id": "F0092-0000A3EC",
@@ -4986,7 +4920,7 @@
    "byte_len": 22,
    "max_bytes": 22,
    "source": "龍王{FFFE}{FFFE}{FFFE}{FFFE}オトヒメ",
-   "translation": "龙王　　　　乙姬"
+   "translation": "龙王{FFFE}{FFFE}{FFFE}{FFFE}乙姬"
   },
   {
    "id": "F0092-0000A402",
@@ -4994,7 +4928,7 @@
    "byte_len": 20,
    "max_bytes": 20,
    "source": "龍王{FFFE}{FFFE}{FFFE}{FFFE}ミズチ",
-   "translation": "龙王　　　　蛟"
+   "translation": "龙王{FFFE}{FFFE}{FFFE}{FFFE}蛟"
   },
   {
    "id": "F0092-0000A416",
@@ -5002,7 +4936,7 @@
    "byte_len": 20,
    "max_bytes": 20,
    "source": "龍王{FFFE}{FFFE}{FFFE}{FFFE}ナーガ",
-   "translation": "龙王　　　　那伽"
+   "translation": "龙王{FFFE}{FFFE}{FFFE}{FFFE}那伽"
   },
   {
    "id": "F0092-0000A42A",
@@ -5010,7 +4944,7 @@
    "byte_len": 20,
    "max_bytes": 20,
    "source": "龍王{FFFE}{FFFE}{FFFE}{FFFE}ノズチ",
-   "translation": "龙王　　　　野槌"
+   "translation": "龙王{FFFE}{FFFE}{FFFE}{FFFE}野槌"
   },
   {
    "id": "F0092-0000A43E",
@@ -5018,7 +4952,7 @@
    "byte_len": 24,
    "max_bytes": 24,
    "source": "妖魔{FFFE}{FFFE}{FFFE}{FFFE}ハヌマーン",
-   "translation": "妖魔　　　　哈奴曼"
+   "translation": "妖魔{FFFE}{FFFE}{FFFE}{FFFE}哈奴曼"
   },
   {
    "id": "F0092-0000A456",
@@ -5026,7 +4960,7 @@
    "byte_len": 24,
    "max_bytes": 24,
    "source": "妖魔{FFFE}{FFFE}{FFFE}{FFFE}ガネーシャ",
-   "translation": "妖魔　　　　迦内什"
+   "translation": "妖魔{FFFE}{FFFE}{FFFE}{FFFE}迦内什"
   },
   {
    "id": "F0092-0000A46E",
@@ -5034,7 +4968,7 @@
    "byte_len": 24,
    "max_bytes": 24,
    "source": "妖魔{FFFE}{FFFE}{FFFE}{FFFE}イフリート",
-   "translation": "妖魔　　　　伊弗利特"
+   "translation": "妖魔{FFFE}{FFFE}{FFFE}{FFFE}伊弗利特"
   },
   {
    "id": "F0092-0000A486",
@@ -5042,7 +4976,7 @@
    "byte_len": 18,
    "max_bytes": 18,
    "source": "妖魔{FFFE}{FFFE}{FFFE}{FFFE}ロア",
-   "translation": "妖魔　　　　罗瓦"
+   "translation": "妖魔{FFFE}{FFFE}{FFFE}{FFFE}罗瓦"
   },
   {
    "id": "F0092-0000A498",
@@ -5050,7 +4984,7 @@
    "byte_len": 20,
    "max_bytes": 20,
    "source": "妖魔{FFFE}{FFFE}{FFFE}{FFFE}テング",
-   "translation": "妖魔　　　　天狗"
+   "translation": "妖魔{FFFE}{FFFE}{FFFE}{FFFE}天狗"
   },
   {
    "id": "F0092-0000A4AC",
@@ -5058,7 +4992,7 @@
    "byte_len": 18,
    "max_bytes": 18,
    "source": "妖魔{FFFE}{FFFE}{FFFE}{FFFE}ジン",
-   "translation": "妖魔　　　　镇尼"
+   "translation": "妖魔{FFFE}{FFFE}{FFFE}{FFFE}镇尼"
   },
   {
    "id": "F0092-0000A4BE",
@@ -5066,7 +5000,7 @@
    "byte_len": 22,
    "max_bytes": 22,
    "source": "妖魔{FFFE}{FFFE}{FFFE}{FFFE}ハオカー",
-   "translation": "妖魔　　　　哈奥卡"
+   "translation": "妖魔{FFFE}{FFFE}{FFFE}{FFFE}哈奥卡"
   },
   {
    "id": "F0092-0000A4D4",
@@ -5074,7 +5008,7 @@
    "byte_len": 20,
    "max_bytes": 20,
    "source": "妖魔{FFFE}{FFFE}{FFFE}{FFFE}イソラ",
-   "translation": "妖魔　　　　矶良"
+   "translation": "妖魔{FFFE}{FFFE}{FFFE}{FFFE}矶良"
   },
   {
    "id": "F0092-0000A4E8",
@@ -5082,7 +5016,7 @@
    "byte_len": 24,
    "max_bytes": 24,
    "source": "妖魔{FFFE}{FFFE}{FFFE}{FFFE}アプサラス",
-   "translation": "妖魔　　　　阿婆娑罗"
+   "translation": "妖魔{FFFE}{FFFE}{FFFE}{FFFE}阿婆娑罗"
   },
   {
    "id": "F0092-0000A500",
@@ -5090,7 +5024,7 @@
    "byte_len": 24,
    "max_bytes": 24,
    "source": "妖魔{FFFE}{FFFE}{FFFE}{FFFE}キンナリー",
-   "translation": "妖魔　　　　紧那厘"
+   "translation": "妖魔{FFFE}{FFFE}{FFFE}{FFFE}紧那厘"
   },
   {
    "id": "F0092-0000A518",
@@ -5098,7 +5032,7 @@
    "byte_len": 24,
    "max_bytes": 24,
    "source": "魔獣{FFFE}{FFFE}{FFFE}{FFFE}グリフォン",
-   "translation": "魔兽　　　　狮鹫"
+   "translation": "魔兽{FFFE}{FFFE}{FFFE}{FFFE}狮鹫"
   },
   {
    "id": "F0092-0000A530",
@@ -5106,7 +5040,7 @@
    "byte_len": 24,
    "max_bytes": 24,
    "source": "魔獣{FFFE}{FFFE}{FFFE}{FFFE}ケルベロス",
-   "translation": "魔兽　　　　刻耳柏洛斯"
+   "translation": "魔兽{FFFE}{FFFE}{FFFE}{FFFE}刻耳柏洛斯"
   },
   {
    "id": "F0092-0000A548",
@@ -5114,7 +5048,7 @@
    "byte_len": 20,
    "max_bytes": 20,
    "source": "魔獣{FFFE}{FFFE}{FFFE}{FFFE}ドゥン",
-   "translation": "魔兽　　　　达温"
+   "translation": "魔兽{FFFE}{FFFE}{FFFE}{FFFE}达温"
   },
   {
    "id": "F0092-0000A55C",
@@ -5122,7 +5056,7 @@
    "byte_len": 22,
    "max_bytes": 22,
    "source": "魔獣{FFFE}{FFFE}{FFFE}{FFFE}セルケト",
-   "translation": "魔兽　　　　塞尔凯特"
+   "translation": "魔兽{FFFE}{FFFE}{FFFE}{FFFE}塞尔凯特"
   },
   {
    "id": "F0092-0000A572",
@@ -5130,7 +5064,7 @@
    "byte_len": 24,
    "max_bytes": 24,
    "source": "魔獣{FFFE}{FFFE}{FFFE}{FFFE}オルトロス",
-   "translation": "魔兽　　　　欧特鲁斯"
+   "translation": "魔兽{FFFE}{FFFE}{FFFE}{FFFE}欧特鲁斯"
   },
   {
    "id": "F0092-0000A58A",
@@ -5138,7 +5072,7 @@
    "byte_len": 22,
    "max_bytes": 22,
    "source": "魔獣{FFFE}{FFFE}{FFFE}{FFFE}ネコマタ",
-   "translation": "魔兽　　　　猫又"
+   "translation": "魔兽{FFFE}{FFFE}{FFFE}{FFFE}猫又"
   },
   {
    "id": "F0092-0000A5A0",
@@ -5146,7 +5080,7 @@
    "byte_len": 22,
    "max_bytes": 22,
    "source": "魔獣{FFFE}{FFFE}{FFFE}{FFFE}カーシー",
-   "translation": "魔兽　　　　犬妖精"
+   "translation": "魔兽{FFFE}{FFFE}{FFFE}{FFFE}犬妖精"
   },
   {
    "id": "F0092-0000A5B6",
@@ -5154,7 +5088,7 @@
    "byte_len": 24,
    "max_bytes": 24,
    "source": "魔獣{FFFE}{FFFE}{FFFE}{FFFE}ケットシー",
-   "translation": "魔兽　　　　猫妖精"
+   "translation": "魔兽{FFFE}{FFFE}{FFFE}{FFFE}猫妖精"
   },
   {
    "id": "F0092-0000A5CE",
@@ -5162,7 +5096,7 @@
    "byte_len": 22,
    "max_bytes": 22,
    "source": "夜魔{FFFE}{FFFE}{FFFE}{FFFE}ニュクス",
-   "translation": "夜魔　　　　倪克斯"
+   "translation": "夜魔{FFFE}{FFFE}{FFFE}{FFFE}倪克斯"
   },
   {
    "id": "F0092-0000A5E4",
@@ -5170,7 +5104,7 @@
    "byte_len": 26,
    "max_bytes": 26,
    "source": "夜魔{FFFE}{FFFE}{FFFE}{FFFE}ヴァンパイア",
-   "translation": "夜魔　　　　吸血鬼"
+   "translation": "夜魔{FFFE}{FFFE}{FFFE}{FFFE}吸血鬼"
   },
   {
    "id": "F0092-0000A5FE",
@@ -5178,7 +5112,7 @@
    "byte_len": 24,
    "max_bytes": 24,
    "source": "夜魔{FFFE}{FFFE}{FFFE}{FFFE}サキュバス",
-   "translation": "夜魔　　　　萨丘巴斯"
+   "translation": "夜魔{FFFE}{FFFE}{FFFE}{FFFE}萨丘巴斯"
   },
   {
    "id": "F0092-0000A616",
@@ -5186,7 +5120,7 @@
    "byte_len": 26,
    "max_bytes": 26,
    "source": "夜魔{FFFE}{FFFE}{FFFE}{FFFE}インキュバス",
-   "translation": "夜魔　　　　因丘巴斯"
+   "translation": "夜魔{FFFE}{FFFE}{FFFE}{FFFE}因丘巴斯"
   },
   {
    "id": "F0092-0000A630",
@@ -5194,7 +5128,7 @@
    "byte_len": 20,
    "max_bytes": 20,
    "source": "夜魔{FFFE}{FFFE}{FFFE}{FFFE}リリム",
-   "translation": "夜魔　　　　莉莉姆"
+   "translation": "夜魔{FFFE}{FFFE}{FFFE}{FFFE}莉莉姆"
   },
   {
    "id": "F0092-0000A644",
@@ -5202,7 +5136,7 @@
    "byte_len": 24,
    "max_bytes": 24,
    "source": "夜魔{FFFE}{FFFE}{FFFE}{FFFE}ナイトメア",
-   "translation": "夜魔　　　　梦魇"
+   "translation": "夜魔{FFFE}{FFFE}{FFFE}{FFFE}梦魇"
   },
   {
    "id": "F0092-0000A65C",
@@ -5210,7 +5144,7 @@
    "byte_len": 24,
    "max_bytes": 24,
    "source": "夜魔{FFFE}{FFFE}{FFFE}{FFFE}エンプーサ",
-   "translation": "夜魔　　　　恩浦萨"
+   "translation": "夜魔{FFFE}{FFFE}{FFFE}{FFFE}恩浦萨"
   },
   {
    "id": "F0092-0000A674",
@@ -5218,7 +5152,7 @@
    "byte_len": 20,
    "max_bytes": 20,
    "source": "夜魔{FFFE}{FFFE}{FFFE}{FFFE}アルプ",
-   "translation": "夜魔　　　　阿尔普"
+   "translation": "夜魔{FFFE}{FFFE}{FFFE}{FFFE}阿尔普"
   },
   {
    "id": "F0092-0000A688",
@@ -5226,7 +5160,7 @@
    "byte_len": 20,
    "max_bytes": 20,
    "source": "夜魔{FFFE}{FFFE}{FFFE}{FFFE}キャク",
-   "translation": "夜魔　　　　恰克"
+   "translation": "夜魔{FFFE}{FFFE}{FFFE}{FFFE}恰克"
   },
   {
    "id": "F0092-0000A69C",
@@ -5234,7 +5168,7 @@
    "byte_len": 24,
    "max_bytes": 24,
    "source": "地霊{FFFE}{FFFE}{FFFE}{FFFE}ムスッペル",
-   "translation": "地灵　　　　穆斯贝尔"
+   "translation": "地灵{FFFE}{FFFE}{FFFE}{FFFE}穆斯贝尔"
   },
   {
    "id": "F0092-0000A6B4",
@@ -5242,7 +5176,7 @@
    "byte_len": 24,
    "max_bytes": 24,
    "source": "地霊{FFFE}{FFFE}{FFFE}{FFFE}ティターン",
-   "translation": "地灵　　　　泰坦"
+   "translation": "地灵{FFFE}{FFFE}{FFFE}{FFFE}泰坦"
   },
   {
    "id": "F0092-0000A6CC",
@@ -5250,7 +5184,7 @@
    "byte_len": 22,
    "max_bytes": 22,
    "source": "地霊{FFFE}{FFFE}{FFFE}{FFFE}ウベルリ",
-   "translation": "地灵　　　　乌贝卢里"
+   "translation": "地灵{FFFE}{FFFE}{FFFE}{FFFE}乌贝卢里"
   },
   {
    "id": "F0092-0000A6E2",
@@ -5258,7 +5192,7 @@
    "byte_len": 22,
    "max_bytes": 22,
    "source": "地霊{FFFE}{FFFE}{FFFE}{FFFE}ツチグモ",
-   "translation": "地灵　　　　土蜘蛛"
+   "translation": "地灵{FFFE}{FFFE}{FFFE}{FFFE}土蜘蛛"
   },
   {
    "id": "F0092-0000A6F8",
@@ -5266,7 +5200,7 @@
    "byte_len": 22,
    "max_bytes": 22,
    "source": "地霊{FFFE}{FFFE}{FFFE}{FFFE}ドワーフ",
-   "translation": "地灵　　　　矮人"
+   "translation": "地灵{FFFE}{FFFE}{FFFE}{FFFE}矮人"
   },
   {
    "id": "F0092-0000A70E",
@@ -5274,7 +5208,7 @@
    "byte_len": 24,
    "max_bytes": 24,
    "source": "地霊{FFFE}{FFFE}{FFFE}{FFFE}ブッカブー",
-   "translation": "地灵　　　　布卡布"
+   "translation": "地灵{FFFE}{FFFE}{FFFE}{FFFE}布卡布"
   },
   {
    "id": "F0092-0000A726",
@@ -5282,7 +5216,7 @@
    "byte_len": 20,
    "max_bytes": 20,
    "source": "地霊{FFFE}{FFFE}{FFFE}{FFFE}スダマ",
-   "translation": "地灵　　　　魑魅"
+   "translation": "地灵{FFFE}{FFFE}{FFFE}{FFFE}魑魅"
   },
   {
    "id": "F0092-0000A73A",
@@ -5290,7 +5224,7 @@
    "byte_len": 22,
    "max_bytes": 22,
    "source": "地霊{FFFE}{FFFE}{FFFE}{FFFE}コボルト",
-   "translation": "地灵　　　　寇伯"
+   "translation": "地灵{FFFE}{FFFE}{FFFE}{FFFE}寇伯"
   },
   {
    "id": "F0092-0000A750",
@@ -5298,7 +5232,7 @@
    "byte_len": 22,
    "max_bytes": 22,
    "source": "地霊{FFFE}{FFFE}{FFFE}{FFFE}ノッカー",
-   "translation": "地灵　　　　诺卡"
+   "translation": "地灵{FFFE}{FFFE}{FFFE}{FFFE}诺卡"
   },
   {
    "id": "F0092-0000A766",
@@ -5306,7 +5240,7 @@
    "byte_len": 26,
    "max_bytes": 26,
    "source": "妖精{FFFE}{FFFE}{FFFE}{FFFE}ティターニア",
-   "translation": "妖精　　　　缇坦妮雅"
+   "translation": "妖精{FFFE}{FFFE}{FFFE}{FFFE}缇坦妮雅"
   },
   {
    "id": "F0092-0000A780",
@@ -5314,7 +5248,7 @@
    "byte_len": 22,
    "max_bytes": 22,
    "source": "妖精{FFFE}{FFFE}{FFFE}{FFFE}オベロン",
-   "translation": "妖精　　　　奥伯隆"
+   "translation": "妖精{FFFE}{FFFE}{FFFE}{FFFE}奥伯隆"
   },
   {
    "id": "F0092-0000A796",
@@ -5322,7 +5256,7 @@
    "byte_len": 28,
    "max_bytes": 28,
    "source": "妖精{FFFE}{FFFE}{FFFE}{FFFE}クーフー・リン",
-   "translation": "妖精　　　　库夫・林"
+   "translation": "妖精{FFFE}{FFFE}{FFFE}{FFFE}库夫・林"
   },
   {
    "id": "F0092-0000A7B2",
@@ -5330,7 +5264,7 @@
    "byte_len": 22,
    "max_bytes": 22,
    "source": "妖精{FFFE}{FFFE}{FFFE}{FFFE}トロール",
-   "translation": "妖精　　　　巨怪"
+   "translation": "妖精{FFFE}{FFFE}{FFFE}{FFFE}巨怪"
   },
   {
    "id": "F0092-0000A7C8",
@@ -5338,7 +5272,7 @@
    "byte_len": 22,
    "max_bytes": 22,
    "source": "妖精{FFFE}{FFFE}{FFFE}{FFFE}ケルピー",
-   "translation": "妖精　　　　凯尔派"
+   "translation": "妖精{FFFE}{FFFE}{FFFE}{FFFE}凯尔派"
   },
   {
    "id": "F0092-0000A7DE",
@@ -5346,7 +5280,7 @@
    "byte_len": 22,
    "max_bytes": 22,
    "source": "妖精{FFFE}{FFFE}{FFFE}{FFFE}バンシー",
-   "translation": "妖精　　　　报丧女妖"
+   "translation": "妖精{FFFE}{FFFE}{FFFE}{FFFE}报丧女妖"
   },
   {
    "id": "F0092-0000A7F4",
@@ -5354,7 +5288,7 @@
    "byte_len": 20,
    "max_bytes": 20,
    "source": "妖精{FFFE}{FFFE}{FFFE}{FFFE}エルフ",
-   "translation": "妖精　　　　艾尔夫"
+   "translation": "妖精{FFFE}{FFFE}{FFFE}{FFFE}艾尔夫"
   },
   {
    "id": "F0092-0000A808",
@@ -5362,7 +5296,7 @@
    "byte_len": 30,
    "max_bytes": 30,
    "source": "妖精{FFFE}{FFFE}{FFFE}{FFFE}ジャックランタン",
-   "translation": "妖精　　　　杰克灯笼"
+   "translation": "妖精{FFFE}{FFFE}{FFFE}{FFFE}杰克灯笼"
   },
   {
    "id": "F0092-0000A826",
@@ -5370,7 +5304,7 @@
    "byte_len": 30,
    "max_bytes": 30,
    "source": "妖精{FFFE}{FFFE}{FFFE}{FFFE}ジャックフロスト",
-   "translation": "妖精　　　　杰克霜精"
+   "translation": "妖精{FFFE}{FFFE}{FFFE}{FFFE}杰克霜精"
   },
   {
    "id": "F0092-0000A844",
@@ -5378,7 +5312,7 @@
    "byte_len": 22,
    "max_bytes": 22,
    "source": "妖精{FFFE}{FFFE}{FFFE}{FFFE}ゴブリン",
-   "translation": "妖精　　　　哥布林"
+   "translation": "妖精{FFFE}{FFFE}{FFFE}{FFFE}哥布林"
   },
   {
    "id": "F0092-0000A85A",
@@ -5386,7 +5320,7 @@
    "byte_len": 22,
    "max_bytes": 22,
    "source": "妖精{FFFE}{FFFE}{FFFE}{FFFE}ピクシー",
-   "translation": "妖精　　　　皮克希"
+   "translation": "妖精{FFFE}{FFFE}{FFFE}{FFFE}皮克希"
   },
   {
    "id": "F0092-0000A870",
@@ -5394,7 +5328,7 @@
    "byte_len": 22,
    "max_bytes": 22,
    "source": "妖精{FFFE}{FFFE}{FFFE}{FFFE}ウィリー",
-   "translation": "妖精　　　　薇丽"
+   "translation": "妖精{FFFE}{FFFE}{FFFE}{FFFE}薇丽"
   },
   {
    "id": "F0092-0000A886",
@@ -5402,7 +5336,7 @@
    "byte_len": 20,
    "max_bytes": 20,
    "source": "堕天使{FFFE}{FFFE}サマエル",
-   "translation": "堕天使　　萨麦尔"
+   "translation": "堕天使{FFFE}{FFFE}萨麦尔"
   },
   {
    "id": "F0092-0000A89A",
@@ -5410,7 +5344,7 @@
    "byte_len": 20,
    "max_bytes": 20,
    "source": "堕天使{FFFE}{FFFE}アガレス",
-   "translation": "堕天使　　阿加雷斯"
+   "translation": "堕天使{FFFE}{FFFE}阿加雷斯"
   },
   {
    "id": "F0092-0000A8AE",
@@ -5418,7 +5352,7 @@
    "byte_len": 18,
    "max_bytes": 18,
    "source": "堕天使{FFFE}{FFFE}ガープ",
-   "translation": "堕天使　　概布"
+   "translation": "堕天使{FFFE}{FFFE}概布"
   },
   {
    "id": "F0092-0000A8C0",
@@ -5426,7 +5360,7 @@
    "byte_len": 18,
    "max_bytes": 18,
    "source": "堕天使{FFFE}{FFFE}ベリス",
-   "translation": "堕天使　　比利士"
+   "translation": "堕天使{FFFE}{FFFE}比利士"
   },
   {
    "id": "F0092-0000A8D2",
@@ -5434,7 +5368,7 @@
    "byte_len": 22,
    "max_bytes": 22,
    "source": "堕天使{FFFE}{FFFE}デカラビア",
-   "translation": "堕天使　　单卡拉比"
+   "translation": "堕天使{FFFE}{FFFE}单卡拉比"
   },
   {
    "id": "F0092-0000A8E8",
@@ -5442,7 +5376,7 @@
    "byte_len": 24,
    "max_bytes": 24,
    "source": "堕天使{FFFE}{FFFE}フォルネウス",
-   "translation": "堕天使　　佛钮司"
+   "translation": "堕天使{FFFE}{FFFE}佛钮司"
   },
   {
    "id": "F0092-0000A900",
@@ -5450,7 +5384,7 @@
    "byte_len": 24,
    "max_bytes": 24,
    "source": "堕天使{FFFE}{FFFE}バフォメット",
-   "translation": "堕天使　　巴风特"
+   "translation": "堕天使{FFFE}{FFFE}巴风特"
   },
   {
    "id": "F0092-0000A918",
@@ -5458,7 +5392,7 @@
    "byte_len": 22,
    "max_bytes": 22,
    "source": "堕天使{FFFE}{FFFE}エリゴール",
-   "translation": "堕天使　　埃力格"
+   "translation": "堕天使{FFFE}{FFFE}埃力格"
   },
   {
    "id": "F0092-0000A92E",
@@ -5466,7 +5400,7 @@
    "byte_len": 18,
    "max_bytes": 18,
    "source": "堕天使{FFFE}{FFFE}ブエル",
-   "translation": "堕天使　　布耶尔"
+   "translation": "堕天使{FFFE}{FFFE}布耶尔"
   },
   {
    "id": "F0092-0000A940",
@@ -5474,7 +5408,7 @@
    "byte_len": 18,
    "max_bytes": 18,
    "source": "堕天使{FFFE}{FFFE}カイム",
-   "translation": "堕天使　　盖因"
+   "translation": "堕天使{FFFE}{FFFE}盖因"
   },
   {
    "id": "F0092-0000A952",
@@ -5482,7 +5416,7 @@
    "byte_len": 20,
    "max_bytes": 20,
    "source": "堕天使{FFFE}{FFFE}ガギソン",
-   "translation": "堕天使　　加吉松"
+   "translation": "堕天使{FFFE}{FFFE}加吉松"
   },
   {
    "id": "F0092-0000A966",
@@ -5490,7 +5424,7 @@
    "byte_len": 20,
    "max_bytes": 20,
    "source": "堕天使{FFFE}{FFFE}ウコバク",
-   "translation": "堕天使　　乌科巴克"
+   "translation": "堕天使{FFFE}{FFFE}乌科巴克"
   },
   {
    "id": "F0092-0000A97A",
@@ -5498,7 +5432,7 @@
    "byte_len": 22,
    "max_bytes": 22,
    "source": "妖鬼{FFFE}{FFFE}{FFFE}{FFFE}ヤクシャ",
-   "translation": "妖鬼　　　　夜叉"
+   "translation": "妖鬼{FFFE}{FFFE}{FFFE}{FFFE}夜叉"
   },
   {
    "id": "F0092-0000A990",
@@ -5506,7 +5440,7 @@
    "byte_len": 28,
    "max_bytes": 28,
    "source": "妖鬼{FFFE}{FFFE}{FFFE}{FFFE}シュテンドウジ",
-   "translation": "妖鬼　　　　酒吞童子"
+   "translation": "妖鬼{FFFE}{FFFE}{FFFE}{FFFE}酒吞童子"
   },
   {
    "id": "F0092-0000A9AC",
@@ -5514,7 +5448,7 @@
    "byte_len": 24,
    "max_bytes": 24,
    "source": "妖鬼{FFFE}{FFFE}{FFFE}{FFFE}ヤクシニー",
-   "translation": "妖鬼　　　　夜叉女"
+   "translation": "妖鬼{FFFE}{FFFE}{FFFE}{FFFE}夜叉女"
   },
   {
    "id": "F0092-0000A9C4",
@@ -5522,7 +5456,7 @@
    "byte_len": 24,
    "max_bytes": 24,
    "source": "妖鬼{FFFE}{FFFE}{FFFE}{FFFE}トゥルダク",
-   "translation": "妖鬼　　　　吐鲁达克"
+   "translation": "妖鬼{FFFE}{FFFE}{FFFE}{FFFE}吐鲁达克"
   },
   {
    "id": "F0092-0000A9DC",
@@ -5530,7 +5464,7 @@
    "byte_len": 22,
    "max_bytes": 22,
    "source": "妖鬼{FFFE}{FFFE}{FFFE}{FFFE}ハンニャ",
-   "translation": "妖鬼　　　　般若"
+   "translation": "妖鬼{FFFE}{FFFE}{FFFE}{FFFE}般若"
   },
   {
    "id": "F0092-0000A9F2",
@@ -5538,7 +5472,7 @@
    "byte_len": 20,
    "max_bytes": 20,
    "source": "妖鬼{FFFE}{FFFE}{FFFE}{FFFE}アズミ",
-   "translation": "妖鬼　　　　安昙"
+   "translation": "妖鬼{FFFE}{FFFE}{FFFE}{FFFE}安昙"
   },
   {
    "id": "F0092-0000AA06",
@@ -5546,7 +5480,7 @@
    "byte_len": 22,
    "max_bytes": 22,
    "source": "妖鬼{FFFE}{FFFE}{FFFE}{FFFE}ボーグル",
-   "translation": "妖鬼　　　　伯古尔"
+   "translation": "妖鬼{FFFE}{FFFE}{FFFE}{FFFE}伯古尔"
   },
   {
    "id": "F0092-0000AA1C",
@@ -5554,7 +5488,7 @@
    "byte_len": 20,
    "max_bytes": 20,
    "source": "妖鬼{FFFE}{FFFE}{FFFE}{FFFE}イヒカ",
-   "translation": "妖鬼　　　　井光"
+   "translation": "妖鬼{FFFE}{FFFE}{FFFE}{FFFE}井光"
   },
   {
    "id": "F0092-0000AA30",
@@ -5562,7 +5496,7 @@
    "byte_len": 20,
    "max_bytes": 20,
    "source": "鬼女{FFFE}{FFFE}{FFFE}{FFFE}ランダ",
-   "translation": "鬼女　　　　兰达"
+   "translation": "鬼女{FFFE}{FFFE}{FFFE}{FFFE}兰达"
   },
   {
    "id": "F0092-0000AA44",
@@ -5570,7 +5504,7 @@
    "byte_len": 20,
    "max_bytes": 20,
    "source": "鬼女{FFFE}{FFFE}{FFFE}{FFFE}ボルボ",
-   "translation": "鬼女　　　　班波"
+   "translation": "鬼女{FFFE}{FFFE}{FFFE}{FFFE}班波"
   },
   {
    "id": "F0092-0000AA58",
@@ -5578,7 +5512,7 @@
    "byte_len": 24,
    "max_bytes": 24,
    "source": "鬼女{FFFE}{FFFE}{FFFE}{FFFE}ダーキニー",
-   "translation": "鬼女　　　　荼吉尼"
+   "translation": "鬼女{FFFE}{FFFE}{FFFE}{FFFE}荼吉尼"
   },
   {
    "id": "F0092-0000AA70",
@@ -5586,7 +5520,7 @@
    "byte_len": 22,
    "max_bytes": 22,
    "source": "鬼女{FFFE}{FFFE}{FFFE}{FFFE}ゴルゴン",
-   "translation": "鬼女　　　　戈尔贡"
+   "translation": "鬼女{FFFE}{FFFE}{FFFE}{FFFE}戈尔贡"
   },
   {
    "id": "F0092-0000AA86",
@@ -5594,7 +5528,7 @@
    "byte_len": 30,
    "max_bytes": 30,
    "source": "鬼女{FFFE}{FFFE}{FFFE}{FFFE}カリアッハベーラ",
-   "translation": "鬼女　　　　卡利亚哈贝拉"
+   "translation": "鬼女{FFFE}{FFFE}{FFFE}{FFFE}卡利亚哈贝拉"
   },
   {
    "id": "F0092-0000AAA4",
@@ -5602,7 +5536,7 @@
    "byte_len": 24,
    "max_bytes": 24,
    "source": "鬼女{FFFE}{FFFE}{FFFE}{FFFE}アルケニー",
-   "translation": "鬼女　　　　阿拉克涅"
+   "translation": "鬼女{FFFE}{FFFE}{FFFE}{FFFE}阿拉克涅"
   },
   {
    "id": "F0092-0000AABC",
@@ -5610,7 +5544,7 @@
    "byte_len": 20,
    "max_bytes": 20,
    "source": "鬼女{FFFE}{FFFE}{FFFE}{FFFE}ラミア",
-   "translation": "鬼女　　　　拉弥亚"
+   "translation": "鬼女{FFFE}{FFFE}{FFFE}{FFFE}拉弥亚"
   },
   {
    "id": "F0092-0000AAD0",
@@ -5618,7 +5552,7 @@
    "byte_len": 26,
    "max_bytes": 26,
    "source": "鬼女{FFFE}{FFFE}{FFFE}{FFFE}ヨモツシコメ",
-   "translation": "鬼女　　　　泉津丑女"
+   "translation": "鬼女{FFFE}{FFFE}{FFFE}{FFFE}泉津丑女"
   },
   {
    "id": "F0092-0000AAEA",
@@ -5626,7 +5560,7 @@
    "byte_len": 20,
    "max_bytes": 20,
    "source": "鬼女{FFFE}{FFFE}{FFFE}{FFFE}ハッグ",
-   "translation": "鬼女　　　　哈格"
+   "translation": "鬼女{FFFE}{FFFE}{FFFE}{FFFE}哈格"
   },
   {
    "id": "F0092-0000AAFE",
@@ -5634,7 +5568,7 @@
    "byte_len": 24,
    "max_bytes": 24,
    "source": "邪神{FFFE}{FFFE}{FFFE}{FFFE}クトゥルー",
-   "translation": "邪神　　　　克苏鲁"
+   "translation": "邪神{FFFE}{FFFE}{FFFE}{FFFE}克苏鲁"
   },
   {
    "id": "F0092-0000AB16",
@@ -5642,7 +5576,7 @@
    "byte_len": 20,
    "max_bytes": 20,
    "source": "邪神{FFFE}{FFFE}{FFFE}{FFFE}パズス",
-   "translation": "邪神　　　　帕祖祖"
+   "translation": "邪神{FFFE}{FFFE}{FFFE}{FFFE}帕祖祖"
   },
   {
    "id": "F0092-0000AB2A",
@@ -5650,7 +5584,7 @@
    "byte_len": 30,
    "max_bytes": 30,
    "source": "邪神{FFFE}{FFFE}{FFFE}{FFFE}ニャラルトホテプ",
-   "translation": "邪神　　　　奈亚拉托提普"
+   "translation": "邪神{FFFE}{FFFE}{FFFE}{FFFE}奈亚拉托提普"
   },
   {
    "id": "F0092-0000AB48",
@@ -5658,7 +5592,7 @@
    "byte_len": 28,
    "max_bytes": 28,
    "source": "邪神{FFFE}{FFFE}{FFFE}{FFFE}テスカトリポカ",
-   "translation": "邪神　　　　特斯卡特利波卡"
+   "translation": "邪神{FFFE}{FFFE}{FFFE}{FFFE}特斯卡特利波卡"
   },
   {
    "id": "F0092-0000AB64",
@@ -5666,7 +5600,7 @@
    "byte_len": 28,
    "max_bytes": 28,
    "source": "邪神{FFFE}{FFFE}{FFFE}{FFFE}ミシャグジさま",
-   "translation": "邪神　　　　御社宫司神"
+   "translation": "邪神{FFFE}{FFFE}{FFFE}{FFFE}御社宫司神"
   },
   {
    "id": "F0092-0000AB80",
@@ -5674,7 +5608,7 @@
    "byte_len": 22,
    "max_bytes": 22,
    "source": "邪神{FFFE}{FFFE}{FFFE}{FFFE}ナラギリ",
-   "translation": "邪神　　　　那罗几力"
+   "translation": "邪神{FFFE}{FFFE}{FFFE}{FFFE}那罗几力"
   },
   {
    "id": "F0092-0000AB96",
@@ -5682,7 +5616,7 @@
    "byte_len": 26,
    "max_bytes": 26,
    "source": "凶鳥{FFFE}{FFFE}{FFFE}{FFFE}フレスベルグ",
-   "translation": "凶鸟　　　　弗雷斯贝尔格"
+   "translation": "凶鸟{FFFE}{FFFE}{FFFE}{FFFE}弗雷斯贝尔格"
   },
   {
    "id": "F0092-0000ABB0",
@@ -5690,7 +5624,7 @@
    "byte_len": 22,
    "max_bytes": 22,
    "source": "凶鳥{FFFE}{FFFE}{FFFE}{FFFE}アンズー",
-   "translation": "凶鸟　　　　安祖"
+   "translation": "凶鸟{FFFE}{FFFE}{FFFE}{FFFE}安祖"
   },
   {
    "id": "F0092-0000ABC6",
@@ -5698,7 +5632,7 @@
    "byte_len": 20,
    "max_bytes": 20,
    "source": "凶鳥{FFFE}{FFFE}{FFFE}{FFFE}グルル",
-   "translation": "凶鸟　　　　格鲁鲁"
+   "translation": "凶鸟{FFFE}{FFFE}{FFFE}{FFFE}格鲁鲁"
   },
   {
    "id": "F0092-0000ABDA",
@@ -5706,7 +5640,7 @@
    "byte_len": 22,
    "max_bytes": 22,
    "source": "凶鳥{FFFE}{FFFE}{FFFE}{FFFE}フリアイ",
-   "translation": "凶鸟　　　　孚里埃"
+   "translation": "凶鸟{FFFE}{FFFE}{FFFE}{FFFE}孚里埃"
   },
   {
    "id": "F0092-0000ABF0",
@@ -5714,7 +5648,7 @@
    "byte_len": 20,
    "max_bytes": 20,
    "source": "凶鳥{FFFE}{FFFE}{FFFE}{FFFE}フケイ",
-   "translation": "凶鸟　　　　凫徯"
+   "translation": "凶鸟{FFFE}{FFFE}{FFFE}{FFFE}凫徯"
   },
   {
    "id": "F0092-0000AC04",
@@ -5722,7 +5656,7 @@
    "byte_len": 26,
    "max_bytes": 26,
    "source": "凶鳥{FFFE}{FFFE}{FFFE}{FFFE}チョンチョン",
-   "translation": "凶鸟　　　　飞头"
+   "translation": "凶鸟{FFFE}{FFFE}{FFFE}{FFFE}飞头"
   },
   {
    "id": "F0092-0000AC1E",
@@ -5730,7 +5664,7 @@
    "byte_len": 28,
    "max_bytes": 28,
    "source": "邪鬼{FFFE}{FFFE}{FFFE}{FFFE}ヘカトンケイル",
-   "translation": "邪鬼　　　　赫卡同克瑞"
+   "translation": "邪鬼{FFFE}{FFFE}{FFFE}{FFFE}赫卡同克瑞"
   },
   {
    "id": "F0092-0000AC3A",
@@ -5738,7 +5672,7 @@
    "byte_len": 24,
    "max_bytes": 24,
    "source": "邪鬼{FFFE}{FFFE}{FFFE}{FFFE}ギリメカラ",
-   "translation": "邪鬼　　　　基力梅卡拉"
+   "translation": "邪鬼{FFFE}{FFFE}{FFFE}{FFFE}基力梅卡拉"
   },
   {
    "id": "F0092-0000AC52",
@@ -5746,7 +5680,7 @@
    "byte_len": 22,
    "max_bytes": 22,
    "source": "邪鬼{FFFE}{FFFE}{FFFE}{FFFE}エキンム",
-   "translation": "邪鬼　　　　爱奇慕"
+   "translation": "邪鬼{FFFE}{FFFE}{FFFE}{FFFE}爱奇慕"
   },
   {
    "id": "F0092-0000AC68",
@@ -5754,7 +5688,7 @@
    "byte_len": 26,
    "max_bytes": 26,
    "source": "邪鬼{FFFE}{FFFE}{FFFE}{FFFE}サイクロプス",
-   "translation": "邪鬼　　　　塞克洛普斯"
+   "translation": "邪鬼{FFFE}{FFFE}{FFFE}{FFFE}塞克洛普斯"
   },
   {
    "id": "F0092-0000AC82",
@@ -5762,7 +5696,7 @@
    "byte_len": 26,
    "max_bytes": 26,
    "source": "邪鬼{FFFE}{FFFE}{FFFE}{FFFE}ラクシャーサ",
-   "translation": "邪鬼　　　　罗刹"
+   "translation": "邪鬼{FFFE}{FFFE}{FFFE}{FFFE}罗刹"
   },
   {
    "id": "F0092-0000AC9C",
@@ -5770,7 +5704,7 @@
    "byte_len": 20,
    "max_bytes": 20,
    "source": "邪鬼{FFFE}{FFFE}{FFFE}{FFFE}オーガ",
-   "translation": "邪鬼　　　　奥伽"
+   "translation": "邪鬼{FFFE}{FFFE}{FFFE}{FFFE}奥伽"
   },
   {
    "id": "F0092-0000ACB0",
@@ -5778,7 +5712,7 @@
    "byte_len": 20,
    "max_bytes": 20,
    "source": "邪鬼{FFFE}{FFFE}{FFFE}{FFFE}オーク",
-   "translation": "邪鬼　　　　奥格"
+   "translation": "邪鬼{FFFE}{FFFE}{FFFE}{FFFE}奥格"
   },
   {
    "id": "F0092-0000ACC4",
@@ -5786,7 +5720,7 @@
    "byte_len": 24,
    "max_bytes": 24,
    "source": "邪鬼{FFFE}{FFFE}{FFFE}{FFFE}グレムリン",
-   "translation": "邪鬼　　　　格雷姆林"
+   "translation": "邪鬼{FFFE}{FFFE}{FFFE}{FFFE}格雷姆林"
   },
   {
    "id": "F0092-0000ACDC",
@@ -5794,7 +5728,7 @@
    "byte_len": 22,
    "max_bytes": 22,
    "source": "妖獣{FFFE}{FFFE}{FFFE}{FFFE}ベヒモス",
-   "translation": "妖兽　　　　贝希莫斯"
+   "translation": "妖兽{FFFE}{FFFE}{FFFE}{FFFE}贝希莫斯"
   },
   {
    "id": "F0092-0000ACF2",
@@ -5802,7 +5736,7 @@
    "byte_len": 26,
    "max_bytes": 26,
    "source": "妖獣{FFFE}{FFFE}{FFFE}{FFFE}マンティコア",
-   "translation": "妖兽　　　　曼提柯尔"
+   "translation": "妖兽{FFFE}{FFFE}{FFFE}{FFFE}曼提柯尔"
   },
   {
    "id": "F0092-0000AD0C",
@@ -5810,7 +5744,7 @@
    "byte_len": 22,
    "max_bytes": 22,
    "source": "妖獣{FFFE}{FFFE}{FFFE}{FFFE}スキュラ",
-   "translation": "妖兽　　　　斯库拉"
+   "translation": "妖兽{FFFE}{FFFE}{FFFE}{FFFE}斯库拉"
   },
   {
    "id": "F0092-0000AD22",
@@ -5818,7 +5752,7 @@
    "byte_len": 30,
    "max_bytes": 30,
    "source": "妖獣{FFFE}{FFFE}{FFFE}{FFFE}ブラックウイドウ",
-   "translation": "妖兽　　　　黑寡妇"
+   "translation": "妖兽{FFFE}{FFFE}{FFFE}{FFFE}黑寡妇"
   },
   {
    "id": "F0092-0000AD40",
@@ -5826,7 +5760,7 @@
    "byte_len": 22,
    "max_bytes": 22,
    "source": "妖獣{FFFE}{FFFE}{FFFE}{FFFE}ギュウキ",
-   "translation": "妖兽　　　　牛鬼"
+   "translation": "妖兽{FFFE}{FFFE}{FFFE}{FFFE}牛鬼"
   },
   {
    "id": "F0092-0000AD56",
@@ -5834,7 +5768,7 @@
    "byte_len": 18,
    "max_bytes": 18,
    "source": "妖獣{FFFE}{FFFE}{FFFE}{FFFE}ヌエ",
-   "translation": "妖兽　　　　鵺"
+   "translation": "妖兽{FFFE}{FFFE}{FFFE}{FFFE}鵺"
   },
   {
    "id": "F0092-0000AD68",
@@ -5842,7 +5776,7 @@
    "byte_len": 24,
    "max_bytes": 24,
    "source": "妖獣{FFFE}{FFFE}{FFFE}{FFFE}バイコーン",
-   "translation": "妖兽　　　　双角兽"
+   "translation": "妖兽{FFFE}{FFFE}{FFFE}{FFFE}双角兽"
   },
   {
    "id": "F0092-0000AD80",
@@ -5850,7 +5784,7 @@
    "byte_len": 20,
    "max_bytes": 20,
    "source": "妖獣{FFFE}{FFFE}{FFFE}{FFFE}ガルム",
-   "translation": "妖兽　　　　加尔姆"
+   "translation": "妖兽{FFFE}{FFFE}{FFFE}{FFFE}加尔姆"
   },
   {
    "id": "F0092-0000AD94",
@@ -5858,7 +5792,7 @@
    "byte_len": 26,
    "max_bytes": 26,
    "source": "妖樹{FFFE}{FFFE}{FFFE}{FFFE}イグドラジル",
-   "translation": "妖树　　　　尤克特拉希尔"
+   "translation": "妖树{FFFE}{FFFE}{FFFE}{FFFE}尤克特拉希尔"
   },
   {
    "id": "F0092-0000ADAE",
@@ -5866,7 +5800,7 @@
    "byte_len": 24,
    "max_bytes": 24,
    "source": "妖樹{FFFE}{FFFE}{FFFE}{FFFE}アルラウネ",
-   "translation": "妖树　　　　爱娜温"
+   "translation": "妖树{FFFE}{FFFE}{FFFE}{FFFE}爱娜温"
   },
   {
    "id": "F0092-0000ADC6",
@@ -5874,7 +5808,7 @@
    "byte_len": 26,
    "max_bytes": 26,
    "source": "妖樹{FFFE}{FFFE}{FFFE}{FFFE}マンドレイク",
-   "translation": "妖树　　　　曼陀罗"
+   "translation": "妖树{FFFE}{FFFE}{FFFE}{FFFE}曼陀罗"
   },
   {
    "id": "F0092-0000ADE0",
@@ -5882,7 +5816,7 @@
    "byte_len": 26,
    "max_bytes": 26,
    "source": "妖樹{FFFE}{FFFE}{FFFE}{FFFE}ふくちゅうか",
-   "translation": "妖树　　　　腹中花"
+   "translation": "妖树{FFFE}{FFFE}{FFFE}{FFFE}腹中花"
   },
   {
    "id": "F0092-0000ADFA",
@@ -5890,7 +5824,7 @@
    "byte_len": 22,
    "max_bytes": 22,
    "source": "屍鬼{FFFE}{FFFE}{FFFE}{FFFE}コープス",
-   "translation": "尸鬼　　　　尸群"
+   "translation": "尸鬼{FFFE}{FFFE}{FFFE}{FFFE}尸群"
   },
   {
    "id": "F0092-0000AE10",
@@ -5898,7 +5832,7 @@
    "byte_len": 28,
    "max_bytes": 28,
    "source": "屍鬼{FFFE}{FFFE}{FFFE}{FFFE}ゾンビせんせい",
-   "translation": "尸鬼　　　　丧尸教师"
+   "translation": "尸鬼{FFFE}{FFFE}{FFFE}{FFFE}丧尸教师"
   },
   {
    "id": "F0092-0000AE2C",
@@ -5906,7 +5840,7 @@
    "byte_len": 26,
    "max_bytes": 26,
    "source": "屍鬼{FFFE}{FFFE}{FFFE}{FFFE}ゾンビちゃん",
-   "translation": "尸鬼　　　　丧尸女生"
+   "translation": "尸鬼{FFFE}{FFFE}{FFFE}{FFFE}丧尸女生"
   },
   {
    "id": "F0092-0000AE46",
@@ -5914,7 +5848,7 @@
    "byte_len": 24,
    "max_bytes": 24,
    "source": "屍鬼{FFFE}{FFFE}{FFFE}{FFFE}ゾンビくん",
-   "translation": "尸鬼　　　　丧尸男生"
+   "translation": "尸鬼{FFFE}{FFFE}{FFFE}{FFFE}丧尸男生"
   },
   {
    "id": "F0092-0000AE5E",
@@ -5922,7 +5856,7 @@
    "byte_len": 26,
    "max_bytes": 26,
    "source": "屍鬼{FFFE}{FFFE}{FFFE}{FFFE}ゾンビドック",
-   "translation": "尸鬼　　　　丧尸狗"
+   "translation": "尸鬼{FFFE}{FFFE}{FFFE}{FFFE}丧尸狗"
   },
   {
    "id": "F0092-0000AE78",
@@ -5930,7 +5864,7 @@
    "byte_len": 24,
    "max_bytes": 24,
    "source": "魔王{FFFE}{FFFE}{FFFE}{FFFE}ルシファー",
-   "translation": "魔王　　　　路西法"
+   "translation": "魔王{FFFE}{FFFE}{FFFE}{FFFE}路西法"
   },
   {
    "id": "F0092-0000AE90",
@@ -5938,7 +5872,7 @@
    "byte_len": 28,
    "max_bytes": 28,
    "source": "魔王{FFFE}{FFFE}{FFFE}{FFFE}アンリ・マンユ",
-   "translation": "魔王　　　　安哥拉·曼纽"
+   "translation": "魔王{FFFE}{FFFE}{FFFE}{FFFE}安哥拉·曼纽"
   },
   {
    "id": "F0092-0000AEAC",
@@ -5946,7 +5880,7 @@
    "byte_len": 20,
    "max_bytes": 20,
    "source": "魔王{FFFE}{FFFE}{FFFE}{FFFE}マーラ",
-   "translation": "魔王　　　　魔罗"
+   "translation": "魔王{FFFE}{FFFE}{FFFE}{FFFE}魔罗"
   },
   {
    "id": "F0092-0000AEC0",
@@ -5954,7 +5888,7 @@
    "byte_len": 26,
    "max_bytes": 26,
    "source": "魔王{FFFE}{FFFE}{FFFE}{FFFE}アカ・マナフ",
-   "translation": "魔王　　　　阿卡·玛纳"
+   "translation": "魔王{FFFE}{FFFE}{FFFE}{FFFE}阿卡·玛纳"
   },
   {
    "id": "F0092-0000AEDA",
@@ -5962,7 +5896,7 @@
    "byte_len": 24,
    "max_bytes": 24,
    "source": "魔王{FFFE}{FFFE}{FFFE}{FFFE}アスタロト",
-   "translation": "魔王　　　　亚斯她录"
+   "translation": "魔王{FFFE}{FFFE}{FFFE}{FFFE}亚斯她录"
   },
   {
    "id": "F0092-0000AEF2",
@@ -5970,7 +5904,7 @@
    "byte_len": 18,
    "max_bytes": 18,
    "source": "魔王{FFFE}{FFFE}{FFFE}{FFFE}ロキ",
-   "translation": "魔王　　　　洛基"
+   "translation": "魔王{FFFE}{FFFE}{FFFE}{FFFE}洛基"
   },
   {
    "id": "F0092-0000AF04",
@@ -5978,7 +5912,7 @@
    "byte_len": 22,
    "max_bytes": 22,
    "source": "魔王{FFFE}{FFFE}{FFFE}{FFFE}ヘカーテ",
-   "translation": "魔王　　　　赫卡忒"
+   "translation": "魔王{FFFE}{FFFE}{FFFE}{FFFE}赫卡忒"
   },
   {
    "id": "F0092-0000AF1A",
@@ -5986,7 +5920,7 @@
    "byte_len": 26,
    "max_bytes": 26,
    "source": "邪龍{FFFE}{FFFE}{FFFE}{FFFE}ティアマット",
-   "translation": "邪龙　　　　提亚马特"
+   "translation": "邪龙{FFFE}{FFFE}{FFFE}{FFFE}提亚马特"
   },
   {
    "id": "F0092-0000AF34",
@@ -5994,7 +5928,7 @@
    "byte_len": 28,
    "max_bytes": 28,
    "source": "邪龍{FFFE}{FFFE}{FFFE}{FFFE}アジ・ダカーハ",
-   "translation": "邪龙　　　　阿日·达哈卡"
+   "translation": "邪龙{FFFE}{FFFE}{FFFE}{FFFE}阿日·达哈卡"
   },
   {
    "id": "F0092-0000AF50",
@@ -6002,7 +5936,7 @@
    "byte_len": 26,
    "max_bytes": 26,
    "source": "邪龍{FFFE}{FFFE}{FFFE}{FFFE}ニーズホッグ",
-   "translation": "邪龙　　　　尼德霍格"
+   "translation": "邪龙{FFFE}{FFFE}{FFFE}{FFFE}尼德霍格"
   },
   {
    "id": "F0092-0000AF6A",
@@ -6010,7 +5944,7 @@
    "byte_len": 24,
    "max_bytes": 24,
    "source": "邪龍{FFFE}{FFFE}{FFFE}{FFFE}バジリスク",
-   "translation": "邪龙　　　　巴西利斯克"
+   "translation": "邪龙{FFFE}{FFFE}{FFFE}{FFFE}巴西利斯克"
   },
   {
    "id": "F0092-0000AF82",
@@ -6018,7 +5952,7 @@
    "byte_len": 22,
    "max_bytes": 22,
    "source": "邪龍{FFFE}{FFFE}{FFFE}{FFFE}タラスク",
-   "translation": "邪龙　　　　塔拉斯克"
+   "translation": "邪龙{FFFE}{FFFE}{FFFE}{FFFE}塔拉斯克"
   },
   {
    "id": "F0092-0000AF98",
@@ -6026,7 +5960,7 @@
    "byte_len": 24,
    "max_bytes": 24,
    "source": "邪龍{FFFE}{FFFE}{FFFE}{FFFE}ワイバーン",
-   "translation": "邪龙　　　　双足飞龙"
+   "translation": "邪龙{FFFE}{FFFE}{FFFE}{FFFE}双足飞龙"
   },
   {
    "id": "F0092-0000AFB0",
@@ -6034,7 +5968,7 @@
    "byte_len": 26,
    "max_bytes": 26,
    "source": "邪龍{FFFE}{FFFE}{FFFE}{FFFE}コカトライス",
-   "translation": "邪龙　　　　蛇尾鸡"
+   "translation": "邪龙{FFFE}{FFFE}{FFFE}{FFFE}蛇尾鸡"
   },
   {
    "id": "F0092-0000AFCA",
@@ -6042,7 +5976,7 @@
    "byte_len": 28,
    "max_bytes": 28,
    "source": "邪龍{FFFE}{FFFE}{FFFE}{FFFE}ふくちゅうむし",
-   "translation": "邪龙　　　　腹中虫"
+   "translation": "邪龙{FFFE}{FFFE}{FFFE}{FFFE}腹中虫"
   },
   {
    "id": "F0092-0000AFE6",
@@ -6050,7 +5984,7 @@
    "byte_len": 24,
    "max_bytes": 24,
    "source": "幽鬼{FFFE}{FFFE}{FFFE}{FFFE}ヴェータラ",
-   "translation": "幽鬼　　　　毗陀罗"
+   "translation": "幽鬼{FFFE}{FFFE}{FFFE}{FFFE}毗陀罗"
   },
   {
    "id": "F0092-0000AFFE",
@@ -6058,7 +5992,7 @@
    "byte_len": 20,
    "max_bytes": 20,
    "source": "幽鬼{FFFE}{FFFE}{FFFE}{FFFE}ヤカー",
-   "translation": "幽鬼　　　　雅卡"
+   "translation": "幽鬼{FFFE}{FFFE}{FFFE}{FFFE}雅卡"
   },
   {
    "id": "F0092-0000B012",
@@ -6066,7 +6000,7 @@
    "byte_len": 26,
    "max_bytes": 26,
    "source": "幽鬼{FFFE}{FFFE}{FFFE}{FFFE}マンイーター",
-   "translation": "幽鬼　　　　肉食尸女"
+   "translation": "幽鬼{FFFE}{FFFE}{FFFE}{FFFE}肉食尸女"
   },
   {
    "id": "F0092-0000B02C",
@@ -6074,7 +6008,7 @@
    "byte_len": 22,
    "max_bytes": 22,
    "source": "幽鬼{FFFE}{FFFE}{FFFE}{FFFE}グーラー",
-   "translation": "幽鬼　　　　古拉"
+   "translation": "幽鬼{FFFE}{FFFE}{FFFE}{FFFE}古拉"
   },
   {
    "id": "F0092-0000B042",
@@ -6082,7 +6016,7 @@
    "byte_len": 20,
    "max_bytes": 20,
    "source": "幽鬼{FFFE}{FFFE}{FFFE}{FFFE}グール",
-   "translation": "幽鬼　　　　古鲁"
+   "translation": "幽鬼{FFFE}{FFFE}{FFFE}{FFFE}古鲁"
   },
   {
    "id": "F0092-0000B056",
@@ -6090,7 +6024,7 @@
    "byte_len": 18,
    "max_bytes": 18,
    "source": "幽鬼{FFFE}{FFFE}{FFFE}{FFFE}ガキ",
-   "translation": "幽鬼　　　　饿鬼"
+   "translation": "幽鬼{FFFE}{FFFE}{FFFE}{FFFE}饿鬼"
   },
   {
    "id": "F0092-0000B068",
@@ -6098,7 +6032,7 @@
    "byte_len": 22,
    "max_bytes": 22,
    "source": "悪霊{FFFE}{FFFE}{FFFE}{FFFE}レギオン",
-   "translation": "恶灵　　　　恶灵军团"
+   "translation": "恶灵{FFFE}{FFFE}{FFFE}{FFFE}恶灵军团"
   },
   {
    "id": "F0092-0000B07E",
@@ -6106,7 +6040,7 @@
    "byte_len": 22,
    "max_bytes": 22,
    "source": "悪霊{FFFE}{FFFE}{FFFE}{FFFE}くちさけ",
-   "translation": "恶灵　　　　裂口女"
+   "translation": "恶灵{FFFE}{FFFE}{FFFE}{FFFE}裂口女"
   },
   {
    "id": "F0092-0000B094",
@@ -6114,7 +6048,7 @@
    "byte_len": 20,
    "max_bytes": 20,
    "source": "悪霊{FFFE}{FFFE}{FFFE}{FFFE}はなこ",
-   "translation": "恶灵　　　　花子"
+   "translation": "恶灵{FFFE}{FFFE}{FFFE}{FFFE}花子"
   },
   {
    "id": "F0092-0000B0A8",
@@ -6122,7 +6056,7 @@
    "byte_len": 22,
    "max_bytes": 22,
    "source": "悪霊{FFFE}{FFFE}{FFFE}{FFFE}ゴースト",
-   "translation": "恶灵　　　　幽灵"
+   "translation": "恶灵{FFFE}{FFFE}{FFFE}{FFFE}幽灵"
   },
   {
    "id": "F0092-0000B0BE",
@@ -6130,7 +6064,7 @@
    "byte_len": 30,
    "max_bytes": 30,
    "source": "悪霊{FFFE}{FFFE}{FFFE}{FFFE}ポルターガイスト",
-   "translation": "恶灵　　　　骚灵"
+   "translation": "恶灵{FFFE}{FFFE}{FFFE}{FFFE}骚灵"
   },
   {
    "id": "F0092-0000B0DC",
@@ -6138,7 +6072,7 @@
    "byte_len": 26,
    "max_bytes": 26,
    "source": "外道{FFFE}{FFFE}{FFFE}{FFFE}オールドワン",
-   "translation": "外道　　　　古老者"
+   "translation": "外道{FFFE}{FFFE}{FFFE}{FFFE}古老者"
   },
   {
    "id": "F0092-0000B0F6",
@@ -6146,7 +6080,7 @@
    "byte_len": 30,
    "max_bytes": 30,
    "source": "外道{FFFE}{FFFE}{FFFE}{FFFE}ドッペルゲンガー",
-   "translation": "外道　　　　分身"
+   "translation": "外道{FFFE}{FFFE}{FFFE}{FFFE}分身"
   },
   {
    "id": "F0092-0000B114",
@@ -6154,7 +6088,7 @@
    "byte_len": 28,
    "max_bytes": 28,
    "source": "外道{FFFE}{FFFE}{FFFE}{FFFE}ブラックウーズ",
-   "translation": "外道　　　　黑软泥怪"
+   "translation": "外道{FFFE}{FFFE}{FFFE}{FFFE}黑软泥怪"
   },
   {
    "id": "F0092-0000B130",
@@ -6162,7 +6096,7 @@
    "byte_len": 30,
    "max_bytes": 30,
    "source": "外道{FFFE}{FFFE}{FFFE}{FFFE}クリス・ザ・カー",
-   "translation": "外道　　　　克丽斯轿车"
+   "translation": "外道{FFFE}{FFFE}{FFFE}{FFFE}克丽斯轿车"
   },
   {
    "id": "F0092-0000B14E",
@@ -6170,7 +6104,7 @@
    "byte_len": 30,
    "max_bytes": 30,
    "source": "外道{FFFE}{FFFE}{FFFE}{FFFE}ジャック・リパー",
-   "translation": "外道　　　　开膛手杰克"
+   "translation": "外道{FFFE}{FFFE}{FFFE}{FFFE}开膛手杰克"
   },
   {
    "id": "F0092-0000B16C",
@@ -6178,7 +6112,7 @@
    "byte_len": 22,
    "max_bytes": 22,
    "source": "外道{FFFE}{FFFE}{FFFE}{FFFE}スライム",
-   "translation": "外道　　　　软泥怪"
+   "translation": "外道{FFFE}{FFFE}{FFFE}{FFFE}软泥怪"
   },
   {
    "id": "F0092-0000B182",
@@ -6186,7 +6120,7 @@
    "byte_len": 26,
    "max_bytes": 26,
    "source": "{FFFE}{FFFE}{FFFE}{FFFE}{FFFE}{FFFE}？ブランク？",
-   "translation": "　　　　　　？空白？"
+   "translation": "{FFFE}{FFFE}{FFFE}{FFFE}{FFFE}{FFFE}？空白？"
   },
   {
    "id": "F0092-0000B19C",
@@ -8235,138 +8169,6 @@
    "max_bytes": 40,
    "source": "倒したＢＩＴ{FFFE}{FFFE}{FFFE}{FFFE}{FFFE}{FFFE}{FFFE}？ブランク？",
    "translation": "倒したＢＩＴ{FFFE}{FFFE}{FFFE}{FFFE}{FFFE}{FFFE}{FFFE}？ブランク？"
-  }
- ],
- "F0051": [
-  {
-   "id": "F0051-00000E20",
-   "file_offset": "00000E20",
-   "byte_len": 18,
-   "max_bytes": 18,
-   "source": "{FF71}枚かえるのね？",
-   "translation": "要兑换{数值0}枚吗？"
-  },
-  {
-   "id": "F0051-00000E32",
-   "file_offset": "00000E32",
-   "byte_len": 26,
-   "max_bytes": 26,
-   "source": "あらマッカが足りないわ{FF01}",
-   "translation": "玛卡不够。▽"
-  },
-  {
-   "id": "F0051-00000E4C",
-   "file_offset": "00000E4C",
-   "byte_len": 32,
-   "max_bytes": 32,
-   "source": "交換は１回５００００枚までよ{FF01}",
-   "translation": "每次最多换５００００枚。▽"
-  },
-  {
-   "id": "F0051-00000E6C",
-   "file_offset": "00000E6C",
-   "byte_len": 14,
-   "max_bytes": 14,
-   "source": "どれにする？",
-   "translation": "选哪个？"
-  },
-  {
-   "id": "F0051-00000E7A",
-   "file_offset": "00000E7A",
-   "byte_len": 36,
-   "max_bytes": 36,
-   "source": "あなたアイテムを持ちきれないわよ{FF01}",
-   "translation": "你已拿不下更多道具。▽"
-  },
-  {
-   "id": "F0051-00000E9E",
-   "file_offset": "00000E9E",
-   "byte_len": 26,
-   "max_bytes": 26,
-   "source": "あらコインが足りないわ{FF01}",
-   "translation": "代币不够。▽"
-  },
-  {
-   "id": "F0051-00000EB8",
-   "file_offset": "00000EB8",
-   "byte_len": 56,
-   "max_bytes": 56,
-   "source": "そんなに持てないわよ{FF01}{FF02}コインは９９９９９９枚までよ{FF01}",
-   "translation": "拿不了那么多。▽※※※※※※※代币最多９９９９９９枚。▽"
-  },
-  {
-   "id": "F0051-00000EF0",
-   "file_offset": "00000EF0",
-   "byte_len": 48,
-   "max_bytes": 48,
-   "source": "{FF1B}と交換ね{FF03}コイン{FFFE}{FF71}になるけど{FF03}いいかしら？",
-   "translation": "{道具}，确定交换吗？\n需要{数值0}枚代币。\n可以吗？"
-  }
- ],
- "F0052": [
-  {
-   "id": "F0052-00000818",
-   "file_offset": "00000818",
-   "byte_len": 18,
-   "max_bytes": 18,
-   "source": "{FF71}枚かえるのね？",
-   "translation": "要兑换{数值0}枚吗？"
-  },
-  {
-   "id": "F0052-0000082A",
-   "file_offset": "0000082A",
-   "byte_len": 26,
-   "max_bytes": 26,
-   "source": "あらマッカが足りないわ{FF01}",
-   "translation": "玛卡不够。▽"
-  },
-  {
-   "id": "F0052-00000844",
-   "file_offset": "00000844",
-   "byte_len": 32,
-   "max_bytes": 32,
-   "source": "交換は１回５００００枚までよ{FF01}",
-   "translation": "每次最多换５００００枚。▽"
-  },
-  {
-   "id": "F0052-00000864",
-   "file_offset": "00000864",
-   "byte_len": 14,
-   "max_bytes": 14,
-   "source": "どれにする？",
-   "translation": "选哪个？"
-  },
-  {
-   "id": "F0052-00000872",
-   "file_offset": "00000872",
-   "byte_len": 36,
-   "max_bytes": 36,
-   "source": "あなたアイテムを持ちきれないわよ{FF01}",
-   "translation": "你已拿不下更多道具。▽"
-  },
-  {
-   "id": "F0052-00000896",
-   "file_offset": "00000896",
-   "byte_len": 26,
-   "max_bytes": 26,
-   "source": "あらコインが足りないわ{FF01}",
-   "translation": "代币不够。▽"
-  },
-  {
-   "id": "F0052-000008B0",
-   "file_offset": "000008B0",
-   "byte_len": 56,
-   "max_bytes": 56,
-   "source": "そんなに持てないわよ{FF01}{FF02}コインは９９９９９９枚までよ{FF01}",
-   "translation": "拿不了那么多。▽※※※※※※※代币最多９９９９９９枚。▽"
-  },
-  {
-   "id": "F0052-000008E8",
-   "file_offset": "000008E8",
-   "byte_len": 48,
-   "max_bytes": 48,
-   "source": "{FF1B}と交換ね{FF03}コイン{FFFE}{FF71}になるけど{FF03}いいかしら？",
-   "translation": "{道具}，确定交换吗？\n需要{数值0}枚代币。\n可以吗？"
   }
  ]
 }

@@ -1539,7 +1539,7 @@
    "offset": "000E6902",
    "max_bytes": 28,
    "source": "アイテムが一杯で外せない▽",
-   "translation": "道具已满，无法卸除。",
+   "translation": "道具已满，无法卸除。▽",
    "renderer": "dynamic",
    "translation_origin": "untranslated"
   },
@@ -1974,6 +1974,15 @@
    "translation": "{道具}变得破破烂烂了。{大停顿}",
    "renderer": "dynamic",
    "translation_origin": "existing_exact_match"
+  },
+  {
+   "id": "SLPM-000E6E20",
+   "offset": "000E6E20",
+   "max_bytes": 18,
+   "source": "ＮＯ　ＤＡＴＡ{72FF}",
+   "translation": "ＮＯ　ＤＡＴＡ{72FF}",
+   "translation_origin": "manual",
+   "renderer": "static"
   },
   {
    "id": "SLPM-000E6E32",
@@ -3398,6 +3407,24 @@
    "max_bytes": 34,
    "source": "その他の状況に応じて{73FF}使用します",
    "translation": "其他{73FF}用途",
+   "renderer": "dynamic"
+  },
+  {
+   "id": "SLPM-000EF33C",
+   "offset": "000EF33C",
+   "max_bytes": 16,
+   "source": "マーカーリスト",
+   "translation": "标记清单",
+   "translation_origin": "manual",
+   "renderer": "dynamic"
+  },
+  {
+   "id": "SLPM-000EF34C",
+   "offset": "000EF34C",
+   "max_bytes": 24,
+   "source": "マーカーをセットします",
+   "translation": "设置标记",
+   "translation_origin": "manual",
    "renderer": "dynamic"
   },
   {

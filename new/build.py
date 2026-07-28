@@ -23,6 +23,7 @@ from src.overlay_text import (
     translated_overlay_texts,
 )
 from src.overlay_code_patch import apply_overlay_name_renderer_patches
+from src.control_code_audit import assert_no_dropped_pause_markers
 from src.text_codec import load_character_codes
 from src.unified_normal_text_plan import build_unified_normal_text_plan
 from src.slpm_text import (
@@ -88,6 +89,10 @@ def build_assets(
     rebuild_subtitle_videos=False,
 ):
     BUILD_DIRECTORY.mkdir(parents=True, exist_ok=True)
+    # A translation that loses a ▽ / {大停顿} makes the script run on and
+    # walk the player out of the room; the JSON still reads fine, so this
+    # has to be caught here.
+    assert_no_dropped_pause_markers()
     slpm_text_records = load_slpm_text_records()
     f0098_text_records = load_f0098_text_records()
     normal_text_plan = None
@@ -116,6 +121,30 @@ def build_assets(
                 and record["translation"]
             )
         )
+        marker_help_texts = tuple(
+            record["translation"]
+            for record in slpm_text_records
+            if (
+                0xEF298 <= record["offset"] < 0xEF33C
+                and record["translation"]
+            )
+        )
+        area_name_texts = tuple(
+            record["translation"]
+            for record in slpm_text_records
+            if (
+                0xE4768 <= record["offset"] < 0xE48A8
+                and record["translation"]
+            )
+        )
+        equip_help_texts = tuple(
+            record["translation"]
+            for record in slpm_text_records
+            if (
+                0xE7BF0 <= record["offset"] < 0xE813A
+                and record["translation"]
+            )
+        )
         f0098_static_texts = translated_f0098_texts(
             f0098_text_records,
             renderer="static",
@@ -128,7 +157,11 @@ def build_assets(
             ),
             existing_font_overrides=normal_text_plan.font_overrides,
             extra_context_texts=(
-                action_result_texts + f0098_static_texts
+                action_result_texts
+                + marker_help_texts
+                + area_name_texts
+                + equip_help_texts
+                + f0098_static_texts
             ),
         )
         print(
@@ -152,6 +185,15 @@ def build_assets(
                 normal_text_plan.section_character_overrides["text_17"]
             ),
             action_result_character_overrides=(
+                f14_context_alias_plan.character_overrides
+            ),
+            marker_help_character_overrides=(
+                f14_context_alias_plan.character_overrides
+            ),
+            area_name_character_overrides=(
+                f14_context_alias_plan.character_overrides
+            ),
+            equip_help_character_overrides=(
                 f14_context_alias_plan.character_overrides
             ),
         )
