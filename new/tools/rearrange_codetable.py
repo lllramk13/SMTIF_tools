@@ -57,6 +57,49 @@ SPACE = '　'
 # indices directly).  executable_patch.py changes the last entry from the
 # original 運=0x131 to the simplified Chinese 运=0x180.
 PINS = {0x53B: '力', 0x3CD: '知', 0x4D2: '魔', 0x3A8: '体', 0x39A: '速', 0x180: '运'}
+# The Chinese name-entry keyboard does not return a code of its own: pressing a
+# cell yields the *original* hardwired code behind it (0x068..0x107, see
+# src/name_entry.SOURCE_CODE_ROWS).  So every one of its 160 characters has to
+# sit on exactly the cell its key returns, or build_name_entry_plan rejects the
+# table with "not aligned with the grid's hardwired return codes".
+#
+# Without these pins a rearrange silently scatters those 160 characters and the
+# whole keyboard breaks -- which is easy to trigger, because the translators
+# rerun this script whenever they introduce a new character.
+def _name_entry_pins():
+    import json
+
+    from src.name_entry import SOURCE_CODE_ROWS
+
+    rows = json.loads(
+        (NEW_DIR / 'data' / 'name_entry_characters.json').read_text(
+            encoding='utf-8'
+        )
+    )['rows']
+    pins = {}
+    for row, codes in zip(rows, SOURCE_CODE_ROWS):
+        for character, code in zip(row, codes):
+            pins[code] = character
+    if len(pins) != 160:
+        raise SystemExit(
+            f'name-entry keyboard should pin 160 cells, got {len(pins)}'
+        )
+    return pins
+
+
+PINS.update(_name_entry_pins())
+
+# The map header builds its floor number as `digit + 0x2A`, so cells
+# 0x02A..0x033 must hold ０-９ in ascending order.  Pinning our own fullwidth
+# digits there keeps that arithmetic valid with no code patch at all, and since
+# these characters already needed low cells it costs nothing -- while releasing
+# the ten cells the reserved set used to hold for the original glyphs.  That is
+# exactly the 10-cell shortfall demon and race names created.
+DIGIT_PINS = {
+    0x02A + offset: character
+    for offset, character in enumerate('０１２３４５６７８９')
+}
+PINS.update(DIGIT_PINS)
 # Preset partner names shown in the party panel.
 PARTY_PRESET_NAMES = ('由美', '查理', '明')
 # Hardcoded single glyphs patched into the executable at build time
@@ -64,6 +107,10 @@ PARTY_PRESET_NAMES = ('由美', '查理', '明')
 # the intelligence stat's 知, 等 is the name-plural suffix (達 -> 等).  Both
 # render via F14, so they must stay below 0x567.
 EXTRA_STATIC_UI_CHARS = ('智', '等')
+# The two upgrade-screen strings that shift_jis_ui.py rewrites into fixed slots
+# and redirects to F14.  They are hardcoded UI, so every character must have a
+# real low code; the builder asserts this and fails the build otherwise.
+DIRECT_UI_F14_TEXTS = ('这样可以吗？', '剩余点数')
 # Item names (weapons/armor/guns/bullets...) shown on equip and shop screens,
 # which render via the F14 static font: every character must stay < 0x567 or
 # it blanks out (e.g. armor rows showing only 头/肩/轮).
@@ -83,6 +130,89 @@ MENU_OPTION_BLOCK_PREFIXES = (
 SKILL_NAME_BLOCK_PREFIXES = (
     'F0094-00002630',
 )
+# Demon names and race names, both drawn by F14 in the analysis/summon lists.
+# Neither was ever in the static set, which is the same omission that lost
+# 霆 from 雷霆 and blanked the armour rows: a character that only appears here
+# keeps a high code, F14 cannot reach it, and the glyph comes out empty --
+# 凶鸟 rendered as 鸟 and 花子 as 子.  The out-of-range reads are also what
+# makes those lists crawl.
+DEMON_NAME_BLOCK_PREFIXES = (
+    'F0094-0000003C',
+    'F0094-000039F8',
+)
+
+
+def demon_name_texts(text_data):
+    return [
+        choose_text(record)
+        for records in text_data.values()
+        for record in records
+        if record.get('id', '').startswith(DEMON_NAME_BLOCK_PREFIXES)
+        and choose_text(record)
+    ]
+
+# Blocks that are drawn by F14 and used to be handled with F14 context aliases
+# instead of real low codes.  Releasing the 161 kana cells freed enough room to
+# give them ordinary indices, which is what makes them render correctly in the
+# dynamic font too -- an alias only repaints F14, so 撕咬 came out as キヂ in
+# the F13 skill list.
+# The green help panel (F0094-00002070 item/magic, F0094-00002D98 skill
+# descriptions) is confirmed F14-only, so it can keep using context aliases --
+# an alias is only wrong when the same record also appears in a dynamic-font
+# screen.  Everything below does appear in both and therefore needs a real
+# low code.
+F14_CONTEXT_BLOCK_PREFIXES = (
+    'F0094-00000000',
+    'F0094-00002630',
+    'F0076-00002C7C',
+    'F0084-00000800',
+    'F0084-0000E000',
+)
+# Confirmed F14-only: the green help panel.  Its characters are still static,
+# but they are the ones allowed to spill onto reserved cells and pick up an
+# F14 context alias when the low range runs out -- an alias is only wrong for
+# a record that also shows up in a dynamic-font screen, and these do not.
+F14_ONLY_BLOCK_PREFIXES = (
+    'F0094-00002070',
+    'F0094-00002D98',
+)
+
+
+def f14_only_texts(text_data):
+    return [
+        record['translation']
+        for record in text_data.get('texts', ())
+        if record.get('id', '').startswith(F14_ONLY_BLOCK_PREFIXES)
+        and isinstance(record.get('translation'), str)
+        and record['translation']
+    ]
+# SLPM ranges that the same mechanism covered: action results, MARKER help,
+# the map-header area names and the equipment/resistance descriptions.
+F14_CONTEXT_SLPM_RANGES = (
+    (0xE6A26, 0xE6D58),
+    (0xEF298, 0xEF33C),
+    (0xE4768, 0xE48A8),
+    (0xE7BF0, 0xE813A),
+)
+
+
+def f14_context_texts(text_data, slpm_records, f0098_records):
+    """Every translation that is rendered through F14 via a context block."""
+    texts = []
+    for record in text_data.get('texts', ()):
+        if not record.get('id', '').startswith(F14_CONTEXT_BLOCK_PREFIXES):
+            continue
+        translation = record.get('translation')
+        if isinstance(translation, str) and translation:
+            texts.append(translation)
+    for record in slpm_records:
+        translation = record['translation']
+        if not translation:
+            continue
+        if any(lo <= record['offset'] < hi for lo, hi in F14_CONTEXT_SLPM_RANGES):
+            texts.append(translation)
+    texts.extend(translated_f0098_texts(f0098_records, renderer='static'))
+    return texts
 
 
 # Shop/service menus live in the F0049 overlay and render through F14 too, so
@@ -222,15 +352,25 @@ def main():
         + tuple(party_name_texts(text_data))
         + tuple(item_name_texts(text_data))
         + tuple(overlay_menu_option_texts())
-        # menu_option_texts() / skill_name_texts() are intentionally handled
-        # by src/f14_context_aliases.py instead of consuming globally unique
-        # low codes.  Their F14-only records reuse original name-entry cells;
-        # keyboard-entered names are routed back to the original small font.
+        + tuple(skill_name_texts(text_data))
+        + tuple(demon_name_texts(text_data))
+        + tuple(f14_context_texts(text_data, slpm, f98))
         + EXTRA_STATIC_UI_CHARS
+        + DIRECT_UI_F14_TEXTS
     ):
         chars = chars_of(text)
         used |= chars
         static |= chars
+
+    # F14-only characters may spill onto reserved cells; everything above must
+    # keep a real low code because it also appears in a dynamic-font screen.
+    spillable = set()
+    for text in f14_only_texts(text_data):
+        chars = chars_of(text)
+        used |= chars
+        spillable |= chars
+    spillable -= static
+    static |= spillable
 
     for character in PINS.values():
         if character not in all_chars:
@@ -238,6 +378,7 @@ def main():
     pinned = set(PINS.values()) | {SPACE}
     used -= pinned
     static -= pinned
+    spillable -= pinned
     dynamic_only = used - static
     unused = all_chars - used - pinned
 
@@ -248,17 +389,31 @@ def main():
     low = [i for i in indices if i < cap and i not in reserved]
     high = [i for i in indices if i >= cap and i not in reserved]
     res = [i for i in indices if i in reserved]
-    if len(static) > len(low):
+    required = static - spillable
+    if len(required) > len(low):
         raise SystemExit(
-            f'static/F14 characters ({len(static)}) exceed low slots ({len(low)})'
+            f'dual-context static characters ({len(required)}) exceed low '
+            f'slots ({len(low)})'
         )
 
     layout = {0: SPACE}
     layout.update(PINS)
     low_iter = iter(low)
-    for character in sorted(static, key=lambda c: char2idx[c]):
-        layout[next(low_iter)] = character
-    pool = iter(list(low_iter) + high + res)
+    ordered = (
+        sorted(required, key=lambda c: char2idx[c])
+        + sorted(spillable, key=lambda c: char2idx[c])
+    )
+    spilled = []
+    for character in ordered:
+        index = next(low_iter, None)
+        if index is None:
+            spilled.append(character)
+        else:
+            layout[index] = character
+    res_iter = iter(res)
+    for character in spilled:
+        layout[next(res_iter)] = character
+    pool = iter(list(low_iter) + high + list(res_iter))
     for character in sorted(dynamic_only, key=lambda c: char2idx[c]):
         layout[next(pool)] = character
     remaining = [i for i in range(count) if i not in layout]
@@ -287,7 +442,11 @@ def main():
 
     by_char = {c: i for i, c in layout.items()}
     overflow = sum(1 for c in used if by_char[c] in reserved)
-    print(f'chars={count} used={len(used) + len(pinned)} static/F14={len(static)}')
+    print(
+        f'chars={count} used={len(used) + len(pinned)} static/F14={len(static)}'
+        f' (dual-context {len(required)}, F14-only {len(spillable)},'
+        f' spilled to reserved {len(spilled)})'
+    )
     print(f'reserved-overflow (relocated at build time): {overflow}')
     print('pins: ' + ' '.join(f'{c}=0x{i:X}' for i, c in PINS.items()))
     print(f'wrote {CODETABLE}')

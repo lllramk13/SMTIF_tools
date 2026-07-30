@@ -30,12 +30,25 @@ ORIGINAL_NAME_GLYPH_INDICES = frozenset(
     set(DYNAMIC_SPECIAL_LOW_INDICES) | {0}
 )
 
-# Reserved cells the executable addresses by hardcoded glyph index, which an
-# alias would silently repaint.  The map header builds "<area><floor>Ｆ" from
-# `addiu ...,zero,0x39` (0x800BA2A0 / 0x800BA658) and that cell holds Ｆ, so
-# aliasing it turned 学校1Ｆ into 学校1＋.  Keeping one cell out of the pool is
-# free: 182 of the 204 reserved cells are in use.
-HARDCODED_GLYPH_INDICES = frozenset({0x0039})  # Ｆ
+# Reserved cells the executable addresses by hardcoded glyph index, where an
+# alias would be silently repainted over a glyph the original UI still draws by
+# number.  Only two groups are evidenced in game:
+#
+#   (0x02A-0x033, the map header's fullwidth ０-９, used to live here.  Those
+#    cells now carry our own digits as codetable pins instead, so they are not
+#    part of the reserved pool at all -- see glyph_layout and DIGIT_PINS.)
+#   0x034-0x035  fullwidth Ａ Ｂ  -- the save screen draws these by index.  The
+#                allocator takes the *highest* free cells, and 0x035 was the
+#                lowest one it reached, so 率's alias landed on Ｂ and the save
+#                screen showed 率.  Ａ has to come along: protecting Ｂ alone
+#                just moves the bottom of the range down onto it.
+#   0x039        fullwidth Ｆ     -- the same header's floor suffix; aliasing
+#                it is what produced 学校1＋.
+#
+# The ＮＯ　ＤＡＴＡ / ＥＲＲＯＲ　ＤＡＴＡ / ＦＩＬＥ letters are *not* here:
+# those strings are re-encoded through our own codetable now, so they no longer
+# reference the reserved cells at all.
+HARDCODED_GLYPH_INDICES = frozenset({0x034, 0x035, 0x039})
 
 # These blocks were confirmed in-game to draw through 0x800475FC.
 F14_CONTEXT_RECORD_PREFIXES = (

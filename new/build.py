@@ -3,10 +3,20 @@ import hashlib
 import shutil
 from pathlib import Path
 
-from src.disc_injector import replace_files_in_image
+from src.disc_injector import (
+    BOOT_SCREEN_LBA,
+    replace_files_in_image,
+    write_raw_sectors,
+)
 from src.executable_patch import patch_executable
 from src.font_builder import load_codetable, render_font
 from src.font_resource import build_f13
+from src.graphic_resource import (
+    decompress_graphic_resource,
+    pack_4bpp_pixels,
+    rebuild_graphic_resource,
+    unpack_4bpp_pixels,
+)
 from src.static_font_resource import build_f14
 from src.text_pipeline import (
     build_text_files,
@@ -45,6 +55,12 @@ from src.video_replacement import (
     build_subtitle_video_replacements,
 )
 from src.original_ui_glyphs import load_original_ui_glyph_overrides
+from src.name_entry import (
+    build_f0073,
+    build_name_entry_plan,
+    patch_f0082,
+    validate_f14_plan,
+)
 
 
 EXTRAC_DIRECTORY = Path(__file__).resolve().parent.parent / "extrac"
@@ -72,6 +88,77 @@ EXPECTED_BASE_SHA256 = (
     "03B286EC683F71AF968AF6A917D926F7F1C2A27BD1A6F3DF8D71086DFA79BCBF"
 )
 
+F0092_GUARDIAN_PROBE_OFFSET = 0xD850
+F0092_GUARDIAN_PROBE_EXPECTED = bytes.fromhex("834B")  # ガ
+F0092_GUARDIAN_PROBE_REPLACEMENT = bytes.fromhex("8341")  # ア
+
+
+def apply_f0092_guardian_probe(replacements):
+    """Change only the first kana of F0092's ガーディアン diagnostic candidate."""
+    replacements = dict(replacements)
+    resource_key = "D/F0092.BIN"
+    resource_data = replacements.get(resource_key)
+    if resource_data is None:
+        resource_data = (EXTRAC_DIRECTORY / resource_key).read_bytes()
+
+    patched_data = bytearray(resource_data)
+    offset = F0092_GUARDIAN_PROBE_OFFSET
+    actual = bytes(
+        patched_data[offset:offset + len(F0092_GUARDIAN_PROBE_EXPECTED)]
+    )
+    if actual != F0092_GUARDIAN_PROBE_EXPECTED:
+        raise AssertionError(
+            f"F0092 Guardian probe expected "
+            f"{F0092_GUARDIAN_PROBE_EXPECTED.hex()} at {offset:#x}, "
+            f"got {actual.hex()}"
+        )
+    patched_data[
+        offset:offset + len(F0092_GUARDIAN_PROBE_REPLACEMENT)
+    ] = F0092_GUARDIAN_PROBE_REPLACEMENT
+    replacements[resource_key] = bytes(patched_data)
+    print(
+        "F0092 Guardian probe: "
+        f"{offset:#x} ガ -> ア "
+        f"({F0092_GUARDIAN_PROBE_EXPECTED.hex()} -> "
+        f"{F0092_GUARDIAN_PROBE_REPLACEMENT.hex()})"
+    )
+    return replacements
+
+
+def apply_f0012_zero_probe(replacements):
+    """Blank F0012's lower kana atlas to test the Guardian-label source."""
+    replacements = dict(replacements)
+    resource_key = "D/F0012.BIN"
+    resource_data = replacements.get(resource_key)
+    if resource_data is None:
+        resource_data = (EXTRAC_DIRECTORY / resource_key).read_bytes()
+
+    graphic = decompress_graphic_resource(resource_data)
+    pixels = bytearray(unpack_4bpp_pixels(
+        graphic.raw_data,
+        graphic.pixel_width,
+        graphic.height,
+    ))
+    first_blank_row = 160
+    pixels[first_blank_row * graphic.pixel_width:] = bytes(
+        (graphic.height - first_blank_row) * graphic.pixel_width
+    )
+    replacements[resource_key] = rebuild_graphic_resource(
+        resource_data,
+        pack_4bpp_pixels(
+            pixels,
+            graphic.pixel_width,
+            graphic.height,
+        ),
+    )
+    print(
+        "F0012 zero probe: "
+        f"blanked y={first_blank_row}..{graphic.height - 1} "
+        f"of the {graphic.pixel_width}x{graphic.height} 4bpp atlas"
+    )
+    return replacements
+
+
 def sha256_file(path):
     digest = hashlib.sha256()
 
@@ -87,6 +174,8 @@ def build_assets(
     subtitle_video_directory=None,
     jpsxdec_jar=DEFAULT_JPSXDEC_JAR,
     rebuild_subtitle_videos=False,
+    f0092_guardian_probe=False,
+    f0012_zero_probe=False,
 ):
     BUILD_DIRECTORY.mkdir(parents=True, exist_ok=True)
     # A translation that loses a ▽ / {大停顿} makes the script run on and
@@ -259,6 +348,15 @@ def build_assets(
         f14_glyph_overrides.update(
             f14_context_alias_plan.font_overrides
         )
+    name_entry_plan = build_name_entry_plan()
+    validate_f14_plan(
+        name_entry_plan,
+        glyph_overrides=f14_glyph_overrides,
+    )
+    print(
+        "Chinese name-entry keyboard: "
+        f"{len(name_entry_plan.characters)} low-code characters"
+    )
     render_font(
         output_path=f14_font_path,
         preview_path=BUILD_DIRECTORY / "font_f14_preview.png",
@@ -270,6 +368,7 @@ def build_assets(
 
     print("[3/5] Building F0014 static font resource")
     f14_data = build_f14(raw_font_path=f14_font_path)
+    f73_data = build_f0073(f14_data, name_entry_plan)
 
     print("[4/5] Applying executable patch")
     executable_data = patch_executable(
@@ -315,6 +414,13 @@ def build_assets(
         ),
     )
     replacements = create_disc_replacements(text_result)
+    f82_key = "D/F0082.BIN"
+    if f82_key not in replacements:
+        raise ValueError("Text build did not produce F0082.BIN")
+    replacements[f82_key] = patch_f0082(
+        replacements[f82_key],
+        name_entry_plan,
+    )
 
     inplace_patches = build_inplace_resource_patches(
         text_result["text_blocks"],
@@ -366,6 +472,7 @@ def build_assets(
 
     replacements["D/F0013.BIN"] = f13_data
     replacements["D/F0014.BIN"] = f14_data
+    replacements["D/F0073.BIN"] = f73_data
     replacements["SLPM_871.54"] = executable_data
 
     if f0098_text_patches:
@@ -377,6 +484,25 @@ def build_assets(
             base_f0098,
             f0098_text_patches,
         )
+
+    # Hand-authored full-screen boot images (tools/boot_screen.py writes them).
+    # Each file keeps its original disc length, so this is a plain swap.
+    boot_screen_directory = NEW_DIRECTORY / "data" / "boot_screens"
+    for boot_screen in sorted(boot_screen_directory.glob("F*.BIN")):
+        key = f"D/{boot_screen.name}"
+        original = (EXTRAC_DIRECTORY / "D" / boot_screen.name).read_bytes()
+        data = boot_screen.read_bytes()
+        if len(data) != len(original):
+            raise ValueError(
+                f"{key}: boot screen is {len(data)} bytes, expected "
+                f"{len(original)}"
+            )
+        replacements[key] = data
+
+    if f0092_guardian_probe:
+        replacements = apply_f0092_guardian_probe(replacements)
+    if f0012_zero_probe:
+        replacements = apply_f0012_zero_probe(replacements)
 
     subtitle_video_replacements = {}
     if subtitle_video_directory is not None:
@@ -396,6 +522,7 @@ def build_assets(
     return {
         "normal_text_plan": normal_text_plan,
         "f14_context_alias_plan": f14_context_alias_plan,
+        "name_entry_plan": name_entry_plan,
         "slpm_text_records": slpm_text_records,
         "slpm_text_patches": slpm_text_patches,
         "shift_jis_ui_plan": shift_jis_ui_plan,
@@ -428,6 +555,8 @@ def build_disc(
     subtitle_video_directory=None,
     jpsxdec_jar=DEFAULT_JPSXDEC_JAR,
     rebuild_subtitle_videos=False,
+    f0092_guardian_probe=False,
+    f0012_zero_probe=False,
 ):
     base_image = Path(base_image).resolve()
     output_image = Path(output_image).resolve()
@@ -457,6 +586,8 @@ def build_disc(
         subtitle_video_directory=subtitle_video_directory,
         jpsxdec_jar=jpsxdec_jar,
         rebuild_subtitle_videos=rebuild_subtitle_videos,
+        f0092_guardian_probe=f0092_guardian_probe,
+        f0012_zero_probe=f0012_zero_probe,
     )
     text_summary = summarize_text_build(assets["text_result"])
     replacements = assets["replacements"]
@@ -493,6 +624,22 @@ def build_disc(
             manifest_path,
             replacements,
         )
+
+        # The extra boot page has no directory entry -- the display routine
+        # reads a raw LBA -- so it is written straight into the head of the
+        # ZZZ.BIN padding (see disc_injector.BOOT_SCREEN_LBA for why there
+        # and not the blank run at the end of the disc).
+        extra_page = NEW_DIRECTORY / "data" / "boot_screens" / "BOOT_BLOB.BIN"
+        if extra_page.is_file():
+            written = write_raw_sectors(
+                temporary_image,
+                BOOT_SCREEN_LBA,
+                extra_page.read_bytes(),
+            )
+            print(
+                f"Boot screen blob: {extra_page.stat().st_size} bytes into "
+                f"{written} sectors at LBA {BOOT_SCREEN_LBA}"
+            )
 
         if temporary_image.stat().st_size != base_image.stat().st_size:
             raise AssertionError("构建后镜像长度发生变化")
@@ -569,6 +716,22 @@ def parse_arguments():
         action="store_true",
         help="Ignore cached PS1 video containers and encode every frame again.",
     )
+    parser.add_argument(
+        "--f0092-guardian-probe",
+        action="store_true",
+        help=(
+            "Diagnostic only: change F0092+0xD788 from ガ to ア to test "
+            "whether that Shift-JIS slot supplies the Guardian UI label."
+        ),
+    )
+    parser.add_argument(
+        "--f0012-zero-probe",
+        action="store_true",
+        help=(
+            "Diagnostic only: blank F0012's lower kana-atlas rows to test "
+            "whether that original UI atlas supplies the Guardian labels."
+        ),
+    )
     return parser.parse_args()
 
 
@@ -586,4 +749,6 @@ if __name__ == "__main__":
         subtitle_video_directory=arguments.subtitle_videos,
         jpsxdec_jar=arguments.jpsxdec_jar,
         rebuild_subtitle_videos=arguments.rebuild_subtitle_videos,
+        f0092_guardian_probe=arguments.f0092_guardian_probe,
+        f0012_zero_probe=arguments.f0012_zero_probe,
     )

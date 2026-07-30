@@ -156,6 +156,17 @@ def patch_executable(
         # Keep both known name sites on the hybrid route; the MARKER overflow
         # is fixed at its allocation-size estimator instead.
         0x8006D9E4: bytes.fromhex('5B2B010C'),
+        # Guardian title replacement: preserve the common resource-release
+        # call through a wrapper, render 守护灵 from F13, then upload the known
+        # title texture rectangle.
+        0x8006A3DC: bytes.fromhex('A51F010C'),  # jal 0x80047E94
+        0x80047E94: bytes.fromhex('50FEBD27'),  # addiu sp,sp,-0x1B0
+        0x80047E9C: bytes.fromhex('7031020C'),  # jal 0x8008C5C0
+        0x80105F80: bytes.fromhex('1080083C'),  # lui t0,0x8010
+        0x80105F84: bytes.fromhex('00600835'),  # ori t0,t0,0x6000
+        0x80105F90: bytes.fromhex('00000B8D'),  # lw t3,0(t0)
+        0x80105F94: bytes.fromhex('00000000'),  # load-delay nop
+        0x80106000: bytes.fromhex('66666666'),  # lower-strip bitmap
         # SAVE/LOAD and map list draws routed away from raw F14 (alias leak).
         0x80072C34: bytes.fromhex('5B2B010C'),
         # Shared big-font renderer gated so original-code names leave F14.
@@ -174,10 +185,6 @@ def patch_executable(
         0x80047E3C: bytes.fromhex('0000828E'),  # lw v0,0(s4)
         0x800B85C8: bytes.fromhex('5B2B010C'),
         0x8004AD6C: bytes.fromhex('21408000'),
-        0x8004ADD4: bytes.fromhex('E6FF2011'),
-        0x8004ADE8: bytes.fromhex('7F1D0108'),
-        0x8004ADEC: bytes.fromhex('0100E734'),  # ori a3,a3,1: no F14 shadow
-        0x8004ADF0: bytes.fromhex('FB1B0108'),
         0x8005C1D0: bytes.fromhex('C0100200'),
         # Renderer entries remain byte-for-byte original.
         0x80046864: bytes.fromhex('A8FFBD27'),
@@ -217,6 +224,24 @@ def patch_executable(
         0x8005C2E4: bytes.fromhex('00000000'),
         0x800874D4: bytes.fromhex('191A010C'),  # original renderer call restored
         0x8005C2EC: bytes.fromhex('D8FFBD27'),  # next function is untouched
+        # Independent inserted second boot page.  The original five-sector F0093 read
+        # remains unchanged.  After it fades, a separate blocking raw read
+        # fetches the custom payload without passing it through the boot
+        # 02 01 resource parser.
+        # Boot watermark page.  0x8002C82C and 0x800EB7C8 stay original: the
+        # page is read and uploaded by watermark_upload rather than by widening
+        # the routine's own read.
+        0x8002BF64: bytes.fromhex('9CF8030C'),  # jal boot_screen_start
+        0x8002C82C: bytes.fromhex('287A848C'),  # original FILEPOS[93] load
+        0x8002C860: bytes.fromhex('21101400'),  # move v0,s4
+        0x8002C888: bytes.fromhex('21101500'),  # move v0,s5
+        0x8002C954: bytes.fromhex('A4F8030C'),  # jal boot_screen_next
+        0x800EB7C8: bytes.fromhex('0500'),      # original five-sector read
+        0x800FE270: bytes.fromhex('1080083C'),  # boot_screen_start
+        0x800FE2B0: bytes.fromhex('5EB2000C'),  # jal 0x8002C978
+        0x800FE2C4: bytes.fromhex('7D17040C'),  # jal boot_read_and_upload
+        0x80105DF4: bytes.fromhex('70FEBD27'),  # watermark_upload stack frame
+        0x80106100: bytes.fromhex('0E008016'),  # F0093 RLE row decoder
     }
     for address, expected in expected_opcodes.items():
         offset = virtual_address_to_file_offset(address)
@@ -230,9 +255,16 @@ def patch_executable(
     armips_changed_bytes = sum(
         old != new for old, new in zip(base_data, patched_data)
     )
-    if armips_changed_bytes != 702:
+    # 1351 before the boot-screen work.  The active dispatcher, raw-read
+    # wrapper, upload routine and four hooks originally added 374 changed
+    # bytes; retargeting the hardcoded Guardian title from 神 (0x0123) to
+    # 灵 (0x00F0) makes one immediate byte match the base again.  The one-read
+    # F0093-compatible 8bpp RLE uploader and its row decoder bring this to 1739;
+    # restoring the clean R&D closing-frame pass adds 14 changed bytes.
+    # The original F0093 source and count deliberately remain intact.
+    if armips_changed_bytes != 1790:
         raise AssertionError(
-            f'Expected CN.asm to change 702 bytes, got {armips_changed_bytes}'
+            f'Expected CN.asm to change 1790 bytes, got {armips_changed_bytes}'
         )
 
     patched_data = bytearray(patched_data)

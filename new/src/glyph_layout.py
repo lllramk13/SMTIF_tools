@@ -29,9 +29,35 @@ STATIC_WIDTH = 0x0B
 # 0x800F2E80 -- so it cannot grow beyond F14's own capacity.
 STATIC_WIDTH_TABLE_ENTRIES = 0x0567
 
-# Low codes the original name-entry / one-byte UI paths use directly.  Normal
-# translated dialogue must not depend on their low-code meaning; F14 context
-# aliases deliberately reuse these cells for menu-only records.
+# Low codes the original UI addresses directly by index, so a translated glyph
+# must never take them over.
+#
+# 0x068..0x108 used to be here too: 161 cells holding the original kana, kept
+# so keyboard-entered Japanese names would still draw.  They are the single
+# biggest block of low codes in the game and the reason F14 was permanently
+# 2 cells over capacity, forcing the whole F14-context-alias mechanism -- which
+# in turn only repaints F14, so any alias-encoded record that also appears in a
+# dynamic-font screen came out as kana (撕咬 -> キヂ).  The project decided
+# Japanese name entry is not needed, so the kana block is released: every
+# character that needed an alias now gets a real low code and renders correctly
+# in both fonts.
+#
+# What stays reserved is what the executable hardcodes as glyph indices:
+# punctuation, the fullwidth digits and Latin letters behind ＮＯ　ＤＡＴＡ,
+# ＦＩＬＥ n and the map header's floor Ｆ (0x039).  Freeing those is what
+# turned 学校1Ｆ into 学校1＋.
+#
+# 0x02A..0x033 (fullwidth ０-９) left this set on 2026-07-30.  The map header
+# builds its floor number as `digit + 0x2A`, so those ten cells used to be held
+# back for the original glyphs -- ten cells F14 could not spend on Chinese,
+# which is exactly what put it 10 over capacity once demon and race names joined
+# the static set.
+#
+# The codetable now *pins* our own ０-９ onto those same ten cells instead (see
+# tools/rearrange_codetable.DIGIT_PINS).  The header's arithmetic is unchanged
+# and still lands on a fullwidth zero, just drawn from our font, so no code
+# patch is needed -- and because those characters already needed low cells,
+# pinning them releases ten cells outright.
 DYNAMIC_SPECIAL_LOW_INDICES = frozenset((
     0x004,
     0x005,
@@ -40,8 +66,7 @@ DYNAMIC_SPECIAL_LOW_INDICES = frozenset((
     0x00D,
     0x010,
     0x015,
-    *range(0x02A, 0x04E),
-    *range(0x068, 0x109),
+    *range(0x034, 0x04E),
 ))
 
 

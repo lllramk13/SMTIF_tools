@@ -1,6 +1,7 @@
 .psx
 .create "SLPM_871.54", 0x8000F800
 .close
+
 .open "base_SLPM_871.54","SLPM_871.54", 0x8000F800
 
 
@@ -35,6 +36,17 @@ jal     hybrid_name_renderer
 
 .org    0x8006D9E4
 jal     hybrid_name_renderer
+
+
+; Guardian-label VRAM probe.  0x8006A2DC uploads one of the common UI texture
+; resources and releases its staging buffer through 0x8008C5C0 at 0x8006A3DC.
+; Route that release through a wrapper which preserves the original call and
+; then overwrites the known top-label texture rectangle with a solid 4bpp
+; block.  If the Guardian title becomes a bar, both the hook timing and the
+; VRAM coordinates are confirmed; the block can then be replaced by Chinese
+; pixels.  This is a diagnostic step, not the final artwork.
+.org    0x8006A3DC
+jal     guardian_vram_probe
 
 
 ; The remaining leaks in the other direction: these draw slot/list strings
@@ -146,14 +158,12 @@ ori     t2,zero,0xFFFF
 beq     t1,t2,big_font_name_small
 addiu   t0,t0,0x2
 
-; 0x068..0x108 kana, 0x02A..0x04D Latin/digits, 0x004..0x007 punctuation.
+; Still-reserved cells only: 0x02A..0x04D Latin/digits, 0x004..0x007
+; punctuation.  The kana block 0x068..0x108 was released and now holds ordinary
+; Chinese, so it must not count as "original UI codes" any more.
 ; Each test's delay slot sets up the next comparand; on a taken branch the loop
 ; head recomputes both t1 and t2, so the early clobber is harmless.
-addiu   t2,t1,-0x68
-sltiu   t2,t2,0xA1
-bne     t2,zero,big_font_name_loop
 addiu   t2,t1,-0x2A
-
 sltiu   t2,t2,0x24
 bne     t2,zero,big_font_name_loop
 addiu   t2,t1,-0x4
@@ -281,6 +291,350 @@ sw      v1,0(t0)                ; copy.link = old head
 
 f14_shadow_addprim_done:
 j       0x80047D14
+nop
+
+
+; Free tail of the unreferenced duplicate F14 renderer (0x80047DBC..8004800B).
+; Keep the replacement self-contained: RECT and a 16-word x 12-row pixel
+; buffer live on the stack.  The three Chinese glyphs are decoded directly
+; from the rebuilt 1bpp F13, so this needs no second bitmap/font copy.
+.org    0x80047E94
+guardian_vram_probe:
+addiu   sp,sp,-0x1B0
+sw      ra,0x1A0(sp)
+
+; Preserve the displaced resource-release call.
+jal     0x8008C5C0
+nop
+
+; RECT { x=684, y=314, w=16 VRAM words, h=12 }.
+ori     t0,zero,0x02AC
+sh      t0,0x10(sp)
+ori     t0,zero,0x013A
+sh      t0,0x12(sp)
+ori     t0,zero,0x0010
+sh      t0,0x14(sp)
+ori     t0,zero,0x000C
+sh      t0,0x16(sp)
+
+; Clear the old 64x12 Japanese label.
+addiu   t0,sp,0x20
+ori     t2,zero,0x0060
+
+guardian_vram_clear:
+sw      zero,0(t0)
+addiu   t0,t0,0x4
+addiu   t2,t2,-1
+bne     t2,zero,guardian_vram_clear
+nop
+
+; Render 守护灵 (glyph indices 0x27D, 0x32F, 0x0F0) into the first 36 pixels.
+; Two 4bpp pixels occupy one output byte, hence the 6-byte cell advance.
+ori     a0,zero,0x027D
+addiu   a1,sp,0x20
+jal     guardian_render_f13_glyph
+nop
+
+ori     a0,zero,0x032F
+addiu   a1,sp,0x26
+jal     guardian_render_f13_glyph
+nop
+
+ori     a0,zero,0x00F0
+addiu   a1,sp,0x2C
+jal     guardian_render_f13_glyph
+nop
+
+addiu   a0,sp,0x10
+jal     0x800E2948
+addiu   a1,sp,0x20
+
+j       guardian_bottom_upload
+nop
+
+
+; a0 = 1bpp F13 glyph index
+; a1 = byte position of this glyph in the first destination row
+; Each source byte expands to four 4bpp bytes.  F13 uses inverted bits
+; (0=ink, 1=transparent); destination palette index 0xF is the title colour.
+guardian_render_f13_glyph:
+sll     t0,a0,0x1
+addu    t0,t0,a0
+sll     t0,t0,0x3
+lui     t1,0x8011
+lw      t1,-0x4B30(t1)
+nop
+beq     t1,zero,guardian_render_done
+nop
+addu    t0,t0,t1
+ori     t2,zero,0x000C
+
+guardian_render_row:
+lbu     t3,0(t0)
+addiu   t0,t0,0x1
+ori     t6,zero,0x0004
+
+guardian_render_first_byte:
+andi    t4,t3,0x1
+xori    t4,t4,0x1
+subu    t4,zero,t4
+andi    t4,t4,0xF
+srl     t3,t3,0x1
+andi    t5,t3,0x1
+xori    t5,t5,0x1
+subu    t5,zero,t5
+andi    t5,t5,0xF
+sll     t5,t5,0x4
+or      t4,t4,t5
+sb      t4,0(a1)
+addiu   a1,a1,0x1
+srl     t3,t3,0x1
+addiu   t6,t6,-1
+bne     t6,zero,guardian_render_first_byte
+nop
+
+; Only the first four pixels of the glyph's second byte belong to its
+; 12-pixel cell; the generated font's final four columns are padding.
+lbu     t3,0(t0)
+addiu   t0,t0,0x1
+ori     t6,zero,0x0002
+
+guardian_render_second_byte:
+andi    t4,t3,0x1
+xori    t4,t4,0x1
+subu    t4,zero,t4
+andi    t4,t4,0xF
+srl     t3,t3,0x1
+andi    t5,t3,0x1
+xori    t5,t5,0x1
+subu    t5,zero,t5
+andi    t5,t5,0xF
+sll     t5,t5,0x4
+or      t4,t4,t5
+sb      t4,0(a1)
+addiu   a1,a1,0x1
+srl     t3,t3,0x1
+addiu   t6,t6,-1
+bne     t6,zero,guardian_render_second_byte
+nop
+
+addiu   a1,a1,0x1A
+addiu   t2,t2,-1
+bne     t2,zero,guardian_render_row
+nop
+
+guardian_render_done:
+jr      ra
+nop
+
+
+; Read and decode one complete F0093-compatible 320x240 8bpp/256-colour
+; resource.  The R&D page has already faded out, so deliberately overwrite its
+; original texture at VRAM word (320,0) and reuse its texture pages 5/7.
+;
+; One seven-sector raw read fits safely below 0x801E2800.  The image block uses
+; the original Atlus RLE grammar and is followed on a four-byte boundary by
+; the original 256x1 CLUT block.  Decode/upload everything before returning to
+; the existing fade/hold/draw loop, so the page appears atomically.
+.org    0x80105DF4
+boot_read_and_upload:
+watermark_upload:
+addiu   sp,sp,-0x190
+sw      ra,0x18C(sp)
+sw      s0,0x188(sp)
+sw      s1,0x184(sp)
+sw      s2,0x180(sp)
+sw      s3,0x17C(sp)
+sw      s4,0x178(sp)
+sw      s5,0x174(sp)
+sw      s6,0x170(sp)
+
+; Read the complete resource once through the proven blocking raw path.
+lui     a0,0x0001
+ori     a0,a0,0x748B               ; LBA 95371, head of ZZZ.BIN
+ori     a1,zero,0x3800              ; seven safe Mode 2 Form 1 sectors
+lui     a2,0x801D
+ori     a2,a2,0xF000               ; retired boot ring-buffer storage
+jal     0x8002904C                  ; read_raw_blocking
+nop
+
+; Locate the aligned CLUT block from the image block's declared size.
+lui     t0,0x801D
+ori     t0,t0,0xF000
+lw      t1,0x4(t0)
+nop
+addiu   t1,t1,0x3
+addiu   t2,zero,-0x4
+and     t1,t1,t2
+addu    t1,t1,t0
+addiu   t1,t1,0x10                 ; skip the 16-byte CLUT header
+sw      t1,0x20(sp)
+
+; Static part of row RECT {x=320, y=<s1>, w=160 VRAM words, h=1}.
+ori     t1,zero,0x0140
+sh      t1,0x10(sp)
+ori     t1,zero,0x00A0
+sh      t1,0x14(sp)
+ori     t1,zero,0x0001
+sh      t1,0x16(sp)
+
+addiu   s0,t0,0x10                 ; RLE source after image header
+addu    s1,zero,zero                ; overwrite R&D texture from VRAM y=0
+ori     s2,zero,0x00F0              ; 240 rows
+addu    s4,zero,zero                ; current RLE token remaining bytes
+addu    s5,zero,zero                ; 0=literal, 1=repeat
+
+watermark_row:
+addiu   a0,sp,0x30                  ; 320-byte decoded row
+ori     a1,zero,0x0140
+jal     watermark_rle_decode
+nop
+
+sh      s1,0x12(sp)
+addiu   a0,sp,0x10
+jal     0x800E2948                  ; LoadImage
+addiu   a1,sp,0x30
+addiu   s1,s1,0x1
+addiu   s2,s2,-1
+bne     s2,zero,watermark_row
+nop
+
+; Upload the complete original-format 256x1 CLUT at (0,480).
+sh      zero,0x10(sp)
+ori     t0,zero,0x01E0
+sh      t0,0x12(sp)
+ori     t0,zero,0x0100
+sh      t0,0x14(sp)
+ori     t0,zero,0x0001
+sh      t0,0x16(sp)
+lw      a1,0x20(sp)
+nop
+addiu   a0,sp,0x10
+jal     0x800E2948
+nop
+
+jal     0x800E269C                  ; DrawSync(0)
+addu    a0,zero,zero
+
+lw      ra,0x18C(sp)
+lw      s0,0x188(sp)
+lw      s1,0x184(sp)
+lw      s2,0x180(sp)
+lw      s3,0x17C(sp)
+lw      s4,0x178(sp)
+lw      s5,0x174(sp)
+lw      s6,0x170(sp)
+addiu   sp,sp,0x190
+jr      ra
+nop
+
+
+; A second, unreferenced zero-filled executable gap.  The top wrapper tail-
+; jumps here while its stack frame is still live.  Upload the preserved lower
+; bar background plus GUARDIAN PTS, then perform the wrapper's common epilogue.
+.org    0x80105F80
+guardian_bottom_upload:
+lui     t0,0x8010
+ori     t0,t0,0x6000
+addiu   t1,sp,0x20
+ori     t2,zero,0x0040
+
+guardian_bottom_copy:
+lw      t3,0(t0)
+nop
+sw      t3,0(t1)
+addiu   t0,t0,0x4
+addiu   t1,t1,0x4
+addiu   t2,t2,-1
+bne     t2,zero,guardian_bottom_copy
+nop
+
+; RECT { x=673, y=475, w=16 VRAM words, h=8 }.
+ori     t0,zero,0x02A1
+sh      t0,0x10(sp)
+ori     t0,zero,0x01DB
+sh      t0,0x12(sp)
+ori     t0,zero,0x0010
+sh      t0,0x14(sp)
+ori     t0,zero,0x0008
+sh      t0,0x16(sp)
+
+addiu   a0,sp,0x10
+jal     0x800E2948
+addiu   a1,sp,0x20
+
+lw      ra,0x1A0(sp)
+addiu   sp,sp,0x1B0
+jr      ra
+nop
+
+
+.org    0x80106000
+guardian_bottom_bitmap:
+; 64x8 4bpp strip containing 8px GUARDIAN PTS.
+; Palette index 0xF is ink and the original 0x5/0x6 bar pixels are preserved.
+.db 0x66,0x66,0x66,0x66,0x66,0x66,0x66,0x66,0x66,0x66,0x66,0x66,0x66,0x66,0x66,0x66
+.db 0x66,0x66,0x66,0x66,0x66,0x66,0x66,0x66,0x66,0x66,0x66,0x66,0x66,0x66,0x66,0x55
+.db 0x66,0x66,0x66,0x66,0x66,0x66,0x66,0x66,0x66,0x66,0x66,0x66,0x66,0x66,0x66,0x66
+.db 0x66,0x66,0x66,0x66,0x66,0x66,0x66,0x66,0x66,0x66,0x66,0x66,0x66,0x66,0x66,0x56
+.db 0xF6,0xFF,0x66,0xF6,0x66,0x6F,0x66,0x6F,0x66,0xFF,0xFF,0x66,0xFF,0x6F,0x66,0x6F
+.db 0xF6,0x66,0xF6,0x66,0x6F,0x66,0xF6,0xFF,0xF6,0xFF,0xFF,0xF6,0xFF,0x66,0x66,0x66
+.db 0x6F,0x66,0x6F,0xF6,0x66,0x6F,0xF6,0xF6,0x66,0x6F,0xF6,0x66,0x6F,0xF6,0x66,0x6F
+.db 0x6F,0x6F,0xF6,0x6F,0x6F,0x66,0xF6,0xF6,0x66,0xF6,0x66,0x6F,0x66,0x6F,0x66,0x66
+.db 0x6F,0x66,0x66,0xF6,0x66,0x6F,0xF6,0xF6,0x66,0xFF,0xFF,0x66,0x6F,0xF6,0x66,0x6F
+.db 0x6F,0x6F,0xF6,0x6F,0x6F,0x66,0xF6,0xF6,0x66,0xF6,0x66,0xFF,0x66,0x66,0x66,0x66
+.db 0x6F,0xF6,0x6F,0xF6,0x66,0x6F,0xF6,0xFF,0x66,0x6F,0x6F,0x66,0x6F,0xF6,0x66,0x6F
+.db 0xFF,0x6F,0xF6,0xF6,0x6F,0x66,0xF6,0xFF,0x66,0xF6,0x66,0x66,0xFF,0x6F,0x66,0x66
+.db 0x6F,0x66,0x6F,0xF6,0x66,0x6F,0x6F,0x66,0x6F,0x6F,0xF6,0x66,0x6F,0xF6,0x66,0xFF
+.db 0x66,0xF6,0xF6,0xF6,0x6F,0x66,0xF6,0x66,0x66,0xF6,0x66,0x6F,0x66,0x6F,0x66,0x66
+.db 0xF6,0xFF,0x66,0x66,0xFF,0x66,0x6F,0x66,0x6F,0x6F,0xF6,0x66,0xFF,0x6F,0x66,0xFF
+.db 0x66,0xF6,0xF6,0x66,0x6F,0x66,0xF6,0x66,0x66,0xF6,0x66,0xF6,0xFF,0x66,0x66,0x66
+
+
+; Last 120 bytes of the same verified zero-filled gap.  Decode `a1` bytes
+; from the F0093 RLE stream at s0 into a0 while preserving token state across
+; all 240 row calls.  s4 = remaining token bytes, s5 = repeat flag,
+; s6 = repeat value.  These are intentionally updated for the caller.
+.org    0x80106100
+watermark_rle_decode:
+watermark_rle_next:
+bne     s4,zero,watermark_rle_token_ready
+nop
+lbu     t2,0(s0)
+addiu   s0,s0,0x1
+sltiu   t3,t2,0x80
+bne     t3,zero,watermark_rle_literal_token
+nop
+addiu   s4,t2,-0x7D
+lbu     s6,0(s0)
+addiu   s0,s0,0x1
+ori     s5,zero,0x1
+j       watermark_rle_token_ready
+nop
+
+watermark_rle_literal_token:
+addiu   s4,t2,0x1
+addu    s5,zero,zero
+
+watermark_rle_token_ready:
+bne     s5,zero,watermark_rle_repeat
+nop
+lbu     t2,0(s0)
+addiu   s0,s0,0x1
+j       watermark_rle_store
+nop
+
+watermark_rle_repeat:
+addu    t2,s6,zero
+
+watermark_rle_store:
+sb      t2,0(a0)
+addiu   a0,a0,0x1
+addiu   s4,s4,-1
+addiu   a1,a1,-1
+bne     a1,zero,watermark_rle_next
+nop
+jr      ra
 nop
 
 
@@ -448,12 +802,10 @@ ori     t2,zero,0xFFFF
 beq     t1,t2,hybrid_name_small
 addiu   t0,t0,0x2
 
-; 0x068..0x108
-addiu   t2,t1,-0x68
-sltiu   t2,t2,0xA1
-bne     t2,zero,hybrid_name_loop
-nop
-
+; 0x068..0x108 was the kana block.  It is no longer reserved -- those cells now
+; hold ordinary Chinese glyphs -- so a translated name that happens to use one
+; must NOT be mistaken for keyboard-entered Japanese and sent to the small font.
+; What is still reserved (digits, Latin, punctuation) is tested below.
 ; 0x02A..0x04D
 addiu   t2,t1,-0x2A
 sltiu   t2,t2,0x24
@@ -487,6 +839,182 @@ j       0x800475FC
 ori     a3,a3,0x1
 hybrid_name_small:
 j       0x80046FEC
+nop
+
+
+; ---------------------------------------------------------------------------
+; Boot logo screens.
+;
+; 0x8002C794 shows one full-screen 320x240 8bpp image: it builds the display,
+; reads 5 sectors starting at a raw LBA, fades in, holds 0x78 frames (button
+; skippable) and fades out.  Confirmed against a savestate taken on the R&D
+; screen -- its pc sat in the hold loop at 0x800C9680 and the $ra chain runs
+; main -> 0x8002BC48 -> 0x8002BEF0 -> 0x8002BF64 -> here.
+;
+; The image is chosen by a single instruction, 0x8002C82C, which reads
+; FILEPOS[93].lba as a fixed 0x7A28 offset from the 0x80100000 base that
+; 0x8002C818 already set up.  Repointing that load at a variable turns the
+; routine into "show whatever LBA I put here", so the boot can run it more
+; than once.
+;
+; 0x80100000 - 0x1DA0 == 0x800FE260, so the existing `lui a0,0x8010` needs no
+; change at all -- only the load's offset moves.
+; .org  0x8002C82C
+; lw    a0,-0x1DA0(a0)
+
+; 160 unreferenced zero bytes between two data tables (the preceding one ends
+; with its 0xFFFF terminator at 0x800FE25C).  Nothing computes an address
+; inside this range.
+; The original five-sector F0093 transaction remains untouched.  Once the
+; normal R&D page has faded out, boot_read_and_upload performs separate
+; blocking raw-sector read through the normal state-10/11 path, decodes an
+; F0093-compatible RLE resource over the now-unused R&D texture, and uploads
+; its 256-entry CLUT.  The proven page loop reuses the original draw settings.
+
+; Calling 0x8002C794 twice does NOT work: its head re-runs 0x800E2604 /
+; 0x800E2320, which tears the graphics and callback subsystem back down.  The
+; second pass then free-runs without VSync (the logo flashes by instead of
+; holding two seconds) and the CD wait at 0x8002870C spins forever because its
+; completion interrupt never arrives.  So loop *inside* the routine instead,
+; re-entering at 0x8002C810 -- past the one-time init, and the point where s3
+; is recomputed from s2.
+.org    0x800FE260
+boot_screen_lba:
+.word   0
+boot_screen_page:
+.word   0
+boot_screen_saved_s4:
+.word   0
+boot_screen_saved_s5:
+.word   0
+
+; Entry from the routine's only caller.  A tail jump, so 0x8002C794 returns
+; straight to 0x8002BF6C on the original ra and no frame is needed here.
+boot_screen_start:
+lui     t0,0x8010
+sw      zero,-0x1D9C(t0)
+sw      s4,-0x1D98(t0)              ; the caller's s4/s5 are not ours to lose
+sw      s5,-0x1D94(t0)
+ori     s4,zero,0x5                 ; page 0 keeps the original texture pages
+ori     s5,zero,0x7
+j       0x8002C794
+nop
+
+; Reached in place of the routine's closing 0x800E2604 call.  a0 is already
+; zero from that call's delay slot, which the teardown path still needs.
+boot_screen_next:
+lui     t0,0x8010
+lw      t1,-0x1D9C(t0)
+nop
+addiu   t1,t1,0x1
+sw      t1,-0x1D9C(t0)
+addiu   t2,zero,0x1
+bne     t1,t2,boot_screen_done
+nop
+
+; Finish one clean R&D frame before replacing its VRAM texture.  Without this
+; submission the next page can briefly reveal the dim tail of the previous
+; framebuffer during the transition.  0x8002C978 performs the proven closing
+; frame pass; restore our dispatcher state afterwards so the inserted page
+; still enters the normal fade/hold/draw loop.
+jal     0x8002C978
+nop
+lui     t0,0x8010
+ori     t1,zero,0x1
+sw      t1,-0x1D9C(t0)
+
+; Page 1: perform an independent blocking raw read, upload it, then re-enter
+; after the boot resource loader so it is not invoked a second time.
+jal     boot_read_and_upload
+nop
+addiu   s0,zero,0xF0                ; sprite height, clobbered by the fade-out
+addu    s1,zero,zero                ; fade counter, ends negative
+ori     s4,zero,0x5                 ; reuse R&D tpage at VRAM word (320, 0)
+ori     s5,zero,0x7                 ; its 64-texel remainder
+j       0x8002C850
+nop
+
+boot_screen_done:
+lw      s4,-0x1D98(t0)
+lw      s5,-0x1D94(t0)
+j       0x800E2604
+nop
+
+
+
+
+
+; The sprite's texture page (written to offset 0x0C of the primitive by
+; 0x8002CA9C) is 5 and 7 -- VRAM words 320 and 448 on line 0.  Both pages now
+; deliberately reuse those original R&D positions; s4/s5 remain variables so
+; the dispatcher still preserves the proven page-loop structure.
+.org   0x8002C860
+addu   v0,zero,s4
+
+.org   0x8002C888
+addu   v0,zero,s5
+
+; Seven sectors -- the most this read can carry.  Its destination is 0x801DF000
+; and the next structure sits at 0x801E2800, 0x3800 bytes later; ten sectors
+; overruns that and 0x801E4000 as well, both CD driver state, and the boot then
+; dies on its next load with nothing on screen to show why.
+; .org  0x800EB7C8
+; .halfword 7
+
+
+; The routine's only caller in the whole executable.
+.org   0x8002BF64
+jal    boot_screen_start
+
+; Closing teardown call -> our page dispatcher.  The delay slot (a0 = 0) is
+; left untouched and still applies to 0x800E2604 on the final pass.
+.org   0x8002C954
+jal    boot_screen_next
+
+
+; The shared F14 renderer has its own AddPrim for glyph sprites at 0x80047A6C,
+; the direct analogue of the save-slot widget's 0x80048514 that
+; ot_self_link_guard already covers -- both write the sprite's v coordinate with
+; `sh v0,0xe(a0)` immediately before linking, and both self-link when the node
+; being inserted already is the ordering-table head.
+;
+; Evidence it is this site and not the shadow pass: a savestate taken on a slow
+; MARKER screen in 嫉妒界 has three live OT chains that each walk into a one-node
+; loop -- heads 0x801324B8 (72 nodes) and 0x80133FF8 (70) both end on
+; 0x80136798, and 0x801330B8 (75) ends on 0x80136AD8, the same node in the other
+; frame buffer.  The looping node's primitive is `64808080`: the *normal* pass.
+; The existing guard at 0x80047CFC sits on the shadow pass and never sees it.
+; The GPU then walks that loop forever -- the screen still draws, the game just
+; crawls, and only in the larger worlds, never at school.
+;
+; t1 is 0x00FFFFFF (0x80047858 ors the 0xFFFF from 0x80047848 into 0x00FF0000)
+; and t7 is 0xFF000000.  `at` is never written anywhere in
+; 0x80047688..0x80047DBC, so it is free scratch.
+.org    0x80047A6C
+j       f14_glyph_ot_guard
+and     v1,v1,t7                ; displaced 0x80047A70 (delay slot)
+
+
+; 116 unreferenced zero bytes between two data tables; nothing in the executable
+; computes an address inside them.
+.org    0x800FE08C
+f14_glyph_ot_guard:
+lw      v0,0(t3)                ; current OT head
+and     at,a0,t1                ; this node, 24-bit
+and     v0,v0,t1                ; head, 24-bit
+beq     at,v0,f14_glyph_ot_skip ; already the head -> inserting again self-links
+nop
+
+or      v1,v1,v0
+sw      v1,0(a0)
+lw      v0,0(t3)
+and     v1,a0,t1
+and     v0,v0,t7
+or      v0,v0,v1
+sw      v0,0(t3)
+
+f14_glyph_ot_skip:
+j       0x80047A94
 nop
 
 
