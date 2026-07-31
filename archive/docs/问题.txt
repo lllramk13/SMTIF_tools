@@ -1,0 +1,35 @@
+- game_broken2.bin 卡死，但是获取仲魔，以及恶魔交涉和战胜恶魔卡死已经修复
+- game_broken3.bin 卡死， 没有报错，无法移动，pc 循环 800c96c8 - 800c9600 在循环很多次后彻底卡死，pc停在A0， 报错[55967.4609] E(ReadBlockInstructions): Instruction read failed at PC=0x00020002, truncating block.
+[55967.4609] W(ReadBlockInstructions): Empty block compiled at 0x00020002
+[55967.4609] E(CompileOrRevalidateBlock): Failed to read block at 0x00020002, falling back to uncached interpreter
+认为需要深度研究一下这个问题，出现多次了
+- 又一处卡死，前面的报错信息没有截取到 但是后面再次陷入循环[56190.0547] W(ProcessDataSector): Interrupt not processed in time, missed 3 sectors
+[56190.0547] W(ProcessDataSector): Interrupt not processed in time, missed 4 sectors
+[56190.0547] W(ProcessDataSector): Interrupt not processed in time, missed 5 sectors
+[56190.0586] W(ProcessDataSector): Interrupt not processed in time, missed 6 sectors
+[56190.0586] W(ProcessDataSector): Interrupt not processed in time, missed 1 sectors
+[56190.0586] W(ProcessDataSector): Interrupt not processed in time, missed 2 sectors
+[56190.0586] W(ProcessDataSector): Interrupt not processed in time, missed 3 sectors
+[56190.0586] W(ProcessDataSector): Interrupt not processed in time, missed 4 sectors
+[56190.0586] W(ProcessDataSector): Interrupt not processed in time, missed 5 sectors
+[56190.0586] W(ProcessDataSector): Interrupt not processed in time, missed 6 sectors
+[56190.0586] W(ProcessDataSector): Interrupt not processed in time, missed 1 sectors
+[56190.0586] W(ProcessDataSector): Interrupt not processed in time, missed 2 sectors
+[56190.0586] W(ProcessDataSector): Interrupt not processed in time, missed 3 sectors
+[56190.0586] W(ProcessDataSector): Interrupt not processed in time, missed 4 sectors
+[56190.0586] W(ProcessDataSector): Interrupt not processed in time, missed 5 sectors
+[56190.0586] W(ProcessDataSector): Interrupt not processed in time, missed 6 sectors
+[56190.0586] W(ProcessDataSector): Interrupt not processed in time, missed 1 sectors
+[56190.0586] W(ProcessDataSector): Interrupt not processed in time, missed 2 sectors
+[56190.0586] W(ProcessDataSector): Interrupt not processed in time, missed 3 sectors
+- 进入kaifuku 卡死
+
+
+
+- 恶魔交涉选项缺字或码表错乱，导致部分显示空白
+- 死亡界面未定位，日文乱码的一部分：カロン：この川を　わたってはならん 御身の上には　今だ光があり汝らを護らんとしておる
+- 升级界面两条未翻译/定位：のこりポイント 没有出现在任何翻译文本中+これでよろしいですか？idF0075-00000000-0000063C 为相同日文，不确定是没提取到还是导入错误，怀疑这两句的位置没有被找到，而找到的id是碰巧的重复
+- 恶魔逃跑时，显示主角等人逃跑了，idF0075-00000000-00000d30, 需要确定原版控制符是不是：{主角等人}：6FFF
+- 由美：概ねかとボったわ， 由美は力Nきた， 由美：混ぬかと独ったわ 等等 不明原因还没有定位原文的文本
+- 不确定是不是bug:
+	- 杰克霜精会被自动扣血

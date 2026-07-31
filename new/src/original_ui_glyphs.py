@@ -1,7 +1,7 @@
 import json
 from pathlib import Path
 
-from src.dynamic_low_code_relocation import DYNAMIC_SPECIAL_LOW_INDICES
+from src.glyph_layout import DYNAMIC_SPECIAL_LOW_INDICES
 
 
 HERE = Path(__file__).resolve().parent
@@ -26,13 +26,18 @@ def load_original_ui_glyph_overrides(path=DEFAULT_CODETABLE_PATH):
             )
         overrides[index] = character
 
-    actual_indices = set(overrides)
-    if actual_indices != set(DYNAMIC_SPECIAL_LOW_INDICES):
-        missing = sorted(DYNAMIC_SPECIAL_LOW_INDICES - actual_indices)
-        extra = sorted(actual_indices - DYNAMIC_SPECIAL_LOW_INDICES)
+    # The table still lists every cell the original UI alphabet used, including
+    # the released kana block.  Only the cells that are still reserved may be
+    # painted back over the translated font; the rest now hold real Chinese.
+    missing = sorted(set(DYNAMIC_SPECIAL_LOW_INDICES) - set(overrides))
+    if missing:
         raise ValueError(
-            "Original UI glyph table does not match the reserved range; "
-            f"missing={missing[:8]}, extra={extra[:8]}"
+            "Original UI glyph table is missing reserved cells: "
+            f"{[hex(index) for index in missing[:8]]}"
         )
 
-    return overrides
+    return {
+        index: character
+        for index, character in overrides.items()
+        if index in DYNAMIC_SPECIAL_LOW_INDICES
+    }

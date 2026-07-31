@@ -66,12 +66,16 @@ def encode_records(
     text_data,
     character_codes,
     section_character_codes=None,
+    record_character_code_overrides=None,
 ):
     if not isinstance(text_data, dict):
         raise ValueError("text_data 必须是由 load_text_data 返回的对象")
 
     encoded_records = []
     section_character_codes = section_character_codes or {}
+    record_character_code_overrides = (
+        record_character_code_overrides or {}
+    )
 
     for section, records in text_data.items():
         if not isinstance(records, list):
@@ -115,6 +119,21 @@ def encode_records(
                 section,
                 character_codes,
             )
+            matching_record_overrides = [
+                overrides
+                for prefix, overrides
+                in record_character_code_overrides.items()
+                if record_id.startswith(prefix)
+            ]
+            if len(matching_record_overrides) > 1:
+                raise ValueError(
+                    f"{record_id}: matched multiple record-specific code maps"
+                )
+            if matching_record_overrides:
+                active_character_codes = dict(active_character_codes)
+                active_character_codes.update(
+                    matching_record_overrides[0]
+                )
 
             try:
                 encoded_text = encode_text(active_character_codes, text)

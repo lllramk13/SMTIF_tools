@@ -12,7 +12,7 @@ DEFAULT_CODETABLE_PATH = NEW_DIRECTORY / "data" / "codetable.json"
 DEFAULT_TEXT_PATH = NEW_DIRECTORY / "data" / "text.json"
 DEFAULT_MANIFEST_PATH = NEW_DIRECTORY / "build" / "static_text_aliases.json"
 
-ORIGINAL_MAX_GLYPH_INDEX = 0x0566
+ORIGINAL_MAX_GLYPH_INDEX = 0x06E2
 STATIC_TEXT_SECTION = "text_17"
 STATIC_TEXT_SECTIONS = (STATIC_TEXT_SECTION, "text_88")
 STATIC_WIDTH = 0x0B
@@ -59,13 +59,21 @@ def _glyph_indices(character_codes, text):
     return indices
 
 
+# The static width table at 0x800F2910 is one byte per glyph and is physically
+# only 0x567 entries long -- the *menu* width table starts right after it at
+# 0x800F2E80.  It cannot grow with the widened F14, so CN.asm forces both of its
+# read sites (0x80047890 / 0x80048428) to the same constant instead.  The table
+# is still filled for the indices it does have, so the two stay consistent.
+STATIC_WIDTH_TABLE_ENTRIES = 0x0567
+
+
 def build_static_width_overrides(width=STATIC_WIDTH):
-    """Use a full-width advance for every glyph available in F14."""
+    """Use a full-width advance for every glyph the width table can hold."""
     if not 0 <= width <= 0x0F:
         raise ValueError(f"Static glyph width is out of range: {width:#x}")
     return {
         glyph_index: width
-        for glyph_index in range(ORIGINAL_MAX_GLYPH_INDEX + 1)
+        for glyph_index in range(STATIC_WIDTH_TABLE_ENTRIES)
     }
 
 

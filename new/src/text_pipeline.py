@@ -25,6 +25,7 @@ def build_text_files(
     source_directory=DEFAULT_SOURCE_DIRECTORY,
     character_code_overrides=None,
     section_character_code_overrides=None,
+    record_character_code_overrides=None,
 ):
     character_codes = load_character_codes(codetable_path)
     if character_code_overrides:
@@ -41,6 +42,9 @@ def build_text_files(
         text_data,
         character_codes,
         section_character_codes=section_character_codes,
+        record_character_code_overrides=(
+            record_character_code_overrides
+        ),
     )
     text_blocks = build_text_blocks(encoded_records)
     passthrough_blocks = [
@@ -75,27 +79,6 @@ def create_disc_replacements(build_result):
         for file_info in rebuilt_files
     }
 
-
-def write_rebuilt_files(rebuilt_files, output_directory):
-    if not isinstance(rebuilt_files, list):
-        raise ValueError("rebuilt_files必须是列表")
-
-    output_directory = Path(output_directory)
-    output_directory.mkdir(parents=True, exist_ok=True)
-    written_paths = []
-
-    for file_info in rebuilt_files:
-        file_name = file_info["file_name"]
-        file_data = file_info["data"]
-        output_path = output_directory / f"{file_name}.BIN"
-        output_path.write_bytes(file_data)
-
-        if output_path.read_bytes() != file_data:
-            raise AssertionError(f"输出文件回读验证失败: {output_path}")
-
-        written_paths.append(output_path)
-
-    return written_paths
 
 
 def summarize_text_build(build_result):

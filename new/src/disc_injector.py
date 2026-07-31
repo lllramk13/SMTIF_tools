@@ -376,3 +376,76 @@ if __name__ == '__main__':
         disc_path=arguments.disc_path,
         replacement_path=arguments.replacement,
     )
+
+
+# Home for boot screens that have no FILEPOS entry: the display routine reads
+# a raw LBA, so an image parked here needs no directory record.
+#
+# It must NOT go in the blank run past the last file.  The drive keeps
+# streaming forward until the driver's Pause is processed, and this routine
+# spends two seconds fading before that happens -- at 75-150 sectors/second
+# that overruns several hundred sectors.  Near the end of the disc it runs off
+# the edge, the drive latches an error, and every later read retries forever
+# (CD state stuck at 0x0D with the busy flag set: black screen, no exception).
+#
+# ZZZ.BIN is 27,648,000 zero bytes of disc padding at LBA 95371 -- 13,500
+# sectors, absent from FILEPOS.DAT, so the game never reads it.  Its head has
+# ordinary data submodes already and leaves 13,495 sectors of slack behind the
+# read for the overrun to land on.
+BOOT_SCREEN_LBA = 95371
+BOOT_SCREEN_SECTORS = 7
+
+
+def write_raw_sectors(image_path, lba: int, data: bytes) -> int:
+    """Write ``data`` into consecutive Mode 2 Form 1 sectors starting at ``lba``.
+
+    The blank run at the end of this disc carries submode 0x00, which the
+    drive reads as "neither data nor audio" and skips outright -- correct
+    EDC/ECC does not make such a sector readable.  Real file data uses 0x08,
+    and a file's final sector adds EOF|EOR for 0x89, so reproduce that here.
+    """
+    image_path = Path(image_path)
+    sector_count = (len(data) + MODE2_FORM1_USER_SIZE - 1) // MODE2_FORM1_USER_SIZE
+    image_size = image_path.stat().st_size
+    if (lba + sector_count) * RAW_SECTOR_SIZE > image_size:
+        raise ValueError('Raw sector write extends past the end of the image')
+
+    with image_path.open('r+b') as image_file:
+        for index in range(sector_count):
+            offset = (lba + index) * RAW_SECTOR_SIZE
+            image_file.seek(offset)
+            sector = bytearray(image_file.read(RAW_SECTOR_SIZE))
+            if sector[:12] != SYNC_PATTERN:
+                raise ValueError(f'LBA {lba + index}: missing sync pattern')
+
+            submode = 0x89 if index == sector_count - 1 else 0x08
+            for base in (16, 20):
+                sector[base + 0] = 0      # file number
+                sector[base + 1] = 0      # channel
+                sector[base + 2] = submode
+                sector[base + 3] = 0      # coding info
+            sector[15] = 2
+
+            chunk = data[
+                index * MODE2_FORM1_USER_SIZE:(index + 1) * MODE2_FORM1_USER_SIZE
+            ]
+            user = MODE2_FORM1_USER_OFFSET
+            sector[user:user + MODE2_FORM1_USER_SIZE] = chunk.ljust(
+                MODE2_FORM1_USER_SIZE, b'\x00'
+            )
+            rebuild_mode2_form1_checksums(sector)
+
+            image_file.seek(offset)
+            image_file.write(sector)
+
+        image_file.flush()
+
+    # Read back exactly the way the game will.
+    with image_path.open('rb') as image_file:
+        written = bytearray()
+        for index in range(sector_count):
+            image_file.seek((lba + index) * RAW_SECTOR_SIZE + MODE2_FORM1_USER_OFFSET)
+            written += image_file.read(MODE2_FORM1_USER_SIZE)
+    if bytes(written[:len(data)]) != data:
+        raise AssertionError(f'Raw sector write at LBA {lba} did not verify')
+    return sector_count

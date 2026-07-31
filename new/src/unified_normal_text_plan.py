@@ -1,11 +1,11 @@
 from dataclasses import dataclass
 
-from src.dynamic_low_code_relocation import DYNAMIC_SPECIAL_LOW_INDICES
 from src.font_builder import load_codetable
-from src.static_text_aliases import (
+from src.glyph_layout import (
+    DYNAMIC_SPECIAL_LOW_INDICES,
     ORIGINAL_MAX_GLYPH_INDEX,
     STATIC_TEXT_SECTIONS,
-    _glyph_indices,
+    glyph_indices,
 )
 from src.text_codec import load_character_codes
 from src.text_records import choose_text, load_text_data
@@ -39,7 +39,7 @@ def build_unified_normal_text_plan(
     static_indices = set()
     for section, records in text_data.items():
         for record in records:
-            indices = _glyph_indices(character_codes, choose_text(record))
+            indices = glyph_indices(character_codes, choose_text(record))
             used_indices.update(indices)
             if section in STATIC_TEXT_SECTIONS:
                 static_indices.update(indices)
@@ -47,12 +47,12 @@ def build_unified_normal_text_plan(
     for text in extra_used_texts:
         if not isinstance(text, str) or not text:
             raise ValueError("extra used text must be a non-empty string")
-        used_indices.update(_glyph_indices(character_codes, text))
+        used_indices.update(glyph_indices(character_codes, text))
 
     for text in extra_static_texts:
         if not isinstance(text, str) or not text:
             raise ValueError("extra static text must be a non-empty string")
-        indices = _glyph_indices(character_codes, text)
+        indices = glyph_indices(character_codes, text)
         used_indices.update(indices)
         static_indices.update(indices)
 
@@ -80,6 +80,16 @@ def build_unified_normal_text_plan(
         raise ValueError("Not enough safe low F14 alias slots")
 
     unused_existing = set(codetable) - used_indices
+    # Index 0 is the fullwidth space: the original game leaves that glyph empty
+    # and font_builder forces it transparent, so a character relocated onto it
+    # simply vanishes.  No text ever references it, so it looks "unused" and --
+    # since the pool is sorted -- it would be handed to the *first* relocation
+    # every time.  That is how 令 disappeared from 「風紀委員の命令」: it sits on
+    # reserved cell 0x004, the lowest used reserved index, so it was always
+    # first in move_indices.
+    #
+    # low_range above already starts at 1 for the same reason, and both
+    # rearrange_codetable and f14_context_aliases exclude 0 explicitly.
     destination_pool = sorted(
         (
             unused_existing
@@ -87,6 +97,7 @@ def build_unified_normal_text_plan(
         )
         - reserved
         - set(alias_indices)
+        - {0}
     )
     move_indices = sorted(
         (used_indices & reserved)

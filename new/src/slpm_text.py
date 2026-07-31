@@ -8,8 +8,30 @@ HERE = Path(__file__).resolve().parent
 NEW_DIRECTORY = HERE.parent
 DEFAULT_TEXT_PATH = NEW_DIRECTORY / "data" / "slpm_text.json"
 DEFAULT_CODETABLE_PATH = NEW_DIRECTORY / "data" / "codetable.json"
-STATIC_SECTION = "text_17"
 VALID_RENDERERS = frozenset(("dynamic", "static"))
+ACTION_RESULT_START = 0xE6A26
+ACTION_RESULT_END = 0xE6D58
+MARKER_HELP_START = 0xEF298
+MARKER_HELP_END = 0xEF33C
+# The map-header area names.  Flagged `dynamic` in the data file, but the map
+# header actually draws them through F14, whose capacity is 0x567 -- and 20 of
+# the 27 translations contain a higher code (嫉=0x797, 妒=0x798, 贪=0x6CE,
+# 傲=0x726 ...).  The widget's bounds check is the spin at 0x8004844C, so
+# 嫉妒界 / 贪欲界 used to freeze the SAVE screen outright; after that was
+# changed to skip the glyph, the neighbouring packet still came out with
+# garbage metrics (clut 0) and self-linked the display list, which is why the
+# screen stayed playable but crawled.  Give them F14 context aliases, exactly
+# like the MARKER help block above.
+AREA_NAME_START = 0xE4768
+AREA_NAME_END = 0xE48A8
+# The equipment / demon resistance descriptions shown in the green panel on the
+# STATUS screen.  Same story again: flagged `dynamic`, drawn by F14, and 41 of
+# the 70 translations use a code above 0x567 (抵=0x783, 收=0x657, 略, 弱, 冻,
+# 技, 乎), which is why lines came out as "微　抗精神攻击" with holes where
+# 略 / 抵 should be.
+EQUIP_HELP_START = 0xE7BF0
+EQUIP_HELP_END = 0xE813A
+LONG_PAUSE_AND_TERMINATOR = bytes.fromhex("92FFFFFF")
 
 
 def _parse_offset(value, record_id):
@@ -118,11 +140,27 @@ def build_slpm_text_patches(
     codetable_path=DEFAULT_CODETABLE_PATH,
     global_character_overrides=None,
     static_character_overrides=None,
+    action_result_character_overrides=None,
+    marker_help_character_overrides=None,
+    area_name_character_overrides=None,
+    equip_help_character_overrides=None,
 ):
     dynamic_character_codes = load_character_codes(codetable_path)
     dynamic_character_codes.update(global_character_overrides or {})
     static_character_codes = dict(dynamic_character_codes)
     static_character_codes.update(static_character_overrides or {})
+    action_result_character_codes = dict(dynamic_character_codes)
+    action_result_character_codes.update(
+        action_result_character_overrides or {}
+    )
+    marker_help_character_codes = dict(dynamic_character_codes)
+    marker_help_character_codes.update(
+        marker_help_character_overrides or {}
+    )
+    area_name_character_codes = dict(dynamic_character_codes)
+    area_name_character_codes.update(area_name_character_overrides or {})
+    equip_help_character_codes = dict(dynamic_character_codes)
+    equip_help_character_codes.update(equip_help_character_overrides or {})
 
     patches = []
     for record in records:
@@ -130,10 +168,38 @@ def build_slpm_text_patches(
         if not translation:
             continue
 
+        in_action_result_block = (
+            ACTION_RESULT_START <= record["offset"] < ACTION_RESULT_END
+        )
+        in_marker_help_block = (
+            MARKER_HELP_START <= record["offset"] < MARKER_HELP_END
+        )
+        in_area_name_block = (
+            AREA_NAME_START <= record["offset"] < AREA_NAME_END
+        )
+        in_equip_help_block = (
+            EQUIP_HELP_START <= record["offset"] < EQUIP_HELP_END
+        )
         character_codes = (
-            dynamic_character_codes
-            if record["renderer"] == "dynamic"
-            else static_character_codes
+            action_result_character_codes
+            if in_action_result_block
+            else (
+                marker_help_character_codes
+                if in_marker_help_block
+                else (
+                    area_name_character_codes
+                    if in_area_name_block
+                    else (
+                        equip_help_character_codes
+                        if in_equip_help_block
+                        else (
+                    dynamic_character_codes
+                            if record["renderer"] == "dynamic"
+                            else static_character_codes
+                        )
+                    )
+                )
+            )
         )
 
         try:
@@ -150,7 +216,47 @@ def build_slpm_text_patches(
                 f"but the original slot has {max_bytes}"
             )
 
-        padded = encoded + (b"\xFF" * (max_bytes - len(encoded)))
+        # Most fixed-slot lists must keep exactly one terminator at the end of
+        # the slot.  A run of early/extra FFFF values is interpreted by those
+        # list walkers as phantom empty entries, so their transparent padding
+        # belongs before the final terminator.
+        #
+        # The battle/action-result messages at E6A26-E6D58 are different:
+        # an offset table addresses every string separately, and the message
+        # state machine expects the final long-pause control (FF92) to be
+        # immediately followed by FFFF.  Pre-terminator padding changed
+        #
+        #   FF92 FFFF  ->  FF92 0000 ... FFFF
+        #
+        # so the state machine resumed after the pause and processed blank
+        # glyphs while the green target frames remained active.  Keep the
+        # semantic terminator adjacent there and place unused bytes after it.
+        if (max_bytes - len(encoded)) % 2:
+            raise ValueError(
+                f"{record['id']}: slot remainder is not a multiple of 2"
+            )
+        action_result = (
+            in_action_result_block
+            and record["source"].endswith("{大停顿}")
+        )
+        if action_result:
+            if not record["translation"].endswith("{大停顿}"):
+                raise ValueError(
+                    f"{record['id']}: action-result translation must end in "
+                    "{大停顿}"
+                )
+            if not encoded.endswith(LONG_PAUSE_AND_TERMINATOR):
+                raise AssertionError(
+                    f"{record['id']}: action-result encoding lost "
+                    "FF92/FFFF adjacency"
+                )
+            padded = encoded + bytes(max_bytes - len(encoded))
+        else:
+            padded = (
+                encoded[:-2]
+                + bytes(2) * ((max_bytes - len(encoded)) // 2)
+                + bytes((0xFF, 0xFF))
+            )
         patches.append({
             "id": record["id"],
             "offset": record["offset"],

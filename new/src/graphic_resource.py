@@ -1,8 +1,6 @@
 from dataclasses import dataclass
 from pathlib import Path
 
-from PIL import Image
-
 from src.compression import compress_rle, expand_rle_to_size
 
 
@@ -89,6 +87,13 @@ def decompress_graphic_resource(resource):
 
 
 def rebuild_graphic_resource(original_resource, raw_data):
+    """Rebuild a 0x02/0x01 graphic resource in place.
+
+    Geometry and the declared block size are both preserved (the stream is
+    padded back up), so the file stays exactly as long as the original and can
+    be injected without moving anything.  Re-geometrying the image was tried and
+    abandoned -- see archive/docs/F14_CAPACITY_RE.md.
+    """
     original_resource = bytes(original_resource)
     original = decompress_graphic_resource(original_resource)
     raw_data = bytes(raw_data)
@@ -188,35 +193,5 @@ def pack_4bpp_pixels(pixels, width, height):
     return bytes(output)
 
 
-def write_graphic_preview(resource_data, output_path, scale=2):
-    graphic = decompress_graphic_resource(resource_data)
-    pixels = unpack_4bpp_pixels(
-        graphic.raw_data,
-        graphic.pixel_width,
-        graphic.height,
-    )
-    image = Image.frombytes(
-        "L",
-        (graphic.pixel_width, graphic.height),
-        bytes(value * 17 for value in pixels),
-    )
-    if scale != 1:
-        image = image.resize(
-            (image.width * scale, image.height * scale),
-            resample=Image.Resampling.NEAREST,
-        )
-
-    output_path = Path(output_path)
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-    image.save(output_path)
-    return output_path
 
 
-def verify_exact_roundtrip(resource_path):
-    resource_path = Path(resource_path)
-    original = resource_path.read_bytes()
-    graphic = decompress_graphic_resource(original)
-    rebuilt = rebuild_graphic_resource(original, graphic.raw_data)
-    if rebuilt != original:
-        raise AssertionError(f"原样重建未能逐字节还原: {resource_path}")
-    return graphic

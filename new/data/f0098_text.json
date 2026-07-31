@@ -221,7 +221,7 @@
       "offset": "0000093E",
       "max_bytes": 10,
       "source": "マハブフ",
-      "translation": "冰系阵",
+      "translation": "冰结阵",
       "renderer": "dynamic"
     },
     {
@@ -679,6 +679,480 @@
       "source": "地？ＬＰ",
       "translation": "地？ＬＰ",
       "renderer": "dynamic"
+    }
+  ],
+  "text_f0098_static": [
+    {
+      "id": "F0098-00000F28",
+      "offset": "00000F28",
+      "max_bytes": 20,
+      "source": "ガーディアン実体化",
+      "translation": "守护灵",
+      "renderer": "static"
+    },
+    {
+      "id": "F0098-00000906",
+      "offset": "00000906",
+      "max_bytes": 6,
+      "source": "アギ",
+      "translation": "火焰",
+      "renderer": "static"
+    },
+    {
+      "id": "F0098-0000090C",
+      "offset": "0000090C",
+      "max_bytes": 10,
+      "source": "アギラオ",
+      "translation": "烈焰",
+      "renderer": "static"
+    },
+    {
+      "id": "F0098-00000916",
+      "offset": "00000916",
+      "max_bytes": 10,
+      "source": "マハラギ",
+      "translation": "火焰阵",
+      "renderer": "static"
+    },
+    {
+      "id": "F0098-00000920",
+      "offset": "00000920",
+      "max_bytes": 14,
+      "source": "マハラギオン",
+      "translation": "烈焰阵",
+      "renderer": "static"
+    },
+    {
+      "id": "F0098-0000092E",
+      "offset": "0000092E",
+      "max_bytes": 6,
+      "source": "ブフ",
+      "translation": "冰结",
+      "renderer": "static"
+    },
+    {
+      "id": "F0098-00000934",
+      "offset": "00000934",
+      "max_bytes": 10,
+      "source": "ブフーラ",
+      "translation": "寒冰",
+      "renderer": "static"
+    },
+    {
+      "id": "F0098-00000948",
+      "offset": "00000948",
+      "max_bytes": 14,
+      "source": "マハブフーラ",
+      "translation": "寒冰阵",
+      "renderer": "static"
+    },
+    {
+      "id": "F0098-00000956",
+      "offset": "00000956",
+      "max_bytes": 6,
+      "source": "ジオ",
+      "translation": "落雷",
+      "renderer": "static"
+    },
+    {
+      "id": "F0098-0000095C",
+      "offset": "0000095C",
+      "max_bytes": 10,
+      "source": "ジオンガ",
+      "translation": "雷霆",
+      "renderer": "static"
+    },
+    {
+      "id": "F0098-00000966",
+      "offset": "00000966",
+      "max_bytes": 10,
+      "source": "マハジオ",
+      "translation": "落雷阵",
+      "renderer": "static"
+    },
+    {
+      "id": "F0098-00000970",
+      "offset": "00000970",
+      "max_bytes": 14,
+      "source": "マハジオンガ",
+      "translation": "雷霆阵",
+      "renderer": "static"
+    },
+    {
+      "id": "F0098-0000097E",
+      "offset": "0000097E",
+      "max_bytes": 6,
+      "source": "ザン",
+      "translation": "疾风",
+      "renderer": "static"
+    },
+    {
+      "id": "F0098-00000984",
+      "offset": "00000984",
+      "max_bytes": 8,
+      "source": "ザンマ",
+      "translation": "烈风",
+      "renderer": "static"
+    },
+    {
+      "id": "F0098-0000098C",
+      "offset": "0000098C",
+      "max_bytes": 10,
+      "source": "マハザン",
+      "translation": "疾风阵",
+      "renderer": "static"
+    },
+    {
+      "id": "F0098-00000996",
+      "offset": "00000996",
+      "max_bytes": 12,
+      "source": "マハザンマ",
+      "translation": "烈风阵",
+      "renderer": "static"
+    },
+    {
+      "id": "F0098-000009A2",
+      "offset": "000009A2",
+      "max_bytes": 8,
+      "source": "ハンマ",
+      "translation": "破魔",
+      "renderer": "static"
+    },
+    {
+      "id": "F0098-000009AA",
+      "offset": "000009AA",
+      "max_bytes": 10,
+      "source": "マハンマ",
+      "translation": "破魔阵",
+      "renderer": "static"
+    },
+    {
+      "id": "F0098-000009B4",
+      "offset": "000009B4",
+      "max_bytes": 6,
+      "source": "ムド",
+      "translation": "咒杀",
+      "renderer": "static"
+    },
+    {
+      "id": "F0098-000009BA",
+      "offset": "000009BA",
+      "max_bytes": 10,
+      "source": "ムドオン",
+      "translation": "大咒杀",
+      "renderer": "static"
+    },
+    {
+      "id": "F0098-000009DC",
+      "offset": "000009DC",
+      "max_bytes": 8,
+      "source": "メギド",
+      "translation": "末日光",
+      "renderer": "static"
+    },
+    {
+      "id": "F0098-000009E4",
+      "offset": "000009E4",
+      "max_bytes": 14,
+      "source": "メギドラオン",
+      "translation": "灭世末日光",
+      "renderer": "static"
+    },
+    {
+      "id": "F0098-000009F2",
+      "offset": "000009F2",
+      "max_bytes": 6,
+      "source": "防御",
+      "translation": "防御",
+      "renderer": "static"
+    },
+    {
+      "id": "F0098-00000A16",
+      "offset": "00000A16",
+      "max_bytes": 4,
+      "source": "壁",
+      "translation": "盾",
+      "renderer": "static"
+    },
+    {
+      "id": "F0098-00000A1A",
+      "offset": "00000A1A",
+      "max_bytes": 4,
+      "source": "？",
+      "translation": "？",
+      "renderer": "static"
+    },
+    {
+      "id": "F0098-00000A1E",
+      "offset": "00000A1E",
+      "max_bytes": 4,
+      "source": "呪",
+      "translation": "咒",
+      "renderer": "static"
+    },
+    {
+      "id": "F0098-00000A32",
+      "offset": "00000A32",
+      "max_bytes": 10,
+      "source": "噛みつき",
+      "translation": "撕咬",
+      "renderer": "static"
+    },
+    {
+      "id": "F0098-00000A3C",
+      "offset": "00000A3C",
+      "max_bytes": 4,
+      "source": "針",
+      "translation": "针",
+      "renderer": "static"
+    },
+    {
+      "id": "F0098-00000A4E",
+      "offset": "00000A4E",
+      "max_bytes": 12,
+      "source": "押しつぶし",
+      "translation": "碾压",
+      "renderer": "static"
+    },
+    {
+      "id": "F0098-00000A74",
+      "offset": "00000A74",
+      "max_bytes": 6,
+      "source": "自爆",
+      "translation": "自爆",
+      "renderer": "static"
+    },
+    {
+      "id": "F0098-00000A7A",
+      "offset": "00000A7A",
+      "max_bytes": 10,
+      "source": "羽ばたき",
+      "translation": "振翅",
+      "renderer": "static"
+    },
+    {
+      "id": "F0098-00000A84",
+      "offset": "00000A84",
+      "max_bytes": 4,
+      "source": "？",
+      "translation": "？",
+      "renderer": "static"
+    },
+    {
+      "id": "F0098-00000AA2",
+      "offset": "00000AA2",
+      "max_bytes": 8,
+      "source": "逃げる",
+      "translation": "逃跑",
+      "renderer": "static"
+    },
+    {
+      "id": "F0098-00000AAA",
+      "offset": "00000AAA",
+      "max_bytes": 12,
+      "source": "仲間を呼ぶ",
+      "translation": "呼叫同伴",
+      "renderer": "static"
+    },
+    {
+      "id": "F0098-00000AB6",
+      "offset": "00000AB6",
+      "max_bytes": 12,
+      "source": "アギダイン",
+      "translation": "爆炎",
+      "renderer": "static"
+    },
+    {
+      "id": "F0098-00000AC2",
+      "offset": "00000AC2",
+      "max_bytes": 16,
+      "source": "マハラギダイン",
+      "translation": "爆炎阵",
+      "renderer": "static"
+    },
+    {
+      "id": "F0098-00000AD2",
+      "offset": "00000AD2",
+      "max_bytes": 12,
+      "source": "ブフダイン",
+      "translation": "极冻",
+      "renderer": "static"
+    },
+    {
+      "id": "F0098-00000ADE",
+      "offset": "00000ADE",
+      "max_bytes": 16,
+      "source": "マハブフダイン",
+      "translation": "极冻阵",
+      "renderer": "static"
+    },
+    {
+      "id": "F0098-00000AEE",
+      "offset": "00000AEE",
+      "max_bytes": 12,
+      "source": "ジオダイン",
+      "translation": "奔雷",
+      "renderer": "static"
+    },
+    {
+      "id": "F0098-00000AFA",
+      "offset": "00000AFA",
+      "max_bytes": 16,
+      "source": "マハジオダイン",
+      "translation": "奔雷阵",
+      "renderer": "static"
+    },
+    {
+      "id": "F0098-00000B0A",
+      "offset": "00000B0A",
+      "max_bytes": 12,
+      "source": "ザンダイン",
+      "translation": "暴风",
+      "renderer": "static"
+    },
+    {
+      "id": "F0098-00000B16",
+      "offset": "00000B16",
+      "max_bytes": 16,
+      "source": "マハザンダイン",
+      "translation": "暴风阵",
+      "renderer": "static"
+    },
+    {
+      "id": "F0098-00000B26",
+      "offset": "00000B26",
+      "max_bytes": 10,
+      "source": "メギドラ",
+      "translation": "灭世光",
+      "renderer": "static"
+    },
+    {
+      "id": "F0098-00000B30",
+      "offset": "00000B30",
+      "max_bytes": 10,
+      "source": "マハムド",
+      "translation": "咒杀阵",
+      "renderer": "static"
+    },
+    {
+      "id": "F0098-00000B3A",
+      "offset": "00000B3A",
+      "max_bytes": 10,
+      "source": "ハマオン",
+      "translation": "强破魔",
+      "renderer": "static"
+    },
+    {
+      "id": "F0098-00000B44",
+      "offset": "00000B44",
+      "max_bytes": 12,
+      "source": "魔界の調べ",
+      "translation": "魔界旋律",
+      "renderer": "static"
+    },
+    {
+      "id": "F0098-00000B50",
+      "offset": "00000B50",
+      "max_bytes": 16,
+      "source": "ドロップボイス",
+      "translation": "滴水声",
+      "renderer": "static"
+    },
+    {
+      "id": "F0098-00000B60",
+      "offset": "00000B60",
+      "max_bytes": 16,
+      "source": "ランディヘイズ",
+      "translation": "魅惑之雾",
+      "renderer": "static"
+    },
+    {
+      "id": "F0098-00000B70",
+      "offset": "00000B70",
+      "max_bytes": 16,
+      "source": "ソルスマッシュ",
+      "translation": "烈日碎击",
+      "renderer": "static"
+    },
+    {
+      "id": "F0098-00000B80",
+      "offset": "00000B80",
+      "max_bytes": 14,
+      "source": "ランダマイザ",
+      "translation": "女巫诅咒",
+      "renderer": "static"
+    },
+    {
+      "id": "F0098-00000B8E",
+      "offset": "00000B8E",
+      "max_bytes": 16,
+      "source": "ワイヤーブレス",
+      "translation": "麻痹吐息",
+      "renderer": "static"
+    },
+    {
+      "id": "F0098-00000B9E",
+      "offset": "00000B9E",
+      "max_bytes": 16,
+      "source": "ソルクラスター",
+      "translation": "烈日碾杀",
+      "renderer": "static"
+    },
+    {
+      "id": "F0098-00000BAE",
+      "offset": "00000BAE",
+      "max_bytes": 10,
+      "source": "プラズマ",
+      "translation": "等离子",
+      "renderer": "static"
+    },
+    {
+      "id": "F0098-00000BB8",
+      "offset": "00000BB8",
+      "max_bytes": 18,
+      "source": "プラズマッシャー",
+      "translation": "等离子粉碎",
+      "renderer": "static"
+    },
+    {
+      "id": "F0098-00000BCA",
+      "offset": "00000BCA",
+      "max_bytes": 12,
+      "source": "だるま返し",
+      "translation": "达摩返",
+      "renderer": "static"
+    },
+    {
+      "id": "F0098-00000BD6",
+      "offset": "00000BD6",
+      "max_bytes": 16,
+      "source": "ニードルテイル",
+      "translation": "针尾",
+      "renderer": "static"
+    },
+    {
+      "id": "F0098-00000BE6",
+      "offset": "00000BE6",
+      "max_bytes": 8,
+      "source": "烈風波",
+      "translation": "烈风波",
+      "renderer": "static"
+    },
+    {
+      "id": "F0098-00000BEE",
+      "offset": "00000BEE",
+      "max_bytes": 12,
+      "source": "邪気の左手",
+      "translation": "邪气左手",
+      "renderer": "static"
+    },
+    {
+      "id": "F0098-00000BFA",
+      "offset": "00000BFA",
+      "max_bytes": 12,
+      "source": "闇の雄叫び",
+      "translation": "暗之呐喊",
+      "renderer": "static"
     }
   ]
 }
