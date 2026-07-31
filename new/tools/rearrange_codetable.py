@@ -100,6 +100,29 @@ DIGIT_PINS = {
     for offset, character in enumerate('０１２３４５６７８９')
 }
 PINS.update(DIGIT_PINS)
+
+# Same treatment for the punctuation the original UI draws by index.  0x015 is
+# the map header's 「－」; leaving it in the reserved pool let an alias land on it
+# and the header read 贪欲界１Ｆ率Ａ.  All seven characters already appear in the
+# translation, so pinning our copies costs nothing and frees the cells the
+# reserved set used to hold back.
+PUNCTUATION_PINS = {
+    0x004: '・',
+    0x005: '：',
+    0x006: '？',
+    0x007: '！',
+    0x00D: 'ー',
+    0x010: '’',
+    0x015: '－',
+}
+PINS.update(PUNCTUATION_PINS)
+
+# The last three hardcoded-index cells: the save screen draws Ａ and Ｂ by index
+# (an alias on 0x035 once made it read 率) and 0x039 is the map header's floor
+# Ｆ (aliasing it produced 学校1＋).  Same trick again -- our own copies pinned
+# onto their cells.
+LATIN_PINS = {0x034: 'Ａ', 0x035: 'Ｂ', 0x039: 'Ｆ'}
+PINS.update(LATIN_PINS)
 # Preset partner names shown in the party panel.
 PARTY_PRESET_NAMES = ('由美', '查理', '明')
 # Hardcoded single glyphs patched into the executable at build time

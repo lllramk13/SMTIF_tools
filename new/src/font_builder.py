@@ -7,6 +7,45 @@ from PIL import Image, ImageDraw, ImageFont
 HERE = Path(__file__).resolve().parent
 CODETABLE_PATH = HERE.parent / 'data' / 'codetable.json'
 FONT_PATH = HERE.parents[2] / 'fusion-pixel-12px.otf'
+# fusion-pixel covers 36,492 codepoints but not everything the translation
+# reaches for -- 徯 (U+5FAF, 凫徯) and 镳 (U+9573) both render as tofu.  Rather
+# than force the translators off a proper name, fall back to an outline font for
+# just those characters.  SimSun at 13px thresholds the most legibly of the
+# system fonts at this size; 12px turns both into blobs.
+FALLBACK_FONT_PATH = Path('C:/Windows/Fonts/simsun.ttc')
+FALLBACK_FONT_PX = 13
+
+# A few glyphs are artwork, not text.  The Macca symbol lives at index 0x18 of
+# the original 2bpp F13 and the text extractor could only label it ￡, so every
+# 「￡{数值0}を手に入れた」 came out drawn as a literal pound sign.  Keep the
+# original pixels instead of letting a font substitute a lookalike.
+PRESERVED_ORIGINAL_GLYPHS = {'￡': 0x18}
+ORIGINAL_F13_PATH = HERE.parents[2] / 'SMT IF' / 'extrac' / 'D' / 'F0013.BIN'
+ORIGINAL_GLYPH_BYTES = 48   # 16x12 at 2bpp
+# Palette index 0 is the visible ink; 1 and 2 are its antialias shades and 3 is
+# transparent.  Our 1bpp font has no shades, so fold 0-1 into ink.
+ORIGINAL_INK_MAX = 1
+
+
+def load_original_glyph(index, path=None):
+    """Convert one glyph of the original 2bpp F13 into our 1bpp format."""
+    from src.compression import decompress_resource
+
+    path = Path(path or ORIGINAL_F13_PATH)
+    storage = decompress_resource(path.read_bytes())
+    start = index * ORIGINAL_GLYPH_BYTES
+    source = storage[start:start + ORIGINAL_GLYPH_BYTES]
+    if len(source) != ORIGINAL_GLYPH_BYTES:
+        raise ValueError(f'Original F13 has no glyph {index:#x}')
+
+    glyph = bytearray(b'\xFF' * BYTES_PER_GLYPH)
+    for y in range(GLYPH_H):
+        for x in range(GLYPH_W):
+            bit = (y * GLYPH_W + x) * 2
+            value = (source[bit // 8] >> (bit % 8)) & 3
+            if value <= ORIGINAL_INK_MAX:
+                glyph[y * 2 + x // 8] &= ~(1 << (x % 8))
+    return bytes(glyph)
 BUILD_DIR = HERE.parent / 'build'
 FONT_OUTPUT_PATH = BUILD_DIR / 'font_1bpp.bin'
 PREVIEW_OUTPUT_PATH = BUILD_DIR / 'font_preview.png'
@@ -164,14 +203,43 @@ def render_font(
         font_size: ImageFont.truetype(str(font_path), font_size)
         for font_size in ({FONT_PX} | set(glyph_font_sizes.values()))
     }
+
+    # Characters the main font lacks come out as tofu, which is invisible to
+    # every other build check.  Detect them by rendering a private-use codepoint
+    # that cannot exist and comparing: anything that draws identically is the
+    # .notdef box.
+    fallback_font = None
+    if FALLBACK_FONT_PATH.is_file():
+        fallback_font = ImageFont.truetype(
+            str(FALLBACK_FONT_PATH), FALLBACK_FONT_PX
+        )
+    tofu = render_glyph('󰀀', fonts[FONT_PX])
+    fallback_used = []
+    missing_without_fallback = []
+    preserved = {
+        character: load_original_glyph(index)
+        for character, index in PRESERVED_ORIGINAL_GLYPHS.items()
+    }
+    preserved_used = []
     glyph_count = max(codetable) + 1
     font_data = bytearray(glyph_count * BYTES_PER_GLYPH)
 
     for index in range(glyph_count):
         start = index * BYTES_PER_GLYPH
-        font_data[start:start + BYTES_PER_GLYPH] = render_glyph(
-            codetable[index], fonts[glyph_font_sizes.get(index, FONT_PX)]
-        )
+        character = codetable[index]
+        size = glyph_font_sizes.get(index, FONT_PX)
+        if character in preserved and size == FONT_PX:
+            font_data[start:start + BYTES_PER_GLYPH] = preserved[character]
+            preserved_used.append((index, character))
+            continue
+        glyph = render_glyph(character, fonts[size])
+        if glyph == tofu and size == FONT_PX:
+            if fallback_font is None:
+                missing_without_fallback.append((index, character))
+            else:
+                glyph = render_glyph(character, fallback_font)
+                fallback_used.append((index, character))
+        font_data[start:start + BYTES_PER_GLYPH] = glyph
 
     # In the original game glyph index 0 is empty: it is the blank slot the
     # name-entry UI inserts for a space (and that text uses for a full-width
@@ -190,6 +258,35 @@ def render_font(
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_bytes(font_data)
     write_preview(font_data, glyph_count, preview_path)
+
+    if missing_without_fallback:
+        raise ValueError(
+            'Font lacks these characters and no fallback font is available: '
+            + ' '.join(
+                f'{index:#x}={character}'
+                for index, character in missing_without_fallback
+            )
+        )
+    if preserved_used:
+        print(
+            f'Original artwork kept for {len(preserved_used)} glyph(s): '
+            + ' '.join(
+                f'{index:#x}=U+{ord(character):04X}'
+                for index, character in preserved_used
+            )
+        )
+    if fallback_used:
+        # Console encodings here are not always UTF-8, and some of these are
+        # invisible characters that crept into the translation, so report them
+        # by codepoint rather than by glyph.
+        print(
+            f'Fallback font ({FALLBACK_FONT_PATH.name} @{FALLBACK_FONT_PX}px) '
+            f'supplied {len(fallback_used)} glyph(s): '
+            + ' '.join(
+                f'{index:#x}=U+{ord(character):04X}'
+                for index, character in fallback_used
+            )
+        )
 
     print(f'Rendered {glyph_count} glyphs')
     print(f'Font data: {output_path} ({len(font_data)} bytes)')

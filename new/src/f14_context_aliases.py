@@ -48,7 +48,11 @@ ORIGINAL_NAME_GLYPH_INDICES = frozenset(
 # The ＮＯ　ＤＡＴＡ / ＥＲＲＯＲ　ＤＡＴＡ / ＦＩＬＥ letters are *not* here:
 # those strings are re-encoded through our own codetable now, so they no longer
 # reference the reserved cells at all.
-HARDCODED_GLYPH_INDICES = frozenset({0x034, 0x035, 0x039})
+# Nothing is left to protect: every cell the executable addresses by a
+# hardcoded glyph index now carries our own copy of that character as a
+# codetable pin, so it is not part of the reserved pool at all.  What
+# remains reserved is Ｃ-Ｚ, which no code indexes.
+HARDCODED_GLYPH_INDICES = frozenset()
 
 # These blocks were confirmed in-game to draw through 0x800475FC.
 F14_CONTEXT_RECORD_PREFIXES = (

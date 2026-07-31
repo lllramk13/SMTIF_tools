@@ -80,6 +80,16 @@ def build_unified_normal_text_plan(
         raise ValueError("Not enough safe low F14 alias slots")
 
     unused_existing = set(codetable) - used_indices
+    # Index 0 is the fullwidth space: the original game leaves that glyph empty
+    # and font_builder forces it transparent, so a character relocated onto it
+    # simply vanishes.  No text ever references it, so it looks "unused" and --
+    # since the pool is sorted -- it would be handed to the *first* relocation
+    # every time.  That is how 令 disappeared from 「風紀委員の命令」: it sits on
+    # reserved cell 0x004, the lowest used reserved index, so it was always
+    # first in move_indices.
+    #
+    # low_range above already starts at 1 for the same reason, and both
+    # rearrange_codetable and f14_context_aliases exclude 0 explicitly.
     destination_pool = sorted(
         (
             unused_existing
@@ -87,6 +97,7 @@ def build_unified_normal_text_plan(
         )
         - reserved
         - set(alias_indices)
+        - {0}
     )
     move_indices = sorted(
         (used_indices & reserved)

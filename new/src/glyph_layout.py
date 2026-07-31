@@ -58,16 +58,29 @@ STATIC_WIDTH_TABLE_ENTRIES = 0x0567
 # and still lands on a fullwidth zero, just drawn from our font, so no code
 # patch is needed -- and because those characters already needed low cells,
 # pinning them releases ten cells outright.
-DYNAMIC_SPECIAL_LOW_INDICES = frozenset((
-    0x004,
-    0x005,
-    0x006,
-    0x007,
-    0x00D,
-    0x010,
-    0x015,
-    *range(0x034, 0x04E),
-))
+#
+# The seven punctuation cells 0x004-0x007, 0x00D, 0x010 and 0x015 left this set
+# on 2026-07-30, for exactly the same reason the digits did.  0x015 holds the
+# map header's 「－」 (貪欲界１Ｆ－Ａ) and the game draws it by index, so once the
+# alias allocator reached down that far the header read 贪欲界１Ｆ率Ａ.
+#
+# Every one of the seven is a character our own text already uses, so pinning
+# our copy onto the original's cell renders the same glyph with no code patch --
+# and, because those characters needed a low cell anyway, it hands seven cells
+# back to F14.  See tools/rearrange_codetable.PUNCTUATION_PINS.
+#
+# Ａ Ｂ Ｆ (0x034, 0x035, 0x039) followed on the same day and for the same
+# reason.  The save screen draws Ａ and Ｂ by index and the map header's floor
+# suffix is Ｆ, so they could never be aliased -- yet all three are ordinary
+# characters our text already uses hundreds of times, so pinning our copies onto
+# their cells renders them correctly *and* returns the cells to F14.
+#
+# What is left is only the Latin block Ｃ-Ｚ, which nothing in the game
+# addresses by index: it has carried aliases for months without a single report.
+DYNAMIC_SPECIAL_LOW_INDICES = frozenset(
+    index for index in range(0x034, 0x04E)
+    if index not in (0x034, 0x035, 0x039)
+)
 
 
 def glyph_indices(character_codes, text):

@@ -37,6 +37,17 @@ INTELLIGENCE_STAT_CHARACTER = '智'
 # next `sh $a1, ($a0)` writes it into the name buffer.  0x03BB (達) now maps to
 # an unrelated Chinese glyph after the codetable rearrange, so retarget the
 # immediate to 等 ("<name>等"), resolved from the codetable at build time.
+# Guardian label.  CN.asm renders 守护灵 into the title texture by calling
+# guardian_render_f13_glyph three times with the glyph index in an
+# `ori a0,zero,IMM`.  Those immediates were literals, so every codetable
+# rearrange silently retargeted them -- 0x027D and 0x032F stopped being 守 and
+# 护 and became 暗 and 显, and the label read 暗显灵 in game.  Resolve them from
+# the codetable at build time instead, the same way 智 and 等 are handled.
+GUARDIAN_LABEL_INSTRUCTIONS = (
+    (0x0386E0, '守'),
+    (0x0386F0, '护'),
+    (0x038700, '灵'),
+)
 NAME_PLURAL_INSTRUCTION_OFFSET = 0x1D6B0
 ORIGINAL_NAME_PLURAL_INSTRUCTION = bytes.fromhex('bb030524')  # addiu a1,zero,0x3BB
 NAME_PLURAL_CHARACTER = '等'
@@ -358,6 +369,21 @@ def patch_executable(
     patched_data[name_plural_offset:name_plural_offset + 2] = (
         resolve_static_ui_glyph(NAME_PLURAL_CHARACTER).to_bytes(2, 'little')
     )
+
+    # Guardian label glyphs: rewrite each `ori a0,zero,IMM` immediate from the
+    # codetable so a rearrange can never desynchronise them again.
+    for guardian_offset, character in GUARDIAN_LABEL_INSTRUCTIONS:
+        instruction = bytes(
+            patched_data[guardian_offset:guardian_offset + 4]
+        )
+        if instruction[2:] != bytes.fromhex('0434'):
+            raise AssertionError(
+                f'Guardian label site {guardian_offset:#x} is not '
+                f'`ori a0,zero,IMM`: {instruction.hex()}'
+            )
+        patched_data[guardian_offset:guardian_offset + 2] = (
+            resolve_static_ui_glyph(character).to_bytes(2, 'little')
+        )
 
     for glyph_index, width_value in (width_table_overrides or {}).items():
         if not 0 <= glyph_index <= 0x0566:
