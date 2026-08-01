@@ -213,6 +213,45 @@ def main():
     ]
     check("pause markers kept", not dropped, " ".join(dropped[:5]))
 
+    # The overlay blocks needed their own check.  Their exporter dropped every
+    # 01FF it read -- 121 of them -- so the appraisal shop, the healing spring
+    # and the save-load prompts all ran their pages together with no pause, and
+    # nothing in the data said a pause had ever been there.  Comparing each
+    # record's control codes against the disc is the only way to see it.
+    from tools.restore_overlay_waits import _code_of, _codes_from_slot, _split
+
+    overlay_drift = []
+    for file_name, records in load_overlay_text_records().items():
+        original = (NEW_DIR.parent / "extrac" / "D" / f"{file_name}.BIN").read_bytes()
+        for record in records:
+            offset = int(record["file_offset"], 16)
+            disc = _codes_from_slot(original[offset:offset + record["max_bytes"]])
+            recorded = [
+                _code_of(token)
+                for kind, token in _split(record.get("source"))
+                if kind == "code"
+            ]
+            if disc != recorded:
+                overlay_drift.append(record["id"])
+    check(
+        "overlay sources match the disc's control codes",
+        not overlay_drift,
+        f"{len(overlay_drift)}: " + " ".join(overlay_drift[:5]),
+    )
+
+    overlay_dropped = [
+        record["id"]
+        for records in load_overlay_text_records().values()
+        for record in records
+        if (record.get("source") or "").count("▽")
+        > (record.get("translation") or "").count("▽")
+    ]
+    check(
+        "overlay pause markers kept",
+        not overlay_dropped,
+        " ".join(overlay_dropped[:5]),
+    )
+
     # -- invisible characters -------------------------------------------------
     # Zero-width joiners pasted into a translation are invisible in the editor
     # and draw as tofu in game (□明□：).

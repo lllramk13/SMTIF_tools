@@ -69,7 +69,18 @@ def translated_overlay_texts(records=None):
     return tuple(texts)
 
 
-def _encode_slot(character_codes, translation, byte_len, record_id):
+# A slot whose original text carries a page break, a wait or a newline is a
+# *message*: the code points at it directly and reads until the terminator.
+# Everything else is a menu entry, and menus walk a run of consecutive slots.
+MESSAGE_CONTROL_CODES = ("{FF01}", "{FF02}", "{FF03}", "{FF92}")
+
+
+def _is_message(source):
+    return any(code in (source or "") for code in MESSAGE_CONTROL_CODES)
+
+
+def _encode_slot(character_codes, translation, byte_len, record_id,
+                 source=None):
     # encode_text already appends the FFFF terminator, so `encoded` is the
     # complete string.  Budgeting must not add a second one or every record
     # silently loses two bytes of its slot.
@@ -87,19 +98,30 @@ def _encode_slot(character_codes, translation, byte_len, record_id):
     if not remainder:
         return encoded
 
-    # Every original slot holds exactly one terminator, at its very end, and
-    # menus that walk a run of slots rely on that: a slot laid out as
-    # `text FFFF 0000... FFFF` reads as the option *plus* a trailing empty one,
-    # which inflates the entry count of e.g. the healing-elf menu (six of its
-    # options are padded) and runs the selection index off the end.
+    # Menus walk a run of consecutive slots, so their terminator has to stay at
+    # the very end of the slot: laid out as `text FFFF 0000... FFFF` the walker
+    # reads the option *plus* a trailing empty one, which inflates e.g. the
+    # healing-elf menu (six of its options are padded) and runs the selection
+    # index off the end.  Padding ahead of a single terminator avoids that.
+    if not _is_message(source):
+        return (
+            encoded[:-len(TERMINATOR)]
+            + PAD_CODE * (remainder // 2)
+            + TERMINATOR
+        )
+
+    # Messages are the opposite case, and pre-terminator padding actively
+    # breaks them.  The engine reads until FFFF, so those transparent glyphs
+    # are *printed* first -- 75 of them for the appraisal shop's explanation --
+    # which scrolls the window instead of waiting for a button, and a wait code
+    # no longer adjacent to the terminator stops pausing at all.  src/slpm_text
+    # hit exactly this on the action-result block (FF92 FFFF -> FF92 0000 FFFF)
+    # and solved it the same way.
     #
-    # So pad ahead of a single terminator instead.  Glyph 0 is forced fully
-    # transparent by font_builder, so the filler is invisible.
-    return (
-        encoded[:-len(TERMINATOR)]
-        + PAD_CODE * (remainder // 2)
-        + TERMINATOR
-    )
+    # Nothing walks past a message slot, so ending the string early and leaving
+    # the rest of the slot as filler is safe -- and unlike the earlier attempt,
+    # no second terminator is written, so no phantom entry can appear.
+    return encoded + PAD_CODE * (remainder // 2)
 
 
 def apply_overlay_text_patches(
@@ -178,6 +200,7 @@ def apply_overlay_text_patches(
 
             new_slot = _encode_slot(
                 character_codes, record["translation"], byte_len, record_id,
+                source=record.get("source"),
             )
             output[file_offset:file_offset + byte_len] = new_slot
             string_count += 1
