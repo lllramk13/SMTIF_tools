@@ -79,10 +79,20 @@ jal     hybrid_name_renderer
 ; The earlier test63 patched one guessed caller at 0x80084E94, but the real
 ; object has different constructor fields and that call is not its source.
 ; Apply the correction in the common constructor after either automatic or
-; explicit sizing and immediately before allocation.  Type 6 alone is not a
-; sufficient signature: EQUIP also creates type-6 objects whose smaller
-; natural stride is valid.  Restrict the correction to the observed MARKER
-; failure signature, type 6 with an exact 0xD0 stride.
+; explicit sizing and immediately before allocation.
+;
+; This started out matching an exact stride of 0xD0, the value measured in
+; 嫉妒界, on the theory that EQUIP's type-6 objects have smaller strides that
+; are legitimately fine.  They are fine, but they are also not harmed by being
+; given a full row: 0x100 is simply what this renderer writes, so any stride
+; below it overflows.  怠惰界 and 暴食界 proved the point -- their constructor
+; settles on 0xF8, eight bytes short, and the exact match never fired.  Those
+; eight bytes are the row's trailing state packet, and they land on the first
+; sprite of the next row, corrupting its ordering-table link.  A savestate on a
+; slow 怠惰界 MARKER has nine three-node rings of 12x12 glyph sprites, each one
+; a chain that closes back on itself and that the GPU then walks forever.
+;
+; So make it the floor the name always claimed: type 6, stride under 0x100.
 .org    0x8006F0A8
 j       type6_f14_stride_floor
 sll     v0,fp,0x10
@@ -683,8 +693,8 @@ addiu   t0,v0,-6
 bne     t0,zero,type6_f14_stride_done
 nop
 lw      t0,0x800(s1)
-addiu   t1,t0,-0xD0
-bne     t1,zero,type6_f14_stride_done
+sltiu   t1,t0,0x100
+beq     t1,zero,type6_f14_stride_done
 nop
 ori     t0,zero,0x100
 sw      t0,0x800(s1)

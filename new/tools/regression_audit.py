@@ -29,11 +29,16 @@ from src.f14_context_aliases import (
 )
 from src.f0098_text import load_f0098_text_records, translated_f0098_texts
 from src.font_builder import (
+    DRAW_W,
     FALLBACK_FONT_PATH,
     FALLBACK_FONT_PX,
     FONT_PATH,
     FONT_PX,
+    GLYPH_ARTWORK,
+    GLYPH_H,
     load_codetable,
+    load_glyph_artwork,
+    load_original_glyph,
     render_glyph,
 )
 from src.glyph_layout import DYNAMIC_SPECIAL_LOW_INDICES, glyph_indices
@@ -290,6 +295,55 @@ def main():
         "every glyph has artwork",
         not uncovered,
         " ".join(f"U+{ord(c):04X}" for c in uncovered),
+    )
+
+    # The Macca symbol is artwork, so it is copied out of the original 2bpp F13
+    # rather than rendered.  Reading that as "0 and 1 are ink" dropped shade 2,
+    # which is the middle of every stroke, and the symbol came out shattered.
+    # Decoding a glyph whose shape is known independently -- the fullwidth １ at
+    # 0x2B -- catches any future misreading of the format.
+    def ink_rows(index):
+        glyph = load_original_glyph(index)
+        return [
+            [
+                not (glyph[y * 2 + x // 8] >> (x % 8)) & 1
+                for x in range(DRAW_W)
+            ]
+            for y in range(GLYPH_H)
+        ]
+
+    one = ink_rows(0x2B)
+    # Every drawn row of a １ is a solid run: a dotted column means shades were
+    # dropped.  Row 0 is blank.
+    broken = [
+        y
+        for y, row in enumerate(one)
+        if any(row)
+        and any(
+            row[x] and not row[x + 1] and row[x + 2]
+            for x in range(len(row) - 2)
+        )
+    ]
+    check(
+        "original 2bpp glyphs decode without dropping shades",
+        not broken,
+        f"dotted rows in the fullwidth １: {broken}",
+    )
+    # The hand-drawn replacements are packed from PNGs outside the font, so a
+    # missing or resized file has to fail here rather than ship a blank cell.
+    missing_artwork = []
+    for character, path in GLYPH_ARTWORK.items():
+        try:
+            packed = load_glyph_artwork(path)
+        except (OSError, ValueError) as error:
+            missing_artwork.append(f"{character}: {error}")
+            continue
+        if all(byte == 0xFF for byte in packed):
+            missing_artwork.append(f"{character}: packs to a blank cell")
+    check(
+        "hand-drawn glyph artwork loads",
+        not missing_artwork,
+        "; ".join(missing_artwork),
     )
 
     # -- fixed-length text ----------------------------------------------------

@@ -212,16 +212,15 @@ def patch_executable(
         0x80047C98: bytes.fromhex('00000000'),  # original delay-slot nop
         0x8004AE70: bytes.fromhex('00000000'),  # original load-delay nop
         0x8004AE74: bytes.fromhex('E8FF4014'),  # original converter back-edge
-        # MARKER's type-6 F14 object needs 0x100 bytes for six NODATA glyphs
-        # with shadow, while its live descriptor contained 0xD0.  Match that
-        # exact stride so other valid type-6 objects (notably EQUIP) are not
-        # enlarged and corrupted.
+        # MARKER's type-6 F14 object needs 0x100 bytes for six glyphs with
+        # shadow.  嫉妒界's descriptor held 0xD0 and 怠惰界/暴食界's holds 0xF8,
+        # so this is a floor rather than a match on either value.
         0x80084E94: bytes.fromhex('631D010C'),  # guessed test63 hook removed
         0x8005C294: bytes.fromhex('00000000'),  # decoder jr delay slot
         0x8005C298: bytes.fromhex('03140200'),  # sra v0,v0,16
         0x8005C2A8: bytes.fromhex('0008288E'),  # lw t0,0x800(s1)
-        0x8005C2AC: bytes.fromhex('30FF0925'),  # addiu t1,t0,-0xD0
-        0x8005C2B0: bytes.fromhex('03002015'),  # bne t1,zero,done
+        0x8005C2AC: bytes.fromhex('0001092D'),  # sltiu t1,t0,0x100
+        0x8005C2B0: bytes.fromhex('03002011'),  # beq t1,zero,done
         0x8005C2B8: bytes.fromhex('00010834'),  # ori t0,zero,0x100
         0x8005C2BC: bytes.fromhex('000828AE'),  # sw t0,0x800(s1)
         0x8005C2C0: bytes.fromhex('2CBC0108'),  # j 0x8006F0B0
@@ -273,9 +272,9 @@ def patch_executable(
     # F0093-compatible 8bpp RLE uploader and its row decoder bring this to 1739;
     # restoring the clean R&D closing-frame pass adds 14 changed bytes.
     # The original F0093 source and count deliberately remain intact.
-    if armips_changed_bytes != 1790:
+    if armips_changed_bytes != 1789:
         raise AssertionError(
-            f'Expected CN.asm to change 1790 bytes, got {armips_changed_bytes}'
+            f'Expected CN.asm to change 1789 bytes, got {armips_changed_bytes}'
         )
 
     patched_data = bytearray(patched_data)

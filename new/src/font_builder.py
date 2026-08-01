@@ -17,14 +17,24 @@ FALLBACK_FONT_PX = 13
 
 # A few glyphs are artwork, not text.  The Macca symbol lives at index 0x18 of
 # the original 2bpp F13 and the text extractor could only label it ￡, so every
-# 「￡{数值0}を手に入れた」 came out drawn as a literal pound sign.  Keep the
-# original pixels instead of letting a font substitute a lookalike.
-PRESERVED_ORIGINAL_GLYPHS = {'￡': 0x18}
+# 「￡{数值0}を手に入れた」 came out drawn as a literal pound sign.  Copying the
+# original pixels fixed that; this is the project's own replacement, drawn to
+# read better at 12px than the original does.
+#
+# It is placed the way render_glyph places a rendered glyph -- ink centred in
+# the DRAW_W x GLYPH_H cell -- so it sits on the same optical line as the text
+# around it.  Both fonts get it: ￡ appears in dialogue through F13 and on the
+# status screen through F14, and two different Macca symbols would read as a
+# bug.
+GLYPH_ARTWORK = {'￡': HERE.parent / 'data' / 'glyphs' / 'macca.png'}
 ORIGINAL_F13_PATH = HERE.parents[2] / 'SMT IF' / 'extrac' / 'D' / 'F0013.BIN'
 ORIGINAL_GLYPH_BYTES = 48   # 16x12 at 2bpp
-# Palette index 0 is the visible ink; 1 and 2 are its antialias shades and 3 is
-# transparent.  Our 1bpp font has no shades, so fold 0-1 into ink.
-ORIGINAL_INK_MAX = 1
+# Only palette index 3 is transparent; 0, 1 and 2 are all ink, at three
+# darknesses.  Reading it as "0 and 1 are ink" instead drew the Macca symbol as
+# scattered fragments, because 2 is the shade the original uses down the middle
+# of a stroke -- the fullwidth １ at 0x2B comes out as a dotted `..#.#` column.
+# A 1bpp font has no shades, so anything not transparent becomes ink.
+ORIGINAL_TRANSPARENT = 3
 
 
 def load_original_glyph(index, path=None):
@@ -40,10 +50,13 @@ def load_original_glyph(index, path=None):
 
     glyph = bytearray(b'\xFF' * BYTES_PER_GLYPH)
     for y in range(GLYPH_H):
-        for x in range(GLYPH_W):
+        # The cell is 16 wide but only DRAW_W of it is ever drawn, and the
+        # columns past that are filled with ink-valued padding.  Rendered
+        # glyphs leave them blank, so this one does too.
+        for x in range(DRAW_W):
             bit = (y * GLYPH_W + x) * 2
             value = (source[bit // 8] >> (bit % 8)) & 3
-            if value <= ORIGINAL_INK_MAX:
+            if value != ORIGINAL_TRANSPARENT:
                 glyph[y * 2 + x // 8] &= ~(1 << (x % 8))
     return bytes(glyph)
 BUILD_DIR = HERE.parent / 'build'
@@ -56,6 +69,37 @@ DRAW_W = 12
 FONT_PX = 12
 THRESHOLD = 96
 BYTES_PER_GLYPH = GLYPH_W * GLYPH_H // 8
+
+
+def load_glyph_artwork(path):
+    """Pack a hand-drawn PNG into one glyph cell.
+
+    The artwork is white on transparent at whatever canvas size the author drew
+    it, so the alpha channel carries the shape and the canvas margins are
+    discarded in favour of this font's own centring.
+    """
+    path = Path(path)
+    artwork = Image.open(path).convert('LA')
+    mask = artwork.getchannel('A').point(
+        lambda value: 255 if value > THRESHOLD else 0
+    )
+    box = mask.getbbox()
+    if box is None:
+        raise ValueError(f'Glyph artwork has no opaque pixels: {path}')
+
+    ink = mask.crop(box)
+    if ink.width > DRAW_W or ink.height > GLYPH_H:
+        raise ValueError(
+            f'Glyph artwork is {ink.width}x{ink.height}, which does not fit '
+            f'the {DRAW_W}x{GLYPH_H} cell: {path}'
+        )
+
+    image = Image.new('L', (GLYPH_W, GLYPH_H), 0)
+    image.paste(
+        ink,
+        ((DRAW_W - ink.width) // 2, (GLYPH_H - ink.height) // 2),
+    )
+    return pack_1bpp(image)
 
 
 def read_json(path):
@@ -216,11 +260,11 @@ def render_font(
     tofu = render_glyph('󰀀', fonts[FONT_PX])
     fallback_used = []
     missing_without_fallback = []
-    preserved = {
-        character: load_original_glyph(index)
-        for character, index in PRESERVED_ORIGINAL_GLYPHS.items()
+    artwork = {
+        character: load_glyph_artwork(path)
+        for character, path in GLYPH_ARTWORK.items()
     }
-    preserved_used = []
+    artwork_used = []
     glyph_count = max(codetable) + 1
     font_data = bytearray(glyph_count * BYTES_PER_GLYPH)
 
@@ -228,9 +272,9 @@ def render_font(
         start = index * BYTES_PER_GLYPH
         character = codetable[index]
         size = glyph_font_sizes.get(index, FONT_PX)
-        if character in preserved and size == FONT_PX:
-            font_data[start:start + BYTES_PER_GLYPH] = preserved[character]
-            preserved_used.append((index, character))
+        if character in artwork and size == FONT_PX:
+            font_data[start:start + BYTES_PER_GLYPH] = artwork[character]
+            artwork_used.append((index, character))
             continue
         glyph = render_glyph(character, fonts[size])
         if glyph == tofu and size == FONT_PX:
@@ -267,12 +311,12 @@ def render_font(
                 for index, character in missing_without_fallback
             )
         )
-    if preserved_used:
+    if artwork_used:
         print(
-            f'Original artwork kept for {len(preserved_used)} glyph(s): '
+            f'Hand-drawn artwork used for {len(artwork_used)} glyph(s): '
             + ' '.join(
                 f'{index:#x}=U+{ord(character):04X}'
-                for index, character in preserved_used
+                for index, character in artwork_used
             )
         )
     if fallback_used:
