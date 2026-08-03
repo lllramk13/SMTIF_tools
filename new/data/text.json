@@ -8111,7 +8111,7 @@
       "block_offset": "0005E0C4",
       "pointer_offset": "00000018",
       "source": "※※※※※※※\n＞ツボがある▽",
-      "translation": "※※※※※※※\n＞有一个罐子。▽"
+      "translation": "※※※※※※※\n＞有个罐子。▽"
     },
     {
       "id": "F0016-0005E0C4-0000002A",
@@ -85300,21 +85300,21 @@
       "block_offset": "00002D98",
       "pointer_offset": "000012D6",
       "source": "敵１体を\n銃で攻撃する",
-      "translation": "使用枪攻击１个敌人"
+      "translation": "使用枪\n攻击１个敌人"
     },
     {
       "id": "F0094-00002D98-000012EE",
       "block_offset": "00002D98",
       "pointer_offset": "000012EE",
       "source": "敵数体を\n銃で攻撃する",
-      "translation": "使用枪攻击多个敌人"
+      "translation": "使用枪\n攻击多个敌人"
     },
     {
       "id": "F0094-00002D98-00001306",
       "block_offset": "00002D98",
       "pointer_offset": "00001306",
       "source": "敵全体を\n銃で攻撃する",
-      "translation": "使用枪攻击所有敌人"
+      "translation": "使用枪\n攻击所有敌人"
     },
     {
       "id": "F0094-00002D98-0000131E",
@@ -85370,7 +85370,7 @@
       "block_offset": "00002D98",
       "pointer_offset": "00001444",
       "source": "敵数体を\n剣技で攻撃する",
-      "translation": "使用剑技攻击多个敌人"
+      "translation": "使用剑技\n攻击多个敌人"
     },
     {
       "id": "F0094-00002D98-0000145E",

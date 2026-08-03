@@ -296,7 +296,7 @@
    "offset": "E4AD4",
    "max_bytes": 26,
    "source": "エストマの効果が切れた！",
-   "translation": "清凉效果消失了！",
+   "translation": "驱魔术的效果消失了！",
    "renderer": "dynamic"
   },
   {
@@ -304,7 +304,7 @@
    "offset": "E4AEE",
    "max_bytes": 26,
    "source": "封魔の鈴の効果が切れた▽",
-   "translation": "封魔之铃效果消失了▽",
+   "translation": "封魔之铃的效果消失了▽",
    "renderer": "dynamic"
   },
   {
@@ -312,7 +312,7 @@
    "offset": "E4B08",
    "max_bytes": 26,
    "source": "リフトマの効果が切れた▽",
-   "translation": "浮游术效果消失了▽",
+   "translation": "漂浮术的效果消失了▽",
    "renderer": "dynamic"
   },
   {
@@ -320,7 +320,7 @@
    "offset": "E4B22",
    "max_bytes": 30,
    "source": "コアシールドの効果が切れた▽",
-   "translation": "核心护盾效果消失了▽",
+   "translation": "核心屏障的效果消失了▽",
    "renderer": "dynamic"
   },
   {
@@ -328,7 +328,7 @@
    "offset": "E4B40",
    "max_bytes": 26,
    "source": "マッパーの効果が切れた▽",
-   "translation": "自动地图效果消失了▽",
+   "translation": "地图术的效果消失了▽",
    "renderer": "dynamic"
   },
   {
@@ -336,7 +336,7 @@
    "offset": "E4B5A",
    "max_bytes": 30,
    "source": "見晴らしの玉の効果が切れた▽",
-   "translation": "远望之玉效果消失了▽",
+   "translation": "眺望之珠的效果消失了▽",
    "renderer": "dynamic"
   },
   {
@@ -352,7 +352,7 @@
    "offset": "E4B88",
    "max_bytes": 30,
    "source": "{仲魔}は身代わりの玉に守られた▽",
-   "translation": "{仲魔}被替身玉保护了▽",
+   "translation": "{仲魔}被替身珠保护了▽",
    "renderer": "dynamic"
   },
   {
