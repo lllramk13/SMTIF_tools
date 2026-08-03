@@ -218,7 +218,11 @@ def patch_executable(
         0x80084E94: bytes.fromhex('631D010C'),  # guessed test63 hook removed
         0x8005C294: bytes.fromhex('00000000'),  # decoder jr delay slot
         0x8005C298: bytes.fromhex('03140200'),  # sra v0,v0,16
-        0x8005C2A8: bytes.fromhex('0008288E'),  # lw t0,0x800(s1)
+        # The stride load and the instruction that fills its delay slot.  Both
+        # are pinned because reading t0 one instruction too early is what made
+        # this routine compare against a constant zero for months.
+        0x8005C29C: bytes.fromhex('0008288E'),  # lw t0,0x800(s1)
+        0x8005C2A0: bytes.fromhex('FAFF4924'),  # addiu t1,v0,-6
         0x8005C2AC: bytes.fromhex('0001092D'),  # sltiu t1,t0,0x100
         0x8005C2B0: bytes.fromhex('03002011'),  # beq t1,zero,done
         0x8005C2B8: bytes.fromhex('00010834'),  # ori t0,zero,0x100

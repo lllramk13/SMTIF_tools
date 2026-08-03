@@ -93,6 +93,15 @@ jal     hybrid_name_renderer
 ; a chain that closes back on itself and that the GPU then walks forever.
 ;
 ; So make it the floor the name always claimed: type 6, stride under 0x100.
+;
+; The stride load needs its delay slot honoured, and for a long time it did not.
+; `lw t0,0x800(s1)` was read one instruction later, so the comparison actually
+; saw the *previous* t0 -- which is `type - 6`, and therefore always zero here.
+; The original `addiu t1,t0,-0xD0 / bne` was consequently never true and the
+; whole correction never ran; the floor that replaced it was always true and
+; rewrote every type-6 object, EQUIP's included, which hung the equip screen.
+; Neither behaviour was the intended one.  The compiler's own code two
+; instructions away (0x8006F074) shows the nop this needs.
 .org    0x8006F0A8
 j       type6_f14_stride_floor
 sll     v0,fp,0x10
@@ -688,12 +697,12 @@ jr      ra
 ; constructor helper at the following word.
 nop
 type6_f14_stride_floor:
-sra     v0,v0,0x10
-addiu   t0,v0,-6
-bne     t0,zero,type6_f14_stride_done
+sra     v0,v0,0x10              ; v0 = object type, still needed on return
+lw      t0,0x800(s1)            ; stride; safe to read for any type
+addiu   t1,v0,-6                ; fills the load delay slot -- reads v0, not t0
+bne     t1,zero,type6_f14_stride_done
 nop
-lw      t0,0x800(s1)
-sltiu   t1,t0,0x100
+sltiu   t1,t0,0x100             ; t0 is valid from here
 beq     t1,zero,type6_f14_stride_done
 nop
 ori     t0,zero,0x100

@@ -304,7 +304,7 @@
    "offset": "E4AEE",
    "max_bytes": 26,
    "source": "封魔の鈴の効果が切れた▽",
-   "translation": "封魔铃效果消失了▽",
+   "translation": "封魔之铃效果消失了▽",
    "renderer": "dynamic"
   },
   {
@@ -1665,7 +1665,7 @@
    "offset": "000E6A3A",
    "max_bytes": 16,
    "source": "誰も悪くない▽",
-   "translation": "谁都没有错。▽",
+   "translation": "没有人异常。▽",
    "renderer": "dynamic",
    "translation_origin": "existing_exact_match"
   },
