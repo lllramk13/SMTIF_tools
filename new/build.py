@@ -47,7 +47,11 @@ from src.f0098_text import (
     load_f0098_text_records,
     translated_f0098_texts,
 )
-from src.f14_context_aliases import build_f14_context_alias_plan
+from src.f14_context_aliases import (
+    build_f14_context_alias_plan,
+    validate_encoded_record_alias_isolation,
+)
+from src.mixed_name_layout import validate_mixed_name_font_layout
 from src.shift_jis_ui import build_shift_jis_ui_plan
 from src.video_replacement import (
     DEFAULT_JPSXDEC_JAR,
@@ -330,7 +334,7 @@ def build_assets(
     f13_glyph_overrides = dict(glyph_overrides)
     f13_glyph_overrides.update(load_original_ui_glyph_overrides())
 
-    render_font(
+    f13_font_data = render_font(
         output_path=f13_font_path,
         preview_path=BUILD_DIRECTORY / "font_f13_preview.png",
         glyph_overrides=f13_glyph_overrides,
@@ -357,11 +361,22 @@ def build_assets(
         "Chinese name-entry keyboard: "
         f"{len(name_entry_plan.characters)} low-code characters"
     )
-    render_font(
+    f14_font_data = render_font(
         output_path=f14_font_path,
         preview_path=BUILD_DIRECTORY / "font_f14_preview.png",
         glyph_overrides=(f14_glyph_overrides or None),
     )
+    if f14_context_alias_plan:
+        validate_mixed_name_font_layout(
+            f13_font_data,
+            f14_font_data,
+            load_character_codes(NEW_DIRECTORY / "data" / "codetable.json"),
+            f14_context_alias_plan.aliases,
+        )
+        print(
+            "Mixed-name F14 layout: A-Z restored, 3 visual aliases, "
+            f"{len(f14_context_alias_plan.aliases)} context aliases"
+        )
 
     print("[2/5] Building F0013 dynamic font resource")
     f13_data = build_f13(raw_font_path=f13_font_path)
@@ -413,6 +428,11 @@ def build_assets(
             else None
         ),
     )
+    if f14_context_alias_plan:
+        validate_encoded_record_alias_isolation(
+            text_result["encoded_records"],
+            f14_context_alias_plan,
+        )
     replacements = create_disc_replacements(text_result)
     f82_key = "D/F0082.BIN"
     if f82_key not in replacements:

@@ -22,11 +22,19 @@ python build.py --output '..\Game\modified\SMT_IF_CN_xxx.bin' --force
 **每次构建都要确认这三行出现**，缺任何一行说明嵌入文本没注入：
 
 ```
-F14 context aliases: 182 aliases for 662 characters
-Embedded SLPM text: 386/386 translated
+F14 context aliases: 22 aliases for 694 characters
+Embedded SLPM text: 388/388 translated
 Direct UI -> F14: 2 fixed-size strings and renderer calls patched
-Changed bytes: 8963
+Changed bytes: 9997
 ```
+
+> **按键推进对话卡死 / 动态字库失效指针（2026-08-03）**：Mammon 战前对话
+> `F0016@0x38990` 的首句比原槽长 4 字节。通用 allow-growth 策略曾把它单独
+> 搬到资源尾部 `0x656`，但下一句仍在 `0x66`；首屏通过指针能正常显示，按键
+> 推进后却会沿断开的记录布局读入堆数据，把 `0xB370/0xC2C0` 当字码，最终在
+> `0x8005BCEC/0x8005BD0C` 解引用 `0xFFFFxxxx` 的假节点。普通对话块现在超槽
+> 时统一紧凑重排，只有明确按固定偏移独立查表的 F0017/F0094 四块允许单条
+> 外移。`tools/audit_text_resource_layout.py` 会扫描全盘并输出布局策略报告。
 
 > **MARKER 根因与 test64 修复（2026-07-26）**：test62 将错误地址
 > `0x7806DC78` 解码为 `$ra=0x8006DC78`，确认最终坏指针读取来自
@@ -194,6 +202,13 @@ Changed bytes: 8963
 >    该块前面 `0x9220` 起是 u32 偏移指针表（`0x20/0x2E/0x42/0x56/0x6A/0x74/
 >    0x84/0x8E`，基址 `0x9220`），等长原地注入不影响它。译文避开了越界字：
 >    「阶」=`0x74E` 超过 `0x567`，改用「级」=`0x280`。
+
+> **安度西亚斯战后罐子卡死（2026-08-03）**：即时存档显示 CPU 最终跳到低内存
+> `0x00001008` 的数据区执行，并触发 Data Bus Error；可执行代码和既有 DMA/越界
+> 防护均完好。对应文本资源 `F0016 0x5E0C4` 的原版第一串固定在解压块 `+0x18`，
+> 中文“＞有一个罐子。”编码比原槽多 2 字节，固定布局构建器曾把它外移到 `+0x102`
+> 并仅更新指针表；该事件却直接读取 `+0x18`，于是把指针表当字码连续绘制并写坏 RAM。
+> 现缩为“＞有个罐子。”，并把该资源列入严格固定布局清单，构建期禁止任何字符串外移。
 >
 > **MARKER 类别绿框与 OTHER 慢速（test80 待实机确认）**：五条类别说明
 > `0xEF298–0xEF33B` 在数据表里标为 dynamic，实际却由 F14 绘制。其中
@@ -288,10 +303,18 @@ F14 对应物理格改画中文字：
 对应的注入策略（`src/text_resource_builder.py` / `text_file_builder.py`）：
 
 - **exact-size**：每个被替换资源保持原偏移 + 原声明大小；
-- **固定布局**：装得下的译文写回原槽；超槽的追加到解压缓冲末尾并只改对应指针；
+- **固定布局**：装得下的译文写回原槽；普通块一旦超槽就整体紧凑重排；
+- **allow-growth**：仅 F0017/F0094 四个明确的固定偏移查表块可把超槽串追加到尾部；
 - **INPLACE**：既要固定内部布局又要等文件大小的资源（F0018 0x1F5C、F0040 四块）。
 
-当前全盘 750 个块**零紧凑重排**。
+当前构建共 751 块：745 个参与资源构建（489 固定布局、256 紧凑重排），另有
+5 个 passthrough 和 1 个静态块。全盘审计发现 61 个“单条外移会导致指针逆序”
+的候选块，其中 57 个按对话策略紧凑重排，4 个按明确白名单 allow-growth。
+
+```powershell
+python -m tools.audit_text_resource_layout --summary `
+  --json build\text_resource_layout_audit.json
+```
 
 > ⚠️ 已确认按固定偏移读取的菜单块（F0076 0x2C7C、F0084 0x800/0xE000、F0075 block0）
 > **必须继续使用短译文**，禁止把字符串搬到缓冲末尾。

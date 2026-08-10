@@ -92,7 +92,21 @@ jal     hybrid_name_renderer
 ; slow 怠惰界 MARKER has nine three-node rings of 12x12 glyph sprites, each one
 ; a chain that closes back on itself and that the GPU then walks forever.
 ;
-; So make it the floor the name always claimed: type 6, stride under 0x100.
+; A constant floor of 0x100 was the next attempt, and it is still wrong: 0x100
+; is what *six* glyphs need, and the requirement scales with the row.  Four
+; savestates taken on slow MARKER screens all contain rows the floor was too
+; small for -- one of them 11 glyphs wide, needing 0x1C8.  The shadow pass then
+; runs into the normal pass and its last node is left holding only a tag and a
+; colour word, so the GPU reads the *next* node's words as that sprite's
+; position and size and draws a textured rectangle hundreds of pixels across.
+; Two to eight of those per frame is what makes the screen crawl while still
+; looking correct: the garbage is clipped away, but the GPU still fills it.
+;
+; The measured value is one pass plus one state packet, n*0x14 + 8, and the
+; renderer writes two passes plus two state packets, 2*(n*0x14) + 0x10 -- which
+; is exactly twice the measurement.  Six glyphs measure 0x80 and need 0x100,
+; eleven measure 0xE4 and need 0x1C8; both check out.  So double it, and objects
+; that need less than 0x100 (EQUIP's) keep getting less than 0x100.
 ;
 ; The stride load needs its delay slot honoured, and for a long time it did not.
 ; `lw t0,0x800(s1)` was read one instruction later, so the comparison actually
@@ -142,30 +156,25 @@ bne     v0,zero,0x8004AE18
 ; `jal 0x800475FC` sites fixed nothing: the status header and the SAVE/LOAD
 ; slot names come through here.
 ;
-; F14's low cells hold the context aliases, so a keyboard-entered name
-; (あああぱ -> 决决决扫) or the built-in ＮＯＤＡＴＡ (Ｎ Ｏ {FFFE} Ｄ Ａ Ｔ Ａ
-; -> 菩濒 Ｄ Ａ 突 Ａ) comes out as unrelated Chinese.  Gate the renderer itself
-; instead of chasing call sites: a string made only of original name-entry
-; codes goes to the small font, everything else continues unchanged.
-;
-; This is safe because the game never draws Latin UI labels through F14 --
-; GUARDIAN / NORMAL ITEM / EMPTY / FILE n all contain Ｎ, Ｏ or Ｔ and render
-; correctly, so they come from the small font.  A big-font string built purely
-; from original codes is a name or the ＮＯＤＡＴＡ placeholder.
-;
-; The gate runs before the prologue takes effect, so it undoes the delay-slot
-; `addiu sp,sp,-72` first; both renderers read their drawing buffer from the
-; caller's sp+0x10 (0x80047688 reads 88(sp) of a -72 frame, 0x80046FEC reads
-; 128(sp) of a -112 frame), so no stack fixup is needed on either exit.
-; t0-t2 are dead at entry: 0x80047688 initialises t1 and loads t0 itself.
+; The old patch sent any all-Latin/all-digit string to the small font so the
+; context aliases then covering C-Z could not corrupt keyboard-entered names.
+; The build now restores A-Z in F14 and moves those 22 aliases to globally
+; released cells.  Keeping the gate would therefore be harmful: LEVEL, LAW,
+; CHAOS, BGM1..19, KENO and other genuine F14 labels also become original-code
+; strings after the global A-Z re-pin and would silently switch from 11px F14
+; layout to the 10px small font.  Restore the shared renderer's original
+; prologue.  Explicit name call sites still use hybrid_name_renderer where the
+; small-font appearance is desired; every direct F14 path can now draw original
+; names and NO DATA correctly by itself.
 .org    0x80047688
-j       big_font_name_gate
-addiu   sp,sp,-0x48             ; displaced first instruction (delay slot)
+addiu   sp,sp,-0x48
+sw      s2,0x28(sp)
 
 
 ; The 592 bytes at 0x80047DBC are a second, fully unreferenced copy of the F14
 ; renderer -- the same duplicate-inlining the legacy decoder shows.  Nothing in
-; the executable or any overlay branches, jumps or points into it.
+; the executable or any overlay branches, jumps or points into it.  The retired
+; gate remains here as unreachable historical code; no live hook targets it.
 .org    0x80047DBC
 big_font_name_gate:
 addiu   sp,sp,0x48              ; restore the caller's sp for the scan
@@ -702,11 +711,11 @@ lw      t0,0x800(s1)            ; stride; safe to read for any type
 addiu   t1,v0,-6                ; fills the load delay slot -- reads v0, not t0
 bne     t1,zero,type6_f14_stride_done
 nop
-sltiu   t1,t0,0x100             ; t0 is valid from here
-beq     t1,zero,type6_f14_stride_done
-nop
-ori     t0,zero,0x100
+sll     t0,t0,1                 ; the row is written twice; give it both passes
 sw      t0,0x800(s1)
+nop                             ; keep this routine 12 words so the code after
+nop                             ; it, and 0x80047C94's branch into it, stay put
+nop
 
 type6_f14_stride_done:
 j       0x8006F0B0
@@ -825,6 +834,12 @@ addiu   t0,t0,0x2
 ; hold ordinary Chinese glyphs -- so a translated name that happens to use one
 ; must NOT be mistaken for keyboard-entered Japanese and sent to the small font.
 ; What is still reserved (digits, Latin, punctuation) is tested below.
+;
+; Accepting the block here looks tempting, because it would send a name mixing
+; Chinese and Latin to the small font and both halves are typeable.  It does not
+; work: the small font is F0012, which the build never replaces, so those cells
+; still hold the original kana.  F0073 is only the keyboard graphic the player
+; picks from, not the font a name is drawn with.
 ; 0x02A..0x04D
 addiu   t2,t1,-0x2A
 sltiu   t2,t2,0x24
@@ -1035,6 +1050,32 @@ sw      v0,0(t3)
 f14_glyph_ot_skip:
 j       0x80047A94
 nop
+
+
+; The CONTINUE screen's four ending lamps.  Each is one Shift-JIS character
+; naming the partner whose route was cleared -- the first kana of アキラ,
+; チャーリー, ユミ and レイコ -- with ＊ for a route still open.  A five-entry
+; pointer table at 0x800F8358 selects between them and 0x80073574 draws the
+; chosen one through the small font's Shift-JIS path, ten pixels apart.
+;
+; That path cannot reach our own font, and the small font's 160 Chinese cells
+; (the name-entry keyboard's) happen to hold 玲 and 明 but neither 查 nor 由, so
+; three of the four could be localised and the fourth could not.  Use initials
+; instead: they are plain ASCII, which this renderer has always drawn, and they
+; keep all four lamps consistent with each other.
+;
+;   Ｍ 明   Ｃ 查理   Ｙ 由美   Ｌ 玲子
+;
+; Fullwidth, not ASCII.  This renderer takes one two-byte character per lamp --
+; every entry it has ever held is fullwidth, and the lamps are spaced ten pixels
+; apart to suit that.  Halfwidth 'M',0 gets read as a single two-byte code
+; instead and draws a stray bar or a blank box.  ＮＯ and ＹＥＳ a few entries
+; earlier in the same table are stored the same way.
+.org    0x80106EA8
+.byte   0x82,0x6C,0,0           ; Ｍ
+.byte   0x82,0x62,0,0           ; Ｃ
+.byte   0x82,0x78,0,0           ; Ｙ
+.byte   0x82,0x6B,0,0           ; Ｌ
 
 
 .close

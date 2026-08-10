@@ -2,6 +2,7 @@ import json
 from pathlib import Path
 
 from src.glyph_layout import DYNAMIC_SPECIAL_LOW_INDICES
+from src.mixed_name_layout import ORIGINAL_FULLWIDTH_LATIN_INDICES
 
 
 HERE = Path(__file__).resolve().parent
@@ -25,6 +26,21 @@ def load_original_ui_glyph_overrides(path=DEFAULT_CODETABLE_PATH):
                 f"Original UI glyph {index:#x} must be one character"
             )
         overrides[index] = character
+
+    latin_mismatches = [
+        (index, overrides.get(index), character)
+        for character, index in ORIGINAL_FULLWIDTH_LATIN_INDICES.items()
+        if overrides.get(index) != character
+    ]
+    if latin_mismatches:
+        raise ValueError(
+            "Original UI glyph table no longer contains A-Z at "
+            "0x034..0x04D: "
+            + " ".join(
+                f"{index:#x}={actual!r}/{expected!r}"
+                for index, actual, expected in latin_mismatches[:8]
+            )
+        )
 
     # The table still lists every cell the original UI alphabet used, including
     # the released kana block.  Only the cells that are still reserved may be

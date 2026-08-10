@@ -7,6 +7,12 @@ from src.glyph_layout import (
     STATIC_TEXT_SECTIONS,
     glyph_indices,
 )
+from src.mixed_name_layout import (
+    ORIGINAL_FULLWIDTH_LATIN_INDICES,
+    SHARED_GLYPH_CHARACTERS,
+    build_mixed_name_global_overrides,
+    released_f14_context_alias_indices,
+)
 from src.text_codec import load_character_codes
 from src.text_records import choose_text, load_text_data
 
@@ -134,6 +140,79 @@ def build_unified_normal_text_plan(
             "source": target_index,
             "destination": alias_index,
         })
+
+    # Player-entered Latin letters stay in RAM as the original codes
+    # 0x034..0x04D.  Apply this policy only after the normal relocation plan is
+    # complete: the Chinese characters currently occupying C-Y still need the
+    # relocation above before those original cells can be painted back to A-Z.
+    mixed_name_overrides = build_mixed_name_global_overrides(character_codes)
+    shared_global_conflicts = sorted(
+        set(global_overrides) & SHARED_GLYPH_CHARACTERS
+    )
+    if shared_global_conflicts:
+        raise ValueError(
+            "Normal relocation unexpectedly overrides mixed-name shared "
+            f"characters: {shared_global_conflicts}"
+        )
+    shared_static_conflicts = sorted(
+        set(static_overrides) & SHARED_GLYPH_CHARACTERS
+    )
+    if shared_static_conflicts:
+        raise ValueError(
+            "Static aliases would override mixed-name shared characters: "
+            f"{shared_static_conflicts}"
+        )
+
+    released_indices = set(
+        released_f14_context_alias_indices(character_codes)
+    )
+    font_conflicts = sorted(released_indices & set(font_overrides))
+    if font_conflicts:
+        raise ValueError(
+            "Normal font overrides occupy mixed-name F14 alias cells: "
+            f"{[hex(index) for index in font_conflicts]}"
+        )
+    override_target_conflicts = sorted(
+        released_indices
+        & {
+            int.from_bytes(code, "little")
+            for code in (
+                list(global_overrides.values())
+                + list(static_overrides.values())
+            )
+        }
+    )
+    if override_target_conflicts:
+        raise ValueError(
+            "Normal text aliases still encode into mixed-name F14 cells: "
+            f"{[hex(index) for index in override_target_conflicts]}"
+        )
+
+    # Every translated text path receives this one global map.  The old glyphs
+    # at the released indices remain in F13, while only F14 repaints those cells
+    # with context-local Chinese aliases.
+    global_overrides.update(mixed_name_overrides)
+    effective_character_codes = dict(character_codes)
+    effective_character_codes.update(global_overrides)
+    still_using_released = sorted(
+        (character, int.from_bytes(code, "little"))
+        for character, code in effective_character_codes.items()
+        if int.from_bytes(code, "little") in released_indices
+    )
+    if still_using_released:
+        raise ValueError(
+            "Mixed-name F14 alias cells are still globally encoded: "
+            f"{still_using_released}"
+        )
+    for character, expected_index in ORIGINAL_FULLWIDTH_LATIN_INDICES.items():
+        actual_index = int.from_bytes(
+            global_overrides[character], "little"
+        )
+        if actual_index != expected_index:
+            raise AssertionError(
+                f"Fullwidth Latin {character} maps to {actual_index:#x}, "
+                f"expected {expected_index:#x}"
+            )
 
     highest_index = max(set(codetable) | set(font_overrides))
     if highest_index >= EXPANDED_GLYPH_COUNT:

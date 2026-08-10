@@ -178,14 +178,22 @@ def patch_executable(
         0x80105F90: bytes.fromhex('00000B8D'),  # lw t3,0(t0)
         0x80105F94: bytes.fromhex('00000000'),  # load-delay nop
         0x80106000: bytes.fromhex('66666666'),  # lower-strip bitmap
+        # CONTINUE screen ending lamps: 明 / 查理 / 由美 / 玲子 as initials.
+        # Fullwidth Shift-JIS -- this renderer reads two bytes per lamp.
+        0x80106EA8: bytes.fromhex('826C0000'),  # Ｍ, was ア
+        0x80106EAC: bytes.fromhex('82620000'),  # Ｃ, was チ
+        0x80106EB0: bytes.fromhex('82780000'),  # Ｙ, was ユ
+        0x80106EB4: bytes.fromhex('826B0000'),  # Ｌ, was レ
         # SAVE/LOAD and map list draws routed away from raw F14 (alias leak).
         0x80072C34: bytes.fromhex('5B2B010C'),
-        # Shared big-font renderer gated so original-code names leave F14.
+        # Shared big-font renderer stays on F14.  A-Z now occupy their original
+        # cells there, while keeping the old global gate would misroute genuine
+        # F14 labels such as LEVEL/BGM/CHAOS to the 10px small font.
         # SAVE/LOAD slot widget: out-of-range glyph skips instead of hanging.
         0x8006F0A8: bytes.fromhex('A6700108'),  # j 0x8005C298
         0x8006F0AC: bytes.fromhex('00141E00'),  # original type shift, delay
-        0x80047688: bytes.fromhex('6F1F0108'),  # j 0x80047DBC
-        0x8004768C: bytes.fromhex('B8FFBD27'),  # displaced addiu sp,sp,-72
+        0x80047688: bytes.fromhex('B8FFBD27'),  # original addiu sp,sp,-72
+        0x8004768C: bytes.fromhex('2800B2AF'),  # original sw s2,0x28(sp)
         0x80047DBC: bytes.fromhex('4800BD27'),  # addiu sp,sp,72
         0x8004844C: bytes.fromhex('5D220108'),  # j 0x80048974
         # F14 shadow pass: never let the darkened copy link to itself.
@@ -223,10 +231,8 @@ def patch_executable(
         # this routine compare against a constant zero for months.
         0x8005C29C: bytes.fromhex('0008288E'),  # lw t0,0x800(s1)
         0x8005C2A0: bytes.fromhex('FAFF4924'),  # addiu t1,v0,-6
-        0x8005C2AC: bytes.fromhex('0001092D'),  # sltiu t1,t0,0x100
-        0x8005C2B0: bytes.fromhex('03002011'),  # beq t1,zero,done
-        0x8005C2B8: bytes.fromhex('00010834'),  # ori t0,zero,0x100
-        0x8005C2BC: bytes.fromhex('000828AE'),  # sw t0,0x800(s1)
+        0x8005C2AC: bytes.fromhex('40400800'),  # sll t0,t0,1
+        0x8005C2B0: bytes.fromhex('000828AE'),  # sw t0,0x800(s1)
         0x8005C2C0: bytes.fromhex('2CBC0108'),  # j 0x8006F0B0
         0x8005C2C8: bytes.fromhex('0100E734'),  # ori a3,a3,1
         0x8005C2CC: bytes.fromhex('7F1D0108'),  # j 0x800475FC
@@ -276,9 +282,9 @@ def patch_executable(
     # F0093-compatible 8bpp RLE uploader and its row decoder bring this to 1739;
     # restoring the clean R&D closing-frame pass adds 14 changed bytes.
     # The original F0093 source and count deliberately remain intact.
-    if armips_changed_bytes != 1789:
+    if armips_changed_bytes != 1788:
         raise AssertionError(
-            f'Expected CN.asm to change 1789 bytes, got {armips_changed_bytes}'
+            f'Expected CN.asm to change 1788 bytes, got {armips_changed_bytes}'
         )
 
     patched_data = bytearray(patched_data)

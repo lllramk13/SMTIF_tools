@@ -75,8 +75,12 @@ STATIC_WIDTH_TABLE_ENTRIES = 0x0567
 # characters our text already uses hundreds of times, so pinning our copies onto
 # their cells renders them correctly *and* returns the cells to F14.
 #
-# What is left is only the Latin block Ｃ-Ｚ, which nothing in the game
-# addresses by index: it has carried aliases for months without a single report.
+# What is left is the Latin block Ｃ-Ｚ.  Even though most of it is not indexed
+# directly by executable code, player names keep these original codes in RAM.
+# Mixed Chinese/Latin names take the F14 renderer, so every one of these cells
+# must remain Latin there.  The unified plan still reserves the cells to move
+# their displaced Chinese characters to high F13 codes; F14 context aliases now
+# use the separate released pool in mixed_name_layout.py.
 DYNAMIC_SPECIAL_LOW_INDICES = frozenset(
     index for index in range(0x034, 0x04E)
     if index not in (0x034, 0x035, 0x039)

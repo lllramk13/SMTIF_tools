@@ -1,5 +1,6 @@
 from pathlib import Path
 
+from src.compression import compress_rle
 from src.font_builder import BYTES_PER_GLYPH, GLYPH_H, GLYPH_W
 from src.graphic_resource import (
     decompress_graphic_resource,
@@ -24,9 +25,8 @@ OUTPUT_F14_PATH = HERE.parent / "build" / "F0014.BIN"
 #     requires every file to stay contiguous and ascending by LBA, and a full
 #     disc re-layout cannot be shown to be safe against hardcoded LBAs.
 # So the capacity really is fixed at 1383.  src/f14_context_aliases.py keeps
-# the texture at that size while reusing original name-entry cells in the
-# confirmed F14-only option/skill contexts; original names now use the hybrid
-# renderer's small-font path.
+# the texture at that size by reusing 22 cells released through the mixed-name
+# global encoding policy, while the original A-Z cells remain readable in F14.
 ORIGINAL_PIXEL_WIDTH = 208
 GLYPHS_PER_PLANE = 346
 PLANE_COUNT = 4
@@ -158,6 +158,15 @@ def build_f14(
         EXPECTED_PIXEL_WIDTH,
         graphic.height,
     )
+    # compress_rle() includes the generic resource's 12-byte header; F14 uses
+    # a 16-byte graphic header around the same token stream.
+    minimum_main_block_size = len(compress_rle(rebuilt_raw_data)) + 4
+    if minimum_main_block_size > graphic.declared_size:
+        raise ValueError(
+            f"F0014 minimum RLE block is {minimum_main_block_size} bytes, "
+            f"but the fixed budget is {graphic.declared_size} bytes"
+        )
+    rle_margin = graphic.declared_size - minimum_main_block_size
     rebuilt_f14 = rebuild_graphic_resource(
         original_f14,
         rebuilt_raw_data,
@@ -183,6 +192,10 @@ def build_f14(
     print(
         f"Static glyphs rendered: {STATIC_GLYPH_COUNT} "
         f"({GLYPHS_PER_PLANE}/plane, {EXPECTED_PIXEL_WIDTH}x{graphic.height})"
+    )
+    print(
+        f"F0014 minimum RLE block: {minimum_main_block_size}/"
+        f"{graphic.declared_size} bytes ({rle_margin} bytes free)"
     )
     print(f"F0014 main block: {rebuilt_graphic.declared_size} bytes")
     print(

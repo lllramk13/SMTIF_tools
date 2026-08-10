@@ -19,7 +19,42 @@ SUPPORTED_RESOURCE_TYPES = {
 # Their pointer tables and text slots therefore have to remain at the original
 # offsets; rebuilding them as a compact pointer-table + text blob breaks those
 # external references even though the rebuilt pointer table itself is valid.
-FIXED_LAYOUT_RESOURCE_KEYS = set()
+FIXED_LAYOUT_RESOURCE_KEYS = {
+    # Post-Amdusias jar event.  The event reads the first string directly at
+    # raw + 0x18 instead of following pointer-table entry 0.  Letting the
+    # overflowing Chinese string move to the resource tail makes the fixed
+    # offset decode the pointer table as glyphs and eventually corrupt RAM.
+    ("F0016", 0x5E0C4),
+}
+
+# Some dialogue resources enter through the pointer table once, then advance
+# from the current FFFF terminator to the following record without consulting
+# the next pointer-table entry.  Relocating only an overflowing record to the
+# end of such a resource breaks that sequential chain: the first page renders,
+# but advancing reads beyond the resource as glyph codes and corrupts the
+# dynamic-font cache.  These blocks must therefore use the compact rebuild,
+# which keeps every encoded record contiguous in pointer-table order.
+COMPACT_RESOURCE_KEYS = {
+    # Mammon's pre-battle dialogue.  Record 0x1C grows by four bytes in Chinese;
+    # the old allow-growth layout moved it to the tail while record 0x66 stayed
+    # in place, causing the button-advance freeze at 0x8005BCEC/0x8005BD0C.
+    ("F0016", 0x38990),
+}
+
+# Partial tail relocation is opt-in, never a generic fallback.  These are
+# lookup/menu tables whose internal offsets must remain stable; their entries
+# are fetched independently, so pointer order is not used as dialogue state.
+# All ordinary event/dialogue blocks fall back to a compact rebuild when a
+# translation does not fit its original slot.
+ALLOW_GROWTH_RESOURCE_KEYS = {
+    # F0017 contains special/static lookup text.
+    ("F0017", 0x0),
+    # F0094 contains name, item, skill and description lookup tables used by
+    # menus through fixed internal offsets.
+    ("F0094", 0x3C),
+    ("F0094", 0x2D98),
+    ("F0094", 0x39F8),
+}
 
 # Replacing this resource together with other F0018 resources makes the map
 # loader hang even when all original string offsets and lengths are retained.
@@ -328,12 +363,20 @@ def build_text_resources(text_blocks, source_directory):
         # it can't (mostly long dialogue that grew), fall back to the compact
         # `block["data"]` — safe because those are read via the pointer table.
         fixed_layout = False
-        if (file_name, block_offset) not in FIXED_LAYOUT_RESOURCE_KEYS:
+        resource_key = (file_name, block_offset)
+        if resource_key in COMPACT_RESOURCE_KEYS:
+            raw_data = block["data"]
+        elif resource_key not in FIXED_LAYOUT_RESOURCE_KEYS:
             # Prefer the strictest layout that works: every string in its
             # original slot; then the same but with overflowing strings
             # appended past the end; only then the compact repack, which
             # moves every string and so breaks fixed-offset menu reads.
-            for allow_growth in (False, True):
+            growth_modes = (
+                (False, True)
+                if resource_key in ALLOW_GROWTH_RESOURCE_KEYS
+                else (False,)
+            )
+            for allow_growth in growth_modes:
                 try:
                     candidate = build_fixed_layout_raw_data(
                         block,

@@ -1,10 +1,8 @@
-"""Reuse original name-entry F14 cells for selected static text contexts.
+"""Build low-code F14 aliases for selected static text contexts.
 
-The physical F14 texture has enough cells for the complete translated static
-character set, but 204 low indices are normally reserved for the original
-name-entry alphabet.  Names now pass through a hybrid renderer: original
-name-entry codes use the old small font, while translated names use F14.
-That makes those F14 cells available as context-local aliases.
+The original C-Z cells must now remain Latin so mixed Chinese/Latin player
+names can use F14.  The aliases instead occupy 19 redundant translated-letter
+cells plus three cells released by byte-identical visual glyph aliases.
 
 Only the confirmed F14-rendered option and skill-name blocks receive these
 alternate encodings.  Normal dialogue keeps its ordinary F13 codes.
@@ -15,6 +13,11 @@ import re
 
 from src.glyph_layout import DYNAMIC_SPECIAL_LOW_INDICES, glyph_indices
 from src.font_builder import load_codetable
+from src.mixed_name_layout import (
+    SHARED_GLYPH_CHARACTERS,
+    glyph_character_matches,
+    released_f14_context_alias_indices,
+)
 from src.original_ui_glyphs import load_original_ui_glyph_overrides
 from src.text_codec import load_character_codes
 from src.text_records import choose_text, load_text_data
@@ -45,13 +48,10 @@ ORIGINAL_NAME_GLYPH_INDICES = frozenset(
 #   0x039        fullwidth Ｆ     -- the same header's floor suffix; aliasing
 #                it is what produced 学校1＋.
 #
-# The ＮＯ　ＤＡＴＡ / ＥＲＲＯＲ　ＤＡＴＡ / ＦＩＬＥ letters are *not* here:
-# those strings are re-encoded through our own codetable now, so they no longer
-# reference the reserved cells at all.
-# Nothing is left to protect: every cell the executable addresses by a
-# hardcoded glyph index now carries our own copy of that character as a
-# codetable pin, so it is not part of the reserved pool at all.  What
-# remains reserved is Ｃ-Ｚ, which no code indexes.
+# A-Z are now globally re-encoded to 0x034..0x04D and restored in F14, so
+# ＮＯ DATA, UI labels and player names may all reference these cells safely.
+# They remain unavailable as alias destinations; the 22 context aliases use
+# the separate released pool calculated by mixed_name_layout.py.
 HARDCODED_GLYPH_INDICES = frozenset()
 
 # These blocks were confirmed in-game to draw through 0x800475FC.
@@ -71,6 +71,9 @@ F14_EMBEDDED_UI_CHARACTERS = frozenset(("余",))
 REQUIRED_CONTEXT_TRANSLATIONS = ("玲子", "雷霆")
 PARTY_PRESET_NAMES = ("由美", "查理", "明")
 KATAKANA_NAME = re.compile(r"^[ァ-ヶー・]+$")
+EXPECTED_CONTEXT_ALIAS_CHARACTERS = tuple(
+    "势苍蝇队伍区烧施／版蝙蝠周咆哮夹＋焚贯捆濒银"
+)
 
 
 @dataclass(frozen=True)
@@ -80,6 +83,53 @@ class F14ContextAliasPlan:
     font_overrides: dict[int, str]
     aliases: tuple[dict, ...]
     context_characters: frozenset[str]
+
+
+def validate_encoded_record_alias_isolation(encoded_records, alias_plan):
+    """Ensure the 22 repainted F14 cells never leak into F13 records."""
+    alias_indices = set(alias_plan.font_overrides)
+    allowed_prefixes = tuple(alias_plan.record_character_overrides)
+    leaks = []
+    high_context_codes = []
+
+    for record in encoded_records:
+        record_id = record["id"]
+        is_f14_context = record_id.startswith(allowed_prefixes)
+        encoded = record["encoded_text"]
+        used = set()
+        high = set()
+        for position in range(0, len(encoded), 2):
+            code = encoded[position:position + 2]
+            if len(code) != 2 or code == b"\xFF\xFF":
+                break
+            if code[1] == 0xFF:
+                continue
+            index = int.from_bytes(code, "little")
+            if index >= F14_CAPACITY:
+                high.add(index)
+            if index in alias_indices:
+                used.add(index)
+        if is_f14_context and high:
+            high_context_codes.append((record_id, tuple(sorted(high))))
+        if not is_f14_context and used:
+            leaks.append((record_id, tuple(sorted(used))))
+
+    if high_context_codes:
+        raise AssertionError(
+            "F14 records retained out-of-range glyph codes: "
+            + " ".join(
+                f"{record_id}={','.join(hex(index) for index in indices)}"
+                for record_id, indices in high_context_codes[:8]
+            )
+        )
+    if leaks:
+        raise AssertionError(
+            "F14-only alias codes leaked into normal records: "
+            + " ".join(
+                f"{record_id}={','.join(hex(index) for index in indices)}"
+                for record_id, indices in leaks[:8]
+            )
+        )
 
 
 def _selected_characters(
@@ -191,7 +241,9 @@ def build_f14_context_alias_plan(
         index = int.from_bytes(code, "little")
         if (
             index >= F14_CAPACITY
-            or final_f14_glyphs.get(index) != character
+            or not glyph_character_matches(
+                character, final_f14_glyphs.get(index)
+            )
         ):
             alias_characters.append(character)
 
@@ -202,19 +254,43 @@ def build_f14_context_alias_plan(
         )
     )
 
-    # Use the highest reserved cells.  This deterministic placement preserved
-    # the original 23,541-byte F14 graphic budget in the capacity experiment.
-    available_indices = sorted(
-        index
-        for index in DYNAMIC_SPECIAL_LOW_INDICES
-        if index not in HARDCODED_GLYPH_INDICES
+    if tuple(alias_characters) != EXPECTED_CONTEXT_ALIAS_CHARACTERS:
+        raise ValueError(
+            "F14 context alias set changed; re-audit the fixed 22-cell layout: "
+            f"{''.join(alias_characters)}"
+        )
+
+    # These are the 19 low cells vacated by globally re-pinning fullwidth A-Z,
+    # followed by the three byte-identical visual-alias source cells.  The
+    # order is deliberate: it produces a 23,486-byte minimum RLE main block,
+    # safely inside F0014's fixed 23,541-byte budget.
+    available_indices = released_f14_context_alias_indices(
+        base_character_codes
     )
+    encoded_users = sorted(
+        (character, int.from_bytes(code, "little"))
+        for character, code in effective_character_codes.items()
+        if int.from_bytes(code, "little") in set(available_indices)
+    )
+    if encoded_users:
+        raise ValueError(
+            "Released F14 alias cells are still globally encoded: "
+            f"{encoded_users}"
+        )
+    font_conflicts = sorted(
+        set(available_indices) & set(existing_font_overrides or {})
+    )
+    if font_conflicts:
+        raise ValueError(
+            "Existing font overrides occupy released F14 alias cells: "
+            f"{[hex(index) for index in font_conflicts]}"
+        )
     if len(alias_characters) > len(available_indices):
         raise ValueError(
             f"F14 contexts need {len(alias_characters)} aliases, but only "
-            f"{len(available_indices)} original-name cells are available"
+            f"{len(available_indices)} released cells are available"
         )
-    selected_indices = available_indices[-len(alias_characters):]
+    selected_indices = available_indices[:len(alias_characters)]
 
     character_overrides = {}
     font_overrides = {}
@@ -232,6 +308,14 @@ def build_f14_context_alias_plan(
         })
 
     final_f14_glyphs.update(font_overrides)
+    shared_alias_conflicts = sorted(
+        set(character_overrides) & SHARED_GLYPH_CHARACTERS
+    )
+    if shared_alias_conflicts:
+        raise AssertionError(
+            "F14 context aliases override mixed-name shared characters: "
+            f"{shared_alias_conflicts}"
+        )
     context_codes = dict(effective_character_codes)
     context_codes.update(character_overrides)
     for character in context_characters:
@@ -241,7 +325,9 @@ def build_f14_context_alias_plan(
                 f"F14 context character {character} still uses high "
                 f"code {index:#x}"
             )
-        if final_f14_glyphs.get(index) != character:
+        if not glyph_character_matches(
+            character, final_f14_glyphs.get(index)
+        ):
             raise AssertionError(
                 f"F14 context character {character} maps to {index:#x}, "
                 "but that cell contains another glyph"
@@ -262,7 +348,9 @@ def build_f14_context_alias_plan(
             index = int.from_bytes(context_codes[character], "little")
             if (
                 index >= F14_CAPACITY
-                or final_f14_glyphs.get(index) != character
+                or not glyph_character_matches(
+                    character, final_f14_glyphs.get(index)
+                )
             ):
                 raise AssertionError(
                     f"Required F14 regression text {translation!r} is not "

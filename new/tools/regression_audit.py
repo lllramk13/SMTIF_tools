@@ -26,6 +26,7 @@ from src.f14_context_aliases import (
     F14_CAPACITY,
     HARDCODED_GLYPH_INDICES,
     build_f14_context_alias_plan,
+    validate_encoded_record_alias_isolation,
 )
 from src.f0098_text import load_f0098_text_records, translated_f0098_texts
 from src.font_builder import (
@@ -42,16 +43,23 @@ from src.font_builder import (
     render_glyph,
 )
 from src.glyph_layout import DYNAMIC_SPECIAL_LOW_INDICES, glyph_indices
+from src.mixed_name_layout import (
+    ORIGINAL_FULLWIDTH_LATIN_INDICES,
+    VISUAL_GLYPH_ALIASES,
+    validate_mixed_name_font_layout,
+)
 from src.name_entry import SOURCE_CODE_ROWS
 from src.overlay_text import load_overlay_text_records, translated_overlay_texts
 from src.slpm_text import load_slpm_text_records, translated_slpm_texts
 from src.text_codec import load_character_codes
-from src.text_records import choose_text, load_text_data
+from src.text_records import choose_text, encode_records, load_text_data
 from src.unified_normal_text_plan import build_unified_normal_text_plan
 
 DATA = NEW_DIR / "data"
 TEXT_PATH = DATA / "text.json"
 BUILT_SLPM = NEW_DIR / "build" / "SLPM_871.54"
+BUILT_F13_FONT = NEW_DIR / "build" / "font_f13_1bpp.bin"
+BUILT_F14_FONT = NEW_DIR / "build" / "font_f14_1bpp.bin"
 ORIGINAL_UI_PATH = DATA / "original_ui_codetable.json"
 
 results = []
@@ -89,10 +97,25 @@ def _load_context():
     alias = build_f14_context_alias_plan(
         global_character_overrides=plan.global_character_overrides,
         existing_font_overrides=plan.font_overrides,
-        extra_context_texts=context_texts,
+        extra_context_texts=(
+            context_texts
+            + translated_f0098_texts(f98, renderer="static")
+        ),
     )
     codes = dict(load_character_codes(DEFAULT_CODETABLE_PATH))
     codes.update(plan.global_character_overrides)
+    section_codes = {}
+    for section, overrides in plan.section_character_overrides.items():
+        active = dict(codes)
+        active.update(overrides)
+        section_codes[section] = active
+    encoded_records = encode_records(
+        load_text_data(TEXT_PATH),
+        codes,
+        section_character_codes=section_codes,
+        record_character_code_overrides=alias.record_character_overrides,
+    )
+    validate_encoded_record_alias_isolation(encoded_records, alias)
     return slpm, f98, plan, alias, codes, ranges
 
 
@@ -123,6 +146,16 @@ def main():
         and load_character_codes(DEFAULT_CODETABLE_PATH).get(original_ui[index])
         != index.to_bytes(2, "little")
     ]
+    misplaced.extend(
+        f"{index:#05x}={character}"
+        for character, index in ORIGINAL_FULLWIDTH_LATIN_INDICES.items()
+        if codes.get(character) != index.to_bytes(2, "little")
+    )
+    misplaced.extend(
+        f"{target_index:#05x}={source}"
+        for source, (_, target_index) in VISUAL_GLYPH_ALIASES.items()
+        if codes.get(source) != target_index.to_bytes(2, "little")
+    )
     check(
         "hardcoded glyph cells carry their own character",
         not misplaced,
@@ -340,6 +373,19 @@ def main():
             continue
         if all(byte == 0xFF for byte in packed):
             missing_artwork.append(f"{character}: packs to a blank cell")
+    try:
+        if not BUILT_F13_FONT.is_file() or not BUILT_F14_FONT.is_file():
+            raise FileNotFoundError(
+                "built F13/F14 font binaries are missing; run build.py"
+            )
+        validate_mixed_name_font_layout(
+            BUILT_F13_FONT.read_bytes(),
+            BUILT_F14_FONT.read_bytes(),
+            load_character_codes(DEFAULT_CODETABLE_PATH),
+            alias.aliases,
+        )
+    except (OSError, ValueError, AssertionError) as error:
+        missing_artwork.append(f"mixed-name font layout: {error}")
     check(
         "hand-drawn glyph artwork loads",
         not missing_artwork,
@@ -392,7 +438,10 @@ def main():
             0x8005B2E4: (0x2407_000C, "dialogue advance fixed at 12"),
             0x8004A064: (0x2407_000C, "menu advance fixed at 12"),
             0x8006F0A8: (0x0801_70A6, "MARKER type-6 stride floor"),
-            0x80047688: (0x0801_1F6F, "big-font name gate"),
+            0x80047688: (
+                0x27BD_FFB8,
+                "shared big-font renderer remains on F14",
+            ),
             0x8004844C: (0x0801_225D, "out-of-range glyph skips instead of hanging"),
             0x80047A6C: (0x0803_F823, "F14 glyph AddPrim self-link guard"),
             0x80048514: (0x0801_1F8F, "save-slot AddPrim self-link guard"),

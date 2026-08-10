@@ -1,4 +1,4 @@
-"""Print each F14 context alias beside the original name-entry glyph it hides."""
+"""Print each F14 context alias beside the globally released glyph it hides."""
 
 from build import NEW_DIRECTORY
 from src.f0098_text import (
@@ -6,7 +6,7 @@ from src.f0098_text import (
     translated_f0098_texts,
 )
 from src.f14_context_aliases import build_f14_context_alias_plan
-from src.original_ui_glyphs import load_original_ui_glyph_overrides
+from src.font_builder import load_codetable
 from src.overlay_text import translated_overlay_texts
 from src.slpm_text import load_slpm_text_records, translated_slpm_texts
 from src.unified_normal_text_plan import build_unified_normal_text_plan
@@ -46,7 +46,7 @@ def main():
             + translated_f0098_texts(f0098_records, renderer="static")
         ),
     )
-    original_glyphs = load_original_ui_glyph_overrides()
+    original_glyphs = load_codetable()
 
     print(f"Aliases: {len(alias_plan.aliases)}")
     for alias in alias_plan.aliases:
